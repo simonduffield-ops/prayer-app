@@ -1,4 +1,4 @@
-const CACHE_NAME = 'prayer-tools-v1.0.2';
+const CACHE_NAME = 'prayer-tools-v1.1.0';
 const urlsToCache = [
     './',
     './index.html',
@@ -6,8 +6,10 @@ const urlsToCache = [
     './app.js',
     './content.js',
     './manifest.json',
-    './prayer-tools.html',
-    './daily-prayer-tools.html'
+    './icon.svg',
+    './apple-touch-icon-new.png',
+    './favicon-16x16.png',
+    './favicon-32x32.png'
 ];
 
 // Install event - cache resources and skip waiting

@@ -23,66 +23,48 @@ function markCompleted(activity) {
     localStorage.setItem(completedKey, 'true');
 }
 
-function completeExamen() {
-    markCompleted('examen');
-    document.querySelector('#examen-content .finish-button').style.display = 'none';
-    document.getElementById('examen-completed').style.display = 'block';
+// Cache DOM elements for better performance
+const activityElements = {};
+
+function initializeActivityElements() {
+    const activities = ['examen', 'lectio', 'adoration', 'apostolic'];
+    activities.forEach(activity => {
+        const content = document.getElementById(`${activity}-content`);
+        if (content) {
+            activityElements[activity] = {
+                content,
+                finishButton: content.querySelector('.finish-button'),
+                completed: document.getElementById(`${activity}-completed`)
+            };
+        }
+    });
 }
 
-function completeLectio() {
-    markCompleted('lectio');
-    document.querySelector('#lectio-content .finish-button').style.display = 'none';
-    document.getElementById('lectio-completed').style.display = 'block';
+// Single reusable completion function
+function completeActivity(activityName) {
+    markCompleted(activityName);
+    const elements = activityElements[activityName];
+    if (elements) {
+        elements.finishButton.style.display = 'none';
+        elements.completed.style.display = 'block';
+    }
 }
 
-function completeAdoration() {
-    markCompleted('adoration');
-    document.querySelector('#adoration-content .finish-button').style.display = 'none';
-    document.getElementById('adoration-completed').style.display = 'block';
-}
-
-function completeApostolic() {
-    markCompleted('apostolic');
-    document.querySelector('#apostolic-content .finish-button').style.display = 'none';
-    document.getElementById('apostolic-completed').style.display = 'block';
-}
+// Individual completion functions for backwards compatibility
+function completeExamen() { completeActivity('examen'); }
+function completeLectio() { completeActivity('lectio'); }
+function completeAdoration() { completeActivity('adoration'); }
+function completeApostolic() { completeActivity('apostolic'); }
 
 function updateCompletionStates() {
-    // Check and update Examen
-    if (isCompletedToday('examen')) {
-        document.querySelector('#examen-content .finish-button').style.display = 'none';
-        document.getElementById('examen-completed').style.display = 'block';
-    } else {
-        document.querySelector('#examen-content .finish-button').style.display = 'inline-block';
-        document.getElementById('examen-completed').style.display = 'none';
-    }
-
-    // Check and update Lectio
-    if (isCompletedToday('lectio')) {
-        document.querySelector('#lectio-content .finish-button').style.display = 'none';
-        document.getElementById('lectio-completed').style.display = 'block';
-    } else {
-        document.querySelector('#lectio-content .finish-button').style.display = 'inline-block';
-        document.getElementById('lectio-completed').style.display = 'none';
-    }
-
-    // Check and update Adoration
-    if (isCompletedToday('adoration')) {
-        document.querySelector('#adoration-content .finish-button').style.display = 'none';
-        document.getElementById('adoration-completed').style.display = 'block';
-    } else {
-        document.querySelector('#adoration-content .finish-button').style.display = 'inline-block';
-        document.getElementById('adoration-completed').style.display = 'none';
-    }
-
-    // Check and update Apostolic Prayers
-    if (isCompletedToday('apostolic')) {
-        document.querySelector('#apostolic-content .finish-button').style.display = 'none';
-        document.getElementById('apostolic-completed').style.display = 'block';
-    } else {
-        document.querySelector('#apostolic-content .finish-button').style.display = 'inline-block';
-        document.getElementById('apostolic-completed').style.display = 'none';
-    }
+    Object.keys(activityElements).forEach(activity => {
+        const elements = activityElements[activity];
+        if (elements) {
+            const isCompleted = isCompletedToday(activity);
+            elements.finishButton.style.display = isCompleted ? 'none' : 'inline-block';
+            elements.completed.style.display = isCompleted ? 'block' : 'none';
+        }
+    });
 }
 
 function getDailyContent() {
@@ -289,13 +271,24 @@ function dismissUpdateNotification() {
 
 // Initialize with fresh content on every page load
 document.addEventListener('DOMContentLoaded', function() {
-    // Generate fresh random content every time the page loads
-    generateExamenContent();
-    generateLectioContent();
-    generateAdorationContent();
-    generateApostolicContent();
-    
-    updateCompletionStates(); // Check what's been completed today
+    try {
+        // Initialize DOM element cache for better performance
+        initializeActivityElements();
+        
+        // Generate fresh random content every time the page loads
+        generateExamenContent();
+        generateLectioContent();
+        generateAdorationContent();
+        generateApostolicContent();
+        
+        updateCompletionStates(); // Check what's been completed today
+        
+    } catch (error) {
+        console.error('App initialization failed:', error);
+        // Fallback: try to at least show the main menu
+        const mainMenu = document.getElementById('main-menu');
+        if (mainMenu) mainMenu.style.display = 'block';
+    }
     
     // Register service worker for PWA functionality
     if ('serviceWorker' in navigator) {
