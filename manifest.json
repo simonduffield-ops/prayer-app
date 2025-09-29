@@ -1,7 +1,7 @@
 {
-    "name": "Daily Prayer Tools",
-    "short_name": "Prayer Tools",
-    "description": "Daily prayer tools for spiritual growth including Examen, Lectio Divina, and Adoration",
+    "name": "Daily Prayer",
+    "short_name": "Daily Prayer",
+    "description": "Daily prayer for spiritual growth including Examen, Lectio Divina, and Adoration",
     "start_url": "./",
     "display": "standalone",
     "background_color": "#f5f7fa",
