@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head><title>Create Icon</title></head>
+<body style="font-family: Arial, sans-serif; padding: 20px; text-align: center;">
+<h1>Prayer App Icon Generator</h1>
+<p>This will create a beautiful gradient icon with prayer hands design!</p>
+<canvas id="canvas" width="180" height="180" style="border: 2px solid #667eea; border-radius: 20px; margin: 20px;"></canvas>
+<p id="status">Generating your beautiful prayer hands icon...</p>
+<a id="download" style="display:none; background: #667eea; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Download Icon</a>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Create beautiful iOS-style glass background
+// Main gradient
+const mainGradient = ctx.createLinearGradient(0, 0, 180, 180);
+mainGradient.addColorStop(0, '#667eea');
+mainGradient.addColorStop(0.5, '#7b8bef');
+mainGradient.addColorStop(1, '#764ba2');
+
+// Glass overlay gradient
+const glassGradient = ctx.createLinearGradient(0, 0, 0, 90);
+glassGradient.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+glassGradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.1)');
+glassGradient.addColorStop(1, 'rgba(255, 255, 255, 0.05)');
+
+// Inner shadow gradient
+const innerShadow = ctx.createRadialGradient(90, 60, 0, 90, 90, 120);
+innerShadow.addColorStop(0, 'rgba(255, 255, 255, 0.2)');
+innerShadow.addColorStop(0.7, 'rgba(0, 0, 0, 0.05)');
+innerShadow.addColorStop(1, 'rgba(0, 0, 0, 0.15)');
+
+// Draw main background with iOS corner radius
+ctx.fillStyle = mainGradient;
+ctx.beginPath();
+ctx.roundRect(0, 0, 180, 180, 38); // iOS-style rounded corners
+ctx.fill();
+
+// Add inner depth
+ctx.fillStyle = innerShadow;
+ctx.beginPath();
+ctx.roundRect(0, 0, 180, 180, 38);
+ctx.fill();
+
+// Add glass overlay effect
+ctx.fillStyle = glassGradient;
+ctx.beginPath();
+ctx.roundRect(0, 0, 180, 180, 38);
+ctx.fill();
+
+// Add subtle outer glow
+ctx.shadowColor = 'rgba(102, 126, 234, 0.3)';
+ctx.shadowBlur = 8;
+ctx.shadowOffsetX = 0;
+ctx.shadowOffsetY = 2;
+ctx.fillStyle = 'rgba(102, 126, 234, 0.1)';
+ctx.beginPath();
+ctx.roundRect(-2, -2, 184, 184, 40);
+ctx.fill();
+
+// Reset shadow for prayer hands
+ctx.shadowColor = 'transparent';
+ctx.shadowBlur = 0;
+ctx.shadowOffsetX = 0;
+ctx.shadowOffsetY = 0;
+
+// Draw prayer hands with beautiful glass effect
+const scale = 0.25; // Better scale for 180x180
+const offsetX = 90; // Center horizontally
+const offsetY = 70; // Position from top
+
+// Create gradient for prayer hands
+const handsGradient = ctx.createLinearGradient(offsetX - 40, offsetY - 20, offsetX + 40, offsetY + 60);
+handsGradient.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+handsGradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.9)');
+handsGradient.addColorStop(0.7, 'rgba(240, 240, 250, 0.8)');
+handsGradient.addColorStop(1, 'rgba(200, 200, 220, 0.7)');
+
+// Add soft shadow for prayer hands
+ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+ctx.shadowBlur = 4;
+ctx.shadowOffsetX = 0;
+ctx.shadowOffsetY = 2;
+
+// Draw simplified, beautiful prayer hands
+ctx.fillStyle = handsGradient;
+
+// Left hand (simplified shape)
+ctx.beginPath();
+ctx.moveTo(offsetX - 15, offsetY);
+ctx.bezierCurveTo(offsetX - 25, offsetY - 10, offsetX - 25, offsetY + 10, offsetX - 15, offsetY + 30);
+ctx.bezierCurveTo(offsetX - 10, offsetY + 40, offsetX - 5, offsetY + 45, offsetX, offsetY + 50);
+ctx.lineTo(offsetX, offsetY + 30);
+ctx.closePath();
+ctx.fill();
+
+// Right hand (simplified shape)
+ctx.beginPath();
+ctx.moveTo(offsetX + 15, offsetY);
+ctx.bezierCurveTo(offsetX + 25, offsetY - 10, offsetX + 25, offsetY + 10, offsetX + 15, offsetY + 30);
+ctx.bezierCurveTo(offsetX + 10, offsetY + 40, offsetX + 5, offsetY + 45, offsetX, offsetY + 50);
+ctx.lineTo(offsetX, offsetY + 30);
+ctx.closePath();
+ctx.fill();
+
+// Reset shadow
+ctx.shadowColor = 'transparent';
+ctx.shadowBlur = 0;
+ctx.shadowOffsetX = 0;
+ctx.shadowOffsetY = 0;
+
+// Add highlight to prayer hands
+const handsHighlight = ctx.createLinearGradient(offsetX - 20, offsetY - 10, offsetX + 20, offsetY + 20);
+handsHighlight.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
+handsHighlight.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)');
+handsHighlight.addColorStop(1, 'rgba(255, 255, 255, 0.1)');
+
+ctx.fillStyle = handsHighlight;
+
+// Left hand highlight
+ctx.beginPath();
+ctx.moveTo(offsetX - 15, offsetY);
+ctx.bezierCurveTo(offsetX - 25, offsetY - 10, offsetX - 25, offsetY + 10, offsetX - 15, offsetY + 30);
+ctx.bezierCurveTo(offsetX - 10, offsetY + 40, offsetX - 5, offsetY + 45, offsetX, offsetY + 50);
+ctx.lineTo(offsetX, offsetY + 30);
+ctx.closePath();
+ctx.fill();
+
+// Right hand highlight
+ctx.beginPath();
+ctx.moveTo(offsetX + 15, offsetY);
+ctx.bezierCurveTo(offsetX + 25, offsetY - 10, offsetX + 25, offsetY + 10, offsetX + 15, offsetY + 30);
+ctx.bezierCurveTo(offsetX + 10, offsetY + 40, offsetX + 5, offsetY + 45, offsetX, offsetY + 50);
+ctx.lineTo(offsetX, offsetY + 30);
+ctx.closePath();
+ctx.fill();
+
+// Draw beautiful divine light rays with glass effect
+const centerX = offsetX;
+const raysTopY = offsetY - 25;
+
+// Create gradient for light rays
+const raysGradient = ctx.createLinearGradient(centerX, raysTopY, centerX, offsetY);
+raysGradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
+raysGradient.addColorStop(0.7, 'rgba(255, 255, 255, 0.4)');
+raysGradient.addColorStop(1, 'rgba(255, 255, 255, 0.1)');
+
+ctx.strokeStyle = raysGradient;
+ctx.lineWidth = 1.5;
+ctx.lineCap = 'round';
+
+// Add glow effect to rays
+ctx.shadowColor = 'rgba(255, 255, 255, 0.3)';
+ctx.shadowBlur = 3;
+
+// Main center ray
+ctx.beginPath();
+ctx.moveTo(centerX, offsetY - 10);
+ctx.lineTo(centerX, raysTopY);
+ctx.stroke();
+
+// Inner side rays
+ctx.beginPath();
+ctx.moveTo(centerX - 8, offsetY - 5);
+ctx.lineTo(centerX - 12, raysTopY + 8);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(centerX + 8, offsetY - 5);
+ctx.lineTo(centerX + 12, raysTopY + 8);
+ctx.stroke();
+
+// Outer rays
+ctx.beginPath();
+ctx.moveTo(centerX - 18, offsetY + 5);
+ctx.lineTo(centerX - 25, raysTopY + 15);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(centerX + 18, offsetY + 5);
+ctx.lineTo(centerX + 25, raysTopY + 15);
+ctx.stroke();
+
+// Very outer rays (subtle)
+ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+ctx.lineWidth = 1;
+
+ctx.beginPath();
+ctx.moveTo(centerX - 30, offsetY + 15);
+ctx.lineTo(centerX - 40, raysTopY + 25);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(centerX + 30, offsetY + 15);
+ctx.lineTo(centerX + 40, raysTopY + 25);
+ctx.stroke();
+
+// Reset shadow
+ctx.shadowColor = 'transparent';
+ctx.shadowBlur = 0;
+
+// Add subtle cross symbol at the top
+ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+const crossSize = 6;
+const crossY = 25;
+
+// Horizontal line of cross
+ctx.fillRect(centerX - crossSize, crossY, crossSize * 2, 1.5);
+// Vertical line of cross
+ctx.fillRect(centerX - 0.75, crossY - crossSize/2, 1.5, crossSize);
+
+// Create download link
+canvas.toBlob(function(blob) {
+    const url = URL.createObjectURL(blob);
+    const link = document.getElementById('download');
+    link.href = url;
+    link.download = 'apple-touch-icon.png';
+    link.style.display = 'inline-block';
+    document.getElementById('status').innerHTML = '✅ Icon generated! Click below to download:';
+});
+</script>
+</body>
+</html>
