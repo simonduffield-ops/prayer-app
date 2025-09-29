@@ -22,7 +22,7 @@
     <div class="container">
         <header>
             <h1>Daily Prayer Tools</h1>
-            <p class="subtitle">"Be still and know that I am God" - Psalm 46:10</p>
+            <p class="subtitle">"Be still, and know that I am God" - Psalm 46:10 (NIV)</p>
         </header>
 
         <div id="main-menu">
@@ -44,6 +44,12 @@
                     <p class="tool-description">Worshipful meditation on Scripture that draws your heart into deeper love and reverence for God.</p>
                     <button class="tool-button">Begin Adoration</button>
                 </div>
+
+                <div class="tool-card" onclick="showTool('apostolic')">
+                    <h3>Prayers of the Apostles</h3>
+                    <p class="tool-description">Pray through the beautiful prayers written by the apostles, joining your heart with theirs in worship and petition.</p>
+                    <button class="tool-button">Begin Apostolic Prayer</button>
+                </div>
             </div>
         </div>
 
@@ -52,7 +58,7 @@
             <div class="prayer-header">
                 <h2 class="prayer-title">The Examen</h2>
                 <div class="bible-verse">
-                    <p id="examen-verse">"And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him" - Colossians 3:17</p>
+                    <p id="examen-verse">"And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him." - Colossians 3:17 (NIV)</p>
                 </div>
             </div>
 
@@ -130,7 +136,7 @@
             <div class="prayer-header">
                 <h2 class="prayer-title">Lectio Divina</h2>
                 <div class="bible-verse">
-                    <p>"Blessed is the one... whose delight is in the law of the Lord, and who meditates on his law day and night" - Psalm 1:1-2</p>
+                    <p>"Blessed is the one who does not walk in step with the wicked... whose delight is in the law of the Lord, and who meditates on his law day and night." - Psalm 1:1-2 (NIV)</p>
                 </div>
             </div>
 
@@ -203,7 +209,7 @@
             <div class="prayer-header">
                 <h2 class="prayer-title">Adoration</h2>
                 <div class="bible-verse">
-                    <p>"And we all, who with unveiled faces contemplate the Lord's glory, are being transformed into his image with ever-increasing glory" - 2 Corinthians 3:18</p>
+                    <p>"And we all, who with unveiled faces contemplate the Lord's glory, are being transformed into his image with ever-increasing glory, which comes from the Lord, who is the Spirit." - 2 Corinthians 3:18 (NIV)</p>
                 </div>
             </div>
 
@@ -270,6 +276,83 @@
                 <div id="adoration-completed" style="display: none;">
                     <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Adoration completed for today!</p>
                     <button class="new-content-button" onclick="generateAdorationContent()">New Focus</button>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+        </div>
+
+        <!-- Prayers of the Apostles Content -->
+        <div id="apostolic-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Prayers of the Apostles</h2>
+                <div class="bible-verse">
+                    <p>"I pray that out of his glorious riches he may strengthen you with power through his Spirit in your inner being" - Ephesians 3:16 (NIV)</p>
+                </div>
+            </div>
+
+            <div class="scripture-text" id="apostolic-prayer">
+                "I keep asking that the God of our Lord Jesus Christ, the glorious Father, may give you the Spirit of wisdom and revelation, so that you may know him better. I pray that the eyes of your heart may be enlightened in order that you may know the hope to which he has called you, the riches of his glorious inheritance in his holy people, and his incomparably great power for us who believe." - Ephesians 1:17-19
+            </div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <div>
+                    <div class="step-title">Read - Enter into the Apostle's Heart</div>
+                    <p>Read this prayer slowly, as if you were sitting with Paul as he wrote it. Notice the deep love and spiritual longing he had for God's people.</p>
+                    <div class="reflection-box">
+                        <p><em>What emotions or desires do you sense in this prayer?</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <div>
+                    <div class="step-title">Receive - Make It Personal</div>
+                    <p>Read the prayer again, but this time as if the apostle is praying it specifically for you. How does it feel to have someone pray these beautiful words over your life?</p>
+                    <div class="reflection-box">
+                        <p><em>Which part of this prayer touches your heart most deeply?</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <div>
+                    <div class="step-title">Respond - Pray It Back to God</div>
+                    <p id="apostolic-respond-prompt">Now pray this prayer to God for yourself, using your own words. Ask Him for the same spiritual blessings the apostle desired for the early Christians.</p>
+                    <div class="reflection-box">
+                        <p><em>Pray this prayer for yourself in your own words...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <div>
+                    <div class="step-title">Reach Out - Pray for Others</div>
+                    <p id="apostolic-reach-prompt">Think of someone in your life who needs God's blessing. Pray this apostolic prayer for them, asking God to work in their heart as the apostle prayed for his spiritual children.</p>
+                    <div class="reflection-box">
+                        <p><em>Pray this prayer for someone you love...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meditation-focus" id="apostolic-focus">
+                Today's Blessing: "Spiritual Wisdom"
+                <br>
+                <small>Carry this apostolic blessing with you as you pray for God's wisdom today.</small>
+            </div>
+
+            <div class="closing-prayer" id="apostolic-closing">
+                "Lord, thank You for the apostles who prayed so faithfully for Your people. Unite my heart with theirs in seeking Your kingdom and Your glory. Amen."
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="finish-button" onclick="completeApostolic()">Finish Apostolic Prayer</button>
+                <div id="apostolic-completed" style="display: none;">
+                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Apostolic Prayer completed for today!</p>
+                    <button class="new-content-button" onclick="generateApostolicContent()">New Prayer</button>
                 </div>
             </div>
             <button class="back-button" onclick="showMainMenu()">Back to Tools</button>

@@ -1,13 +1,13 @@
 // Prayer content for daily rotation
 const examenPrompts = {
     verses: [
-        '"And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him" - Colossians 3:17',
-        '"Give thanks in all circumstances; for this is God\'s will for you in Christ Jesus" - 1 Thessalonians 5:18',
-        '"Every good and perfect gift is from above, coming down from the Father of the heavenly lights" - James 1:17',
-        '"The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing" - Zephaniah 3:17',
-        '"In everything give thanks; for this is the will of God in Christ Jesus for you" - 1 Thessalonians 5:18',
-        '"Be joyful always; pray continually; give thanks in all circumstances" - 1 Thessalonians 5:16-18',
-        '"Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful" - Colossians 3:15'
+        '"And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him." - Colossians 3:17 (NIV)',
+        '"Rejoice always, pray continually, give thanks in all circumstances; for this is God\'s will for you in Christ Jesus." - 1 Thessalonians 5:16-18 (NIV)',
+        '"Every good and perfect gift is from above, coming down from the Father of the heavenly lights, who does not change like shifting shadows." - James 1:17 (NIV)',
+        '"The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing." - Zephaniah 3:17 (NIV)',
+        '"Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful." - Colossians 3:15 (NIV)',
+        '"In your hearts revere Christ as Lord. Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have." - 1 Peter 3:15 (NIV)',
+        '"Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth." - Psalm 46:10 (NIV)'
     ],
     gratitude: [
         'Think through your day like watching a movie. What moments brought you joy? What gifts did God provide? Thank Him for both the obvious blessings and the small graces you might have missed.',
@@ -58,261 +58,261 @@ const examenPrompts = {
 
 const lectioScriptures = [
     {
-        text: 'Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and lowly in heart, and you will find rest for your souls.',
-        reference: 'Matthew 11:28-29',
+        text: 'Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.',
+        reference: 'Matthew 11:28-29 (NIV)',
         focus: 'Rest'
     },
     {
         text: 'The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing.',
-        reference: 'Zephaniah 3:17',
+        reference: 'Zephaniah 3:17 (NIV)',
         focus: 'Delight'
     },
     {
         text: 'Cast all your anxiety on him because he cares for you.',
-        reference: '1 Peter 5:7',
+        reference: '1 Peter 5:7 (NIV)',
         focus: 'Care'
     },
     {
         text: 'Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth.',
-        reference: 'Psalm 46:10',
+        reference: 'Psalm 46:10 (NIV)',
         focus: 'Stillness'
     },
     {
         text: 'The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.',
-        reference: 'Psalm 23:1-3',
+        reference: 'Psalm 23:1-3 (NIV)',
         focus: 'Shepherd'
     },
     {
-        text: 'For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, to give you hope and a future.',
-        reference: 'Jeremiah 29:11',
+        text: '"For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, to give you hope and a future."',
+        reference: 'Jeremiah 29:11 (NIV)',
         focus: 'Hope'
     },
     {
         text: 'The Lord will fight for you; you need only to be still.',
-        reference: 'Exodus 14:14',
+        reference: 'Exodus 14:14 (NIV)',
         focus: 'Peace'
     },
     {
-        text: 'In all your ways acknowledge him, and he will make your paths straight.',
-        reference: 'Proverbs 3:6',
+        text: 'In all your ways submit to him, and he will make your paths straight.',
+        reference: 'Proverbs 3:6 (NIV)',
         focus: 'Guidance'
     },
     {
         text: 'He heals the brokenhearted and binds up their wounds.',
-        reference: 'Psalm 147:3',
+        reference: 'Psalm 147:3 (NIV)',
         focus: 'Healing'
     },
     {
-        text: 'The joy of the Lord is your strength.',
-        reference: 'Nehemiah 8:10',
+        text: 'Do not grieve, for the joy of the Lord is your strength.',
+        reference: 'Nehemiah 8:10 (NIV)',
         focus: 'Joy'
     },
     {
         text: 'And we know that in all things God works for the good of those who love him, who have been called according to his purpose.',
-        reference: 'Romans 8:28',
+        reference: 'Romans 8:28 (NIV)',
         focus: 'Purpose'
     },
     {
         text: 'I can do all this through him who gives me strength.',
-        reference: 'Philippians 4:13',
+        reference: 'Philippians 4:13 (NIV)',
         focus: 'Strength'
     },
     {
         text: 'The Lord is close to the brokenhearted and saves those who are crushed in spirit.',
-        reference: 'Psalm 34:18',
+        reference: 'Psalm 34:18 (NIV)',
         focus: 'Comfort'
     },
     {
         text: 'Trust in the Lord with all your heart and lean not on your own understanding.',
-        reference: 'Proverbs 3:5',
+        reference: 'Proverbs 3:5 (NIV)',
         focus: 'Trust'
     },
     {
         text: 'God is our refuge and strength, an ever-present help in trouble.',
-        reference: 'Psalm 46:1',
+        reference: 'Psalm 46:1 (NIV)',
         focus: 'Refuge'
     },
     {
-        text: 'The Lord your God will be with you wherever you go.',
-        reference: 'Joshua 1:9',
+        text: 'Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.',
+        reference: 'Joshua 1:9 (NIV)',
         focus: 'Presence'
     },
     {
         text: 'Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.',
-        reference: 'Matthew 6:34',
+        reference: 'Matthew 6:34 (NIV)',
         focus: 'Today'
     },
     {
-        text: 'His mercies are new every morning; great is your faithfulness.',
-        reference: 'Lamentations 3:23',
+        text: 'Because of the Lord\'s great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness.',
+        reference: 'Lamentations 3:22-23 (NIV)',
         focus: 'Mercy'
     },
     {
         text: 'I have told you these things, so that in me you may have peace. In this world you will have trouble. But take heart! I have overcome the world.',
-        reference: 'John 16:33',
+        reference: 'John 16:33 (NIV)',
         focus: 'Victory'
     },
     {
         text: 'The Lord gives strength to his people; the Lord blesses his people with peace.',
-        reference: 'Psalm 29:11',
+        reference: 'Psalm 29:11 (NIV)',
         focus: 'Blessing'
     },
     {
-        text: 'Even though I walk through the darkest valley, I will fear no evil, for you are with me.',
-        reference: 'Psalm 23:4',
+        text: 'Even though I walk through the darkest valley, I will fear no evil, for you are with me; your rod and your staff, they comfort me.',
+        reference: 'Psalm 23:4 (NIV)',
         focus: 'Courage'
     },
     {
-        text: 'But those who hope in the Lord will renew their strength. They will soar on wings like eagles.',
-        reference: 'Isaiah 40:31',
+        text: 'But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.',
+        reference: 'Isaiah 40:31 (NIV)',
         focus: 'Renewal'
     },
     {
         text: 'Love is patient, love is kind. It does not envy, it does not boast, it is not proud.',
-        reference: '1 Corinthians 13:4',
+        reference: '1 Corinthians 13:4 (NIV)',
         focus: 'Love'
     },
     {
         text: 'The Lord is my light and my salvation—whom shall I fear? The Lord is the stronghold of my life—of whom shall I be afraid?',
-        reference: 'Psalm 27:1',
+        reference: 'Psalm 27:1 (NIV)',
         focus: 'Light'
     },
     {
         text: 'And my God will meet all your needs according to the riches of his glory in Christ Jesus.',
-        reference: 'Philippians 4:19',
+        reference: 'Philippians 4:19 (NIV)',
         focus: 'Provision'
     },
     {
         text: 'If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.',
-        reference: '1 John 1:9',
+        reference: '1 John 1:9 (NIV)',
         focus: 'Forgiveness'
     },
     {
         text: 'The Lord is gracious and righteous; our God is full of compassion.',
-        reference: 'Psalm 116:5',
+        reference: 'Psalm 116:5 (NIV)',
         focus: 'Grace'
     },
     {
         text: 'But seek first his kingdom and his righteousness, and all these things will be given to you as well.',
-        reference: 'Matthew 6:33',
+        reference: 'Matthew 6:33 (NIV)',
         focus: 'Priorities'
     },
     {
         text: 'The Lord is good, a refuge in times of trouble. He cares for those who trust in him.',
-        reference: 'Nahum 1:7',
+        reference: 'Nahum 1:7 (NIV)',
         focus: 'Goodness'
     },
     {
         text: 'He says, Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth.',
-        reference: 'Psalm 46:10',
+        reference: 'Psalm 46:10 (NIV)',
         focus: 'Knowing'
     },
     {
         text: 'May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.',
-        reference: 'Romans 15:13',
+        reference: 'Romans 15:13 (NIV)',
         focus: 'Overflow'
     },
     {
         text: 'For where your treasure is, there your heart will be also.',
-        reference: 'Matthew 6:21',
+        reference: 'Matthew 6:21 (NIV)',
         focus: 'Heart'
     },
     {
         text: 'The Lord himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged.',
-        reference: 'Deuteronomy 31:8',
+        reference: 'Deuteronomy 31:8 (NIV)',
         focus: 'Faithfulness'
     },
     {
         text: 'Create in me a pure heart, O God, and renew a steadfast spirit within me.',
-        reference: 'Psalm 51:10',
+        reference: 'Psalm 51:10 (NIV)',
         focus: 'Purity'
     },
     {
         text: 'The Lord is my rock, my fortress and my deliverer; my God is my rock, in whom I take refuge.',
-        reference: 'Psalm 18:2',
+        reference: 'Psalm 18:2 (NIV)',
         focus: 'Security'
     },
     {
         text: 'Wait for the Lord; be strong and take heart and wait for the Lord.',
-        reference: 'Psalm 27:14',
+        reference: 'Psalm 27:14 (NIV)',
         focus: 'Waiting'
     },
     {
         text: 'He has shown you, O mortal, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.',
-        reference: 'Micah 6:8',
+        reference: 'Micah 6:8 (NIV)',
         focus: 'Humility'
     },
     {
         text: 'The Lord your God in your midst, The Mighty One, will save; He will rejoice over you with gladness, He will quiet you with His love.',
-        reference: 'Zephaniah 3:17',
+        reference: 'Zephaniah 3:17 (NIV)',
         focus: 'Quietness'
     },
     {
         text: 'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!',
-        reference: '2 Corinthians 5:17',
+        reference: '2 Corinthians 5:17 (NIV)',
         focus: 'Newness'
     },
     {
         text: 'But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control.',
-        reference: 'Galatians 5:22-23',
+        reference: 'Galatians 5:22-23 (NIV)',
         focus: 'Fruit'
     },
     {
         text: 'Let us then approach God\'s throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.',
-        reference: 'Hebrews 4:16',
+        reference: 'Hebrews 4:16 (NIV)',
         focus: 'Confidence'
     },
     {
         text: 'Delight yourself in the Lord, and he will give you the desires of your heart.',
-        reference: 'Psalm 37:4',
+        reference: 'Psalm 37:4 (NIV)',
         focus: 'Desires'
     },
     {
         text: 'But he said to me, My grace is sufficient for you, for my power is made perfect in weakness.',
-        reference: '2 Corinthians 12:9',
+        reference: '2 Corinthians 12:9 (NIV)',
         focus: 'Sufficiency'
     },
     {
         text: 'The Lord is my strength and my shield; my heart trusts in him, and he helps me.',
-        reference: 'Psalm 28:7',
+        reference: 'Psalm 28:7 (NIV)',
         focus: 'Shield'
     },
     {
         text: 'Call to me and I will answer you and tell you great and unsearchable things you do not know.',
-        reference: 'Jeremiah 33:3',
+        reference: 'Jeremiah 33:3 (NIV)',
         focus: 'Calling'
     },
     {
         text: 'Give thanks to the Lord, for he is good; his love endures forever.',
-        reference: 'Psalm 107:1',
+        reference: 'Psalm 107:1 (NIV)',
         focus: 'Thanksgiving'
     },
     {
         text: 'In their hearts humans plan their course, but the Lord establishes their steps.',
-        reference: 'Proverbs 16:9',
+        reference: 'Proverbs 16:9 (NIV)',
         focus: 'Steps'
     },
     {
         text: 'The name of the Lord is a fortified tower; the righteous run to it and are safe.',
-        reference: 'Proverbs 18:10',
+        reference: 'Proverbs 18:10 (NIV)',
         focus: 'Safety'
     },
     {
         text: 'But you are a chosen people, a royal priesthood, a holy nation, God\'s special possession.',
-        reference: '1 Peter 2:9',
+        reference: '1 Peter 2:9 (NIV)',
         focus: 'Identity'
     },
     {
         text: 'Taste and see that the Lord is good; blessed is the one who takes refuge in him.',
-        reference: 'Psalm 34:8',
+        reference: 'Psalm 34:8 (NIV)',
         focus: 'Taste'
     }
 ];
 
 const adorationScriptures = [
     {
-        text: 'Holy, holy, holy is the Lord God Almighty, who was, and is, and is to come... You are worthy, our Lord and God, to receive glory and honor and power, for you created all things, and by your will they were created and have their being.',
-        reference: 'Revelation 4:8,11',
+        text: '"Holy, holy, holy is the Lord God Almighty, who was, and is, and is to come." "You are worthy, our Lord and God, to receive glory and honor and power, for you created all things, and by your will they were created and have their being."',
+        reference: 'Revelation 4:8,11 (NIV)',
         focus: 'God\'s Holiness',
         acknowledge: 'Read the passage slowly. What does this reveal about God\'s character? How does this truth about who He is affect your heart?',
         adore: 'Speak words of praise and worship based on what you\'ve discovered about God. Use your own words to honor who He is.',
@@ -322,7 +322,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is compassionate and gracious, slow to anger, abounding in love. He will not always accuse, nor will he harbor his anger forever; he does not treat us as our sins deserve or repay us according to our iniquities.',
-        reference: 'Psalm 103:8-10',
+        reference: 'Psalm 103:8-10 (NIV)',
         focus: 'God\'s Mercy',
         acknowledge: 'What do you learn about God\'s heart toward you from this passage? How does His mercy and compassion touch your soul?',
         adore: 'Praise God for His incredible mercy and patience. Thank Him for not treating you as your sins deserve.',
@@ -332,7 +332,7 @@ const adorationScriptures = [
     },
     {
         text: 'Great is our Lord and mighty in power; his understanding has no limit. The Lord sustains the humble but casts the wicked to the ground.',
-        reference: 'Psalm 147:5-6',
+        reference: 'Psalm 147:5-6 (NIV)',
         focus: 'God\'s Power',
         acknowledge: 'What does this passage teach you about God\'s unlimited power and understanding? How does this comfort or challenge you?',
         adore: 'Worship God for His mighty power and perfect understanding. Praise Him for being greater than any challenge you face.',
@@ -342,7 +342,7 @@ const adorationScriptures = [
     },
     {
         text: 'How great is the love the Father has lavished on us, that we should be called children of God! And that is what we are!',
-        reference: '1 John 3:1',
+        reference: '1 John 3:1 (NIV)',
         focus: 'God\'s Love',
         acknowledge: 'What does it mean that God has "lavished" His love on you? How does being called God\'s child affect your identity?',
         adore: 'Thank God for His extravagant love toward you. Praise Him for adopting you as His beloved child.',
@@ -352,7 +352,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord your God is in your midst, a mighty one who will save; he will rejoice over you with gladness; he will quiet you by his love; he will exult over you with loud singing.',
-        reference: 'Zephaniah 3:17',
+        reference: 'Zephaniah 3:17 (NIV)',
         focus: 'God\'s Joy',
         acknowledge: 'How does it feel to know that God rejoices over you and sings about you? What does this reveal about His heart toward you?',
         adore: 'Worship God for His joyful love toward you. Thank Him for finding delight in who you are.',
@@ -363,7 +363,7 @@ const adorationScriptures = [
     // Continue with remaining 25 adoration scriptures...
     {
         text: 'The Lord is faithful to all his promises and loving toward all he has made.',
-        reference: 'Psalm 145:13',
+        reference: 'Psalm 145:13 (NIV)',
         focus: 'God\'s Faithfulness',
         acknowledge: 'What promises of God do you need to remember today? How has He shown His faithfulness in your life?',
         adore: 'Praise God for His absolute faithfulness. Thank Him for never breaking His promises.',
@@ -372,4 +372,98 @@ const adorationScriptures = [
         closing: 'Faithful God, You never fail in Your promises. Help me to trust You completely and live in Your faithfulness. Amen.'
     }
     // ... (Additional scriptures would continue here - truncated for brevity)
+];
+
+// Content arrays for Apostolic Prayers
+const apostolicPrayers = [
+    {
+        prayer: "I keep asking that the God of our Lord Jesus Christ, the glorious Father, may give you the Spirit of wisdom and revelation, so that you may know him better. I pray that the eyes of your heart may be enlightened in order that you may know the hope to which he has called you, the riches of his glorious inheritance in his holy people, and his incomparably great power for us who believe.",
+        reference: "Ephesians 1:17-19 (NIV)",
+        author: "Paul",
+        focus: "Spiritual Wisdom",
+        respond: "Now pray this prayer to God for yourself, using your own words. Ask Him for the same spiritual blessings the apostle desired for the early Christians.",
+        reach: "Think of someone in your life who needs God's blessing. Pray this apostolic prayer for them, asking God to work in their heart as the apostle prayed for his spiritual children.",
+        closing: "Lord, thank You for the apostles who prayed so faithfully for Your people. Unite my heart with theirs in seeking Your kingdom and Your glory. Amen."
+    },
+    {
+        prayer: "For this reason I kneel before the Father, from whom every family in heaven and on earth derives its name. I pray that out of his glorious riches he may strengthen you with power through his Spirit in your inner being, so that Christ may dwell in your hearts through faith. And I pray that you, being rooted and established in love, may have power, together with all the Lord's holy people, to grasp how wide and long and high and deep is the love of Christ, and to know this love that surpasses knowledge—that you may be filled to the measure of all the fullness of God.",
+        reference: "Ephesians 3:14-19 (NIV)",
+        author: "Paul",
+        focus: "God's Love",
+        respond: "Pray for God to strengthen you with His power and to help you comprehend the vastness of Christ's love. Ask to be filled with His fullness.",
+        reach: "Pray this beautiful prayer for someone who needs to experience God's love more deeply. Ask God to reveal His love to them in powerful ways.",
+        closing: "Father, thank You for Your boundless love that surpasses knowledge. Fill me with Your fullness and help me to be rooted in love. Amen."
+    },
+    {
+        prayer: "May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.",
+        reference: "Romans 15:13 (NIV)",
+        author: "Paul",
+        focus: "Hope and Joy",
+        respond: "Ask God to fill you with joy and peace today. Pray for His Spirit to give you overflowing hope in every circumstance.",
+        reach: "Think of someone who needs hope and joy. Pray this blessing over them, asking God to lift their spirits and renew their hope.",
+        closing: "God of hope, fill me with Your joy and peace. Let Your Spirit overflow in me with hope that cannot be shaken. Amen."
+    },
+    {
+        prayer: "Now may the Lord of peace himself give you peace at all times and in every way. The Lord be with all of you.",
+        reference: "2 Thessalonians 3:16 (NIV)",
+        author: "Paul",
+        focus: "Divine Peace",
+        respond: "Ask the Lord of peace to grant you His peace in all circumstances. Invite His presence to be with you throughout your day.",
+        reach: "Pray this blessing of peace over someone who is anxious or troubled. Ask God to calm their heart and mind with His presence.",
+        closing: "Lord of peace, grant me Your peace that passes understanding. Be with me in every moment of this day. Amen."
+    },
+    {
+        prayer: "May the grace of the Lord Jesus Christ, and the love of God, and the fellowship of the Holy Spirit be with you all.",
+        reference: "2 Corinthians 13:14 (NIV)",
+        author: "Paul",
+        focus: "Trinity's Blessing",
+        respond: "Pray for a deeper experience of Christ's grace, the Father's love, and the Holy Spirit's fellowship in your life.",
+        reach: "Speak this apostolic blessing over your family and friends, asking for the full blessing of the Trinity to rest upon them.",
+        closing: "Triune God, let Your grace, love, and fellowship fill my heart and overflow to all those around me. Amen."
+    },
+    {
+        prayer: "Now to him who is able to do immeasurably more than all we ask or imagine, according to his power that is at work within us, to him be glory in the church and in Christ Jesus throughout all generations, for ever and ever! Amen.",
+        reference: "Ephesians 3:20-21 (NIV)",
+        author: "Paul",
+        focus: "God's Unlimited Power",
+        respond: "Worship God for His unlimited power to work beyond your imagination. Surrender your limitations and trust in His ability.",
+        reach: "Pray for someone facing impossible circumstances, asking God to work beyond what they can ask or imagine in their situation.",
+        closing: "Lord, You are able to do more than I can ask or imagine. I give You glory and trust in Your mighty power working within me. Amen."
+    },
+    {
+        prayer: "And this is my prayer: that your love may abound more and more in knowledge and depth of insight, so that you may be able to discern what is best and may be pure and blameless for the day of Christ, filled with the fruit of righteousness that comes through Jesus Christ—to the glory and praise of God.",
+        reference: "Philippians 1:9-11 (NIV)",
+        author: "Paul",
+        focus: "Abounding Love",
+        respond: "Ask God to help your love grow in wisdom and discernment. Pray for purity of heart and spiritual fruit in your life.",
+        reach: "Pray this over a fellow believer, asking God to develop their love and spiritual maturity for His glory.",
+        closing: "Father, let my love abound in wisdom and discernment. Fill me with righteousness that brings You glory. Amen."
+    },
+    {
+        prayer: "Dear friend, I pray that you may enjoy good health and that all may go well with you, even as your soul is getting along well.",
+        reference: "3 John 1:2 (NIV)",
+        author: "John",
+        focus: "Holistic Blessing",
+        respond: "Pray for God's blessing on your physical health, your circumstances, and especially the health of your soul.",
+        reach: "Pray this holistic blessing over someone you care about, asking God to bless them in body, soul, and circumstances.",
+        closing: "Lord, bless my health, my circumstances, and especially the health of my soul. Let me prosper in all that honors You. Amen."
+    },
+    {
+        prayer: "To him who loves us and has freed us from our sins by his blood, and has made us to be a kingdom and priests to serve his God and Father—to him be glory and power for ever and ever! Amen.",
+        reference: "Revelation 1:5-6 (NIV)",
+        author: "John",
+        focus: "Christ's Love",
+        respond: "Thank Jesus for His love and the freedom He purchased with His blood. Embrace your identity as part of His royal priesthood.",
+        reach: "Pray for someone to understand Christ's deep love for them and their royal identity as His child.",
+        closing: "Jesus, thank You for loving me and freeing me by Your blood. Help me live as Your royal priest to the glory of the Father. Amen."
+    },
+    {
+        prayer: "Grace and peace be yours in abundance through the knowledge of God and of Jesus our Lord.",
+        reference: "2 Peter 1:2 (NIV)",
+        author: "Peter",
+        focus: "Growing Knowledge",
+        respond: "Ask God to increase your knowledge of Him and Jesus, and for this knowledge to bring abundance of grace and peace.",
+        reach: "Pray for someone to grow deeper in their knowledge of God and experience His grace and peace abundantly.",
+        closing: "Lord, increase my knowledge of You and Jesus. Let this knowledge bring abundant grace and peace to my life. Amen."
+    }
 ];
