@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Prayer Tools">
+    <meta name="description" content="Daily prayer tools for spiritual growth including Examen, Lectio Divina, and Adoration">
+    
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <title>Daily Prayer Tools</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Daily Prayer Tools</h1>
+            <p class="subtitle">"Be still and know that I am God" - Psalm 46:10</p>
+        </header>
+
+        <div id="main-menu">
+            <div class="tools-grid">
+                <div class="tool-card" onclick="showTool('examen')">
+                    <h3>The Examen</h3>
+                    <p class="tool-description">A reflective prayer practice to review your day with God, finding His presence in the ordinary moments.</p>
+                    <button class="tool-button">Begin Examen</button>
+                </div>
+
+                <div class="tool-card" onclick="showTool('lectio')">
+                    <h3>Lectio Divina</h3>
+                    <p class="tool-description">Sacred reading that allows God's Word to transform your heart through meditative engagement with Scripture.</p>
+                    <button class="tool-button">Begin Lectio Divina</button>
+                </div>
+
+                <div class="tool-card" onclick="showTool('adoration')">
+                    <h3>Adoration</h3>
+                    <p class="tool-description">Worshipful meditation on Scripture that draws your heart into deeper love and reverence for God.</p>
+                    <button class="tool-button">Begin Adoration</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Examen Content -->
+        <div id="examen-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">The Examen</h2>
+                <div class="bible-verse">
+                    <p id="examen-verse">"And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him" - Colossians 3:17</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <div>
+                    <div class="step-title">Presence - Become Aware of God</div>
+                    <p>Take a deep breath and acknowledge that God is with you right now. Rest in His presence and invite the Holy Spirit to guide your reflection.</p>
+                    <div class="reflection-box">
+                        <p><em>Pause here and simply be with God...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <div>
+                    <div class="step-title">Gratitude - Replay the Day with Thanksgiving</div>
+                    <p id="gratitude-prompt">Think through your day like watching a movie. What moments brought you joy? What gifts did God provide? Thank Him for both the obvious blessings and the small graces you might have missed.</p>
+                    <div class="reflection-box">
+                        <p><em>Write or reflect on 3-5 things you're grateful for from today...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <div>
+                    <div class="step-title">Grace - Recognize God's Movement</div>
+                    <p id="grace-prompt">Where did you sense God's presence or guidance today? In what moments did you feel His love, peace, or strength? How did He provide or protect?</p>
+                    <div class="reflection-box">
+                        <p><em>Notice how God was active in your day...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <div>
+                    <div class="step-title">Forgiveness - Acknowledge What Needs Healing</div>
+                    <p id="forgiveness-prompt">What moments from today need God's forgiveness and healing? Where did you fall short of love? Bring these honestly to Jesus and receive His grace.</p>
+                    <div class="reflection-box">
+                        <p><em>Confess and receive forgiveness...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">5</span>
+                <div>
+                    <div class="step-title">Grace for Tomorrow - Look Ahead with Hope</div>
+                    <p id="tomorrow-prompt">What do you anticipate in tomorrow? Ask for God's grace, wisdom, and presence for the day ahead. Surrender your plans to Him.</p>
+                    <div class="reflection-box">
+                        <p><em>Pray for tomorrow's grace...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="closing-prayer">
+                <p id="examen-closing">"Father, thank You for walking with me today. Help me to rest in Your love tonight and to trust You with tomorrow. Amen."</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="finish-button" onclick="completeExamen()">Finish Examen</button>
+                <div id="examen-completed" style="display: none;">
+                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Examen completed for today!</p>
+                    <button class="new-content-button" onclick="generateExamenContent()">New Reflection</button>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+        </div>
+
+        <!-- Lectio Divina Content -->
+        <div id="lectio-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Lectio Divina</h2>
+                <div class="bible-verse">
+                    <p>"Blessed is the one... whose delight is in the law of the Lord, and who meditates on his law day and night" - Psalm 1:1-2</p>
+                </div>
+            </div>
+
+            <div class="scripture-text" id="lectio-scripture">
+                "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and lowly in heart, and you will find rest for your souls." - Matthew 11:28-29
+            </div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <div>
+                    <div class="step-title">Lectio - Read</div>
+                    <p>Read the passage above slowly and attentively. What word or phrase stands out to you? Read it again, even more slowly.</p>
+                    <div class="reflection-box">
+                        <p><em>Write the word or phrase that catches your attention...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <div>
+                    <div class="step-title">Meditatio - Meditate</div>
+                    <p>Repeat your word or phrase quietly. What is God saying to you through these words? How do they connect to your life right now?</p>
+                    <div class="reflection-box">
+                        <p><em>Reflect on what God might be speaking to you...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <div>
+                    <div class="step-title">Oratio - Pray</div>
+                    <p>Respond to God in prayer. Share your heart - your joys, concerns, needs, and gratitude. Let this passage shape your prayer.</p>
+                    <div class="reflection-box">
+                        <p><em>Pray in response to God's word...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <div>
+                    <div class="step-title">Contemplatio - Rest</div>
+                    <p>Simply rest in God's presence. Let go of words and thoughts. Allow His love to surround you in silence.</p>
+                    <div class="reflection-box">
+                        <p><em>Rest silently in God's presence for 2-3 minutes...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meditation-focus" id="lectio-focus">
+                Focus Word: "Rest"
+                <br>
+                <small>Carry this word with you today as a reminder of God's invitation.</small>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="finish-button" onclick="completeLectio()">Finish Lectio Divina</button>
+                <div id="lectio-completed" style="display: none;">
+                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Lectio Divina completed for today!</p>
+                    <button class="new-content-button" onclick="generateLectioContent()">New Scripture</button>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+        </div>
+
+        <!-- Adoration Content -->
+        <div id="adoration-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Adoration</h2>
+                <div class="bible-verse">
+                    <p>"And we all, who with unveiled faces contemplate the Lord's glory, are being transformed into his image with ever-increasing glory" - 2 Corinthians 3:18</p>
+                </div>
+            </div>
+
+            <div class="scripture-text" id="adoration-scripture">
+                "Holy, holy, holy is the Lord God Almighty, who was, and is, and is to come... You are worthy, our Lord and God, to receive glory and honor and power, for you created all things, and by your will they were created and have their being." - Revelation 4:8,11
+            </div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <div>
+                    <div class="step-title">Acknowledge - See God's Holiness</div>
+                    <p id="acknowledge-prompt">Read the passage slowly. What does this reveal about God's character? How does this truth about who He is affect your heart?</p>
+                    <div class="reflection-box">
+                        <p><em>What do you see about God's character in this passage?</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <div>
+                    <div class="step-title">Adore - Worship His Nature</div>
+                    <p id="adore-prompt">Speak words of praise and worship based on what you've discovered about God. Use your own words to honor who He is.</p>
+                    <div class="reflection-box">
+                        <p><em>Worship God for who He is...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <div>
+                    <div class="step-title">Surrender - Respond in Humility</div>
+                    <p id="surrender-prompt">How does seeing God's greatness change your perspective on your concerns? Surrender your will and trust to Him.</p>
+                    <div class="reflection-box">
+                        <p><em>Surrender your heart and concerns to Him...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <div>
+                    <div class="step-title">Transformation - Be Changed by His Glory</div>
+                    <p id="transformation-prompt">Ask God to transform you by His glory. How might living in awareness of this truth about God change how you live today?</p>
+                    <div class="reflection-box">
+                        <p><em>How is God calling you to be transformed?</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meditation-focus" id="adoration-focus">
+                Today's Focus: God's Holiness
+                <br>
+                <small>Meditate on this aspect of God's character throughout your day.</small>
+            </div>
+
+            <div class="closing-prayer" id="adoration-closing">
+                "Holy God, You alone are worthy of all praise. Transform me by Your glory that I might reflect Your character in all I do. Amen."
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="finish-button" onclick="completeAdoration()">Finish Adoration</button>
+                <div id="adoration-completed" style="display: none;">
+                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Adoration completed for today!</p>
+                    <button class="new-content-button" onclick="generateAdorationContent()">New Focus</button>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+        </div>
+    </div>
+
+    <script src="content.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
