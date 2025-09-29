@@ -200,6 +200,93 @@ function generateApostolicContent() {
     document.getElementById('apostolic-closing').textContent = prayer.closing;
 }
 
+// Function to show update notification
+function showUpdateNotification() {
+    // Create update notification element
+    const notification = document.createElement('div');
+    notification.id = 'update-notification';
+    notification.innerHTML = `
+        <div style="
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            max-width: 300px;
+            font-family: inherit;
+        ">
+            <div style="font-weight: 600; margin-bottom: 8px;">
+                📱 Update Available
+            </div>
+            <div style="font-size: 14px; margin-bottom: 12px;">
+                A new version of the app is ready. Refresh to get the latest features.
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="refreshApp()" style="
+                    background: white;
+                    color: #667eea;
+                    border: none;
+                    padding: 6px 12px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 12px;
+                    font-weight: 600;
+                ">
+                    Refresh Now
+                </button>
+                <button onclick="dismissUpdateNotification()" style="
+                    background: transparent;
+                    color: white;
+                    border: 1px solid white;
+                    padding: 6px 12px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 12px;
+                ">
+                    Later
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Remove existing notification if present
+    const existing = document.getElementById('update-notification');
+    if (existing) {
+        existing.remove();
+    }
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Auto-dismiss after 10 seconds if not interacted with
+    setTimeout(() => {
+        if (document.getElementById('update-notification')) {
+            dismissUpdateNotification();
+        }
+    }, 10000);
+}
+
+// Function to refresh the app
+function refreshApp() {
+    // Tell the waiting service worker to skip waiting and take control
+    if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' });
+    }
+    window.location.reload();
+}
+
+// Function to dismiss update notification
+function dismissUpdateNotification() {
+    const notification = document.getElementById('update-notification');
+    if (notification) {
+        notification.remove();
+    }
+}
+
 // Initialize with fresh content on every page load
 document.addEventListener('DOMContentLoaded', function() {
     // Generate fresh random content every time the page loads
@@ -215,9 +302,38 @@ document.addEventListener('DOMContentLoaded', function() {
         navigator.serviceWorker.register('./sw.js')
             .then(registration => {
                 console.log('Service Worker registered successfully');
+                
+                // Check for updates on page load
+                registration.update();
+                
+                // Listen for updates
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    console.log('New service worker found, installing...');
+                    
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // New content is available
+                            console.log('New content available, will update on next visit');
+                            showUpdateNotification();
+                        }
+                    });
+                });
             })
             .catch(error => {
-                console.log('Service Worker registration failed');
+                console.log('Service Worker registration failed:', error);
             });
+        
+        // Listen for messages from the service worker
+        navigator.serviceWorker.addEventListener('message', event => {
+            if (event.data && event.data.type === 'SW_UPDATED') {
+                showUpdateNotification();
+            }
+        });
+        
+        // Check for waiting service worker
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            window.location.reload();
+        });
     }
 });
