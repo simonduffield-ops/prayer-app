@@ -467,3 +467,196 @@ const apostolicPrayers = [
         closing: "Lord, increase my knowledge of You and Jesus. Let this knowledge bring abundant grace and peace to my life. Amen."
     }
 ];
+
+// Prayer Set content for each movement of the Lord's Prayer
+const prayerSetContent = {
+    movement1: [
+        {
+            scripture: "Therefore, brothers and sisters, since we have confidence to enter the Most Holy Place by the blood of Jesus... let us draw near to God with a sincere heart and with the full assurance that faith brings.",
+            reference: "Hebrews 10:19,22 (NIV)",
+            prompt: "Come into God's presence as a beloved child. He is your Father - both intimately close and infinitely glorious. Worship Him for who He is. Surrender your heart, your day, and your will to Him."
+        },
+        {
+            scripture: "See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!",
+            reference: "1 John 3:1 (NIV)",
+            prompt: "Marvel at the Father's lavish love for you. You are His child - fully loved, fully accepted, fully known. Worship Him as your perfect Father and surrender yourself to His care."
+        },
+        {
+            scripture: "Yet to all who did receive him, to those who believed in his name, he gave the right to become children of God.",
+            reference: "John 1:12 (NIV)",
+            prompt: "Rejoice that you have the right to be called God's child through Christ. Approach your heavenly Father with confidence, worship, and complete surrender of all you are."
+        },
+        {
+            scripture: "How great is the love the Father has lavished on us, that we should be called children of God!",
+            reference: "1 John 3:1 (NIV)",
+            prompt: "Rest in your identity as God's beloved child. Worship the Father who chose you, loves you, and calls you His own. Surrender every part of your life to His loving care."
+        },
+        {
+            scripture: "The Spirit you received does not make you slaves, so that you live in fear again; rather, the Spirit you received brought about your adoption to sonship. And by him we cry, 'Abba, Father.'",
+            reference: "Romans 8:15 (NIV)",
+            prompt: "You are not a slave but a beloved child. Cry out 'Abba, Father' to the One who adopted you. Worship Him with intimate affection and surrender yourself completely to His fatherly love."
+        }
+    ],
+    movement2: [
+        {
+            scripture: "Ascribe to the Lord the glory due his name; worship the Lord in the splendor of his holiness.",
+            reference: "Psalm 29:2 (NIV)",
+            prompt: "Honor God's holy name. Thank Him for who He has revealed Himself to be. Pray that the world would know Him as He truly is - in all His beauty, holiness, and love."
+        },
+        {
+            scripture: "Exalt the Lord our God and worship at his footstool; he is holy.",
+            reference: "Psalm 99:5 (NIV)",
+            prompt: "Exalt God's name above every other name. Worship His holiness and perfect character. Intercede for the nations to recognize and revere His holy name."
+        },
+        {
+            scripture: "Holy, holy, holy is the Lord Almighty; the whole earth is full of his glory.",
+            reference: "Isaiah 6:3 (NIV)",
+            prompt: "Join with the angels in declaring God's holiness. Worship Him for His glory that fills the earth. Pray for eyes to be opened worldwide to see His glory and honor His name."
+        },
+        {
+            scripture: "O Lord, our Lord, how majestic is your name in all the earth!",
+            reference: "Psalm 8:9 (NIV)",
+            prompt: "Declare the majesty of God's name. Give thanks for all He has shown you of Himself. Pray that His majestic name would be honored in every corner of creation."
+        },
+        {
+            scripture: "Therefore God exalted him to the highest place and gave him the name that is above every name, that at the name of Jesus every knee should bow.",
+            reference: "Philippians 2:9-10 (NIV)",
+            prompt: "Worship Jesus, whose name is above every name. Give thanks for His character revealed through Scripture. Pray for the day when every knee will bow and honor His glorious name."
+        }
+    ],
+    movement3: [
+        {
+            scripture: "Seek first his kingdom and his righteousness, and all these things will be given to you as well.",
+            reference: "Matthew 6:33 (NIV)",
+            prompt: "Submit to God's reign in your life. Pray for His kingdom to come in your family, your church, the persecuted church worldwide, and for revival and renewal in the nations."
+        },
+        {
+            scripture: "Your kingdom is an everlasting kingdom, and your dominion endures through all generations.",
+            reference: "Psalm 145:13 (NIV)",
+            prompt: "Surrender to God's eternal kingdom and authority. Intercede for His rule to be established in hearts, homes, and nations. Pray especially for the persecuted church and spiritual awakening."
+        },
+        {
+            scripture: "The kingdom of God is not a matter of talk but of power.",
+            reference: "1 Corinthians 4:20 (NIV)",
+            prompt: "Pray for God's powerful kingdom to break through in demonstration, not just words. Intercede for your family, church leaders, persecuted believers, and revival in your nation."
+        },
+        {
+            scripture: "For the kingdom of God is... righteousness, peace and joy in the Holy Spirit.",
+            reference: "Romans 14:17 (NIV)",
+            prompt: "Submit to God's kingdom of righteousness, peace, and joy. Pray for these kingdom realities to manifest in your sphere of influence and throughout the church worldwide."
+        },
+        {
+            scripture: "But you will receive power when the Holy Spirit comes on you; and you will be my witnesses... to the ends of the earth.",
+            reference: "Acts 1:8 (NIV)",
+            prompt: "Yield to God's mission for His kingdom to advance to the ends of the earth. Intercede for missionaries, church planters, the persecuted church, and global revival."
+        }
+    ],
+    movement4: [
+        {
+            scripture: "And my God will meet all your needs according to the riches of his glory in Christ Jesus.",
+            reference: "Philippians 4:19 (NIV)",
+            prompt: "Ask for God's provision - His presence above all, His mercy for today, physical provision, and help in every area of need. Acknowledge your complete dependence on Him."
+        },
+        {
+            scripture: "The Lord is my shepherd, I lack nothing.",
+            reference: "Psalm 23:1 (NIV)",
+            prompt: "Trust the Lord as your shepherd who provides everything you need. Pray for His presence to be your greatest treasure, and ask for His provision in all practical needs."
+        },
+        {
+            scripture: "Give us today our daily bread.",
+            reference: "Matthew 6:11 (NIV)",
+            prompt: "Ask simply and humbly for today's needs - spiritual and physical. Pray for the bread of His presence, His mercy, wisdom, strength, and material provision."
+        },
+        {
+            scripture: "Man shall not live on bread alone, but on every word that comes from the mouth of God.",
+            reference: "Matthew 4:4 (NIV)",
+            prompt: "Seek first the bread of God's Word and presence. Then bring your physical needs - health, finances, relationships, work. Trust Him as your complete provider."
+        },
+        {
+            scripture: "I am the bread of life. Whoever comes to me will never go hungry, and whoever believes in me will never be thirsty.",
+            reference: "John 6:35 (NIV)",
+            prompt: "Come to Jesus, the bread of life. Ask Him to satisfy your deepest hunger and thirst. Then present your daily needs, trusting His faithful provision."
+        }
+    ],
+    movement5: [
+        {
+            scripture: "Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.",
+            reference: "Colossians 3:13 (NIV)",
+            prompt: "Receive God's forgiveness for your sins. Then release everyone and everything to Him - forgiving those who have hurt you, letting go of offenses, surrendering control."
+        },
+        {
+            scripture: "If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.",
+            reference: "1 John 1:9 (NIV)",
+            prompt: "Confess your sins specifically and receive His complete forgiveness. Now extend that same grace - release everyone who has wronged you into God's hands."
+        },
+        {
+            scripture: "For if you forgive other people when they sin against you, your heavenly Father will also forgive you.",
+            reference: "Matthew 6:14 (NIV)",
+            prompt: "Receive the Father's merciful forgiveness. As you have been forgiven, forgive others freely. Release bitterness, resentment, and the need for revenge."
+        },
+        {
+            scripture: "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
+            reference: "Ephesians 4:32 (NIV)",
+            prompt: "Remember how Christ forgave you - completely, sacrificially, lovingly. Receive His forgiveness afresh, then extend that same forgiveness to everyone who has hurt you."
+        },
+        {
+            scripture: "Get rid of all bitterness, rage and anger, brawling and slander, along with every form of malice.",
+            reference: "Ephesians 4:31 (NIV)",
+            prompt: "Ask God to search your heart for unforgiveness, bitterness, or anger. Confess and receive cleansing. Then release everyone to God's care with true forgiveness."
+        }
+    ],
+    movement6: [
+        {
+            scripture: "Submit yourselves, then, to God. Resist the devil, and he will flee from you.",
+            reference: "James 4:7 (NIV)",
+            prompt: "Like Jesus in Gethsemane, submit to God's will even in difficulty. Stand against spiritual forces of evil. Ask for protection from temptation and deliverance from the evil one."
+        },
+        {
+            scripture: "Put on the full armor of God, so that you can take your stand against the devil's schemes.",
+            reference: "Ephesians 6:11 (NIV)",
+            prompt: "Clothe yourself in God's armor. Submit to His will like Jesus prayed 'not my will, but yours.' Stand firm against spiritual opposition and ask for deliverance from evil."
+        },
+        {
+            scripture: "The Lord is faithful, and he will strengthen you and protect you from the evil one.",
+            reference: "2 Thessalonians 3:3 (NIV)",
+            prompt: "Trust God's faithfulness to strengthen and protect you. Surrender to His will in your trials. Pray for victory over temptation and spiritual warfare."
+        },
+        {
+            scripture: "Watch and pray so that you will not fall into temptation. The spirit is willing, but the flesh is weak.",
+            reference: "Matthew 26:41 (NIV)",
+            prompt: "Echo Jesus' words in Gethsemane - remain alert in prayer. Submit to God's will even when it's hard. Ask for strength to resist temptation and overcome evil."
+        },
+        {
+            scripture: "No temptation has overtaken you except what is common to mankind. And God is faithful; he will not let you be tempted beyond what you can bear.",
+            reference: "1 Corinthians 10:13 (NIV)",
+            prompt: "Trust God's faithfulness in your trials. Submit to His purposes. Stand against the enemy's schemes and ask for divine protection and deliverance."
+        }
+    ],
+    movement7: [
+        {
+            scripture: "Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, 'This is the way; walk in it.'",
+            reference: "Isaiah 30:21 (NIV)",
+            prompt: "Be still and listen for God's gentle voice..."
+        },
+        {
+            scripture: "My sheep listen to my voice; I know them, and they follow me.",
+            reference: "John 10:27 (NIV)",
+            prompt: "Quiet your heart to hear the Shepherd's voice..."
+        },
+        {
+            scripture: "Call to me and I will answer you and tell you great and unsearchable things you do not know.",
+            reference: "Jeremiah 33:3 (NIV)",
+            prompt: "Call out to God and wait expectantly for His answer..."
+        },
+        {
+            scripture: "Be still, and know that I am God.",
+            reference: "Psalm 46:10 (NIV)",
+            prompt: "Rest in stillness and listen for what God wants to reveal..."
+        },
+        {
+            scripture: "The Lord came and stood there, calling as at the other times, 'Samuel! Samuel!' Then Samuel said, 'Speak, for your servant is listening.'",
+            reference: "1 Samuel 3:10 (NIV)",
+            prompt: "Say to the Lord, 'Speak, for your servant is listening...'"
+        }
+    ]
+};

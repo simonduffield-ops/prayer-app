@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-title" content="Daily Prayer">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="description" content="Daily prayer tools for spiritual growth including Examen, Lectio Divina, and Adoration">
+    <meta name="description" content="Daily prayer tools for spiritual growth including Examen, Lectio Divina, Adoration, and Prayer Set">
     
     <!-- Icons -->
     <link rel="apple-touch-icon" href="apple-touch-icon-new.png?v=5">
@@ -69,6 +69,12 @@
                     <h3>Declarations</h3>
                     <p class="tool-description">Declare biblical truths over your life.</p>
                     <button class="tool-button">Begin Declarations</button>
+                </div>
+
+                <div class="tool-card" onclick="showTool('prayerset')">
+                    <h3>Prayer Set</h3>
+                    <p class="tool-description">A liturgical journey through the Lord's Prayer.</p>
+                    <button class="tool-button">Begin Prayer Set</button>
                 </div>
             </div>
         </div>
@@ -466,6 +472,147 @@
                 <p><em>"Let the redeemed of the Lord declare this—those he redeemed from the hand of the foe." - Psalm 107:2 (NIV)</em></p>
             </div>
 
+            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+        </div>
+
+        <!-- Prayer Set Content -->
+        <div id="prayerset-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Prayer Set</h2>
+                <div class="bible-verse">
+                    <p>"This, then, is how you should pray: 'Our Father in heaven...'" - Matthew 6:9 (NIV)</p>
+                </div>
+            </div>
+
+            <div class="prayerset-intro">
+                <p>Journey through the Lord's Prayer as a framework for worship, intercession, and spiritual warfare. Each movement invites you deeper into communion with God.</p>
+            </div>
+
+            <!-- Movement 1: Our Father -->
+            <div class="prayer-movement">
+                <div class="movement-header">
+                    <span class="movement-number">1</span>
+                    <div class="movement-title">Our Father Who Is In Heaven</div>
+                </div>
+                <div class="movement-subtitle">Approach, Worship, Adoration & Surrender</div>
+                <div class="scripture-text" id="prayerset-movement1-scripture">
+                    "Therefore, brothers and sisters, since we have confidence to enter the Most Holy Place by the blood of Jesus... let us draw near to God with a sincere heart and with the full assurance that faith brings." - Hebrews 10:19,22
+                </div>
+                <div class="reflection-box">
+                    <p><strong>Reflect:</strong> <span id="prayerset-movement1-prompt">Come into God's presence as a beloved child. He is your Father - both intimately close and infinitely glorious. Worship Him for who He is. Surrender your heart, your day, and your will to Him.</span></p>
+                    <p><em>Take time to worship and adore your Heavenly Father...</em></p>
+                </div>
+            </div>
+
+            <!-- Movement 2: Hallowed Be Your Name -->
+            <div class="prayer-movement">
+                <div class="movement-header">
+                    <span class="movement-number">2</span>
+                    <div class="movement-title">Hallowed Be Your Name</div>
+                </div>
+                <div class="movement-subtitle">Worship, Gratitude & Prayer for the World</div>
+                <div class="scripture-text" id="prayerset-movement2-scripture">
+                    "Ascribe to the Lord the glory due his name; worship the Lord in the splendor of his holiness." - Psalm 29:2
+                </div>
+                <div class="reflection-box">
+                    <p><strong>Reflect:</strong> <span id="prayerset-movement2-prompt">Honor God's holy name. Thank Him for who He has revealed Himself to be. Pray that the world would know Him as He truly is - in all His beauty, holiness, and love.</span></p>
+                    <p><em>Worship God's character and pray for His name to be honored throughout the earth...</em></p>
+                </div>
+            </div>
+
+            <!-- Movement 3: Your Kingdom Come -->
+            <div class="prayer-movement">
+                <div class="movement-header">
+                    <span class="movement-number">3</span>
+                    <div class="movement-title">Your Kingdom Come, Your Will Be Done</div>
+                </div>
+                <div class="movement-subtitle">Submission & Intercession</div>
+                <div class="scripture-text" id="prayerset-movement3-scripture">
+                    "Seek first his kingdom and his righteousness, and all these things will be given to you as well." - Matthew 6:33
+                </div>
+                <div class="reflection-box">
+                    <p><strong>Reflect:</strong> <span id="prayerset-movement3-prompt">Submit to God's reign in your life. Pray for His kingdom to come in your family, your church, the persecuted church worldwide, and for revival and renewal in the nations.</span></p>
+                    <p><em>Intercede for God's will to be done on earth as it is in heaven...</em></p>
+                </div>
+            </div>
+
+            <!-- Movement 4: Daily Bread -->
+            <div class="prayer-movement">
+                <div class="movement-header">
+                    <span class="movement-number">4</span>
+                    <div class="movement-title">Give Us This Day Our Daily Bread</div>
+                </div>
+                <div class="movement-subtitle">Provision - His Presence, Mercy & Help</div>
+                <div class="scripture-text" id="prayerset-movement4-scripture">
+                    "And my God will meet all your needs according to the riches of his glory in Christ Jesus." - Philippians 4:19
+                </div>
+                <div class="reflection-box">
+                    <p><strong>Reflect:</strong> <span id="prayerset-movement4-prompt">Ask for God's provision - His presence above all, His mercy for today, physical provision, and help in every area of need. Acknowledge your complete dependence on Him.</span></p>
+                    <p><em>Bring your needs to God, trusting in His faithful provision...</em></p>
+                </div>
+            </div>
+
+            <!-- Movement 5: Forgiveness -->
+            <div class="prayer-movement">
+                <div class="movement-header">
+                    <span class="movement-number">5</span>
+                    <div class="movement-title">Forgive Us As We Forgive</div>
+                </div>
+                <div class="movement-subtitle">Reflection & Release</div>
+                <div class="scripture-text" id="prayerset-movement5-scripture">
+                    "Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you." - Colossians 3:13
+                </div>
+                <div class="reflection-box">
+                    <p><strong>Reflect:</strong> <span id="prayerset-movement5-prompt">Receive God's forgiveness for your sins. Then release everyone and everything to Him - forgiving those who have hurt you, letting go of offenses, surrendering control.</span></p>
+                    <p><em>Confess your sins, receive forgiveness, and extend forgiveness to others...</em></p>
+                </div>
+            </div>
+
+            <!-- Movement 6: Deliverance -->
+            <div class="prayer-movement">
+                <div class="movement-header">
+                    <span class="movement-number">6</span>
+                    <div class="movement-title">Lead Us Not Into Trial, Deliver Us From Evil</div>
+                </div>
+                <div class="movement-subtitle">Gethsemane Prayer & Spiritual Warfare</div>
+                <div class="scripture-text" id="prayerset-movement6-scripture">
+                    "Submit yourselves, then, to God. Resist the devil, and he will flee from you." - James 4:7
+                </div>
+                <div class="reflection-box">
+                    <p><strong>Reflect:</strong> <span id="prayerset-movement6-prompt">Like Jesus in Gethsemane, submit to God's will even in difficulty. Stand against spiritual forces of evil. Ask for protection from temptation and deliverance from the evil one.</span></p>
+                    <p><em>Pray for strength in trials and victory over spiritual opposition...</em></p>
+                </div>
+            </div>
+
+            <!-- Movement 7: Listening Prayer -->
+            <div class="prayer-movement">
+                <div class="movement-header">
+                    <span class="movement-number">7</span>
+                    <div class="movement-title">Listening Prayer</div>
+                </div>
+                <div class="movement-subtitle">Hearing God's Voice</div>
+                <div class="scripture-text" id="prayerset-movement7-scripture">
+                    "Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, 'This is the way; walk in it.'" - Isaiah 30:21
+                </div>
+                <div class="reflection-box">
+                    <p><strong>Ask God:</strong></p>
+                    <p style="font-style: italic; margin: 15px 0;">"What is important for me to know about today?"</p>
+                    <p style="font-style: italic; margin: 15px 0;">"What do You want me to do about it?"</p>
+                    <p><em><span id="prayerset-movement7-prompt">Be still and listen for God's gentle voice...</span></em></p>
+                </div>
+            </div>
+
+            <div class="closing-prayer">
+                "For Yours is the kingdom and the power and the glory forever. Amen."
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="finish-button" onclick="completePrayerSet()">Finish Prayer Set</button>
+                <div id="prayerset-completed" style="display: none;">
+                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Prayer Set completed for today!</p>
+                    <button class="new-content-button" onclick="generatePrayerSetContent()">New Content</button>
+                </div>
+            </div>
             <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
         </div>
     </div>

@@ -27,7 +27,7 @@ function markCompleted(activity) {
 const activityElements = {};
 
 function initializeActivityElements() {
-    const activities = ['examen', 'lectio', 'adoration', 'apostolic'];
+    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset'];
     activities.forEach(activity => {
         const content = document.getElementById(`${activity}-content`);
         if (content) {
@@ -55,6 +55,7 @@ function completeExamen() { completeActivity('examen'); }
 function completeLectio() { completeActivity('lectio'); }
 function completeAdoration() { completeActivity('adoration'); }
 function completeApostolic() { completeActivity('apostolic'); }
+function completePrayerSet() { completeActivity('prayerset'); }
 
 function updateCompletionStates() {
     Object.keys(activityElements).forEach(activity => {
@@ -85,7 +86,16 @@ function getDailyContent() {
         },
         lectio: lectioScriptures[lectioIndex],
         adoration: adorationScriptures[adorationIndex],
-        apostolic: apostolicPrayers[apostolicIndex]
+        apostolic: apostolicPrayers[apostolicIndex],
+        prayerset: {
+            movement1: prayerSetContent.movement1[getDailyIndex(prayerSetContent.movement1.length, 400)],
+            movement2: prayerSetContent.movement2[getDailyIndex(prayerSetContent.movement2.length, 401)],
+            movement3: prayerSetContent.movement3[getDailyIndex(prayerSetContent.movement3.length, 402)],
+            movement4: prayerSetContent.movement4[getDailyIndex(prayerSetContent.movement4.length, 403)],
+            movement5: prayerSetContent.movement5[getDailyIndex(prayerSetContent.movement5.length, 404)],
+            movement6: prayerSetContent.movement6[getDailyIndex(prayerSetContent.movement6.length, 405)],
+            movement7: prayerSetContent.movement7[getDailyIndex(prayerSetContent.movement7.length, 406)]
+        }
     };
 }
 
@@ -119,6 +129,13 @@ function loadDailyContent() {
     document.getElementById('apostolic-reach-prompt').textContent = daily.apostolic.reach;
     document.getElementById('apostolic-focus').innerHTML = `Today's Blessing: "${daily.apostolic.focus}"<br><small>Carry this apostolic blessing with you as you pray for God's wisdom today.</small>`;
     document.getElementById('apostolic-closing').textContent = daily.apostolic.closing;
+    
+    // Load daily Prayer Set content
+    for (let i = 1; i <= 7; i++) {
+        const movement = daily.prayerset[`movement${i}`];
+        document.getElementById(`prayerset-movement${i}-scripture`).innerHTML = `"${movement.scripture}" - ${movement.reference}`;
+        document.getElementById(`prayerset-movement${i}-prompt`).textContent = movement.prompt;
+    }
 }
 
 function showTool(tool) {
@@ -140,6 +157,7 @@ function showMainMenu() {
     generateLectioContent();
     generateAdorationContent();
     generateApostolicContent();
+    generatePrayerSetContent();
 }
 
 function getRandomItem(array) {
@@ -180,6 +198,14 @@ function generateApostolicContent() {
     document.getElementById('apostolic-reach-prompt').textContent = prayer.reach;
     document.getElementById('apostolic-focus').innerHTML = `Today's Blessing: "${prayer.focus}"<br><small>Carry this apostolic blessing with you as you pray for God's wisdom today.</small>`;
     document.getElementById('apostolic-closing').textContent = prayer.closing;
+}
+
+function generatePrayerSetContent() {
+    for (let i = 1; i <= 7; i++) {
+        const movement = getRandomItem(prayerSetContent[`movement${i}`]);
+        document.getElementById(`prayerset-movement${i}-scripture`).innerHTML = `"${movement.scripture}" - ${movement.reference}`;
+        document.getElementById(`prayerset-movement${i}-prompt`).textContent = movement.prompt;
+    }
 }
 
 // Function to show update notification
@@ -280,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
         generateLectioContent();
         generateAdorationContent();
         generateApostolicContent();
+        generatePrayerSetContent();
         
         updateCompletionStates(); // Check what's been completed today
         

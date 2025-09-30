@@ -334,6 +334,70 @@ h1:hover {
     border: 2px solid #d4af37;
 }
 
+/* Prayer Set specific styles */
+.prayerset-intro {
+    background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    font-style: italic;
+    color: #2c3e50;
+    border-left: 4px solid #667eea;
+}
+
+.prayer-movement {
+    margin: 30px 0;
+    padding: 25px;
+    background: #fff;
+    border-radius: 15px;
+    border-left: 5px solid #667eea;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.movement-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.movement-number {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.movement-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #2c3e50;
+    line-height: 1.3;
+}
+
+.movement-subtitle {
+    color: #667eea;
+    font-style: italic;
+    margin: 10px 0 20px 55px;
+    font-size: 1.05em;
+}
+
+.prayer-movement .scripture-text {
+    margin: 20px 0;
+}
+
+.prayer-movement .reflection-box {
+    margin-top: 20px;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .container {
@@ -363,5 +427,18 @@ h1:hover {
     
     .declaration-text {
         font-size: 1.1em;
+    }
+    
+    .prayer-movement {
+        padding: 20px;
+    }
+    
+    .movement-title {
+        font-size: 1.2em;
+    }
+    
+    .movement-subtitle {
+        margin-left: 0;
+        margin-top: 10px;
     }
 }
