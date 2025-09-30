@@ -163,6 +163,24 @@ function showTool(tool) {
     document.getElementById(tool + '-content').classList.add('active');
 }
 
+function showCreed(creed) {
+    // Hide all creed sections
+    document.querySelectorAll('.creed-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.creed-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // Show selected creed
+    document.getElementById(creed + '-creed').classList.add('active');
+    
+    // Add active class to clicked tab
+    event.target.classList.add('active');
+}
+
 function showMainMenu() {
     document.getElementById('main-menu').style.display = 'block';
     document.querySelectorAll('.prayer-content').forEach(content => {
