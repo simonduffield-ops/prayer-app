@@ -554,7 +554,30 @@ h1:hover {
     
     .tools-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 12px;
+    }
+    
+    /* Compact dashboard cards for mobile */
+    .tool-card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+    
+    .tool-card h3 {
+        font-size: 1.15em;
+        margin-bottom: 6px;
+    }
+    
+    .tool-description {
+        font-size: 0.85em;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+    
+    .tool-button {
+        padding: 10px 20px;
+        font-size: 0.85em;
+        border-radius: 20px;
     }
     
     .prayer-content {
