@@ -27,7 +27,7 @@ function markCompleted(activity) {
 const activityElements = {};
 
 function initializeActivityElements() {
-    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset'];
+    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted'];
     activities.forEach(activity => {
         const content = document.getElementById(`${activity}-content`);
         if (content) {
@@ -56,6 +56,7 @@ function completeLectio() { completeActivity('lectio'); }
 function completeAdoration() { completeActivity('adoration'); }
 function completeApostolic() { completeActivity('apostolic'); }
 function completePrayerSet() { completeActivity('prayerset'); }
+function completePersecuted() { completeActivity('persecuted'); }
 
 function updateCompletionStates() {
     Object.keys(activityElements).forEach(activity => {
@@ -74,6 +75,7 @@ function getDailyContent() {
     const lectioIndex = getDailyIndex(lectioScriptures.length, 100); // Offset so they don't sync
     const adorationIndex = getDailyIndex(adorationScriptures.length, 200); // Different offset
     const apostolicIndex = getDailyIndex(apostolicPrayers.length, 300); // Another different offset
+    const persecutedIndex = getDailyIndex(persecutedChurchPrayers.length, 500); // Persecuted church offset
     
     return {
         examen: {
@@ -87,6 +89,7 @@ function getDailyContent() {
         lectio: lectioScriptures[lectioIndex],
         adoration: adorationScriptures[adorationIndex],
         apostolic: apostolicPrayers[apostolicIndex],
+        persecuted: persecutedChurchPrayers[persecutedIndex],
         prayerset: {
             movement1: prayerSetContent.movement1[getDailyIndex(prayerSetContent.movement1.length, 400)],
             movement2: prayerSetContent.movement2[getDailyIndex(prayerSetContent.movement2.length, 401)],
@@ -136,6 +139,20 @@ function loadDailyContent() {
         document.getElementById(`prayerset-movement${i}-scripture`).innerHTML = `"${movement.scripture}" - ${movement.reference}`;
         document.getElementById(`prayerset-movement${i}-prompt`).textContent = movement.prompt;
     }
+    
+    // Load daily Persecuted Church content
+    const persecuted = daily.persecuted;
+    document.getElementById('persecuted-country').textContent = persecuted.country;
+    document.getElementById('persecuted-region').textContent = persecuted.region;
+    if (persecuted.rank > 0) {
+        document.getElementById('persecuted-rank').textContent = `#${persecuted.rank}`;
+        document.getElementById('persecuted-rank').style.display = 'inline-block';
+    } else {
+        document.getElementById('persecuted-rank').style.display = 'none';
+    }
+    document.getElementById('persecuted-context').textContent = persecuted.context;
+    document.getElementById('persecuted-prayer').textContent = persecuted.prayer;
+    document.getElementById('persecuted-scripture').innerHTML = `"${persecuted.scripture}" - ${persecuted.reference}`;
 }
 
 function showTool(tool) {
@@ -158,6 +175,7 @@ function showMainMenu() {
     generateAdorationContent();
     generateApostolicContent();
     generatePrayerSetContent();
+    generatePersecutedContent();
 }
 
 function getRandomItem(array) {
@@ -206,6 +224,21 @@ function generatePrayerSetContent() {
         document.getElementById(`prayerset-movement${i}-scripture`).innerHTML = `"${movement.scripture}" - ${movement.reference}`;
         document.getElementById(`prayerset-movement${i}-prompt`).textContent = movement.prompt;
     }
+}
+
+function generatePersecutedContent() {
+    const prayer = getRandomItem(persecutedChurchPrayers);
+    document.getElementById('persecuted-country').textContent = prayer.country;
+    document.getElementById('persecuted-region').textContent = prayer.region;
+    if (prayer.rank > 0) {
+        document.getElementById('persecuted-rank').textContent = `#${prayer.rank}`;
+        document.getElementById('persecuted-rank').style.display = 'inline-block';
+    } else {
+        document.getElementById('persecuted-rank').style.display = 'none';
+    }
+    document.getElementById('persecuted-context').textContent = prayer.context;
+    document.getElementById('persecuted-prayer').textContent = prayer.prayer;
+    document.getElementById('persecuted-scripture').innerHTML = `"${prayer.scripture}" - ${prayer.reference}`;
 }
 
 // Function to show update notification
@@ -307,6 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
         generateAdorationContent();
         generateApostolicContent();
         generatePrayerSetContent();
+        generatePersecutedContent();
         
         updateCompletionStates(); // Check what's been completed today
         

@@ -76,6 +76,12 @@
                     <p class="tool-description">A liturgical journey through the Lord's Prayer.</p>
                     <button class="tool-button">Begin Prayer Set</button>
                 </div>
+
+                <div class="tool-card" onclick="showTool('persecuted')">
+                    <h3>Persecuted Church</h3>
+                    <p class="tool-description">Pray for our brothers and sisters facing persecution worldwide.</p>
+                    <button class="tool-button">Begin Prayer</button>
+                </div>
             </div>
         </div>
 
@@ -615,8 +621,85 @@
             </div>
             <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
         </div>
+
+        <!-- Persecuted Church Content -->
+        <div id="persecuted-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Prayer for the Persecuted Church</h2>
+                <div class="bible-verse">
+                    <p>"Remember those in prison as if you were together with them in prison, and those who are mistreated as if you yourselves were suffering." - Hebrews 13:3 (NIV)</p>
+                </div>
+            </div>
+
+            <div class="persecuted-intro">
+                <p>Today, join millions of believers worldwide in praying for our brothers and sisters facing persecution for following Jesus. Each time you visit, you'll receive one specific prayer focus.</p>
+                <p><em>"This is the confidence we have in approaching God: that if we ask anything according to His will, He hears us." - 1 John 5:14</em></p>
+            </div>
+
+            <div class="country-spotlight">
+                <div class="country-badge">
+                    <span class="region-label" id="persecuted-region">Asia</span>
+                    <span class="rank-badge" id="persecuted-rank">#1</span>
+                </div>
+                <h3 class="country-name" id="persecuted-country">North Korea</h3>
+                <div class="country-context" id="persecuted-context">
+                    The most dangerous place to be a Christian. An estimated 400,000 secret believers face severe oppression.
+                </div>
+            </div>
+
+            <div class="prayer-focus-section">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <div class="step-title">Today's Prayer Focus</div>
+                        <p class="prayer-request" id="persecuted-prayer">Pray for the 400,000 secret believers to worship safely with others.</p>
+                        <div class="reflection-box">
+                            <p><em>Take time to pray for this specific need...</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <div class="step-title">Pray with Scripture</div>
+                        <div class="scripture-text" id="persecuted-scripture">
+                            "Even in darkness light dawns for the upright, for those who are gracious and compassionate and righteous." - Psalm 112:4
+                        </div>
+                        <div class="reflection-box">
+                            <p><em>Use this Scripture to guide your prayer...</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <div class="step-title">Remember & Respond</div>
+                        <p>Our persecuted brothers and sisters are part of the body of Christ. When they suffer, we all suffer. When we pray, we stand with them in spiritual solidarity.</p>
+                        <div class="reflection-box">
+                            <p><em>"If one part suffers, every part suffers with it; if one part is honored, every part rejoices with it." - 1 Corinthians 12:26</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="closing-prayer">
+                "And the God of all grace, who called you to His eternal glory in Christ, after you have suffered a little while, will Himself restore you and make you strong, firm, and steadfast." - 1 Peter 5:10
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="finish-button" onclick="completePersecuted()">Finish Prayer</button>
+                <div id="persecuted-completed" style="display: none;">
+                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Prayer completed for today!</p>
+                    <button class="new-content-button" onclick="generatePersecutedContent()">New Prayer Focus</button>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+        </div>
     </div>
 
+    <script src="persecuted-church-data.js"></script>
     <script src="content.js"></script>
     <script src="app.js"></script>
 </body>
