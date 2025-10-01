@@ -81,10 +81,11 @@ function getDailyContent() {
         examen: {
             verse: examenPrompts.verses[examenIndex],
             gratitude: examenPrompts.gratitude[getDailyIndex(examenPrompts.gratitude.length, 1)],
-            grace: examenPrompts.grace[getDailyIndex(examenPrompts.grace.length, 2)],
-            forgiveness: examenPrompts.forgiveness[getDailyIndex(examenPrompts.forgiveness.length, 3)],
-            tomorrow: examenPrompts.tomorrow[getDailyIndex(examenPrompts.tomorrow.length, 4)],
-            closing: examenPrompts.closings[getDailyIndex(examenPrompts.closings.length, 5)]
+            consolation: examenPrompts.consolation[getDailyIndex(examenPrompts.consolation.length, 2)],
+            desolation: examenPrompts.desolation[getDailyIndex(examenPrompts.desolation.length, 3)],
+            forgiveness: examenPrompts.forgiveness[getDailyIndex(examenPrompts.forgiveness.length, 4)],
+            tomorrow: examenPrompts.tomorrow[getDailyIndex(examenPrompts.tomorrow.length, 5)],
+            closing: examenPrompts.closings[getDailyIndex(examenPrompts.closings.length, 6)]
         },
         lectio: lectioScriptures[lectioIndex],
         adoration: adorationScriptures[adorationIndex],
@@ -108,7 +109,8 @@ function loadDailyContent() {
     // Load daily Examen content
     document.getElementById('examen-verse').textContent = daily.examen.verse;
     document.getElementById('gratitude-prompt').textContent = daily.examen.gratitude;
-    document.getElementById('grace-prompt').textContent = daily.examen.grace;
+    document.getElementById('consolation-prompt').textContent = daily.examen.consolation;
+    document.getElementById('desolation-prompt').textContent = daily.examen.desolation;
     document.getElementById('forgiveness-prompt').textContent = daily.examen.forgiveness;
     document.getElementById('tomorrow-prompt').textContent = daily.examen.tomorrow;
     document.getElementById('examen-closing').textContent = daily.examen.closing;
@@ -204,7 +206,8 @@ function getRandomItem(array) {
 function generateExamenContent() {
     document.getElementById('examen-verse').textContent = getRandomItem(examenPrompts.verses);
     document.getElementById('gratitude-prompt').textContent = getRandomItem(examenPrompts.gratitude);
-    document.getElementById('grace-prompt').textContent = getRandomItem(examenPrompts.grace);
+    document.getElementById('consolation-prompt').textContent = getRandomItem(examenPrompts.consolation);
+    document.getElementById('desolation-prompt').textContent = getRandomItem(examenPrompts.desolation);
     document.getElementById('forgiveness-prompt').textContent = getRandomItem(examenPrompts.forgiveness);
     document.getElementById('tomorrow-prompt').textContent = getRandomItem(examenPrompts.tomorrow);
     document.getElementById('examen-closing').textContent = getRandomItem(examenPrompts.closings);

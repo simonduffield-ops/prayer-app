@@ -18,14 +18,23 @@ const examenPrompts = {
         'Think about the people who crossed your path today. How did God use them to bless you? Thank Him for working through others.',
         'Consider how God provided for your needs today - food, shelter, safety, health. Thank Him for His faithful provision.'
     ],
-    grace: [
-        'Where did you sense God\'s presence or guidance today? In what moments did you feel His love, peace, or strength? How did He provide or protect?',
-        'How did God show up in your conversations, decisions, and challenges today? Where did you experience His wisdom or comfort?',
-        'What moments today felt touched by grace? Where did you sense God\'s hand guiding, protecting, or providing?',
-        'How did God speak to you today through circumstances, people, or His Word? What invitations did He extend to you?',
-        'What "coincidences" or perfect timing did you experience today? How might these have been God\'s gentle guidance?',
-        'In what moments did you feel peace beyond understanding? Where did God\'s presence feel especially real?',
-        'How did God use difficult moments today to grow your character or deepen your trust in Him?'
+    consolation: [
+        'Pay attention to moments of consolation today - times when you felt God\'s love, peace, joy, or were moved toward hope, faith, and charity. When did you feel truly alive in God\'s presence? What experiences inflamed your soul with love for God and others?',
+        'When did you experience an increase in faith, hope, or love today? What moments brought you deep peace or spiritual joy? Notice these as movements of consolation drawing you closer to God.',
+        'What conversations, prayers, or experiences today left you feeling more connected to God and neighbor? These life-giving moments are consolation - recognize them as God\'s invitation to deeper relationship.',
+        'Where did you feel your heart warmed with love for God today? What stirred up gratitude, hope, or desire for holiness? Consolation reveals what truly moves you closer to your Creator.',
+        'Notice moments when you felt naturally oriented toward God - in prayer, beauty, kindness, or service. When did earthly things point you heavenward? These are signs of spiritual consolation.',
+        'What brought you genuine joy today, not just fleeting happiness? Consolation produces lasting peace and draws you toward love, while mere pleasure fades quickly.',
+        'When did you feel most spiritually alive today? What activities, relationships, or moments of prayer inflamed your love for God and filled you with hope?'
+    ],
+    desolation: [
+        'Recognize moments of desolation - times marked by darkness of soul, disturbance, lack of hope or love, or movement toward earthly things. When did you feel distracted from God, agitated, or pulled into self-absorption? These moments, while difficult, point toward where you need God\'s grace.',
+        'When did you experience spiritual dryness, heaviness, or lack of faith today? What moments left you feeling distant from God or doubtful? Recognize these as desolation, not to condemn yourself, but to understand where you need grace.',
+        'Where did you feel pulled toward low or earthly things today? What increased anxiety, self-doubt, or spiritual restlessness? Desolation reveals where the enemy seeks to distract you from God.',
+        'Notice times when you felt agitated, discouraged, or spiritually cold. When did hope, love, or faith seem to diminish? Understanding these patterns of desolation helps you resist them with God\'s help.',
+        'What drew you into self-absorption or away from love of God and neighbor today? When did you feel spiritually confused or disturbed? These are signs of desolation requiring God\'s grace.',
+        'When did you feel most spiritually empty or disconnected today? What triggered feelings of darkness, despair, or distance from God? Desolation sometimes precedes growth - bring it honestly to God.',
+        'Where did distractions or temptations pull your attention from God today? What left you feeling spiritually depleted rather than filled? Recognize these desolate moments as opportunities for God\'s grace to work.'
     ],
     forgiveness: [
         'What moments from today need God\'s forgiveness and healing? Where did you fall short of love? Bring these honestly to Jesus and receive His grace.',
@@ -37,13 +46,13 @@ const examenPrompts = {
         'What relationships need healing because of your actions or words today? Ask God for wisdom in making amends.'
     ],
     tomorrow: [
-        'What do you anticipate in tomorrow? Ask for God\'s grace, wisdom, and presence for the day ahead. Surrender your plans to Him.',
-        'What challenges or opportunities await you tomorrow? Ask God to prepare your heart and grant you His wisdom and strength.',
-        'How can you live tomorrow in greater awareness of God\'s presence? Ask for His grace to walk in love and trust.',
-        'What hopes or concerns do you carry for tomorrow? Place them in God\'s hands and ask for His peace and guidance.',
-        'Who will you encounter tomorrow that needs God\'s love through you? Ask for opportunities to be His hands and feet.',
-        'What specific ways can you serve others tomorrow? Ask God to open your eyes to needs around you.',
-        'How can you prioritize time with God tomorrow? Ask Him to help you start the day connected to His heart.'
+        'Based on your recognition of consolation and desolation today, ask for God\'s grace for tomorrow. What did you learn about what draws you closer to God? What patterns of desolation do you need His help to resist? Ask for wisdom, presence, and strength to choose the life-giving path.',
+        'What moments of consolation today can you carry into tomorrow? What desolations revealed struggles needing God\'s grace? Ask Him to help you pursue what brings life and resist what pulls you away.',
+        'How can you cultivate more consolation tomorrow - through prayer, service, or awareness of God? What patterns of desolation should you avoid? Ask for grace to choose wisely.',
+        'Knowing what brought you closer to God today and what pulled you away, ask for wisdom to navigate tomorrow. Pray for strength to embrace consolation and grace to transform desolation.',
+        'What did today\'s consolations reveal about how God speaks to you? What did desolations teach you about your vulnerabilities? Ask for grace to follow God\'s leading tomorrow.',
+        'Ask God to help you recognize consolation and desolation as they arise tomorrow. Pray for the grace to choose paths of life and resist movements away from Him.',
+        'Based on today\'s spiritual movements, what does your soul need tomorrow? Ask God for grace to pursue activities, relationships, and practices that draw you closer to Him.'
     ],
     closings: [
         '"Father, thank You for walking with me today. Help me to rest in Your love tonight and to trust You with tomorrow. Amen."',
