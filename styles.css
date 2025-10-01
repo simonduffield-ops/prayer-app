@@ -282,58 +282,6 @@ h1:hover {
     color: #2d3436;
 }
 
-/* Declarations specific styles */
-.declarations-intro {
-    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    text-align: center;
-    font-style: italic;
-    color: #2d5016;
-    border-left: 4px solid #27ae60;
-}
-
-.declaration-item {
-    margin: 30px 0;
-    padding: 25px;
-    background: #fff;
-    border-radius: 15px;
-    border-left: 5px solid #27ae60;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.declaration-text {
-    font-size: 1.3em;
-    font-weight: bold;
-    color: #27ae60;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.declaration-verses {
-    margin-top: 15px;
-}
-
-.declaration-verses .scripture-text {
-    margin: 15px 0;
-    font-size: 1.0em;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-left: 3px solid #27ae60;
-    border-right: 3px solid #2ecc71;
-}
-
-.declarations-closing {
-    background: linear-gradient(135deg, #fff9e6 0%, #f7f3e9 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 30px 0;
-    text-align: center;
-    font-size: 1.1em;
-    color: #8b4513;
-    border: 2px solid #d4af37;
-}
-
 /* Prayer Set specific styles */
 .prayerset-intro {
     background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
@@ -586,14 +534,6 @@ h1:hover {
     
     .step {
         padding: 15px;
-    }
-    
-    .declaration-item {
-        padding: 20px;
-    }
-    
-    .declaration-text {
-        font-size: 1.1em;
     }
     
     .prayer-movement {
