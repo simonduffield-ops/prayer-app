@@ -183,6 +183,24 @@ function showCreed(creed) {
     event.target.classList.add('active');
 }
 
+function showPrayer(prayer) {
+    // Hide all prayer sections
+    document.querySelectorAll('.prayer-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.prayer-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // Show selected prayer
+    document.getElementById(prayer + '-prayer').classList.add('active');
+    
+    // Add active class to clicked tab
+    event.target.classList.add('active');
+}
+
 function showMainMenu() {
     document.getElementById('main-menu').style.display = 'block';
     document.querySelectorAll('.prayer-content').forEach(content => {

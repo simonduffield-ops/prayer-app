@@ -560,6 +560,65 @@ h1:hover {
     margin: 20px 0;
 }
 
+/* Written Prayers specific styles */
+.prayer-selector {
+    margin: 25px 0;
+}
+
+.prayer-tab {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.prayer-tab:hover {
+    background: #f0f4ff;
+    transform: translateY(-2px);
+}
+
+.prayer-tab.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.prayer-section {
+    display: none;
+}
+
+.prayer-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.prayer-title-section {
+    margin-bottom: 20px;
+}
+
+.prayer-text {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin: 25px 0;
+    border-left: 5px solid #667eea;
+    border-right: 5px solid #764ba2;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.prayer-text p {
+    font-size: 1.15em;
+    line-height: 1.9;
+    color: #2c3e50;
+    margin: 20px 0;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .container {
@@ -638,5 +697,10 @@ h1:hover {
     .creed-tab {
         font-size: 0.9em;
         padding: 8px 16px;
+    }
+    
+    .prayer-tab {
+        font-size: 0.85em;
+        padding: 8px 14px;
     }
 }

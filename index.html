@@ -77,8 +77,14 @@
                     <button class="tool-button">Begin Prayer</button>
                 </div>
 
+                <div class="tool-card" onclick="showTool('written-prayers')">
+                    <h3>Written Prayers</h3>
+                    <p class="tool-description">Pray the most beloved Christian prayers through the ages.</p>
+                    <button class="tool-button">Begin Prayer</button>
+                </div>
+
                 <div class="tool-card" onclick="showTool('creeds')">
-                    <h3>Historic Creeds</h3>
+                    <h3>Creeds</h3>
                     <p class="tool-description">Profess your faith with the ancient creeds of the church.</p>
                     <button class="tool-button">Begin Creed</button>
                 </div>
@@ -619,10 +625,10 @@
             <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
         </div>
 
-        <!-- Historic Creeds Content -->
+        <!-- Creeds Content -->
         <div id="creeds-content" class="prayer-content">
             <div class="prayer-header">
-                <h2 class="prayer-title">Historic Creeds</h2>
+                <h2 class="prayer-title">Creeds</h2>
                 <div class="bible-verse">
                     <p>"Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us" - Hebrews 12:1 (NIV)</p>
                 </div>
@@ -793,6 +799,306 @@
 
                 <div class="closing-prayer">
                     "Triune God - Father, Son, and Holy Spirit - I confess You as the one true God. May these truths shape my mind, guide my life, and fill me with worship. Amen."
+                </div>
+            </div>
+
+            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+        </div>
+
+        <!-- Written Prayers Content -->
+        <div id="written-prayers-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Written Prayers</h2>
+                <div class="bible-verse">
+                    <p>"The prayer of a righteous person is powerful and effective." - James 5:16 (NIV)</p>
+                </div>
+            </div>
+
+            <div class="creeds-intro">
+                <p>A collection of 10 profound and enduring prayers that have shaped Christian spirituality across centuries and denominations. Join countless believers in praying these timeless words.</p>
+            </div>
+
+            <div class="prayer-selector">
+                <h3 style="text-align: center; color: #2c3e50; margin-bottom: 15px;">Choose a Prayer</h3>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
+                    <button class="prayer-tab active" onclick="showPrayer('lords')">The Lord's Prayer</button>
+                    <button class="prayer-tab" onclick="showPrayer('francis')">St. Francis</button>
+                    <button class="prayer-tab" onclick="showPrayer('serenity')">Serenity</button>
+                    <button class="prayer-tab" onclick="showPrayer('ignatius')">St. Ignatius</button>
+                    <button class="prayer-tab" onclick="showPrayer('suscipe')">Suscipe</button>
+                    <button class="prayer-tab" onclick="showPrayer('richard')">St. Richard</button>
+                    <button class="prayer-tab" onclick="showPrayer('jesus')">Jesus Prayer</button>
+                    <button class="prayer-tab" onclick="showPrayer('anima')">Anima Christi</button>
+                    <button class="prayer-tab" onclick="showPrayer('patrick')">St. Patrick</button>
+                    <button class="prayer-tab" onclick="showPrayer('augustine')">St. Augustine</button>
+                </div>
+            </div>
+
+            <!-- The Lord's Prayer -->
+            <div id="lords-prayer" class="prayer-section active">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Lord's Prayer</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">1st Century AD</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">The most foundational Christian prayer, taught by Jesus himself to his disciples. Found in Matthew 6:9-13 and Luke 11:2-4.</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p>Our Father, who art in heaven,<br>
+                    Hallowed be thy Name.<br>
+                    Thy Kingdom come.<br>
+                    Thy will be done on earth, as it is in heaven.<br>
+                    Give us this day our daily bread.<br>
+                    And forgive us our trespasses,<br>
+                    As we forgive those who trespass against us.<br>
+                    And lead us not into temptation,<br>
+                    But deliver us from evil.<br>
+                    For thine is the kingdom, the power, and the glory,<br>
+                    For ever and ever. Amen.</p>
+                </div>
+            </div>
+
+            <!-- Prayer of St. Francis -->
+            <div id="francis-prayer" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer of St. Francis</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">1912</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">Despite popular attribution to St. Francis of Assisi, this prayer was first published anonymously in 1912 in a French spiritual magazine. It became widely beloved during both World Wars and was used by Mother Teresa, Desmond Tutu, Margaret Thatcher, and many others as an anthem of peace and service.</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p>Lord, make me an instrument of your peace:<br>
+                    Where there is hatred, let me sow love;<br>
+                    Where there is injury, pardon;<br>
+                    Where there is doubt, faith;<br>
+                    Where there is despair, hope;<br>
+                    Where there is darkness, light;<br>
+                    And where there is sadness, joy.</p>
+
+                    <p>O Divine Master, grant that I may<br>
+                    Not so much seek to be consoled as to console,<br>
+                    To be understood as to understand,<br>
+                    To be loved as to love.</p>
+
+                    <p>For it is in giving that we receive,<br>
+                    It is in pardoning that we are pardoned,<br>
+                    And it is in dying that we are born to eternal life.<br>
+                    Amen.</p>
+                </div>
+            </div>
+
+            <!-- The Serenity Prayer -->
+            <div id="serenity-prayer" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Serenity Prayer</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">Reinhold Niebuhr, 1932</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">Written by Protestant theologian Reinhold Niebuhr around 1932, this prayer became famous through Alcoholics Anonymous starting in 1941 and has since become one of the most widely known prayers worldwide.</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p style="font-weight: bold; margin-bottom: 30px;">Short Version:</p>
+                    <p>God, grant me the serenity<br>
+                    To accept the things I cannot change,<br>
+                    The courage to change the things I can,<br>
+                    And the wisdom to know the difference.<br>
+                    Amen.</p>
+
+                    <p style="font-weight: bold; margin-top: 40px; margin-bottom: 30px;">Full Version:</p>
+                    <p>God, give us grace to accept with serenity<br>
+                    the things that cannot be changed,<br>
+                    Courage to change the things<br>
+                    which should be changed,<br>
+                    and the Wisdom to distinguish<br>
+                    the one from the other.</p>
+
+                    <p>Living one day at a time,<br>
+                    Enjoying one moment at a time,<br>
+                    Accepting hardship as a pathway to peace,<br>
+                    Taking, as Jesus did,<br>
+                    This sinful world as it is,<br>
+                    Not as I would have it,<br>
+                    Trusting that You will make all things right,<br>
+                    If I surrender to Your will,<br>
+                    So that I may be reasonably happy in this life,<br>
+                    And supremely happy with You forever in the next.<br>
+                    Amen.</p>
+                </div>
+            </div>
+
+            <!-- Prayer of St. Ignatius of Loyola -->
+            <div id="ignatius-prayer" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer of St. Ignatius of Loyola</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">St. Ignatius of Loyola, 16th Century (1491-1556)</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">St. Ignatius, founder of the Jesuits, used this prayer to encourage total commitment to God and service.</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p>Dearest Lord, teach me to be generous;<br>
+                    Teach me to serve You as You deserve;<br>
+                    To give and not to count the cost,<br>
+                    To fight and not to heed the wounds,<br>
+                    To toil and not to seek for rest,<br>
+                    To labor and not to ask for reward<br>
+                    Save that of knowing I am doing Your will.<br>
+                    Amen.</p>
+                </div>
+            </div>
+
+            <!-- The Suscipe -->
+            <div id="suscipe-prayer" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Suscipe (Take, Lord, Receive)</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">St. Ignatius of Loyola, 16th Century</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">Another profound prayer from St. Ignatius, expressing complete surrender to God. This prayer appears in his Spiritual Exercises and is often prayed during retreats and at times of major life decisions.</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p>Take, Lord, and receive all my liberty,<br>
+                    My memory, my understanding,<br>
+                    And my entire will,<br>
+                    All I have and call my own.</p>
+
+                    <p>You have given all to me.<br>
+                    To You, Lord, I return it.</p>
+
+                    <p>Everything is Yours; do with it what You will.<br>
+                    Give me only Your love and Your grace.<br>
+                    That is enough for me.<br>
+                    Amen.</p>
+                </div>
+            </div>
+
+            <!-- Prayer of St. Richard of Chichester -->
+            <div id="richard-prayer" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer of St. Richard of Chichester</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">St. Richard of Chichester, 13th Century (1197-1253)</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">A simple yet profound prayer asking to know, love, and follow Christ more deeply. Made famous in the modern era through the musical "Godspell."</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p>Thanks be to thee, my Lord Jesus Christ,<br>
+                    For all the benefits thou hast given me,<br>
+                    For all the pains and insults thou hast borne for me.</p>
+
+                    <p>O most merciful redeemer, friend and brother,<br>
+                    May I know thee more clearly,<br>
+                    Love thee more dearly,<br>
+                    And follow thee more nearly,<br>
+                    Day by day.<br>
+                    Amen.</p>
+                </div>
+            </div>
+
+            <!-- The Jesus Prayer -->
+            <div id="jesus-prayer" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Jesus Prayer</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">Early Desert Fathers, 4th-5th centuries</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">One of the oldest and most central prayers in Eastern Orthodox Christianity, dating back to the early Christian Desert Fathers. Used continuously as a form of contemplative prayer, often repeated hundreds or thousands of times with a prayer rope.</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p style="font-weight: bold; margin-bottom: 30px;">Full Version:</p>
+                    <p>Lord Jesus Christ, Son of God,<br>
+                    Have mercy on me, a sinner.<br>
+                    Amen.</p>
+
+                    <p style="font-weight: bold; margin-top: 40px; margin-bottom: 20px;">Shorter Variations:</p>
+                    <p style="font-size: 0.95em;">Lord Jesus Christ, have mercy on me.</p>
+                    <p style="font-size: 0.95em;">Lord Jesus, have mercy.</p>
+                    <p style="font-size: 0.95em;">Lord, have mercy. (Kyrie eleison)</p>
+
+                    <p style="margin-top: 40px; font-style: italic; color: #555; font-size: 0.95em;">This prayer condenses the Christian faith into a single breath—containing confession, petition, and orthodox Christology. It's designed for continuous repetition and has been the foundation of Orthodox contemplative practice for over 1,600 years.</p>
+                </div>
+            </div>
+
+            <!-- Anima Christi -->
+            <div id="anima-prayer" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Anima Christi (Soul of Christ)</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">14th Century</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">A deeply devotional prayer traditionally associated with St. Ignatius of Loyola, though it predates him. Often prayed after receiving Communion.</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p>Soul of Christ, sanctify me.<br>
+                    Body of Christ, save me.<br>
+                    Blood of Christ, inebriate me.<br>
+                    Water from the side of Christ, wash me.<br>
+                    Passion of Christ, strengthen me.</p>
+
+                    <p>O good Jesus, hear me.<br>
+                    Within Thy wounds hide me.<br>
+                    Suffer me not to be separated from Thee.<br>
+                    From the malicious enemy defend me.<br>
+                    In the hour of my death call me,<br>
+                    And bid me come unto Thee,<br>
+                    That with Thy saints I may praise Thee<br>
+                    Forever and ever.<br>
+                    Amen.</p>
+                </div>
+            </div>
+
+            <!-- St. Patrick's Breastplate -->
+            <div id="patrick-prayer" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">St. Patrick's Breastplate</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">Attributed to St. Patrick of Ireland, 5th Century (c. 385-461)</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">An ancient Celtic prayer of protection, traditionally attributed to St. Patrick as he traveled through Ireland evangelizing. Also known as "The Lorica" (Latin for breastplate or armor).</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p>I arise today<br>
+                    Through a mighty strength, the invocation of the Trinity,<br>
+                    Through belief in the Threeness,<br>
+                    Through confession of the Oneness<br>
+                    Of the Creator of creation.</p>
+
+                    <p>I arise today<br>
+                    Through the strength of Christ's birth with His baptism,<br>
+                    Through the strength of His crucifixion with His burial,<br>
+                    Through the strength of His resurrection with His ascension,<br>
+                    Through the strength of His descent for the judgment of doom.</p>
+
+                    <p>Christ with me, Christ before me, Christ behind me,<br>
+                    Christ in me, Christ beneath me, Christ above me,<br>
+                    Christ on my right, Christ on my left,<br>
+                    Christ when I lie down, Christ when I sit down, Christ when I arise,<br>
+                    Christ in the heart of every man who thinks of me,<br>
+                    Christ in the mouth of every man who speaks of me,<br>
+                    Christ in every eye that sees me,<br>
+                    Christ in every ear that hears me.</p>
+
+                    <p>I arise today<br>
+                    Through a mighty strength, the invocation of the Trinity,<br>
+                    Through belief in the Threeness,<br>
+                    Through confession of the Oneness<br>
+                    Of the Creator of creation.</p>
+                </div>
+            </div>
+
+            <!-- St. Augustine's Evening Prayer -->
+            <div id="augustine-prayer" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">St. Augustine's Evening Prayer</h3>
+                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">St. Augustine of Hippo, 4th-5th Century (354-430)</p>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">A beautiful prayer asking God's presence during the night hours, especially for those awake, keeping vigil, or in distress.</p>
+                </div>
+
+                <div class="prayer-text">
+                    <p>Watch, O Lord, with those who wake, or watch, or weep tonight,<br>
+                    And give Your angels charge over those who sleep.</p>
+
+                    <p>Tend Your sick ones, O Lord Christ.<br>
+                    Rest Your weary ones.<br>
+                    Bless Your dying ones.<br>
+                    Soothe Your suffering ones.<br>
+                    Pity Your afflicted ones.<br>
+                    Shield Your joyous ones.</p>
+
+                    <p>And all for Your love's sake.<br>
+                    Amen.</p>
                 </div>
             </div>
 
