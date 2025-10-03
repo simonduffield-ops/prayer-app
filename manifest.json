@@ -1,6 +1,6 @@
 {
-    "name": "Daily Prayer",
-    "short_name": "Daily Prayer",
+    "name": "Pray",
+    "short_name": "Pray",
     "description": "Daily prayer for spiritual growth including Examen, Lectio Divina, and Adoration",
     "start_url": "./",
     "display": "standalone",
