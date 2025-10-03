@@ -10,6 +10,171 @@ body {
     color: #2c3e50;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #f0f0f0;
+}
+
+body.dark-mode header,
+body.dark-mode .tool-card,
+body.dark-mode .prayer-content {
+    background: #0f3460;
+    color: #f0f0f0;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode .prayer-title,
+body.dark-mode .step-title,
+body.dark-mode .movement-title,
+body.dark-mode .creed-title-section h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .country-name {
+    color: #ff6b6b;
+}
+
+body.dark-mode .subtitle,
+body.dark-mode .tool-description {
+    color: #d0d0d0;
+}
+
+body.dark-mode .bible-verse p,
+body.dark-mode p,
+body.dark-mode .reflection-box p,
+body.dark-mode .step p {
+    color: #e8e8e8;
+}
+
+body.dark-mode .step,
+body.dark-mode .reflection-box,
+body.dark-mode .examen-intro,
+body.dark-mode .prayerset-intro,
+body.dark-mode .persecuted-intro,
+body.dark-mode .creeds-intro,
+body.dark-mode .country-context {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f0f0f0;
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+body.dark-mode .scripture-text,
+body.dark-mode .bible-verse,
+body.dark-mode .creed-text,
+body.dark-mode .prayer-text {
+    background: rgba(102, 126, 234, 0.15);
+    color: #ffffff;
+}
+
+body.dark-mode .closing-prayer,
+body.dark-mode .meditation-focus {
+    background: rgba(102, 126, 234, 0.2);
+    color: #ffffff;
+}
+
+body.dark-mode .country-spotlight {
+    background: rgba(15, 52, 96, 0.9);
+    border-color: rgba(231, 76, 60, 0.6);
+}
+
+body.dark-mode .creed-tab,
+body.dark-mode .prayer-tab {
+    background: rgba(15, 52, 96, 0.9);
+    color: #8fa3ff;
+    border-color: #8fa3ff;
+}
+
+body.dark-mode .creed-tab.active,
+body.dark-mode .prayer-tab.active {
+    color: #ffffff;
+}
+
+body.dark-mode .creed-tab:hover,
+body.dark-mode .prayer-tab:hover {
+    background: rgba(102, 126, 234, 0.3);
+}
+
+body.dark-mode .movement-subtitle,
+body.dark-mode .prayer-title-section p {
+    color: #a8b8ff;
+}
+
+body.dark-mode .region-label,
+body.dark-mode .rank-badge {
+    color: #ffffff;
+}
+
+body.dark-mode em {
+    color: #d0d0d0;
+}
+
+body.dark-mode strong {
+    color: #ffffff;
+}
+
+body.dark-mode .prayer-movement {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+body.dark-mode .prayer-movement .scripture-text {
+    background: rgba(102, 126, 234, 0.15);
+    color: #ffffff;
+}
+
+body.dark-mode .prayer-movement .reflection-box {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f0f0f0;
+}
+
+body.dark-mode .back-button {
+    background: #5a6c7d;
+    color: #ffffff;
+}
+
+body.dark-mode .back-button:hover {
+    background: #4a5c6d;
+}
+
+body.dark-mode .finish-button {
+    color: #ffffff;
+}
+
+body.dark-mode .new-content-button {
+    color: #ffffff;
+}
+
+body.dark-mode .tool-button {
+    color: #ffffff;
+}
+
+body.dark-mode .step-consolation-desolation {
+    background: linear-gradient(135deg, rgba(255, 248, 225, 0.1) 0%, rgba(240, 248, 255, 0.1) 100%);
+    border-left: 4px solid rgba(155, 89, 182, 0.6);
+}
+
+body.dark-mode .step-consolation-desolation .step-number {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+}
+
+body.dark-mode .step-consolation-desolation .reflection-box:first-of-type {
+    border-left: 3px solid rgba(243, 156, 18, 0.5);
+    background: rgba(255, 251, 245, 0.08);
+}
+
+body.dark-mode .step-consolation-desolation .reflection-box:last-of-type {
+    border-left: 3px solid rgba(52, 152, 219, 0.5);
+    background: rgba(245, 251, 255, 0.08);
+}
+
+body.dark-mode header::before {
+    opacity: 0.03;
 }
 
 .container {
@@ -649,6 +814,53 @@ h1 {
     margin: 20px 0;
 }
 
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.3em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode-toggle .sun-icon,
+.dark-mode-toggle .moon-icon {
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dark-mode-toggle .moon-icon {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+body.dark-mode .dark-mode-toggle .sun-icon {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+body.dark-mode .dark-mode-toggle .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .container {
@@ -732,5 +944,13 @@ h1 {
     .prayer-tab {
         font-size: 0.85em;
         padding: 8px 14px;
+    }
+    
+    .dark-mode-toggle {
+        top: 10px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1em;
     }
 }

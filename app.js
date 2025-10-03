@@ -1,3 +1,34 @@
+// Dark Mode Toggle
+function toggleDarkMode(event) {
+    if (event) {
+        event.stopPropagation(); // Prevent header click
+    }
+    document.body.classList.toggle('dark-mode');
+    
+    // Save preference
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+    
+    console.log('Dark mode toggled:', isDarkMode ? 'enabled' : 'disabled');
+}
+
+function initializeDarkMode() {
+    // Check saved preference
+    const darkMode = localStorage.getItem('darkMode');
+    if (darkMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+    }
+    
+    // Attach event listener to toggle button
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleDarkMode);
+        console.log('Dark mode toggle button initialized');
+    } else {
+        console.error('Dark mode toggle button not found');
+    }
+}
+
 // Get daily content based on date
 function getDailyIndex(arrayLength, offset = 0) {
     const today = new Date();
@@ -370,6 +401,9 @@ function dismissUpdateNotification() {
 // Initialize with fresh content on every page load
 document.addEventListener('DOMContentLoaded', function() {
     try {
+        // Initialize dark mode
+        initializeDarkMode();
+        
         // Initialize DOM element cache for better performance
         initializeActivityElements();
         
