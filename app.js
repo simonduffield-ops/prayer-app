@@ -194,6 +194,8 @@ function showTool(tool) {
         content.classList.remove('active');
     });
     document.getElementById(tool + '-content').classList.add('active');
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function showCreed(creed) {
