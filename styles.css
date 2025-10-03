@@ -490,7 +490,7 @@ h1 {
 }
 
 .finish-button {
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -504,8 +504,8 @@ h1 {
 
 .finish-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #219a52 0%, #27ae60 100%);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #5568d3 0%, #6a3d91 100%);
 }
 
 .meditation-focus {
