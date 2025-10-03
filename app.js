@@ -240,13 +240,8 @@ function showMainMenu() {
         content.classList.remove('active');
     });
     
-    // Generate fresh content when returning to main menu
-    generateExamenContent();
-    generateLectioContent();
-    generateAdorationContent();
-    generateApostolicContent();
-    generatePrayerSetContent();
-    generatePersecutedContent();
+    // Load daily content (same content all day, changes each new day)
+    loadDailyContent();
 }
 
 function getRandomItem(array) {
@@ -409,13 +404,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize DOM element cache for better performance
         initializeActivityElements();
         
-        // Generate fresh random content every time the page loads
-        generateExamenContent();
-        generateLectioContent();
-        generateAdorationContent();
-        generateApostolicContent();
-        generatePrayerSetContent();
-        generatePersecutedContent();
+        // Load daily content based on day of year (guarantees cycling through all content)
+        loadDailyContent();
         
         updateCompletionStates(); // Check what's been completed today
         
