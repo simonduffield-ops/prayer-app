@@ -174,7 +174,8 @@ body.dark-mode .step-consolation-desolation .reflection-box:last-of-type {
 }
 
 body.dark-mode header::before {
-    opacity: 0.03;
+    opacity: 0.12;
+    filter: brightness(1.5);
 }
 
 .container {
