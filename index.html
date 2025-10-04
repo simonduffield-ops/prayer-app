@@ -58,6 +58,12 @@
                     <button class="tool-button">Begin Prayer</button>
                 </div>
 
+                <div class="tool-card" onclick="showTool('listening')">
+                    <h3>Daily Listening</h3>
+                    <p class="tool-description">Listen for God's voice through reflective questions.</p>
+                    <button class="tool-button">Begin Listening</button>
+                </div>
+
                 <div class="tool-card" onclick="showTool('lectio')">
                     <h3>Lectio Divina</h3>
                     <p class="tool-description">Sacred reading and meditation on Scripture.</p>
@@ -1208,6 +1214,84 @@
                 </div>
             </div>
 
+            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+        </div>
+
+        <!-- Daily Listening Content -->
+        <div id="listening-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Daily Listening</h2>
+                <div class="bible-verse">
+                    <p>"Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, 'This is the way; walk in it.'" - Isaiah 30:21 (NIV)</p>
+                </div>
+            </div>
+
+            <div class="listening-intro">
+                <p>Create space to listen for God's voice. These questions from Jamie Winship invite you into a conversation with the Lord, helping you discern His voice and direction for your life.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <div>
+                    <div class="step-title">Prepare Your Heart</div>
+                    <p>Take a few deep breaths. Quiet your mind. Ask the Holy Spirit to speak to you. Remember: God loves you and desires to communicate with you.</p>
+                    <div class="reflection-box">
+                        <p><em>"Holy Spirit, help me to hear Your voice clearly..."</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <div>
+                    <div class="step-title">Listen to the First Question</div>
+                    <p style="font-size: 1.2em; font-weight: 600; color: #667eea; font-style: italic; margin: 20px 0;">"What is the most important thing you want to tell me right now/today?"</p>
+                    <p>Be still and listen. What comes to mind? Don't rush. God may speak through a word, phrase, image, memory, or gentle impression.</p>
+                    <div class="reflection-box">
+                        <p><em>Write or reflect on what you sense God saying...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <div>
+                    <div class="step-title">Listen to the Second Question</div>
+                    <p style="font-size: 1.2em; font-weight: 600; color: #667eea; font-style: italic; margin: 20px 0;">"What do you want me to know?"</p>
+                    <p>Sometimes God wants to reveal something about Himself, about you, or about a situation. Listen for His wisdom and insight.</p>
+                    <div class="reflection-box">
+                        <p><em>What is God revealing to you?</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <div>
+                    <div class="step-title">Listen to the Third Question</div>
+                    <p style="font-size: 1.2em; font-weight: 600; color: #667eea; font-style: italic; margin: 20px 0;">"What do you want me to do?"</p>
+                    <p>God's voice always leads to action. What specific step is He inviting you to take? This may be big or small, immediate or in the future.</p>
+                    <div class="reflection-box">
+                        <p><em>What action is God calling you to?</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meditation-focus" id="listening-quote">
+                "Nothing carries more potential for change than individual acts of human kindness." - Jamie Winship
+            </div>
+
+            <div class="closing-prayer">
+                "Lord, thank You for speaking to me. Give me the courage and faith to walk in what You've shown me. Amen."
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="finish-button" onclick="completeListening()">Finish</button>
+                <div id="listening-completed" style="display: none;">
+                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Daily Listening completed for today!</p>
+                    <button class="new-content-button" onclick="generateListeningContent()">New Quote</button>
+                </div>
+            </div>
             <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
         </div>
     </div>

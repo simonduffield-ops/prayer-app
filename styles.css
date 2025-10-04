@@ -55,6 +55,7 @@ body.dark-mode .step p {
 body.dark-mode .step,
 body.dark-mode .reflection-box,
 body.dark-mode .examen-intro,
+body.dark-mode .listening-intro,
 body.dark-mode .prayerset-intro,
 body.dark-mode .persecuted-intro,
 body.dark-mode .creeds-intro,
@@ -535,6 +536,18 @@ h1 {
     padding: 20px;
     border-radius: 10px;
     margin: 20px 0;
+    color: #2c3e50;
+    border-left: 4px solid #667eea;
+    line-height: 1.7;
+}
+
+/* Listening specific styles */
+.listening-intro {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
     color: #2c3e50;
     border-left: 4px solid #667eea;
     line-height: 1.7;

@@ -1357,3 +1357,33 @@ const prayerSetContent = {
         }
     ]
 };
+
+// Jamie Winship Quotes for Daily Listening
+const jamieWinshipQuotes = [
+    "Nothing carries more potential for change than individual acts of human kindness.",
+    "If you endeavor to love God with your mind, your mind is opened up beyond the rational into the intuitive. The intuitive mind is the place where we pray and dream and hope for things as they ought to be, things yet unseen by the rational mind. If you endeavor to love God with your heart, you engage the emotional intelligence center of your being. Both negative and positive emotions become invitations from God into transformation. If you endeavor to love God with your soul, life becomes nearly unimaginable—the impossible moves into the sphere of possibility. If you endeavor to love God with your body, you will physically change. You will look different. You will move beyond being well into being fit.",
+    "Don't only read the Bible in some formulaic pattern. Instead, ask God, 'What does this say to me? How is this related to my identity? What do you want me to know?'",
+    "The next question is, 'Lord, where in my life do I feel like I'm not beloved by you? Where in my life am I not trusting you? Where in my life do I think I'm not good enough for you? Where in my life am I listening to the wrong voice?'",
+    "People are mostly afraid all the time. In fact, the number one exhortation in Scripture is, 'Do not be afraid.' We can only become fearless as we follow God in our true identity and experience in real life the truth of God's promises to us.",
+    "Speaking again on the topic of prayer, Jesus said that the Father knows what we need before we ask him. What does that tell us about how we should pray? Perhaps when we pray, we should ask, 'Lord, what do I need?'",
+    "The journey in discovering your true identity in the kingdom of God is an eternal journey. There is no end to the depths of who God made you to be.",
+    "Vision without action is merely a dream. Action without vision just passes the time. Vision with action can change the world.",
+    "Why is it that we often look for the quick answer, the get-spiritual-quick scheme that will magically turn us into the person we think we are supposed to be?",
+    "I want the God who initiates life and relationship with me even when I'm not asking. I want the God who loved me even when I was his enemy. … Trust me, because one day it's going to make you king. You can do this, trust me.",
+    "It never takes faith to believe what's false. Never. But it does take faith to believe what's true.",
+    "Acknowledging the truth about your fear opens the way for repentance and for your truth (fear) to be transformed by God's truth. Then you have authority over the fear rather than the fear controlling you. That is called freedom.",
+    "This intuitive state is also called prayer or meditation. … When we pray, God tells us how things do work, and we need to be able to hear him above the voices that tell us how things don't. Prayer is this place, up and out of ourselves, where nothing is impossible.",
+    "Fear shuts down creativity and the reception of new ideas.",
+    "Issues of forgiveness and unforgiveness are a first significant block to hearing God.",
+    "The Lord loves you. He will usually begin communicating to you with an affirmation and a challenge—the same way Jesus related to people in the Gospels.",
+    "The real you can accomplish things. But the true you can do … well, you don't even know. You have no idea.",
+    "The obstacle to experiencing God anywhere in life is shame. … Fear, guilt, and shame are false identities.",
+    "David was practicing the very skills that would make him one of Israel's greatest kings.",
+    "'I've wanted to believe this my whole life; I just didn't know we were allowed to. Yes, I agree.'",
+    "David takes those four hundred people, and in about three years' time, he's leading an army of six hundred of some of the greatest warriors in Israel's history.",
+    "Each day, try to understand more of the mystery of others: 'God, teach me something about someone else that I do not know.'",
+    "'Lord, would you tell me or reveal to me one place in my life where I'm not living in truth?'",
+    "There are ideas inside your mind, heart, and spirit that no one has ever thought of before. … The world needs the real you.",
+    "The knowledge of good and evil always leads to a form of death. Always.",
+    "Confession is telling God the truth about what you really believe about him, yourself, and others. … Confession is the beginning of genuine transformation."
+];

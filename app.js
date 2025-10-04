@@ -58,7 +58,7 @@ function markCompleted(activity) {
 const activityElements = {};
 
 function initializeActivityElements() {
-    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted'];
+    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted', 'listening'];
     activities.forEach(activity => {
         const content = document.getElementById(`${activity}-content`);
         if (content) {
@@ -88,6 +88,7 @@ function completeAdoration() { completeActivity('adoration'); }
 function completeApostolic() { completeActivity('apostolic'); }
 function completePrayerSet() { completeActivity('prayerset'); }
 function completePersecuted() { completeActivity('persecuted'); }
+function completeListening() { completeActivity('listening'); }
 
 function updateCompletionStates() {
     Object.keys(activityElements).forEach(activity => {
@@ -107,6 +108,7 @@ function getDailyContent() {
     const adorationIndex = getDailyIndex(adorationScriptures.length, 200); // Different offset
     const apostolicIndex = getDailyIndex(apostolicPrayers.length, 300); // Another different offset
     const persecutedIndex = getDailyIndex(persecutedChurchPrayers.length, 500); // Persecuted church offset
+    const listeningIndex = getDailyIndex(jamieWinshipQuotes.length, 600); // Listening offset
     
     return {
         examen: {
@@ -122,6 +124,7 @@ function getDailyContent() {
         adoration: adorationScriptures[adorationIndex],
         apostolic: apostolicPrayers[apostolicIndex],
         persecuted: persecutedChurchPrayers[persecutedIndex],
+        listening: jamieWinshipQuotes[listeningIndex],
         prayerset: {
             movement1: prayerSetContent.movement1[getDailyIndex(prayerSetContent.movement1.length, 400)],
             movement2: prayerSetContent.movement2[getDailyIndex(prayerSetContent.movement2.length, 401)],
@@ -186,6 +189,9 @@ function loadDailyContent() {
     document.getElementById('persecuted-context').textContent = persecuted.context;
     document.getElementById('persecuted-prayer').textContent = persecuted.prayer;
     document.getElementById('persecuted-scripture').innerHTML = `"${persecuted.scripture}" - ${persecuted.reference}`;
+    
+    // Load daily Listening content
+    document.getElementById('listening-quote').innerHTML = `"${daily.listening}" - Jamie Winship`;
 }
 
 function showTool(tool) {
@@ -306,6 +312,11 @@ function generatePersecutedContent() {
     document.getElementById('persecuted-context').textContent = prayer.context;
     document.getElementById('persecuted-prayer').textContent = prayer.prayer;
     document.getElementById('persecuted-scripture').innerHTML = `"${prayer.scripture}" - ${prayer.reference}`;
+}
+
+function generateListeningContent() {
+    const quote = getRandomItem(jamieWinshipQuotes);
+    document.getElementById('listening-quote').innerHTML = `"${quote}" - Jamie Winship`;
 }
 
 // Function to show update notification
