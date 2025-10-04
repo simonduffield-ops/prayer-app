@@ -396,6 +396,9 @@ h1 {
     justify-content: center;
     font-weight: bold;
     margin-right: 15px;
+    line-height: 1;
+    text-align: center;
+    flex-shrink: 0;
 }
 
 .step-title {
@@ -588,6 +591,8 @@ h1 {
     font-size: 1.2em;
     margin-right: 15px;
     flex-shrink: 0;
+    line-height: 1;
+    text-align: center;
 }
 
 .movement-title {
