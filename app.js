@@ -427,6 +427,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (mainMenu) mainMenu.style.display = 'block';
     }
     
+    // Beatitudes completion function
+    window.completeBeatitudes = function() {
+        document.querySelector('#beatitudes-content .finish-button').style.display = 'none';
+        document.getElementById('beatitudes-completed').style.display = 'block';
+    };
+
     // Register service worker for PWA functionality
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js')
