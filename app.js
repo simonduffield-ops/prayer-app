@@ -74,11 +74,8 @@ function initializeActivityElements() {
 // Single reusable completion function
 function completeActivity(activityName) {
     markCompleted(activityName);
-    const elements = activityElements[activityName];
-    if (elements) {
-        elements.finishButton.style.display = 'none';
-        elements.completed.style.display = 'block';
-    }
+    // Redirect to home page
+    showMainMenu();
 }
 
 // Individual completion functions for backwards compatibility
@@ -150,11 +147,21 @@ function loadDailyContent() {
     document.getElementById('examen-closing').textContent = daily.examen.closing;
     
     // Load daily Lectio content
-    document.getElementById('lectio-scripture').innerHTML = `"${daily.lectio.text}" - ${daily.lectio.reference}`;
+    const lectioElement = document.getElementById('lectio-scripture');
+    const lectioButton = lectioElement.querySelector('.new-content-button');
+    lectioElement.innerHTML = `"${daily.lectio.text}" - ${daily.lectio.reference}`;
+    if (lectioButton) {
+        lectioElement.appendChild(lectioButton);
+    }
     document.getElementById('lectio-focus').innerHTML = `Focus Word: "${daily.lectio.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>`;
     
     // Load daily Adoration content
-    document.getElementById('adoration-scripture').innerHTML = `"${daily.adoration.text}" - ${daily.adoration.reference}`;
+    const adorationElement = document.getElementById('adoration-scripture');
+    const adorationButton = adorationElement.querySelector('.new-content-button');
+    adorationElement.innerHTML = `"${daily.adoration.text}" - ${daily.adoration.reference}`;
+    if (adorationButton) {
+        adorationElement.appendChild(adorationButton);
+    }
     document.getElementById('acknowledge-prompt').textContent = daily.adoration.acknowledge;
     document.getElementById('adore-prompt').textContent = daily.adoration.adore;
     document.getElementById('surrender-prompt').textContent = daily.adoration.surrender;
@@ -163,7 +170,12 @@ function loadDailyContent() {
     document.getElementById('adoration-closing').textContent = daily.adoration.closing;
     
     // Load daily Apostolic Prayers content
-    document.getElementById('apostolic-prayer').innerHTML = `"${daily.apostolic.prayer}" - ${daily.apostolic.reference}`;
+    const apostolicElement = document.getElementById('apostolic-prayer');
+    const apostolicButton = apostolicElement.querySelector('.new-content-button');
+    apostolicElement.innerHTML = `"${daily.apostolic.prayer}" - ${daily.apostolic.reference}`;
+    if (apostolicButton) {
+        apostolicElement.appendChild(apostolicButton);
+    }
     document.getElementById('apostolic-respond-prompt').textContent = daily.apostolic.respond;
     document.getElementById('apostolic-reach-prompt').textContent = daily.apostolic.reach;
     document.getElementById('apostolic-focus').innerHTML = `Today's Blessing: "${daily.apostolic.focus}"<br><small>Carry this apostolic blessing with you as you pray for God's wisdom today.</small>`;
@@ -248,6 +260,9 @@ function showMainMenu() {
     
     // Load daily content (same content all day, changes each new day)
     loadDailyContent();
+    
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function getRandomItem(array) {
@@ -267,13 +282,23 @@ function generateExamenContent() {
 
 function generateLectioContent() {
     const scripture = getRandomItem(lectioScriptures);
-    document.getElementById('lectio-scripture').innerHTML = `"${scripture.text}" - ${scripture.reference}`;
+    const lectioElement = document.getElementById('lectio-scripture');
+    const lectioButton = lectioElement.querySelector('.new-content-button');
+    lectioElement.innerHTML = `"${scripture.text}" - ${scripture.reference}`;
+    if (lectioButton) {
+        lectioElement.appendChild(lectioButton);
+    }
     document.getElementById('lectio-focus').innerHTML = `Focus Word: "${scripture.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>`;
 }
 
 function generateAdorationContent() {
     const scripture = getRandomItem(adorationScriptures);
-    document.getElementById('adoration-scripture').innerHTML = `"${scripture.text}" - ${scripture.reference}`;
+    const adorationElement = document.getElementById('adoration-scripture');
+    const adorationButton = adorationElement.querySelector('.new-content-button');
+    adorationElement.innerHTML = `"${scripture.text}" - ${scripture.reference}`;
+    if (adorationButton) {
+        adorationElement.appendChild(adorationButton);
+    }
     document.getElementById('acknowledge-prompt').textContent = scripture.acknowledge;
     document.getElementById('adore-prompt').textContent = scripture.adore;
     document.getElementById('surrender-prompt').textContent = scripture.surrender;
@@ -284,7 +309,12 @@ function generateAdorationContent() {
 
 function generateApostolicContent() {
     const prayer = getRandomItem(apostolicPrayers);
-    document.getElementById('apostolic-prayer').innerHTML = `"${prayer.prayer}" - ${prayer.reference}`;
+    const apostolicElement = document.getElementById('apostolic-prayer');
+    const apostolicButton = apostolicElement.querySelector('.new-content-button');
+    apostolicElement.innerHTML = `"${prayer.prayer}" - ${prayer.reference}`;
+    if (apostolicButton) {
+        apostolicElement.appendChild(apostolicButton);
+    }
     document.getElementById('apostolic-respond-prompt').textContent = prayer.respond;
     document.getElementById('apostolic-reach-prompt').textContent = prayer.reach;
     document.getElementById('apostolic-focus').innerHTML = `Today's Blessing: "${prayer.focus}"<br><small>Carry this apostolic blessing with you as you pray for God's wisdom today.</small>`;
@@ -429,8 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Beatitudes completion function
     window.completeBeatitudes = function() {
-        document.querySelector('#beatitudes-content .finish-button').style.display = 'none';
-        document.getElementById('beatitudes-completed').style.display = 'block';
+        showMainMenu();
     };
 
     // Register service worker for PWA functionality

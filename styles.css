@@ -135,12 +135,14 @@ body.dark-mode .prayer-movement .reflection-box {
 }
 
 body.dark-mode .back-button {
-    background: #5a6c7d;
-    color: #ffffff;
+    background: rgba(149, 165, 166, 0.15);
+    color: #b0bec5;
+    border-color: rgba(149, 165, 166, 0.4);
 }
 
 body.dark-mode .back-button:hover {
-    background: #4a5c6d;
+    background: rgba(149, 165, 166, 0.25);
+    border-color: rgba(149, 165, 166, 0.6);
 }
 
 body.dark-mode .finish-button {
@@ -148,7 +150,14 @@ body.dark-mode .finish-button {
 }
 
 body.dark-mode .new-content-button {
-    color: #ffffff;
+    background: rgba(102, 126, 234, 0.15);
+    color: #a8b8ff;
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+body.dark-mode .new-content-button:hover {
+    background: rgba(102, 126, 234, 0.25);
+    border-color: rgba(102, 126, 234, 0.6);
 }
 
 body.dark-mode .tool-button {
@@ -300,6 +309,7 @@ h1 {
     padding: 30px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+    position: relative;
 }
 
 .prayer-content.active {
@@ -317,6 +327,7 @@ h1 {
     margin-bottom: 30px;
     padding-bottom: 20px;
     border-bottom: 2px solid #ecf0f1;
+    position: relative;
 }
 
 .prayer-title {
@@ -328,6 +339,7 @@ h1 {
 .bible-verse {
     background: linear-gradient(135deg, #fdfeff 0%, #f8f9ff 100%);
     padding: 25px 30px;
+    padding-bottom: 50px;
     border-radius: 12px;
     margin: 20px 0;
     font-style: italic;
@@ -412,6 +424,7 @@ h1 {
     text-align: center;
     margin: 30px 0;
     padding: 55px 40px;
+    padding-bottom: 50px;
     background: linear-gradient(135deg, #fdfeff 0%, #f8f9ff 100%);
     border-radius: 15px;
     border-top: 3px solid #667eea;
@@ -451,35 +464,92 @@ h1 {
 }
 
 .back-button {
-    background: #95a5a6;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(149, 165, 166, 0.1);
+    color: #95a5a6;
+    border: 2px solid rgba(149, 165, 166, 0.3);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     cursor: pointer;
-    margin-top: 20px;
+    font-size: 1.5em;
+    line-height: 1;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.back-button::before {
+    content: '←';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 .back-button:hover {
-    background: #7f8c8d;
+    background: rgba(149, 165, 166, 0.2);
+    border-color: rgba(149, 165, 166, 0.5);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(149, 165, 166, 0.2);
 }
 
 .new-content-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
     cursor: pointer;
-    margin: 10px 10px 10px 0;
+    font-size: 1.3em;
+    line-height: 1;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.new-content-button::before {
+    content: '↻';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 .new-content-button:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: rgba(102, 126, 234, 0.5);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.new-content-button:hover::before {
+    animation: rotate 0.6s ease-in-out;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Position button at bottom right when in prayer-header but not in bible-verse */
+.prayer-header > .new-content-button {
+    bottom: 20px;
+    right: 20px;
 }
 
 .finish-button {

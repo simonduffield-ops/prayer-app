@@ -114,12 +114,10 @@
                 <h2 class="prayer-title">The Examen</h2>
                 <div class="bible-verse">
                     <p id="examen-verse">"And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him." - Colossians 3:17 (NIV)</p>
+                    <button class="new-content-button" onclick="generateExamenContent()" aria-label="New Reflection"></button>
                 </div>
             </div>
 
-            <div class="examen-intro">
-                <p><strong>The Ignatian Examen</strong> is a practice of prayerful reflection that helps you recognize consolation (movements drawing you toward God) and desolation (movements pulling you away from Him). By discerning these movements, you learn to recognize God's voice and resist what draws you away from Him.</p>
-            </div>
 
             <div class="step">
                 <span class="step-number">1</span>
@@ -187,25 +185,19 @@
 
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeExamen()">Finish</button>
-                <div id="examen-completed" style="display: none;">
-                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Examen completed for today!</p>
-                    <button class="new-content-button" onclick="generateExamenContent()">New Reflection</button>
-                </div>
             </div>
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Lectio Divina Content -->
         <div id="lectio-content" class="prayer-content">
             <div class="prayer-header">
                 <h2 class="prayer-title">Lectio Divina</h2>
-                <div class="bible-verse">
-                    <p>"Blessed is the one who does not walk in step with the wicked... whose delight is in the law of the Lord, and who meditates on his law day and night." - Psalm 1:1-2 (NIV)</p>
-                </div>
             </div>
 
             <div class="scripture-text" id="lectio-scripture">
                 "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and lowly in heart, and you will find rest for your souls." - Matthew 11:28-29
+                <button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>
             </div>
 
             <div class="step">
@@ -260,23 +252,19 @@
 
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeLectio()">Finish</button>
-                <div id="lectio-completed" style="display: none;">
-                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Lectio Divina completed for today!</p>
-                    <button class="new-content-button" onclick="generateLectioContent()">New Scripture</button>
-                </div>
             </div>
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Adoration Content -->
         <div id="adoration-content" class="prayer-content">
             <div class="prayer-header">
                 <h2 class="prayer-title">Adoration</h2>
-                
             </div>
 
             <div class="scripture-text" id="adoration-scripture">
                 "Holy, holy, holy is the Lord God Almighty, who was, and is, and is to come... You are worthy, our Lord and God, to receive glory and honor and power, for you created all things, and by your will they were created and have their being." - Revelation 4:8,11
+                <button class="new-content-button" onclick="generateAdorationContent()" aria-label="New Focus"></button>
             </div>
 
             <div class="step">
@@ -331,25 +319,19 @@
 
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeAdoration()">Finish</button>
-                <div id="adoration-completed" style="display: none;">
-                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Adoration completed for today!</p>
-                    <button class="new-content-button" onclick="generateAdorationContent()">New Focus</button>
-                </div>
             </div>
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Prayers of the Apostles Content -->
         <div id="apostolic-content" class="prayer-content">
             <div class="prayer-header">
                 <h2 class="prayer-title">Prayers of the Apostles</h2>
-                <div class="bible-verse">
-                    <p>"I pray that out of his glorious riches he may strengthen you with power through his Spirit in your inner being" - Ephesians 3:16 (NIV)</p>
-                </div>
             </div>
 
             <div class="scripture-text" id="apostolic-prayer">
                 "I keep asking that the God of our Lord Jesus Christ, the glorious Father, may give you the Spirit of wisdom and revelation, so that you may know him better. I pray that the eyes of your heart may be enlightened in order that you may know the hope to which he has called you, the riches of his glorious inheritance in his holy people, and his incomparably great power for us who believe." - Ephesians 1:17-19
+                <button class="new-content-button" onclick="generateApostolicContent()" aria-label="New Prayer"></button>
             </div>
 
             <div class="step">
@@ -408,12 +390,8 @@
 
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeApostolic()">Finish</button>
-                <div id="apostolic-completed" style="display: none;">
-                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Apostolic Prayer completed for today!</p>
-                    <button class="new-content-button" onclick="generateApostolicContent()">New Prayer</button>
-                </div>
             </div>
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Prayer Set Content -->
@@ -422,6 +400,7 @@
                 <h2 class="prayer-title">The Lord's Prayer</h2>
                 <div class="bible-verse">
                     <p>"This, then, is how you should pray: 'Our Father in heaven...'" - Matthew 6:9 (NIV)</p>
+                    <button class="new-content-button" onclick="generatePrayerSetContent()" aria-label="New Content"></button>
                 </div>
             </div>
 
@@ -545,12 +524,8 @@
 
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completePrayerSet()">Finish</button>
-                <div id="prayerset-completed" style="display: none;">
-                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Prayer Set completed for today!</p>
-                    <button class="new-content-button" onclick="generatePrayerSetContent()">New Content</button>
-                </div>
             </div>
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Persecuted Church Content -->
@@ -559,6 +534,7 @@
                 <h2 class="prayer-title">Prayer for the Persecuted Church</h2>
                 <div class="bible-verse">
                     <p>"Remember those in prison as if you were together with them in prison, and those who are mistreated as if you yourselves were suffering." - Hebrews 13:3 (NIV)</p>
+                    <button class="new-content-button" onclick="generatePersecutedContent()" aria-label="New Prayer Focus"></button>
                 </div>
             </div>
 
@@ -621,12 +597,8 @@
 
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completePersecuted()">Finish</button>
-                <div id="persecuted-completed" style="display: none;">
-                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Prayer completed for today!</p>
-                    <button class="new-content-button" onclick="generatePersecutedContent()">New Prayer Focus</button>
-                </div>
             </div>
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Creeds Content -->
@@ -802,7 +774,7 @@
                 </div>
             </div>
 
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Written Prayers Content -->
@@ -1235,7 +1207,7 @@
                 </div>
             </div>
 
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Daily Listening Content -->
@@ -1304,12 +1276,8 @@
 
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeListening()">Finish</button>
-                <div id="listening-completed" style="display: none;">
-                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Daily Listening completed for today!</p>
-                    <button class="new-content-button" onclick="generateListeningContent()">New Quote</button>
-                </div>
             </div>
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- The Beatitudes Content -->
@@ -1429,11 +1397,8 @@
 
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeBeatitudes()">Finish</button>
-                <div id="beatitudes-completed" style="display: none;">
-                    <p style="color: #27ae60; font-weight: bold; margin: 15px 0;">✓ Beatitudes completed for today!</p>
-                </div>
             </div>
-            <button class="back-button" onclick="showMainMenu()">Back to Tools</button>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
     </div>
 
