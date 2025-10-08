@@ -1,15 +1,18 @@
-const CACHE_NAME = 'prayer-tools-v1.4.0';
+const CACHE_NAME = 'prayer-tools-v1.5.0';
 const urlsToCache = [
     './',
     './index.html',
     './styles.css',
     './app.js',
     './content.js',
+    './persecuted-church-data.js',
     './manifest.json',
-    './icon.svg',
-    './apple-touch-icon-new.png',
-    './favicon-16x16.png',
-    './favicon-32x32.png'
+    './apple-touch-icon.png',
+    './favicon.ico',
+    './Icons/web/icon-192.png',
+    './Icons/web/icon-192-maskable.png',
+    './Icons/web/icon-512.png',
+    './Icons/web/icon-512-maskable.png'
 ];
 
 // Install event - cache resources and skip waiting

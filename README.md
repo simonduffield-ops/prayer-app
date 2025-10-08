@@ -1,4 +1,4 @@
-# Pray - Daily Prayer Tools PWA
+# Table - Daily Prayer Tools PWA
 
 A comprehensive Progressive Web App for Christian prayer and spiritual formation, featuring 10 distinct prayer tools with extensive content libraries and daily rotating content.
 
@@ -92,9 +92,7 @@ prayer-app/
 ├── manifest.json                 # PWA configuration
 ├── sw.js                         # Service worker for offline functionality
 ├── favicon.ico                   # Browser favicon
-├── apple-touch-icon-new.png      # iOS home screen icon
-├── favicon-16x16.png            # 16x16 favicon
-├── favicon-32x32.png            # 32x32 favicon
+├── apple-touch-icon.png          # iOS home screen icon (180x180)
 └── Icons/
     └── web/
         ├── icon-192.png          # 192x192 web icon

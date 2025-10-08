@@ -26,7 +26,10 @@ body.dark-mode .prayer-content {
     color: #f0f0f0;
 }
 
-body.dark-mode h1,
+body.dark-mode h1 {
+    color: #667eea;
+}
+
 body.dark-mode h2,
 body.dark-mode h3,
 body.dark-mode .prayer-title,
@@ -239,7 +242,7 @@ header:hover h1 {
 }
 
 h1 {
-    color: #34495e;
+    color: #667eea;
     font-size: 2.5em;
     margin-bottom: 10px;
     font-weight: 300;
