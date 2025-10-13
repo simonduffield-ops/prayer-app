@@ -43,13 +43,13 @@ A comprehensive Progressive Web App for Christian prayer and spiritual formation
 5. **Lectio Divina** - Sacred reading and meditation on Scripture (50+ passages)
 6. **The Beatitudes** - Meditate on Jesus' teachings from the Sermon on the Mount
 7. **Gentle and Humble in Heart** - 26 meditations on Christ's gentleness and humility with Scripture and Church history
-8. **Prayers of the Apostles** - Pray through prayers written by the apostles in Scripture
 
 #### ⁜ Historic Prayers
-9. **Written Prayers** - 14 beloved Christian prayers through the ages
-10. **Creeds** - Profess your faith with the ancient creeds of the church
+8. **Written Prayers** - 14 beloved Christian prayers through the ages
+9. **Creeds** - Profess your faith with the ancient creeds of the church
 
 #### ⁜ Intercession
+10. **Prayers of the Apostles** - Pray through prayers written by the apostles in Scripture
 11. **Pray for the Persecuted** - Intercede for believers facing persecution worldwide
 
 ### Content Libraries:
