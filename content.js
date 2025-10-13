@@ -1387,3 +1387,162 @@ const jamieWinshipQuotes = [
     "The knowledge of good and evil always leads to a form of death. Always.",
     "Confession is telling God the truth about what you really believe about him, yourself, and others. … Confession is the beginning of genuine transformation."
 ];
+
+const gentleHumbleContent = [
+    {
+        scripture: "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves.",
+        reference: "Philippians 2:3",
+        quote: "Humility is the foundation of all the other virtues hence, in the soul in which this virtue does not exist there cannot be any other virtue except in mere appearance.",
+        author: "St. Augustine"
+    },
+    {
+        scripture: "Be completely humble and gentle; be patient, bearing with one another in love.",
+        reference: "Ephesians 4:2",
+        quote: "I am amazed at [Jesus] gentleness; for He was silent more than He spoke, and His silence is more powerful than the words of others.",
+        author: "Ignatius of Antioch"
+    },
+    {
+        scripture: "Therefore, as God's chosen people, holy and dearly loved, clothe yourselves with compassion, kindness, humility, gentleness and patience. Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.",
+        reference: "Colossians 3:12–13",
+        quote: "The Lord Himself also was meek and lowly of heart; He did not command us to be proud, nor overbearing, but to imitate His own meekness.",
+        author: "Clement of Alexandria"
+    },
+    {
+        scripture: "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves, not looking to your own interests but each of you to the interests of the others. In your relationships with one another, have the same mindset as Christ Jesus: Who, being in very nature God, did not consider equality with God something to be used to his own advantage; rather, he made himself nothing by taking the very nature of a servant, being made in human likeness. And being found in appearance as a man, he humbled himself by becoming obedient to death—even death on a cross!",
+        reference: "Philippians 2:3–8",
+        quote: "Let the servant of Christ imitate his Lord who bore injuries patiently, who was gentle in teaching, humble in conversation, steadfast in faith.",
+        author: "Cyprian of Carthage"
+    },
+    {
+        scripture: "Rather, it should be that of your inner self, the unfading beauty of a gentle and quiet spirit, which is of great worth in God's sight.",
+        reference: "1 Peter 3:4",
+        quote: "Do you see how He draws them by the gentleness of His invitation? … Not by fear and threat, but by meekness and humility He wins their souls.",
+        author: "John Chrysostom"
+    },
+    {
+        scripture: "All of you, clothe yourselves with humility toward one another, because, 'God opposes the proud but shows favor to the humble.' Humble yourselves, therefore, under God's mighty hand, that he may lift you up in due time.",
+        reference: "1 Peter 5:5–6",
+        quote: "Humility is the root, mother, nurse, foundation, and bond of all virtue.",
+        author: "St. John Chrysostom"
+    },
+    {
+        scripture: "Who is wise and understanding among you? Let them show it by their good life, by deeds done in the humility that comes from wisdom.",
+        reference: "James 3:13",
+        quote: "Humility is the storehouse of all the virtues.",
+        author: "St. Basil the Great"
+    },
+    {
+        scripture: "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.",
+        reference: "Matthew 11:28–30",
+        quote: "He who teaches us to learn from Him, who is meek and lowly in heart, teaches us not by force, nor by terror, but by gentleness; for only by meekness is the soul made teachable for divine wisdom.",
+        author: "Origen of Alexandria"
+    },
+    {
+        scripture: "Be completely humble and gentle; be patient, bearing with one another in love.",
+        reference: "Ephesians 4:2",
+        quote: "The ruler of souls must be a pattern of meekness, that he may draw the hearts of his hearers by gentleness.",
+        author: "Gregory the Great"
+    },
+    {
+        scripture: "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves.",
+        reference: "Philippians 2:3",
+        quote: "Humility is the root of victory over pride; it consists in becoming nothing before God and the brethren, and in acknowledging our weakness.",
+        author: "Evagrius the Solitary"
+    },
+    {
+        scripture: "Clothe yourselves with compassion, kindness, humility, gentleness and patience.",
+        reference: "Colossians 3:12",
+        quote: "I was very harsh and quick-tempered in my youth. One day I realized that gentleness brings more peace than anger, and humility makes one free. From then on, I sought to be gentle in heart.",
+        author: "Abba Moses the Black"
+    },
+    {
+        scripture: "Be completely humble and gentle; be patient, bearing with one another in love.",
+        reference: "Ephesians 4:2",
+        quote: "A man who is meek and humble in heart will never be disturbed by the insults of others, but finds rest within.",
+        author: "Abba Arsenius"
+    },
+    {
+        scripture: "Who is wise and understanding among you? Let them show it by their good life, by deeds done in the humility that comes from wisdom.",
+        reference: "James 3:13",
+        quote: "If you wish to see God, be humble in heart and gentle with all men, even those who persecute you. For the Lord dwells where gentleness reigns.",
+        author: "Abba Macarius the Great"
+    },
+    {
+        scripture: "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.",
+        reference: "Matthew 11:28–30",
+        quote: "The soul that is gentle and humble does not become disturbed by small things, but is peaceful as the Lord Himself is peaceful.",
+        author: "Abba Lot"
+    },
+    {
+        scripture: "Rather, it should be that of your inner self, the unfading beauty of a gentle and quiet spirit, which is of great worth in God's sight.",
+        reference: "1 Peter 3:4",
+        quote: "It is better to be silent and humble than to speak in pride. Let your heart be gentle toward all, and God will teach you the secrets of His kingdom.",
+        author: "Amma Syncletica"
+    },
+    {
+        scripture: "All of you, clothe yourselves with humility toward one another, because, 'God opposes the proud but shows favor to the humble.'",
+        reference: "1 Peter 5:5",
+        quote: "Humility with poverty of spirit is more pleasing to the Lord than all the works of charity.",
+        author: "Amma Syncletica"
+    },
+    {
+        scripture: "Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.",
+        reference: "Matthew 11:29",
+        quote: "Learn from Him not to create the world, nor to raise the dead, but to be meek and humble of heart.",
+        author: "Bernard of Clairvaux"
+    },
+    {
+        scripture: "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves.",
+        reference: "Philippians 2:3",
+        quote: "Humility must always be doing its work like a bee making its honey in the hive: without humility all will be lost.",
+        author: "St. Teresa of Ávila"
+    },
+    {
+        scripture: "Who is wise and understanding among you? Let them show it by their good life, by deeds done in the humility that comes from wisdom.",
+        reference: "James 3:13",
+        quote: "Humility is nothing but truth, and truth is the foundation of all virtues.",
+        author: "Thomas à Kempis"
+    },
+    {
+        scripture: "Clothe yourselves with compassion, kindness, humility, gentleness and patience. Bear with each other and forgive one another.",
+        reference: "Colossians 3:12–13",
+        quote: "Humility is the willingness to take the lowest place, to bear the blame, and to give God and others the glory.",
+        author: "John Wesley"
+    },
+    {
+        scripture: "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves.",
+        reference: "Philippians 2:3",
+        quote: "Humility is not thinking less of yourself, it is thinking of yourself less.",
+        author: "C.S. Lewis"
+    },
+    {
+        scripture: "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart.",
+        reference: "Matthew 11:28–29",
+        quote: "Believe, claim in faith the death and the life of Jesus as thine. Enter in his grace into the rest from self and its work - the rest of God. With Christ, who committed his spirit into the Father's hands, humble thyself and descend each day into that perfect, helpless dependence upon God. God will raise thee up and exalt thee. Sink every morning in deep, deep nothingness into the grave of Jesus; every day the life of Jesus will be manifest in thee. Let a willing, loving, restful, happy humility be the mark that thou hast claimed they birthright.",
+        author: "Andrew Murray"
+    },
+    {
+        scripture: "Be completely humble and gentle; be patient, bearing with one another in love.",
+        reference: "Ephesians 4:2",
+        quote: "Service is the most conducive means to the growth of humility.",
+        author: "Richard Foster"
+    },
+    {
+        scripture: "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves.",
+        reference: "Philippians 2:3",
+        quote: "Pride makes us artificial and humility makes us real.",
+        author: "Thomas Merton"
+    },
+    {
+        scripture: "Rather, in humility value others above yourselves, not looking to your own interests but each of you to the interests of the others.",
+        reference: "Philippians 2:3–4",
+        quote: "A servant Christian is the freest person on earth.",
+        author: "Eugene Peterson"
+    },
+    {
+        scripture: "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.",
+        reference: "Matthew 11:28–30",
+        quote: "Let the heart of Jesus be something that is not only gentle toward you but lovely to you. If I may put it this way: romance the heart of Jesus. All I mean is, ponder him through his heart. Allow yourself to be allured. Why not build into your life unhurried quiet, where, among other disciplines, you consider the radiance of who actually is, what animates him, what his deepest delight is? When you look at the glorious older saints in your church, how do you think they got there? Sound doctrine, yes. Resolute obedience, without a doubt. Suffering without becoming cynical, for sure. But maybe another reason, maybe the deepest reason, is that they have, over time, been won over in their deepest affections to a gentle savior.",
+        author: "Dale Ortland"
+    }
+];

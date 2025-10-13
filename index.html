@@ -61,6 +61,12 @@
                     <button class="tool-button">Begin Prayer</button>
                 </div>
 
+                <div class="tool-card" onclick="showTool('gentle-humble')">
+                    <h3>Gentle and Humble in Heart</h3>
+                    <p class="tool-description">Meditate on Christ's gentleness and humility through Scripture and Church history.</p>
+                    <button class="tool-button">Begin Meditation</button>
+                </div>
+
                 <div class="tool-card" onclick="showTool('listening')">
                     <h3>Daily Listening</h3>
                     <p class="tool-description">Listen for God's voice through reflective questions.</p>
@@ -1405,6 +1411,79 @@
 
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeBeatitudes()">Finish</button>
+            </div>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
+        </div>
+
+        <!-- Gentle and Humble in Heart Content -->
+        <div id="gentle-humble-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Gentle and Humble in Heart</h2>
+                <div class="bible-verse">
+                    <p>Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls. - Matthew 11:28–30 (NIV)</p>
+                    <button class="new-content-button" onclick="generateGentleHumbleContent()" aria-label="New Meditation"></button>
+                </div>
+            </div>
+
+            <div class="step">
+                <div>
+                    <div class="step-title">Scripture Meditation</div>
+                    <div class="scripture-text" id="gentle-humble-scripture">
+                        Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves. - Philippians 2:3
+                    </div>
+                    <div class="reflection-box">
+                        <p><em>Read this passage slowly. How does it speak to your heart? What is God inviting you to see about gentleness and humility?</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div>
+                    <div class="step-title">Wisdom from Church History</div>
+                    <p id="gentle-humble-quote">
+                        Humility is the foundation of all the other virtues hence, in the soul in which this virtue does not exist there cannot be any other virtue except in mere appearance.
+                    </p>
+                    <p style="text-align: right; font-style: italic; color: #7f8c8d; margin-top: 10px;" id="gentle-humble-author">– St. Augustine</p>
+                    <div class="reflection-box">
+                        <p><em>How does this wisdom from church history illuminate your understanding of gentleness and humility?</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div>
+                    <div class="step-title">Personal Reflection</div>
+                    <div class="reflection-box">
+                        <p><strong>Reflect on these questions:</strong></p>
+                        <p style="margin-top: 15px;">• Where in your life is God calling you to greater gentleness?</p>
+                        <p>• How can you cultivate a humble heart in your relationships?</p>
+                        <p>• What does it mean to learn from Jesus, who is gentle and humble in heart?</p>
+                        <p style="margin-top: 15px;"><em>Take time to journal or pray about what God is revealing to you...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div>
+                    <div class="step-title">Prayer</div>
+                    <div class="reflection-box">
+                        <p>Lord Jesus, You who are gentle and humble in heart, teach me to be like You. Help me to lay down my pride and selfish ambition. Give me a heart that values others above myself, that bears with others in patience, and that responds with gentleness rather than harshness. May Your humility flow through me in all my relationships. Amen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meditation-focus" id="gentle-humble-focus">
+                Today's Focus: Christ's Gentleness and Humility
+                <br>
+                <small>Carry this meditation with you as you seek to imitate Christ's character throughout your day.</small>
+            </div>
+
+            <div class="closing-prayer">
+                The heart of Jesus is gentle toward you. Let yourself be drawn to His loving kindness and humble presence.
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="finish-button" onclick="completeGentleHumble()">Finish</button>
             </div>
             <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>

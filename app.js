@@ -58,7 +58,7 @@ function markCompleted(activity) {
 const activityElements = {};
 
 function initializeActivityElements() {
-    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted', 'listening'];
+    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted', 'listening', 'gentle-humble'];
     activities.forEach(activity => {
         const content = document.getElementById(`${activity}-content`);
         if (content) {
@@ -86,6 +86,7 @@ function completeApostolic() { completeActivity('apostolic'); }
 function completePrayerSet() { completeActivity('prayerset'); }
 function completePersecuted() { completeActivity('persecuted'); }
 function completeListening() { completeActivity('listening'); }
+function completeGentleHumble() { completeActivity('gentle-humble'); }
 
 function updateCompletionStates() {
     Object.keys(activityElements).forEach(activity => {
@@ -106,6 +107,7 @@ function getDailyContent() {
     const apostolicIndex = getDailyIndex(apostolicPrayers.length, 300); // Another different offset
     const persecutedIndex = getDailyIndex(persecutedChurchPrayers.length, 500); // Persecuted church offset
     const listeningIndex = getDailyIndex(jamieWinshipQuotes.length, 600); // Listening offset
+    const gentleHumbleIndex = getDailyIndex(gentleHumbleContent.length, 700); // Gentle humble offset
     
     return {
         examen: {
@@ -122,6 +124,7 @@ function getDailyContent() {
         apostolic: apostolicPrayers[apostolicIndex],
         persecuted: persecutedChurchPrayers[persecutedIndex],
         listening: jamieWinshipQuotes[listeningIndex],
+        gentleHumble: gentleHumbleContent[gentleHumbleIndex],
         prayerset: {
             movement1: prayerSetContent.movement1[getDailyIndex(prayerSetContent.movement1.length, 400)],
             movement2: prayerSetContent.movement2[getDailyIndex(prayerSetContent.movement2.length, 401)],
@@ -204,6 +207,11 @@ function loadDailyContent() {
     
     // Load daily Listening content
     document.getElementById('listening-quote').innerHTML = `"${daily.listening}" - Jamie Winship`;
+    
+    // Load daily Gentle and Humble in Heart content
+    document.getElementById('gentle-humble-scripture').innerHTML = `${daily.gentleHumble.scripture} - ${daily.gentleHumble.reference}`;
+    document.getElementById('gentle-humble-quote').textContent = daily.gentleHumble.quote;
+    document.getElementById('gentle-humble-author').textContent = `– ${daily.gentleHumble.author}`;
 }
 
 function showTool(tool) {
@@ -347,6 +355,13 @@ function generatePersecutedContent() {
 function generateListeningContent() {
     const quote = getRandomItem(jamieWinshipQuotes);
     document.getElementById('listening-quote').innerHTML = `"${quote}" - Jamie Winship`;
+}
+
+function generateGentleHumbleContent() {
+    const content = getRandomItem(gentleHumbleContent);
+    document.getElementById('gentle-humble-scripture').innerHTML = `${content.scripture} - ${content.reference}`;
+    document.getElementById('gentle-humble-quote').textContent = content.quote;
+    document.getElementById('gentle-humble-author').textContent = `– ${content.author}`;
 }
 
 // Function to show update notification
