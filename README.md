@@ -1,6 +1,6 @@
 # Table - Daily Prayer Tools PWA
 
-A comprehensive Progressive Web App for Christian prayer and spiritual formation, featuring 10 distinct prayer tools with extensive content libraries and daily rotating content.
+A comprehensive Progressive Web App for Christian prayer and spiritual formation, featuring 11 distinct prayer tools organized into intuitive categories, with extensive content libraries and daily rotating content.
 
 ## 📱 Install on iPhone
 
@@ -28,20 +28,29 @@ A comprehensive Progressive Web App for Christian prayer and spiritual formation
 - **Works Offline** after first load
 - **Daily Fresh Content** automatically rotates
 - **Dark Mode** toggle for comfortable reading
+- **Organized Categories** with collapsible sections for easy navigation
 - **Professional Look** like a native app
 
-### 10 Prayer Tools:
+### 11 Prayer Tools (Organized in 4 Categories):
 
-1. **Adoration** - Worshipful meditation on God's character with 30+ daily rotating passages
+#### ⁜ Daily Practices
+1. **The Examen** - Ignatian practice to discern consolation and desolation in your day
 2. **The Lord's Prayer** - A liturgical journey through the Lord's Prayer with 7 movements
-3. **The Beatitudes** - Meditate on Jesus' teachings from the Sermon on the Mount
-4. **Daily Listening** - Listen for God's voice through reflective questions
+3. **Daily Listening** - Listen for God's voice through reflective questions
+4. **Adoration** - Worshipful meditation on God's character with 30+ daily rotating passages
+
+#### ⁜ Scripture Meditation
 5. **Lectio Divina** - Sacred reading and meditation on Scripture (50+ passages)
-6. **The Examen** - Ignatian practice to discern consolation and desolation in your day
-7. **Prayers of the Apostles** - Pray through prayers written by the apostles in Scripture
-8. **Pray for the Persecuted** - Intercede for believers facing persecution worldwide
+6. **The Beatitudes** - Meditate on Jesus' teachings from the Sermon on the Mount
+7. **Gentle and Humble in Heart** - 26 meditations on Christ's gentleness and humility with Scripture and Church history
+8. **Prayers of the Apostles** - Pray through prayers written by the apostles in Scripture
+
+#### ⁜ Historic Prayers
 9. **Written Prayers** - 14 beloved Christian prayers through the ages
 10. **Creeds** - Profess your faith with the ancient creeds of the church
+
+#### ⁜ Intercession
+11. **Pray for the Persecuted** - Intercede for believers facing persecution worldwide
 
 ### Content Libraries:
 
@@ -68,17 +77,19 @@ A comprehensive Progressive Web App for Christian prayer and spiritual formation
 #### Daily Rotating Content:
 - **50+ Lectio Divina Scriptures** with focus words
 - **30+ Adoration passages** exploring God's attributes
+- **26 Gentle and Humble meditations** pairing Scripture with wisdom from Church Fathers, Desert Fathers/Mothers, and theologians
 - **Multiple Examen prompts** for varied daily reflection
 - **365+ day cycle** before content repeats
 
 ## 🎯 How to Use Daily
 
 1. **Open app** from home screen
-2. **Choose a prayer tool** 
-3. **Work through the steps** thoughtfully
-4. **Click "Finish"** when complete
-5. **See completion confirmation** ✓
-6. **Return anytime** for additional sessions
+2. **Browse categories** - Tap to expand/collapse prayer tool groups
+3. **Choose a prayer tool** 
+4. **Work through the steps** thoughtfully
+5. **Click "Finish"** when complete
+6. **See completion confirmation** ✓
+7. **Return anytime** for additional sessions
 
 ## 📂 Project Structure
 
@@ -200,6 +211,15 @@ Five-step Ignatian practice for daily review:
 ### The Beatitudes
 Nine beatitudes from the Sermon on the Mount (Matthew 5:1-12), with guided reflection questions for each blessing to help you meditate on Jesus' radical kingdom values and listen for how God wants to transform your heart.
 
+### Gentle and Humble in Heart
+26 daily rotating meditations on Christ's character, combining:
+- **New Testament Scriptures** on gentleness and humility (Philippians, Ephesians, Colossians, 1 Peter, James, Matthew)
+- **Church Fathers** (St. Augustine, Ignatius of Antioch, Clement of Alexandria, John Chrysostom, etc.)
+- **Desert Fathers & Mothers** (Abba Moses, Abba Arsenius, Amma Syncletica, etc.)
+- **Historic Voices** (Bernard of Clairvaux, St. Teresa of Ávila, Thomas à Kempis, C.S. Lewis, Andrew Murray, Dale Ortland, etc.)
+
+Each meditation pairs a Scripture passage with a historical quote, inviting you to learn from Jesus who said, "I am gentle and humble in heart, and you will find rest for your souls" (Matthew 11:29).
+
 ### Daily Listening
 A simple, profound practice of listening prayer with three reflective questions:
 - "What is the most important thing you want to tell me right now/today?"
@@ -244,6 +264,7 @@ Each includes explanatory context about origin and significance, with three-step
 - **Samsung Internet** ✅
 
 ### Key Features
+- **Collapsible Categories** - Organized prayer tools with smooth animations and remembers your preferences
 - **Daily Rotating Content** - Uses date-based rotation to provide fresh content each day
 - **Completion Tracking** - Tracks when you finish each prayer session
 - **Dark Mode** - System-aware with manual toggle
