@@ -1,4 +1,4 @@
-const CACHE_NAME = 'prayer-tools-v1.5.0';
+const CACHE_NAME = 'prayer-tools-v1.6.2';
 const urlsToCache = [
     './',
     './index.html',

@@ -42,71 +42,117 @@
         </button>
 
         <div id="main-menu">
-            <div class="tools-grid">
-                <div class="tool-card" onclick="showTool('adoration')">
-                    <h3>Adoration</h3>
-                    <p class="tool-description">Worshipful meditation on God's character.</p>
-                    <button class="tool-button">Begin Adoration</button>
+            <!-- Daily Practices Category -->
+            <div class="category-section">
+                <div class="category-header" onclick="toggleCategory('daily')">
+                    <h2 class="category-title">
+                        <span class="category-icon">⁜</span>
+                        Daily Practices
+                    </h2>
+                    <span class="category-toggle">▼</span>
                 </div>
+                <div class="tools-grid category-content" id="daily-category">
+                    <div class="tool-card" onclick="showTool('examen')">
+                        <h3>The Examen</h3>
+                        <p class="tool-description">An Ignatian practice to discern consolation and desolation in your day.</p>
+                        <button class="tool-button">Begin Examen</button>
+                    </div>
 
-                <div class="tool-card" onclick="showTool('prayerset')">
-                    <h3>The Lord's Prayer</h3>
-                    <p class="tool-description">A liturgical journey through the Lord's Prayer.</p>
-                    <button class="tool-button">Begin Prayer</button>
+                    <div class="tool-card" onclick="showTool('prayerset')">
+                        <h3>The Lord's Prayer</h3>
+                        <p class="tool-description">A liturgical journey through the Lord's Prayer.</p>
+                        <button class="tool-button">Begin Prayer</button>
+                    </div>
+
+                    <div class="tool-card" onclick="showTool('listening')">
+                        <h3>Daily Listening</h3>
+                        <p class="tool-description">Listen for God's voice through reflective questions.</p>
+                        <button class="tool-button">Begin Listening</button>
+                    </div>
+
+                    <div class="tool-card" onclick="showTool('adoration')">
+                        <h3>Adoration</h3>
+                        <p class="tool-description">Worshipful meditation on God's character.</p>
+                        <button class="tool-button">Begin Adoration</button>
+                    </div>
                 </div>
+            </div>
 
-                <div class="tool-card" onclick="showTool('beatitudes')">
-                    <h3>The Beatitudes</h3>
-                    <p class="tool-description">Meditate on Jesus' teachings from the Sermon on the Mount.</p>
-                    <button class="tool-button">Begin Prayer</button>
+            <!-- Scripture Meditation Category -->
+            <div class="category-section">
+                <div class="category-header" onclick="toggleCategory('scripture')">
+                    <h2 class="category-title">
+                        <span class="category-icon">⁜</span>
+                        Scripture Meditation
+                    </h2>
+                    <span class="category-toggle">▼</span>
                 </div>
+                <div class="tools-grid category-content" id="scripture-category">
+                    <div class="tool-card" onclick="showTool('lectio')">
+                        <h3>Lectio Divina</h3>
+                        <p class="tool-description">Sacred reading and meditation on Scripture.</p>
+                        <button class="tool-button">Begin Lectio Divina</button>
+                    </div>
 
-                <div class="tool-card" onclick="showTool('gentle-humble')">
-                    <h3>Gentle and Humble in Heart</h3>
-                    <p class="tool-description">Meditate on Christ's gentleness and humility through Scripture and Church history.</p>
-                    <button class="tool-button">Begin Meditation</button>
+                    <div class="tool-card" onclick="showTool('beatitudes')">
+                        <h3>The Beatitudes</h3>
+                        <p class="tool-description">Meditate on Jesus' teachings from the Sermon on the Mount.</p>
+                        <button class="tool-button">Begin Prayer</button>
+                    </div>
+
+                    <div class="tool-card" onclick="showTool('gentle-humble')">
+                        <h3>Gentle and Humble in Heart</h3>
+                        <p class="tool-description">Meditate on Christ's gentleness and humility through Scripture and Church history.</p>
+                        <button class="tool-button">Begin Meditation</button>
+                    </div>
+
+                    <div class="tool-card" onclick="showTool('apostolic')">
+                        <h3>Prayers of the Apostles</h3>
+                        <p class="tool-description">Pray through the prayers written by the apostles.</p>
+                        <button class="tool-button">Begin Apostolic Prayer</button>
+                    </div>
                 </div>
+            </div>
 
-                <div class="tool-card" onclick="showTool('listening')">
-                    <h3>Daily Listening</h3>
-                    <p class="tool-description">Listen for God's voice through reflective questions.</p>
-                    <button class="tool-button">Begin Listening</button>
+            <!-- Historic Prayers Category -->
+            <div class="category-section">
+                <div class="category-header" onclick="toggleCategory('historic')">
+                    <h2 class="category-title">
+                        <span class="category-icon">⁜</span>
+                        Historic Prayers
+                    </h2>
+                    <span class="category-toggle">▼</span>
                 </div>
+                <div class="tools-grid category-content" id="historic-category">
+                    <div class="tool-card" onclick="showTool('written-prayers')">
+                        <h3>Written Prayers</h3>
+                        <p class="tool-description">Pray the most beloved Christian prayers through the ages.</p>
+                        <button class="tool-button">Begin Prayer</button>
+                    </div>
 
-                <div class="tool-card" onclick="showTool('lectio')">
-                    <h3>Lectio Divina</h3>
-                    <p class="tool-description">Sacred reading and meditation on Scripture.</p>
-                    <button class="tool-button">Begin Lectio Divina</button>
+                    <div class="tool-card" onclick="showTool('creeds')">
+                        <h3>Creeds</h3>
+                        <p class="tool-description">Profess your faith with the ancient creeds of the church.</p>
+                        <button class="tool-button">Begin Creed</button>
+                    </div>
                 </div>
+            </div>
 
-                <div class="tool-card" onclick="showTool('examen')">
-                    <h3>The Examen</h3>
-                    <p class="tool-description">An Ignatian practice to discern consolation and desolation in your day.</p>
-                    <button class="tool-button">Begin Examen</button>
+            <!-- Intercession Category -->
+            <div class="category-section">
+                <div class="category-header" onclick="toggleCategory('intercession')">
+                    <h2 class="category-title">
+                        <span class="category-icon">⁜</span>
+                        Intercession
+                    </h2>
+                    <span class="category-toggle">▼</span>
                 </div>
-
-                <div class="tool-card" onclick="showTool('apostolic')">
-                    <h3>Prayers of the Apostles</h3>
-                    <p class="tool-description">Pray through the prayers written by the apostles.</p>
-                    <button class="tool-button">Begin Apostolic Prayer</button>
-                </div>
-
-                <div class="tool-card" onclick="showTool('persecuted')">
-                    <h3>Pray for the Persecuted</h3>
-                    <p class="tool-description">Pray for our brothers and sisters facing persecution worldwide.</p>
-                    <button class="tool-button">Begin Prayer</button>
-                </div>
-
-                <div class="tool-card" onclick="showTool('written-prayers')">
-                    <h3>Written Prayers</h3>
-                    <p class="tool-description">Pray the most beloved Christian prayers through the ages.</p>
-                    <button class="tool-button">Begin Prayer</button>
-                </div>
-
-                <div class="tool-card" onclick="showTool('creeds')">
-                    <h3>Creeds</h3>
-                    <p class="tool-description">Profess your faith with the ancient creeds of the church.</p>
-                    <button class="tool-button">Begin Creed</button>
+                <div class="tools-grid category-content" id="intercession-category">
+                    <div class="tool-card" onclick="showTool('persecuted')">
+                        <h3>Pray for the Persecuted</h3>
+                        <p class="tool-description">Pray for our brothers and sisters facing persecution worldwide.</p>
+                        <button class="tool-button">Begin Prayer</button>
+                    </div>
                 </div>
             </div>
         </div>

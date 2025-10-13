@@ -451,11 +451,47 @@ function dismissUpdateNotification() {
     }
 }
 
+// Category toggle functionality
+function toggleCategory(categoryId) {
+    const categorySection = document.querySelector(`#${categoryId}-category`).parentElement;
+    const isCollapsed = categorySection.classList.contains('collapsed');
+    
+    if (isCollapsed) {
+        categorySection.classList.remove('collapsed');
+        localStorage.setItem(`category_${categoryId}`, 'expanded');
+    } else {
+        categorySection.classList.add('collapsed');
+        localStorage.setItem(`category_${categoryId}`, 'collapsed');
+    }
+}
+
+function initializeCategories() {
+    // Load saved category states from localStorage
+    const categories = ['daily', 'scripture', 'historic', 'intercession'];
+    
+    categories.forEach(categoryId => {
+        const state = localStorage.getItem(`category_${categoryId}`);
+        const categorySection = document.querySelector(`#${categoryId}-category`).parentElement;
+        
+        if (categorySection) {
+            // Default: all expanded on first visit, then remember user preference
+            if (state === 'collapsed') {
+                categorySection.classList.add('collapsed');
+            } else {
+                categorySection.classList.remove('collapsed');
+            }
+        }
+    });
+}
+
 // Initialize with fresh content on every page load
 document.addEventListener('DOMContentLoaded', function() {
     try {
         // Initialize dark mode
         initializeDarkMode();
+        
+        // Initialize category states
+        initializeCategories();
         
         // Initialize DOM element cache for better performance
         initializeActivityElements();
