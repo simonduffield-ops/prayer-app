@@ -9,15 +9,31 @@ function toggleDarkMode(event) {
     const isDarkMode = document.body.classList.contains('dark-mode');
     localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
     
+    // Update theme color for mobile browsers
+    updateThemeColor(isDarkMode);
+    
     console.log('Dark mode toggled:', isDarkMode ? 'enabled' : 'disabled');
+}
+
+function updateThemeColor(isDarkMode) {
+    const themeColorMeta = document.getElementById('theme-color-meta');
+    if (themeColorMeta) {
+        // Light mode: #667eea (purple-blue), Dark mode: #1a1a2e (dark blue-black)
+        themeColorMeta.setAttribute('content', isDarkMode ? '#1a1a2e' : '#667eea');
+    }
 }
 
 function initializeDarkMode() {
     // Check saved preference
     const darkMode = localStorage.getItem('darkMode');
-    if (darkMode === 'enabled') {
+    const isDarkMode = darkMode === 'enabled';
+    
+    if (isDarkMode) {
         document.body.classList.add('dark-mode');
     }
+    
+    // Update theme color on initial load
+    updateThemeColor(isDarkMode);
     
     // Attach event listener to toggle button
     const toggleButton = document.getElementById('dark-mode-toggle');
