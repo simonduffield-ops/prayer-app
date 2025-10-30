@@ -74,7 +74,7 @@ function markCompleted(activity) {
 const activityElements = {};
 
 function initializeActivityElements() {
-    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted', 'listening', 'gentle-humble'];
+    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted', 'listening', 'gentle-humble', 'affirmation'];
     activities.forEach(activity => {
         const content = document.getElementById(`${activity}-content`);
         if (content) {
@@ -103,6 +103,7 @@ function completePrayerSet() { completeActivity('prayerset'); }
 function completePersecuted() { completeActivity('persecuted'); }
 function completeListening() { completeActivity('listening'); }
 function completeGentleHumble() { completeActivity('gentle-humble'); }
+function completeAffirmation() { completeActivity('affirmation'); }
 
 function updateCompletionStates() {
     Object.keys(activityElements).forEach(activity => {
