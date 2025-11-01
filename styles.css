@@ -499,6 +499,11 @@ body.dark-mode .category-toggle {
     margin-bottom: 10px;
 }
 
+.step > div > p {
+    margin: 15px 0;
+    line-height: 1.8;
+}
+
 .reflection-box {
     background: white;
     border: 2px dashed #bdc3c7;
