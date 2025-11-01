@@ -125,6 +125,7 @@ function getDailyContent() {
     const persecutedIndex = getDailyIndex(persecutedChurchPrayers.length, 500); // Persecuted church offset
     const listeningIndex = getDailyIndex(jamieWinshipQuotes.length, 600); // Listening offset
     const gentleHumbleIndex = getDailyIndex(gentleHumbleContent.length, 700); // Gentle humble offset
+    const affirmationPromiseIndex = getDailyIndex(biblePromises.length, 800); // Affirmation promise offset
     
     return {
         examen: {
@@ -142,6 +143,10 @@ function getDailyContent() {
         persecuted: persecutedChurchPrayers[persecutedIndex],
         listening: jamieWinshipQuotes[listeningIndex],
         gentleHumble: gentleHumbleContent[gentleHumbleIndex],
+        affirmation: {
+            adorationVerse: adorationScriptures[adorationIndex],
+            promise: biblePromises[affirmationPromiseIndex]
+        },
         prayerset: {
             movement1: prayerSetContent.movement1[getDailyIndex(prayerSetContent.movement1.length, 400)],
             movement2: prayerSetContent.movement2[getDailyIndex(prayerSetContent.movement2.length, 401)],
@@ -229,6 +234,10 @@ function loadDailyContent() {
     document.getElementById('gentle-humble-scripture').innerHTML = `${daily.gentleHumble.scripture} - ${daily.gentleHumble.reference}`;
     document.getElementById('gentle-humble-quote').textContent = daily.gentleHumble.quote;
     document.getElementById('gentle-humble-author').textContent = `– ${daily.gentleHumble.author}`;
+    
+    // Load daily Affirmation content
+    document.getElementById('affirmation-adoration-verse').innerHTML = `"${daily.affirmation.adorationVerse.text}" - ${daily.affirmation.adorationVerse.reference}`;
+    document.getElementById('affirmation-promise').innerHTML = `"${daily.affirmation.promise.text}" - ${daily.affirmation.promise.reference}`;
 }
 
 function showTool(tool) {
