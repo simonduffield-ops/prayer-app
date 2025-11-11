@@ -121,7 +121,6 @@ function getDailyContent() {
     const examenIndex = getDailyIndex(examenPrompts.verses.length, 0);
     const lectioIndex = getDailyIndex(lectioScriptures.length, 100); // Offset so they don't sync
     const adorationIndex = getDailyIndex(adorationScriptures.length, 200); // Different offset
-    const apostolicIndex = getDailyIndex(apostolicPrayers.length, 300); // Another different offset
     const persecutedIndex = getDailyIndex(persecutedChurchPrayers.length, 500); // Persecuted church offset
     const listeningIndex = getDailyIndex(jamieWinshipQuotes.length, 600); // Listening offset
     const gentleHumbleIndex = getDailyIndex(gentleHumbleContent.length, 700); // Gentle humble offset
@@ -139,7 +138,7 @@ function getDailyContent() {
         },
         lectio: lectioScriptures[lectioIndex],
         adoration: adorationScriptures[adorationIndex],
-        apostolic: apostolicPrayers[apostolicIndex],
+        // apostolic prayers now display all prayers statically - no dynamic content needed
         persecuted: persecutedChurchPrayers[persecutedIndex],
         listening: jamieWinshipQuotes[listeningIndex],
         gentleHumble: gentleHumbleContent[gentleHumbleIndex],
@@ -194,17 +193,7 @@ function loadDailyContent() {
     document.getElementById('adoration-focus').innerHTML = `Today's Focus: ${daily.adoration.focus}<br><small>Meditate on this aspect of God's character throughout your day.</small>`;
     document.getElementById('adoration-closing').textContent = daily.adoration.closing;
     
-    // Load daily Apostolic Prayers content
-    const apostolicElement = document.getElementById('apostolic-prayer');
-    const apostolicButton = apostolicElement.querySelector('.new-content-button');
-    apostolicElement.innerHTML = `"${daily.apostolic.prayer}" - ${daily.apostolic.reference}`;
-    if (apostolicButton) {
-        apostolicElement.appendChild(apostolicButton);
-    }
-    document.getElementById('apostolic-respond-prompt').textContent = daily.apostolic.respond;
-    document.getElementById('apostolic-reach-prompt').textContent = daily.apostolic.reach;
-    document.getElementById('apostolic-focus').innerHTML = `Today's Blessing: "${daily.apostolic.focus}"<br><small>Carry this apostolic blessing with you as you pray for God's wisdom today.</small>`;
-    document.getElementById('apostolic-closing').textContent = daily.apostolic.closing;
+    // Apostolic Prayers now display all prayers statically - no dynamic content loading needed
     
     // Load daily Prayer Set content
     for (let i = 1; i <= 7; i++) {
@@ -341,19 +330,7 @@ function generateAdorationContent() {
     document.getElementById('adoration-closing').textContent = scripture.closing;
 }
 
-function generateApostolicContent() {
-    const prayer = getRandomItem(apostolicPrayers);
-    const apostolicElement = document.getElementById('apostolic-prayer');
-    const apostolicButton = apostolicElement.querySelector('.new-content-button');
-    apostolicElement.innerHTML = `"${prayer.prayer}" - ${prayer.reference}`;
-    if (apostolicButton) {
-        apostolicElement.appendChild(apostolicButton);
-    }
-    document.getElementById('apostolic-respond-prompt').textContent = prayer.respond;
-    document.getElementById('apostolic-reach-prompt').textContent = prayer.reach;
-    document.getElementById('apostolic-focus').innerHTML = `Today's Blessing: "${prayer.focus}"<br><small>Carry this apostolic blessing with you as you pray for God's wisdom today.</small>`;
-    document.getElementById('apostolic-closing').textContent = prayer.closing;
-}
+// generateApostolicContent() removed - apostolic prayers now display all prayers statically
 
 function generatePrayerSetContent() {
     for (let i = 1; i <= 7; i++) {
