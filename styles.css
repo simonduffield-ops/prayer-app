@@ -1185,4 +1185,20 @@ body.dark-mode .dark-mode-toggle .moon-icon {
         height: 45px;
         font-size: 1.1em;
     }
+    
+    /* Apostolic prayers mobile styles */
+    .apostolic-prayer-section {
+        margin: 20px 0;
+    }
+    
+    .apostolic-prayer-title {
+        font-size: 1.2em;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+    
+    .apostolic-reference {
+        font-size: 0.9em;
+        margin-top: 8px;
+    }
 }
