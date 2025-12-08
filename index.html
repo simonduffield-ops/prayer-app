@@ -81,6 +81,12 @@
                         <p class="tool-description">Listen for God's voice through reflective questions.</p>
                         <button class="tool-button">Begin Listening</button>
                     </div>
+
+                    <div class="tool-card" onclick="showTool('declarations')">
+                        <h3>Declarations</h3>
+                        <p class="tool-description">Declare biblical truths over your life and identity in Christ.</p>
+                        <button class="tool-button">Begin Declarations</button>
+                    </div>
                 </div>
             </div>
 
@@ -1537,6 +1543,142 @@
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeListening()">Finish</button>
             </div>
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
+        </div>
+
+        <!-- Declarations Content -->
+        <div id="declarations-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Declarations</h2>
+                <div class="bible-verse">
+                    <p>"Death and life are in the power of the tongue." - Proverbs 18:21 (ESV)</p>
+                </div>
+            </div>
+
+            <div class="prayer-selector">
+                <h3 style="text-align: center; color: #2c3e50; margin-bottom: 15px;">Choose a Declaration Set</h3>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
+                    <button class="prayer-tab active" onclick="showDeclaration('in-christ')">In Christ</button>
+                    <button class="prayer-tab" onclick="showDeclaration('daily')">Daily</button>
+                </div>
+            </div>
+
+            <!-- In Christ Declarations -->
+            <div id="in-christ-declaration" class="prayer-section active">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">In Christ</h3>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">Declare who you are in Christ - accepted, secure, and significant.</p>
+                </div>
+
+                <div class="prayer-text" style="text-align: left;">
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">I Am Accepted</h4>
+                    
+                    <p>I am God's child. (John 1:12)</p>
+                    
+                    <p>As a disciple, I am a friend of Jesus Christ. (John 15:15)</p>
+                    
+                    <p>I have been justified. (Romans 5:1)</p>
+                    
+                    <p>I am united with the Lord, and I am one with him in spirit. (1 Corinthians 6:17)</p>
+                    
+                    <p>I have been bought with a price, and I belong to God. (1 Corinthians 6:19–20)</p>
+                    
+                    <p>I am a member of Christ's body. (1 Corinthians 12:27)</p>
+                    
+                    <p>I have been chosen by God and adopted as his child. (Ephesians 1:5)</p>
+                    
+                    <p>I have been redeemed and forgiven of all my sins. (Colossians 1:14)</p>
+                    
+                    <p>I am complete in Christ. (Colossians 2:9–10)</p>
+                    
+                    <p>I have direct access to the throne of grace through Jesus Christ. (Hebrews 4:14–16)</p>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">I Am Secure</h4>
+                    
+                    <p>I am free from condemnation. (Romans 8:1–2)</p>
+                    
+                    <p>I am assured that God works for my good in all circumstances. (Romans 8:28)</p>
+                    
+                    <p>I am free from any condemnation brought against me, and I cannot be separated from the love of God. (Romans 8:31–39)</p>
+                    
+                    <p>I have been established, anointed, and sealed by God. (2 Corinthians 1:21–22)</p>
+                    
+                    <p>I am hidden with Christ in God. (Colossians 3:1–4)</p>
+                    
+                    <p>I am confident that God will complete the good work he started in me. (Philippians 1:6)</p>
+                    
+                    <p>I am a citizen of heaven. (Philippians 3:20)</p>
+                    
+                    <p>I have not been given the spirit of fear but of power, love, and a sound mind. (2 Timothy 1:7)</p>
+                    
+                    <p>I am born of God, and the Evil One cannot touch me. (1 John 5:18)</p>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">I Am Significant</h4>
+                    
+                    <p>I am a branch of Jesus Christ, the true vine, and a channel of his life. (John 15:5)</p>
+                    
+                    <p>I have been chosen and appointed to bear fruit. (John 15:16)</p>
+                    
+                    <p>I am God's temple. (1 Corinthians 3:16)</p>
+                    
+                    <p>I am a minister of reconciliation for God. (2 Corinthians 5:17–21)</p>
+                    
+                    <p>I am seated with Jesus Christ in the heavenly realm. (Ephesians 2:6)</p>
+                    
+                    <p>I am God's workmanship. (Ephesians 2:10)</p>
+                    
+                    <p>I may approach God with freedom and confidence. (Ephesians 3:12)</p>
+                </div>
+            </div>
+
+            <!-- Daily Declarations -->
+            <div id="daily-declaration" class="prayer-section">
+                <div class="prayer-title-section">
+                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Daily Declarations</h3>
+                    <p style="text-align: center; color: #555; margin-bottom: 25px;">Declare God's promises over your daily life.</p>
+                </div>
+
+                <div class="prayer-text" style="text-align: left;">
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">1. My prayers are powerful and effective</h4>
+                    <p>2 Corinthians 5:21 For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.</p>
+                    <p>James 5:16b The prayer of a righteous person has great power as it is working.</p>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">2. God richly supplies all my financial needs</h4>
+                    <p>Phil 4:19 And my God will supply every need of yours according to his riches in glory in Christ Jesus.</p>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">3. I am dead to sin and alive to obeying God</h4>
+                    <p>Romans 6:11 So you also must consider yourselves dead to sin and alive to God in Christ Jesus.</p>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">4. I walk in ever-increasing health</h4>
+                    <p>Isaiah 53:3-5 He was despised and rejected by men;<br>
+                    a man of sorrows, and acquainted with grief<br>
+                    and as one from whom men hide their faces<br>
+                    he was despised, and we esteemed him not.<br>
+                    <sup>4</sup> Surely he has borne our griefs<br>
+                    and carried our sorrows;<br>
+                    yet we esteemed him stricken,<br>
+                    smitten by God, and afflicted.<br>
+                    <sup>5</sup> But he was wounded for our transgressions;<br>
+                    he was crushed for our iniquities;<br>
+                    upon him was the chastisement that brought us peace,<br>
+                    and with his stripes we are healed.</p>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">5. I live under a supernatural protection (Ps 91).</h4>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">6. I prosper in all my relationships</h4>
+                    <p>Luke 2:52 And Jesus increased in wisdom and in stature and in favor with God and man.</p>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">7. I consistently bring God encounters to other people</h4>
+                    <p>Mark 16:17,18 Whoever believes and is baptized will be saved, but whoever does not believe will be condemned. <sup>17</sup> And these signs will accompany those who believe: in my name they will cast out demons; they will speak in new tongues; <sup>18</sup> they will pick up serpents with their hands; and if they drink any deadly poison, it will not hurt them; they will lay their hands on the sick, and they will recover."</p>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">8. Through Jesus I am 100% loved and worthy to receive all of God's blessings</h4>
+                    <p>Gal 3:1-5 O foolish Galatians! Who has bewitched you? It was before your eyes that Jesus Christ was publicly portrayed as crucified. <sup>2</sup> Let me ask you only this: Did you receive the Spirit by works of the law or by hearing with faith? <sup>3</sup> Are you so foolish? Having begun by the Spirit, are you now being perfected by the flesh? <sup>4</sup> Did you suffer so many things in vain—if indeed it was in vain? <sup>5</sup> Does he who supplies the Spirit to you and works miracles among you do so by works of the law, or by hearing with faith</p>
+
+                    <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">9. Each of my family members is wonderfully blessed and radically loves Jesus</h4>
+                    <p>Acts 16:31 And they said, "Believe in the Lord Jesus, and you will be saved, you and your household."</p>
+                </div>
+            </div>
+
             <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 

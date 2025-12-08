@@ -275,6 +275,27 @@ function showPrayer(prayer) {
     event.target.classList.add('active');
 }
 
+function showDeclaration(declaration) {
+    // Hide all declaration sections
+    document.querySelectorAll('.prayer-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Remove active class from all tabs in the declarations area
+    const declarationsContent = document.getElementById('declarations-content');
+    if (declarationsContent) {
+        declarationsContent.querySelectorAll('.prayer-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+    }
+    
+    // Show selected declaration
+    document.getElementById(declaration + '-declaration').classList.add('active');
+    
+    // Add active class to clicked tab
+    event.target.classList.add('active');
+}
+
 function showMainMenu() {
     document.getElementById('main-menu').style.display = 'block';
     document.querySelectorAll('.prayer-content').forEach(content => {
