@@ -237,6 +237,10 @@ function showTool(tool) {
     document.getElementById(tool + '-content').classList.add('active');
     // Scroll to top of the page
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (tool === 'memory-verses') {
+        initMemoryVerses();
+    }
 }
 
 function showCreed(creed) {
@@ -256,6 +260,124 @@ function showCreed(creed) {
     // Add active class to clicked tab
     event.target.classList.add('active');
 }
+
+// ── Memory Verses Flashcard ──────────────────────────────────────────────────
+
+const memoryVerses = [
+    {
+        reference: 'Psalm 37:4 (NIV)',
+        text: 'Take delight in the Lord, and he will give you the desires of your heart.'
+    },
+    {
+        reference: 'Psalm 57:1 (NIV)',
+        text: 'Have mercy on me, my God, have mercy on me, for in you I take refuge. I will take refuge in the shadow of your wings until the disaster has passed.'
+    },
+    {
+        reference: 'Romans 8:26–39 (NIV)',
+        text: 'In the same way, the Spirit helps us in our weakness. We do not know what we ought to pray for, but the Spirit himself intercedes for us through wordless groans. And he who searches our hearts knows the mind of the Spirit, because the Spirit intercedes for God’s people in accordance with the will of God.\n\nAnd we know that in all things God works for the good of those who love him, who have been called according to his purpose. For those God foreknew he also predestined to be conformed to the image of his Son, that he might be the firstborn among many brothers and sisters. And those he predestined, he also called; those he called, he also justified; those he justified, he also glorified.\n\nWhat, then, shall we say in response to these things? If God is for us, who can be against us? He who did not spare his own Son, but gave him up for us all—how will he not also, along with him, graciously give us all things? Who will bring any charge against those whom God has chosen? It is God who justifies. Who then is the one who condemns? No one. Christ Jesus who died—more than that, who was raised to life—is at the right hand of God and is also interceding for us. Who shall separate us from the love of Christ? Shall trouble or hardship or persecution or famine or nakedness or danger or sword?\n\nNo, in all these things we are more than conquerors through him who loved us. For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord.'
+    },
+    {
+        reference: 'Hebrews 12:1–3 (NIV)',
+        text: 'Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us, fixing our eyes on Jesus, the pioneer and perfecter of faith. For the joy set before him he endured the cross, scorning its shame, and sat down at the right hand of the throne of God. Consider him who endured such opposition from sinners, so that you will not grow weary and lose heart.'
+    },
+    {
+        reference: 'Colossians 1:13–29 (NIV)',
+        text: 'For he has rescued us from the dominion of darkness and brought us into the kingdom of the Son he loves, in whom we have redemption, the forgiveness of sins.\n\nThe Son is the image of the invisible God, the firstborn over all creation. For in him all things were created: things in heaven and on earth, visible and invisible, whether thrones or powers or rulers or authorities; all things have been created through him and for him. He is before all things, and in him all things hold together. And he is the head of the body, the church; he is the beginning and the firstborn from among the dead, so that in everything he might have the supremacy. For God was pleased to have all his fullness dwell in him, and through him to reconcile to himself all things, whether things on earth or things in heaven, by making peace through his blood, shed on the cross.\n\nOnce you were alienated from God and were enemies in your minds because of your evil behavior. But now he has reconciled you by Christ’s physical body through death to present you holy in his sight, without blemish and free from accusation—if you continue in your faith, established and firm, and do not move from the hope held out in the gospel.\n\nNow I rejoice in what I am suffering for you, and I fill up in my flesh what is still lacking in regard to Christ’s afflictions, for the sake of his body, which is the church. I have become its servant by the commission God gave me to present to you the word of God in its fullness—the mystery that has been kept hidden for ages and generations, but is now disclosed to the Lord’s people. To them God has chosen to make known among the Gentiles the glorious riches of this mystery, which is Christ in you, the hope of glory. He is the one we proclaim, admonishing and teaching everyone with all wisdom, so that we may present everyone fully mature in Christ. To this end I strenuously contend with all the energy Christ so powerfully works in me.'
+    }
+];
+
+let currentVerseIndex = 0;
+let touchStartX = 0;
+let touchStartY = 0;
+let memoryVerseListenersAdded = false;
+
+function initMemoryVerses() {
+    renderMemoryVerse();
+    buildDots();
+
+    if (memoryVerseListenersAdded) return;
+    const card = document.getElementById('memoryVerseFlashcard');
+    if (!card) return;
+
+    card.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    card.addEventListener('touchend', function(e) {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+            if (dx < 0) {
+                animateCard('next');
+            } else {
+                animateCard('prev');
+            }
+        }
+    }, { passive: true });
+
+    memoryVerseListenersAdded = true;
+}
+
+function renderMemoryVerse() {
+    const verse = memoryVerses[currentVerseIndex];
+    document.getElementById('flashcardReference').textContent = verse.reference;
+    const textEl = document.getElementById('flashcardText');
+    textEl.innerHTML = verse.text.replace(/\n\n/g, '<br><br>');
+    document.getElementById('flashcardCounter').textContent =
+        (currentVerseIndex + 1) + ' of ' + memoryVerses.length;
+    updateDots();
+}
+
+function buildDots() {
+    const dotsEl = document.getElementById('flashcardDots');
+    if (!dotsEl) return;
+    dotsEl.innerHTML = '';
+    memoryVerses.forEach(function(_, i) {
+        const dot = document.createElement('span');
+        dot.className = 'flashcard-dot' + (i === currentVerseIndex ? ' active' : '');
+        dotsEl.appendChild(dot);
+    });
+}
+
+function updateDots() {
+    const dots = document.querySelectorAll('.flashcard-dot');
+    dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === currentVerseIndex);
+    });
+}
+
+function animateCard(direction) {
+    const card = document.getElementById('memoryVerseFlashcard');
+    const outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
+    const inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
+
+    card.classList.add(outClass);
+    setTimeout(function() {
+        card.classList.remove(outClass);
+        if (direction === 'next') {
+            currentVerseIndex = (currentVerseIndex + 1) % memoryVerses.length;
+        } else {
+            currentVerseIndex = (currentVerseIndex - 1 + memoryVerses.length) % memoryVerses.length;
+        }
+        renderMemoryVerse();
+        card.classList.add(inClass);
+        setTimeout(function() { card.classList.remove(inClass); }, 320);
+    }, 280);
+}
+
+function nextMemoryVerse(e) {
+    if (e) e.stopPropagation();
+    animateCard('next');
+}
+
+function prevMemoryVerse(e) {
+    if (e) e.stopPropagation();
+    animateCard('prev');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 
 function showPrayer(prayer) {
     // Hide all prayer sections

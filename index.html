@@ -117,6 +117,12 @@
                         <p class="tool-description">Meditate on Christ's gentleness and humility through Scripture and Church history.</p>
                         <button class="tool-button">Begin Meditation</button>
                     </div>
+
+                    <div class="tool-card" onclick="showTool('memory-verses')">
+                        <h3>Memory Verses</h3>
+                        <p class="tool-description">Practise memorising scripture one verse at a time.</p>
+                        <button class="tool-button">Begin Memory Verses</button>
+                    </div>
                 </div>
             </div>
 
@@ -1727,6 +1733,40 @@
                     <h4 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">9. Each of my family members is wonderfully blessed and radically loves Jesus</h4>
                     <p>Acts 16:31 And they said, "Believe in the Lord Jesus, and you will be saved, you and your household."</p>
                 </div>
+            </div>
+
+            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
+        </div>
+
+        <!-- Memory Verses Content -->
+        <div id="memory-verses-content" class="prayer-content">
+            <div class="prayer-header">
+                <h2 class="prayer-title">Memory Verses</h2>
+                <div class="bible-verse">
+                    <p>"I have hidden your word in my heart that I might not sin against you." - Psalm 119:11 (NIV)</p>
+                </div>
+            </div>
+
+            <div class="prayer-title-section" style="text-align: center; margin-bottom: 10px;">
+                <p class="prayerset-intro" style="text-align: center;">Tap the card or swipe to move to the next verse.</p>
+            </div>
+
+            <div class="memory-verse-flashcard" id="memoryVerseFlashcard" onclick="nextMemoryVerse()" role="button" aria-label="Next verse">
+                <div class="flashcard-inner" id="flashcardInner">
+                    <div class="flashcard-reference" id="flashcardReference"></div>
+                    <div class="flashcard-text" id="flashcardText"></div>
+                    <div class="flashcard-hint">Tap to continue &rsaquo;</div>
+                </div>
+            </div>
+
+            <div class="flashcard-progress">
+                <span id="flashcardCounter"></span>
+                <div class="flashcard-dots" id="flashcardDots"></div>
+            </div>
+
+            <div class="flashcard-nav-buttons">
+                <button class="flashcard-nav-btn" onclick="prevMemoryVerse(event)" aria-label="Previous verse">&#8592; Prev</button>
+                <button class="flashcard-nav-btn" onclick="nextMemoryVerse(event)" aria-label="Next verse">Next &#8594;</button>
             </div>
 
             <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
