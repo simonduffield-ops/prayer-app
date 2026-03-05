@@ -88,6 +88,10 @@ body.dark-mode .country-spotlight {
     border-color: rgba(231, 76, 60, 0.6);
 }
 
+body.dark-mode .persecuted-nav-date {
+    color: #c8c8c8;
+}
+
 body.dark-mode .creed-tab,
 body.dark-mode .prayer-tab {
     background: rgba(15, 52, 96, 0.9);
@@ -783,6 +787,40 @@ body.dark-mode .category-toggle {
     text-align: center;
     color: #2c3e50;
     border-left: 4px solid #c0392b;
+}
+
+.persecuted-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+    gap: 10px;
+}
+
+.persecuted-nav-date {
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.persecuted-nav-btn {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 1.1em;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+}
+
+.persecuted-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
 }
 
 .country-spotlight {

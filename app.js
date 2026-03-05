@@ -121,7 +121,6 @@ function getDailyContent() {
     const examenIndex = getDailyIndex(examenPrompts.verses.length, 0);
     const lectioIndex = getDailyIndex(lectioScriptures.length, 100); // Offset so they don't sync
     const adorationIndex = getDailyIndex(adorationScriptures.length, 200); // Different offset
-    const persecutedIndex = getDailyIndex(persecutedChurchPrayers.length, 500); // Persecuted church offset
     const listeningIndex = getDailyIndex(jamieWinshipQuotes.length, 600); // Listening offset
     const gentleHumbleIndex = getDailyIndex(gentleHumbleContent.length, 700); // Gentle humble offset
     const affirmationPromiseIndex = getDailyIndex(biblePromises.length, 800); // Affirmation promise offset
@@ -139,7 +138,6 @@ function getDailyContent() {
         lectio: lectioScriptures[lectioIndex],
         adoration: adorationScriptures[adorationIndex],
         // apostolic prayers now display all prayers statically - no dynamic content needed
-        persecuted: persecutedChurchPrayers[persecutedIndex],
         listening: jamieWinshipQuotes[listeningIndex],
         gentleHumble: gentleHumbleContent[gentleHumbleIndex],
         affirmation: {
@@ -202,19 +200,8 @@ function loadDailyContent() {
         document.getElementById(`prayerset-movement${i}-prompt`).textContent = movement.prompt;
     }
     
-    // Load daily Persecuted Church content
-    const persecuted = daily.persecuted;
-    document.getElementById('persecuted-country').textContent = persecuted.country;
-    document.getElementById('persecuted-region').textContent = persecuted.region;
-    if (persecuted.rank > 0) {
-        document.getElementById('persecuted-rank').textContent = `#${persecuted.rank}`;
-        document.getElementById('persecuted-rank').style.display = 'inline-block';
-    } else {
-        document.getElementById('persecuted-rank').style.display = 'none';
-    }
-    document.getElementById('persecuted-context').textContent = persecuted.context;
-    document.getElementById('persecuted-prayer').textContent = persecuted.prayer;
-    document.getElementById('persecuted-scripture').innerHTML = `"${persecuted.scripture}" - ${persecuted.reference}`;
+    // Load Open Doors calendar entry for today
+    loadPersecutedContent();
     
     // Load daily Listening content
     document.getElementById('listening-quote').innerHTML = `"${daily.listening}" - Jamie Winship`;
@@ -240,6 +227,9 @@ function showTool(tool) {
 
     if (tool === 'memory-verses') {
         initMemoryVerses();
+    }
+    if (tool === 'persecuted') {
+        loadPersecutedContent();
     }
 }
 
@@ -519,20 +509,59 @@ function generatePrayerSetContent() {
     }
 }
 
-function generatePersecutedContent() {
-    const prayer = getRandomItem(persecutedChurchPrayers);
-    document.getElementById('persecuted-country').textContent = prayer.country;
-    document.getElementById('persecuted-region').textContent = prayer.region;
-    if (prayer.rank > 0) {
-        document.getElementById('persecuted-rank').textContent = `#${prayer.rank}`;
-        document.getElementById('persecuted-rank').style.display = 'inline-block';
+// ── Persecuted Church day navigation ─────────────────────────────────────────
+
+let persecutedDayOffset = 0; // 0 = today, -1 = yesterday, +1 = tomorrow
+
+function renderPersecutedContent() {
+    const entry = getOpenDoorsByOffset(persecutedDayOffset);
+
+    const countryEl  = document.getElementById('persecuted-country');
+    const prayerEl   = document.getElementById('persecuted-prayer');
+    const noEntryEl  = document.getElementById('persecuted-no-entry');
+    const dateEl     = document.getElementById('persecuted-date');
+    const prevBtn    = document.getElementById('persecuted-prev');
+    const nextBtn    = document.getElementById('persecuted-next');
+
+    if (entry) {
+        const d = new Date(entry.dateKey + 'T00:00:00');
+        const label = d.toLocaleDateString('en-NZ', { weekday: 'long', day: 'numeric', month: 'long' });
+        if (dateEl) dateEl.textContent = label;
+        if (countryEl) countryEl.textContent = entry.country;
+        if (prayerEl) prayerEl.textContent = entry.prayer;
+        if (noEntryEl) noEntryEl.style.display = 'none';
+        if (countryEl) countryEl.closest('.country-spotlight').style.display = '';
+        if (prayerEl) prayerEl.closest('.prayer-focus-section').style.display = '';
     } else {
-        document.getElementById('persecuted-rank').style.display = 'none';
+        if (dateEl) dateEl.textContent = '';
+        if (countryEl) countryEl.textContent = '';
+        if (prayerEl) prayerEl.textContent = '';
+        if (noEntryEl) noEntryEl.style.display = 'block';
+        if (countryEl) countryEl.closest('.country-spotlight').style.display = 'none';
+        if (prayerEl) prayerEl.closest('.prayer-focus-section').style.display = 'none';
     }
-    document.getElementById('persecuted-context').textContent = prayer.context;
-    document.getElementById('persecuted-prayer').textContent = prayer.prayer;
-    document.getElementById('persecuted-scripture').innerHTML = `"${prayer.scripture}" - ${prayer.reference}`;
+
+    // Disable prev/next when there's no adjacent entry
+    if (prevBtn) prevBtn.disabled = !getOpenDoorsByOffset(persecutedDayOffset - 1);
+    if (nextBtn) nextBtn.disabled = !getOpenDoorsByOffset(persecutedDayOffset + 1);
 }
+
+function persecutedPrevDay() {
+    persecutedDayOffset--;
+    renderPersecutedContent();
+}
+
+function persecutedNextDay() {
+    persecutedDayOffset++;
+    renderPersecutedContent();
+}
+
+function loadPersecutedContent() {
+    persecutedDayOffset = 0;
+    renderPersecutedContent();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 function generateListeningContent() {
     const quote = getRandomItem(jamieWinshipQuotes);

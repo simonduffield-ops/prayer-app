@@ -1,11 +1,11 @@
-const CACHE_NAME = 'prayer-tools-v1.6.4';
+const CACHE_NAME = 'prayer-tools-v1.6.5';
 const urlsToCache = [
     './',
     './index.html',
     './styles.css',
     './app.js',
     './content.js',
-    './persecuted-church-data.js',
+    './opendoors-calendar.js',
     './manifest.json',
     './apple-touch-icon.png',
     './favicon.ico',

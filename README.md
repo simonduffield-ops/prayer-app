@@ -99,7 +99,7 @@ prayer-app/
 ├── styles.css                    # Styling with dark mode support
 ├── app.js                        # Core functionality and daily content rotation
 ├── content.js                    # Prayer content library (Examen, Lectio, Adoration, Apostolic)
-├── persecuted-church-data.js     # Data for persecuted church prayers
+├── opendoors-calendar.js         # Open Doors NZ prayer calendar (update every ~2 months)
 ├── manifest.json                 # PWA configuration
 ├── sw.js                         # Service worker for offline functionality
 ├── favicon.ico                   # Browser favicon
@@ -136,10 +136,12 @@ prayer-app/
   - Adoration passages and focus areas
   - Apostolic prayers
 
+**Open Doors Prayer Calendar:**
+- Edit `opendoors-calendar.js` every ~2 months when a new PDF is published by Open Doors NZ.
+- Each entry is keyed by date (`"YYYY-MM-DD"`) and contains `country` and `prayer` fields.
+- Source: https://opendoors.org.nz
+
 **Static Content:**
-- Edit `persecuted-church-data.js` to update:
-  - Persecuted church countries and prayer focuses
-  
 - Edit `index.html` to modify:
   - Written Prayers and their historical context
   - Creeds text
