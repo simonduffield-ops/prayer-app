@@ -1737,36 +1737,44 @@
 
         <!-- Memory Verses Content -->
         <div id="memory-verses-content" class="prayer-content">
-            <div class="prayer-header">
-                <h2 class="prayer-title">Memory Verses</h2>
-                <div class="bible-verse">
-                    <p>"I have hidden your word in my heart that I might not sin against you." - Psalm 119:11 (NIV)</p>
+            <!-- Index View -->
+            <div id="memory-verses-index">
+                <div class="prayer-header">
+                    <h2 class="prayer-title">Memory Verses</h2>
+                    <div class="bible-verse">
+                        <p>"I have hidden your word in my heart that I might not sin against you." - Psalm 119:11 (NIV)</p>
+                    </div>
                 </div>
+                <div id="memory-verses-list" class="memory-verses-list"></div>
+                <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
             </div>
 
-            <div class="prayer-title-section" style="text-align: center; margin-bottom: 10px;">
-                <p class="prayerset-intro" style="text-align: center;">Tap the card or swipe to move to the next verse.</p>
-            </div>
-
-            <div class="memory-verse-flashcard" id="memoryVerseFlashcard" onclick="nextMemoryVerse()" role="button" aria-label="Next verse">
-                <div class="flashcard-inner" id="flashcardInner">
-                    <div class="flashcard-reference" id="flashcardReference"></div>
-                    <div class="flashcard-text" id="flashcardText"></div>
-                    <div class="flashcard-hint">Tap to continue &rsaquo;</div>
+            <!-- Flashcard View -->
+            <div id="memory-verses-flashcard-view" style="display:none;">
+                <div class="prayer-title-section" style="text-align: center; margin-bottom: 10px;">
+                    <p class="prayerset-intro" style="text-align: center;">Tap the card or swipe to move to the next verse.</p>
                 </div>
-            </div>
 
-            <div class="flashcard-progress">
-                <span id="flashcardCounter"></span>
-                <div class="flashcard-dots" id="flashcardDots"></div>
-            </div>
+                <div class="memory-verse-flashcard" id="memoryVerseFlashcard" onclick="nextMemoryVerse()" role="button" aria-label="Next verse">
+                    <div class="flashcard-inner" id="flashcardInner">
+                        <div class="flashcard-reference" id="flashcardReference"></div>
+                        <div class="flashcard-text" id="flashcardText"></div>
+                        <div class="flashcard-hint">Tap to continue &rsaquo;</div>
+                    </div>
+                </div>
 
-            <div class="flashcard-nav-buttons">
-                <button class="flashcard-nav-btn" onclick="prevMemoryVerse(event)" aria-label="Previous verse">&#8592; Prev</button>
-                <button class="flashcard-nav-btn" onclick="nextMemoryVerse(event)" aria-label="Next verse">Next &#8594;</button>
-            </div>
+                <div class="flashcard-progress">
+                    <span id="flashcardCounter"></span>
+                    <div class="flashcard-dots" id="flashcardDots"></div>
+                </div>
 
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
+                <div class="flashcard-nav-buttons">
+                    <button class="flashcard-nav-btn" onclick="prevMemoryVerse(event)" aria-label="Previous verse">&#8592; Prev</button>
+                    <button class="flashcard-nav-btn" onclick="nextMemoryVerse(event)" aria-label="Next verse">Next &#8594;</button>
+                </div>
+
+                <button class="back-button memory-verse-back-btn" onclick="showMemoryVerseIndex()" aria-label="Back to verse list"></button>
+            </div>
         </div>
 
         <!-- The Beatitudes Content -->

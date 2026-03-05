@@ -296,8 +296,8 @@ let touchStartY = 0;
 let memoryVerseListenersAdded = false;
 
 function initMemoryVerses() {
-    renderMemoryVerse();
-    buildDots();
+    buildMemoryVerseIndex();
+    showMemoryVerseIndex();
 
     if (memoryVerseListenersAdded) return;
     const card = document.getElementById('memoryVerseFlashcard');
@@ -321,6 +321,38 @@ function initMemoryVerses() {
     }, { passive: true });
 
     memoryVerseListenersAdded = true;
+}
+
+function buildMemoryVerseIndex() {
+    const list = document.getElementById('memory-verses-list');
+    if (!list) return;
+    list.innerHTML = '';
+    memoryVerses.forEach(function(verse, i) {
+        const item = document.createElement('button');
+        item.className = 'memory-verse-index-item';
+        item.setAttribute('aria-label', 'Open ' + verse.reference);
+        item.innerHTML = '<span class="memory-verse-index-ref">' + verse.reference + '</span>' +
+            '<span class="memory-verse-index-preview">' + verse.text.replace(/\n\n/g, ' ').substring(0, 80) + '…</span>';
+        item.addEventListener('click', function() {
+            openMemoryVerseCard(i);
+        });
+        list.appendChild(item);
+    });
+}
+
+function showMemoryVerseIndex() {
+    document.getElementById('memory-verses-index').style.display = '';
+    document.getElementById('memory-verses-flashcard-view').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openMemoryVerseCard(index) {
+    currentVerseIndex = index;
+    renderMemoryVerse();
+    buildDots();
+    document.getElementById('memory-verses-index').style.display = 'none';
+    document.getElementById('memory-verses-flashcard-view').style.display = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function renderMemoryVerse() {
