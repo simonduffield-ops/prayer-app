@@ -7,7 +7,8 @@ const examenPrompts = {
         '"The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing." - Zephaniah 3:17 (NIV)',
         '"Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful." - Colossians 3:15 (NIV)',
         '"In your hearts revere Christ as Lord. Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have." - 1 Peter 3:15 (NIV)',
-        '"Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth." - Psalm 46:10 (NIV)'
+        '"Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth." - Psalm 46:10 (NIV)',
+        '"For the jar of flour will not be used up and the jug of oil will not run dry until the day the Lord sends rain on the land." - 1 Kings 17:14 (NIV)'
     ],
     gratitude: [
         'Think through your day like watching a movie. What moments brought you joy? What gifts did God provide? Thank Him for both the obvious blessings and the small graces you might have missed.',

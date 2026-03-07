@@ -256,7 +256,7 @@ function showCreed(creed) {
 const memoryVerses = [
     {
         reference: 'Psalm 37:3-4 (NIV)',
-        text: 'Trust in the Lord and do good; dwell in the land and enjoy safe pasture.Take delight in the Lord, and he will give you the desires of your heart.'
+        text: 'Trust in the Lord and do good; dwell in the land and enjoy safe pasture. Take delight in the Lord, and he will give you the desires of your heart.'
     },
     {
         reference: 'Philippians 4:6-7 (NIV)',
@@ -277,6 +277,10 @@ const memoryVerses = [
     {
         reference: 'Colossians 1:13–20 (NIV)',
         text: 'For he has rescued us from the dominion of darkness and brought us into the kingdom of the Son he loves, in whom we have redemption, the forgiveness of sins.\n\nThe Son is the image of the invisible God, the firstborn over all creation. For in him all things were created: things in heaven and on earth, visible and invisible, whether thrones or powers or rulers or authorities; all things have been created through him and for him. He is before all things, and in him all things hold together. And he is the head of the body, the church; he is the beginning and the firstborn from among the dead, so that in everything he might have the supremacy. For God was pleased to have all his fullness dwell in him, and through him to reconcile to himself all things, whether things on earth or things in heaven, by making peace through his blood, shed on the cross.'
+    },
+    {
+        reference: '1 Kings 17:14 (NIV)',
+        text: 'For the jar of flour will not be used up and the jug of oil will not run dry until the day the Lord sends rain on the land.'
     }
 ];
 
