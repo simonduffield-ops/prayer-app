@@ -1,4 +1,5 @@
 // Dark Mode Toggle
+
 function toggleDarkMode(event) {
     if (event) {
         event.stopPropagation(); // Prevent header click
