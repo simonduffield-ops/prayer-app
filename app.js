@@ -229,7 +229,7 @@ function showTool(tool) {
     if (tool === 'memory-verses') {
         initMemoryVerses();
     }
-    if (tool === 'apostolic') {
+    if (tool === 'apostolic' && typeof initApostolicPrayers === 'function') {
         initApostolicPrayers();
     }
     if (tool === 'persecuted') {
