@@ -257,7 +257,7 @@ function showCreed(creed) {
 
 // ── Prayers of the Apostles Flashcard ───────────────────────────────────────
 
-const apostolicPrayers = [
+var apostolicPrayers = [
     {
         title: 'Boldness in Speaking God\'s Word',
         text: '"Now, Lord, consider their threats and enable your servants to speak your word with great boldness. Stretch out your hand to heal and perform signs and wonders through the name of your holy servant Jesus."',
@@ -350,10 +350,10 @@ const apostolicPrayers = [
     }
 ];
 
-let currentPrayerIndex = 0;
-let apostolicTouchStartX = 0;
-let apostolicTouchStartY = 0;
-let apostolicListenersAdded = false;
+var currentPrayerIndex = 0;
+var apostolicTouchStartX = 0;
+var apostolicTouchStartY = 0;
+var apostolicListenersAdded = false;
 
 function initApostolicPrayers() {
     buildApostolicIndex();
@@ -478,7 +478,7 @@ function prevApostolicPrayer(e) {
 
 // ── Memory Verses Flashcard ──────────────────────────────────────────────────
 
-const memoryVerses = [
+var memoryVerses = [
     {
         reference: 'Psalm 37:3-4 (NIV)',
         text: 'Trust in the Lord and do good; dwell in the land and enjoy safe pasture. Take delight in the Lord, and he will give you the desires of your heart.'
@@ -509,10 +509,10 @@ const memoryVerses = [
     }
 ];
 
-let currentVerseIndex = 0;
-let touchStartX = 0;
-let touchStartY = 0;
-let memoryVerseListenersAdded = false;
+var currentVerseIndex = 0;
+var touchStartX = 0;
+var touchStartY = 0;
+var memoryVerseListenersAdded = false;
 
 function initMemoryVerses() {
     buildMemoryVerseIndex();
