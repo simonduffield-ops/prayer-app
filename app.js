@@ -228,6 +228,9 @@ function showTool(tool) {
     if (tool === 'memory-verses') {
         initMemoryVerses();
     }
+    if (tool === 'apostolic') {
+        initApostolicPrayers();
+    }
     if (tool === 'persecuted') {
         loadPersecutedContent();
     }
@@ -250,6 +253,227 @@ function showCreed(creed) {
     // Add active class to clicked tab
     event.target.classList.add('active');
 }
+
+// ── Prayers of the Apostles Flashcard ───────────────────────────────────────
+
+const apostolicPrayers = [
+    {
+        title: 'Boldness in Speaking God\'s Word',
+        text: '"Now, Lord, consider their threats and enable your servants to speak your word with great boldness. Stretch out your hand to heal and perform signs and wonders through the name of your holy servant Jesus."',
+        reference: 'Acts 4:29-30 (NIV), The Early Church'
+    },
+    {
+        title: 'Spiritual Wisdom and Revelation',
+        text: '"I keep asking that the God of our Lord Jesus Christ, the glorious Father, may give you the Spirit of wisdom and revelation, so that you may know him better. I pray that the eyes of your heart may be enlightened in order that you may know the hope to which he has called you, the riches of his glorious inheritance in his holy people, and his incomparably great power for us who believe."',
+        reference: 'Ephesians 1:17-19 (NIV), Paul'
+    },
+    {
+        title: 'Rooted in God\'s Love',
+        text: '"I pray that out of his glorious riches he may strengthen you with power through his Spirit in your inner being, so that Christ may dwell in your hearts through faith. And I pray that you, being rooted and established in love, may have power, together with all the Lord\'s holy people, to grasp how wide and long and high and deep is the love of Christ, and to know this love that surpasses knowledge—that you may be filled to the measure of all the fullness of God."',
+        reference: 'Ephesians 3:14-21 (NIV), Paul'
+    },
+    {
+        title: 'Prayer for All Occasions',
+        text: '"And pray in the Spirit on all occasions with all kinds of prayers and requests. With this in mind, be alert and always keep on praying for all the Lord\'s people. Pray also for me, that whenever I speak, words may be given me so that I will fearlessly make known the mystery of the gospel, for which I am an ambassador in chains. Pray that I may declare it fearlessly, as I should."',
+        reference: 'Ephesians 6:18-20 (NIV), Paul'
+    },
+    {
+        title: 'Abounding Love and Discernment',
+        text: '"And this is my prayer: that your love may abound more and more in knowledge and depth of insight, so that you may be able to discern what is best and may be pure and blameless for the day of Christ, filled with the fruit of righteousness that comes through Jesus Christ—to the glory and praise of God."',
+        reference: 'Philippians 1:9-11 (NIV), Paul'
+    },
+    {
+        title: 'Filled with the Knowledge of God\'s Will',
+        text: '"We continually ask God to fill you with the knowledge of his will through all the wisdom and understanding that the Spirit gives, so that you may live a life worthy of the Lord and please him in every way: bearing fruit in every good work, growing in the knowledge of God, being strengthened with all power according to his glorious might so that you may have great endurance and patience, and giving joyful thanks to the Father, who has qualified you to share in the inheritance of his holy people in the kingdom of light."',
+        reference: 'Colossians 1:9-12 (NIV), Paul'
+    },
+    {
+        title: 'Open Doors for the Gospel',
+        text: '"And pray for us, too, that God may open a door for our message, so that we may proclaim the mystery of Christ, for which I am in chains."',
+        reference: 'Colossians 4:3 (NIV), Paul'
+    },
+    {
+        title: 'Stand Firm in God\'s Will',
+        text: '"He is always wrestling in prayer for you, that you may stand firm in all the will of God, mature and fully assured."',
+        reference: 'Colossians 4:12 (NIV), Paul'
+    },
+    {
+        title: 'Overflowing Love and Blameless Hearts',
+        text: '"May the Lord make your love increase and overflow for each other and for everyone else, just as ours does for you. May he strengthen your hearts so that you will be blameless and holy in the presence of our God and Father when our Lord Jesus comes with all his holy ones."',
+        reference: '1 Thessalonians 3:12-13 (NIV), Paul'
+    },
+    {
+        title: 'Complete Sanctification',
+        text: '"May God himself, the God of peace, sanctify you through and through. May your whole spirit, soul and body be kept blameless at the coming of our Lord Jesus Christ. The one who calls you is faithful, and he will do it."',
+        reference: '1 Thessalonians 5:23-24 (NIV), Paul'
+    },
+    {
+        title: 'Worthy of His Calling',
+        text: '"With this in mind, we constantly pray for you, that our God may make you worthy of his calling, and that by his power he may bring to fruition your every desire for goodness and your every deed prompted by faith. We pray this so that the name of our Lord Jesus may be glorified in you, and you in him, according to the grace of our God and the Lord Jesus Christ."',
+        reference: '2 Thessalonians 1:11-12 (NIV), Paul'
+    },
+    {
+        title: 'The Message Spreads and Deliverance',
+        text: '"As for other matters, brothers and sisters, pray for us that the message of the Lord may spread rapidly and be honoured, just as it was with you. And pray that we may be delivered from wicked and evil people, for not everyone has faith. But the Lord is faithful, and he will strengthen you and protect you from the evil one."',
+        reference: '2 Thessalonians 3:1-3 (NIV), Paul'
+    },
+    {
+        title: 'God\'s Love and Christ\'s Perseverance',
+        text: '"May the Lord direct your hearts into God\'s love and Christ\'s perseverance."',
+        reference: '2 Thessalonians 3:5 (NIV), Paul'
+    },
+    {
+        title: 'The Lord of Peace',
+        text: '"Now may the Lord of peace himself give you peace at all times and in every way. The Lord be with all of you."',
+        reference: '2 Thessalonians 3:16 (NIV), Paul'
+    },
+    {
+        title: 'Holistic Blessing',
+        text: '"Dear friend, I pray that you may enjoy good health and that all may go well with you, even as your soul is getting along well."',
+        reference: '3 John 1:2 (NIV), John'
+    },
+    {
+        title: 'Kept from Stumbling',
+        text: '"To him who is able to keep you from stumbling and to present you before his glorious presence without fault and with great joy—to the only God our Saviour be glory, majesty, power and authority, through Jesus Christ our Lord, before all ages, now and forevermore! Amen."',
+        reference: 'Jude 1:24-25 (NIV), Jude'
+    },
+    {
+        title: 'Unity of Mind and Voice',
+        text: '"May the God who gives endurance and encouragement give you the same attitude of mind toward each other that Christ Jesus had, so that with one mind and one voice you may glorify the God and Father of our Lord Jesus Christ."',
+        reference: 'Romans 15:5-6 (NIV), Paul'
+    },
+    {
+        title: 'Overflowing Hope',
+        text: '"May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit."',
+        reference: 'Romans 15:13 (NIV), Paul'
+    }
+];
+
+let currentPrayerIndex = 0;
+let apostolicTouchStartX = 0;
+let apostolicTouchStartY = 0;
+let apostolicListenersAdded = false;
+
+function initApostolicPrayers() {
+    buildApostolicIndex();
+    showApostolicIndex();
+
+    if (apostolicListenersAdded) return;
+    const card = document.getElementById('apostolicFlashcard');
+    if (!card) return;
+
+    card.addEventListener('touchstart', function(e) {
+        apostolicTouchStartX = e.touches[0].clientX;
+        apostolicTouchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    card.addEventListener('touchend', function(e) {
+        const dx = e.changedTouches[0].clientX - apostolicTouchStartX;
+        const dy = e.changedTouches[0].clientY - apostolicTouchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+            if (dx < 0) {
+                animateApostolicCard('next');
+            } else {
+                animateApostolicCard('prev');
+            }
+        }
+    }, { passive: true });
+
+    apostolicListenersAdded = true;
+}
+
+function buildApostolicIndex() {
+    const list = document.getElementById('apostolic-prayers-list');
+    if (!list) return;
+    list.innerHTML = '';
+    apostolicPrayers.forEach(function(prayer, i) {
+        const item = document.createElement('button');
+        item.className = 'memory-verse-index-item';
+        item.setAttribute('aria-label', 'Open ' + prayer.title);
+        item.innerHTML = '<span class="memory-verse-index-ref">' + prayer.reference + '</span>' +
+            '<span class="memory-verse-index-preview">' + prayer.title + '</span>';
+        item.addEventListener('click', function() {
+            openApostolicCard(i);
+        });
+        list.appendChild(item);
+    });
+}
+
+function showApostolicIndex() {
+    document.getElementById('apostolic-index').style.display = '';
+    document.getElementById('apostolic-flashcard-view').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openApostolicCard(index) {
+    currentPrayerIndex = index;
+    renderApostolicCard();
+    buildApostolicDots();
+    document.getElementById('apostolic-index').style.display = 'none';
+    document.getElementById('apostolic-flashcard-view').style.display = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderApostolicCard() {
+    const prayer = apostolicPrayers[currentPrayerIndex];
+    document.getElementById('apostolicCardTitle').textContent = prayer.title;
+    document.getElementById('apostolicCardText').innerHTML = prayer.text;
+    document.getElementById('apostolicCardReference').textContent = '— ' + prayer.reference;
+    document.getElementById('apostolicCardCounter').textContent =
+        (currentPrayerIndex + 1) + ' of ' + apostolicPrayers.length;
+    updateApostolicDots();
+}
+
+function buildApostolicDots() {
+    const dotsEl = document.getElementById('apostolicDots');
+    if (!dotsEl) return;
+    dotsEl.innerHTML = '';
+    apostolicPrayers.forEach(function(_, i) {
+        const dot = document.createElement('span');
+        dot.className = 'flashcard-dot' + (i === currentPrayerIndex ? ' active' : '');
+        dotsEl.appendChild(dot);
+    });
+}
+
+function updateApostolicDots() {
+    const dotsEl = document.getElementById('apostolicDots');
+    if (!dotsEl) return;
+    const dots = dotsEl.querySelectorAll('.flashcard-dot');
+    dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === currentPrayerIndex);
+    });
+}
+
+function animateApostolicCard(direction) {
+    const card = document.getElementById('apostolicFlashcard');
+    const outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
+    const inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
+
+    card.classList.add(outClass);
+    setTimeout(function() {
+        card.classList.remove(outClass);
+        if (direction === 'next') {
+            currentPrayerIndex = (currentPrayerIndex + 1) % apostolicPrayers.length;
+        } else {
+            currentPrayerIndex = (currentPrayerIndex - 1 + apostolicPrayers.length) % apostolicPrayers.length;
+        }
+        renderApostolicCard();
+        card.classList.add(inClass);
+        setTimeout(function() { card.classList.remove(inClass); }, 320);
+    }, 280);
+}
+
+function nextApostolicPrayer(e) {
+    if (e) e.stopPropagation();
+    animateApostolicCard('next');
+}
+
+function prevApostolicPrayer(e) {
+    if (e) e.stopPropagation();
+    animateApostolicCard('prev');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 // ── Memory Verses Flashcard ──────────────────────────────────────────────────
 
