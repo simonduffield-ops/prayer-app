@@ -178,8 +178,7 @@ function loadDailyContent() {
         if (lectioButton) lectioElement.appendChild(lectioButton);
     }
     const lectioFocusEl = document.getElementById('lectio-focus');
-    if (lectioFocusEl) lectioFocusEl.innerHTML = window._dailyLectio.focus;
-    
+    if (lectioFocusEl) lectioFocusEl.innerHTML = window._dailyLectio.focus;    
     // Load daily Adoration content
     const adorationElement = document.getElementById('adoration-scripture');
     const adorationButton = adorationElement.querySelector('.new-content-button');
@@ -992,24 +991,7 @@ function prevStepCard(id, e) {
 // ── Lectio Divina flashcard ────────────────────────────────────────────────────
 
 function initLectioFlashcard() {
-    var daily = window._dailyLectio;
-    var scriptureHtml, focusHtml;
-    if (daily) {
-        scriptureHtml = `"${daily.scripture.text}" - ${daily.scripture.reference}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
-        focusHtml = daily.focus;
-    } else {
-        var scriptureEl = document.getElementById('lectio-scripture');
-        scriptureHtml = scriptureEl ? scriptureEl.innerHTML : '';
-        var focusEl = document.getElementById('lectio-focus');
-        focusHtml = focusEl ? focusEl.innerHTML : '';
-    }
-
     var cards = [
-        {
-            title: '',
-            body: '<div class="scripture-text" id="lectio-scripture">' + scriptureHtml + '</div>' +
-                  '<div class="meditation-focus" id="lectio-focus" style="margin-top:20px;">' + focusHtml + '</div>'
-        },
         {
             title: 'Lectio — Read',
             body: '<p>Read the passage slowly and attentively. What word or phrase stands out to you? Read it again, even more slowly.</p>' +
@@ -1032,6 +1014,16 @@ function initLectioFlashcard() {
         }
     ];
     initStepFlashcard('lectio', cards);
+
+    // Apply any pre-loaded daily content to the visible DOM elements
+    if (window._dailyLectio) {
+        var scriptureEl = document.getElementById('lectio-scripture');
+        var focusEl = document.getElementById('lectio-focus');
+        if (scriptureEl) {
+            scriptureEl.innerHTML = `"${window._dailyLectio.scripture.text}" - ${window._dailyLectio.scripture.reference}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
+        }
+        if (focusEl) focusEl.innerHTML = window._dailyLectio.focus;
+    }
 }
 
 // ── Beatitudes flashcard ───────────────────────────────────────────────────────
@@ -1176,16 +1168,15 @@ function generateExamenContent() {
 function generateLectioContent() {
     const scripture = getRandomItem(lectioScriptures);
     const focusHtml = `Focus Word: "${scripture.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>`;
-    const scriptureHtml = `"${scripture.text}" - ${scripture.reference}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
 
     window._dailyLectio = { scripture: scripture, focus: focusHtml };
 
-    if (stepFlashcards['lectio']) {
-        stepFlashcards['lectio'].cards[0].body =
-            '<div class="scripture-text" id="lectio-scripture">' + scriptureHtml + '</div>' +
-            '<div class="meditation-focus" id="lectio-focus" style="margin-top:20px;">' + focusHtml + '</div>';
-        if (stepFlashcards['lectio'].index === 0) renderStepCard('lectio');
+    const scriptureEl = document.getElementById('lectio-scripture');
+    if (scriptureEl) {
+        scriptureEl.innerHTML = `"${scripture.text}" - ${scripture.reference}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
     }
+    const focusEl = document.getElementById('lectio-focus');
+    if (focusEl) focusEl.innerHTML = focusHtml;
 }
 
 function generateAdorationContent() {
