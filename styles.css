@@ -1138,7 +1138,7 @@ body.dark-mode .apostolic-reference {
 .flashcard-hint {
     margin-top: 24px;
     font-size: 0.8em;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.6);
     letter-spacing: 0.04em;
 }
 
@@ -1150,7 +1150,8 @@ body.dark-mode .apostolic-reference {
     margin: 16px 0 8px;
 }
 
-#flashcardCounter {
+#flashcardCounter,
+[id$="Counter"] {
     font-size: 0.85em;
     color: #888;
     font-weight: 600;
@@ -1167,7 +1168,7 @@ body.dark-mode .apostolic-reference {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #d0d0d0;
+    background: #c0c0c0;
     transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -1200,26 +1201,51 @@ body.dark-mode .apostolic-reference {
     transform: translateY(-2px);
 }
 
+/* ── Content inside flashcards ───────────────────────────────────────────────── */
+
+.memory-verse-flashcard .reflection-box {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    text-align: left;
+}
+
+.memory-verse-flashcard .reflection-box p,
+.memory-verse-flashcard p,
+.memory-verse-flashcard strong,
+.memory-verse-flashcard em {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.memory-verse-flashcard .scripture-text {
+    background: rgba(255, 255, 255, 0.15);
+    border-top-color: rgba(255, 255, 255, 0.4);
+    border-bottom-color: rgba(255, 255, 255, 0.4);
+    box-shadow: none;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: left;
+}
+
 body.dark-mode .memory-verse-flashcard {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
 body.dark-mode .flashcard-hint {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.55);
 }
 
-body.dark-mode #flashcardCounter {
-    color: #a0a0a0;
+body.dark-mode #flashcardCounter,
+body.dark-mode [id$="Counter"] {
+    color: #b0b0b0;
 }
 
 body.dark-mode .flashcard-dot {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 body.dark-mode .flashcard-nav-btn {
     background: rgba(15, 52, 96, 0.9);
-    color: #8fa3ff;
-    border-color: #8fa3ff;
+    color: #a0b4ff;
+    border-color: #a0b4ff;
 }
 
 body.dark-mode .flashcard-nav-btn:hover {
