@@ -170,13 +170,15 @@ function loadDailyContent() {
     document.getElementById('examen-closing').textContent = daily.examen.closing;
     
     // Load daily Lectio content
+    window._dailyLectio = { scripture: daily.lectio, focus: `Focus Word: "${daily.lectio.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>` };
     const lectioElement = document.getElementById('lectio-scripture');
-    const lectioButton = lectioElement.querySelector('.new-content-button');
-    lectioElement.innerHTML = `"${daily.lectio.text}" - ${daily.lectio.reference}`;
-    if (lectioButton) {
-        lectioElement.appendChild(lectioButton);
+    if (lectioElement) {
+        const lectioButton = lectioElement.querySelector('.new-content-button');
+        lectioElement.innerHTML = `"${daily.lectio.text}" - ${daily.lectio.reference}`;
+        if (lectioButton) lectioElement.appendChild(lectioButton);
     }
-    document.getElementById('lectio-focus').innerHTML = `Focus Word: "${daily.lectio.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>`;
+    const lectioFocusEl = document.getElementById('lectio-focus');
+    if (lectioFocusEl) lectioFocusEl.innerHTML = window._dailyLectio.focus;
     
     // Load daily Adoration content
     const adorationElement = document.getElementById('adoration-scripture');
@@ -197,8 +199,12 @@ function loadDailyContent() {
     // Load daily Prayer Set content
     for (let i = 1; i <= 7; i++) {
         const movement = daily.prayerset[`movement${i}`];
-        document.getElementById(`prayerset-movement${i}-scripture`).innerHTML = `"${movement.scripture}" - ${movement.reference}`;
-        document.getElementById(`prayerset-movement${i}-prompt`).textContent = movement.prompt;
+        window._dailyPrayersetContent = window._dailyPrayersetContent || {};
+        window._dailyPrayersetContent[i] = movement;
+        const scriptureEl = document.getElementById(`prayerset-movement${i}-scripture`);
+        const promptEl = document.getElementById(`prayerset-movement${i}-prompt`);
+        if (scriptureEl) scriptureEl.innerHTML = `"${movement.scripture}" - ${movement.reference}`;
+        if (promptEl) promptEl.textContent = movement.prompt;
     }
     
     // Load Open Doors calendar entry for today
@@ -234,6 +240,15 @@ function showTool(tool) {
     }
     if (tool === 'declarations') {
         initDeclarations('in-christ');
+    }
+    if (tool === 'lectio') {
+        initLectioFlashcard();
+    }
+    if (tool === 'beatitudes') {
+        initBeatitudesFlashcard();
+    }
+    if (tool === 'prayerset') {
+        initLordsPrayerFlashcard();
     }
     if (tool === 'persecuted') {
         loadPersecutedContent();
@@ -883,6 +898,253 @@ function showDeclaration(declaration) {
     initDeclarations(declaration);
 }
 
+// ── Generic step-through flashcard engine ─────────────────────────────────────
+
+var stepFlashcards = {};
+
+function initStepFlashcard(id, cards) {
+    stepFlashcards[id] = { cards: cards, index: 0, listenersAdded: false };
+    renderStepCard(id);
+    buildStepDots(id);
+    if (!stepFlashcards[id].listenersAdded) {
+        var card = document.getElementById(id + 'Flashcard');
+        if (card) {
+            var touchStartX, touchStartY;
+            card.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+            card.addEventListener('touchend', function(e) {
+                var dx = e.changedTouches[0].clientX - touchStartX;
+                var dy = e.changedTouches[0].clientY - touchStartY;
+                if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+                    animateStepCard(id, dx < 0 ? 'next' : 'prev');
+                }
+            }, { passive: true });
+            stepFlashcards[id].listenersAdded = true;
+        }
+    }
+}
+
+function renderStepCard(id) {
+    var state = stepFlashcards[id];
+    if (!state) return;
+    var card = state.cards[state.index];
+    var titleEl = document.getElementById(id + 'CardTitle');
+    var bodyEl  = document.getElementById(id + 'CardBody');
+    if (titleEl) titleEl.innerHTML = card.title || '';
+    if (bodyEl)  bodyEl.innerHTML  = card.body  || '';
+    var counterEl = document.getElementById(id + 'Counter');
+    if (counterEl) counterEl.textContent = (state.index + 1) + ' of ' + state.cards.length;
+    updateStepDots(id);
+}
+
+function buildStepDots(id) {
+    var state = stepFlashcards[id];
+    var dotsEl = document.getElementById(id + 'Dots');
+    if (!dotsEl || !state) return;
+    dotsEl.innerHTML = '';
+    state.cards.forEach(function(_, i) {
+        var dot = document.createElement('span');
+        dot.className = 'flashcard-dot' + (i === state.index ? ' active' : '');
+        dotsEl.appendChild(dot);
+    });
+}
+
+function updateStepDots(id) {
+    var state = stepFlashcards[id];
+    var dotsEl = document.getElementById(id + 'Dots');
+    if (!dotsEl || !state) return;
+    dotsEl.querySelectorAll('.flashcard-dot').forEach(function(dot, i) {
+        dot.classList.toggle('active', i === state.index);
+    });
+}
+
+function animateStepCard(id, direction) {
+    var state = stepFlashcards[id];
+    if (!state) return;
+    var card = document.getElementById(id + 'Flashcard');
+    var outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
+    var inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
+    card.classList.add(outClass);
+    setTimeout(function() {
+        card.classList.remove(outClass);
+        var len = state.cards.length;
+        state.index = direction === 'next'
+            ? (state.index + 1) % len
+            : (state.index - 1 + len) % len;
+        renderStepCard(id);
+        card.classList.add(inClass);
+        setTimeout(function() { card.classList.remove(inClass); }, 320);
+    }, 280);
+}
+
+function nextStepCard(id, e) {
+    if (e) e.stopPropagation();
+    animateStepCard(id, 'next');
+}
+
+function prevStepCard(id, e) {
+    if (e) e.stopPropagation();
+    animateStepCard(id, 'prev');
+}
+
+// ── Lectio Divina flashcard ────────────────────────────────────────────────────
+
+function initLectioFlashcard() {
+    var daily = window._dailyLectio;
+    var scriptureHtml, focusHtml;
+    if (daily) {
+        scriptureHtml = `"${daily.scripture.text}" - ${daily.scripture.reference}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
+        focusHtml = daily.focus;
+    } else {
+        var scriptureEl = document.getElementById('lectio-scripture');
+        scriptureHtml = scriptureEl ? scriptureEl.innerHTML : '';
+        var focusEl = document.getElementById('lectio-focus');
+        focusHtml = focusEl ? focusEl.innerHTML : '';
+    }
+
+    var cards = [
+        {
+            title: '',
+            body: '<div class="scripture-text" id="lectio-scripture">' + scriptureHtml + '</div>' +
+                  '<div class="meditation-focus" id="lectio-focus" style="margin-top:20px;">' + focusHtml + '</div>'
+        },
+        {
+            title: 'Lectio — Read',
+            body: '<p>Read the passage slowly and attentively. What word or phrase stands out to you? Read it again, even more slowly.</p>' +
+                  '<div class="reflection-box"><p><em>Sit with the word or phrase that catches your attention...</em></p></div>'
+        },
+        {
+            title: 'Meditatio — Meditate',
+            body: '<p>Repeat your word or phrase quietly. What is God saying to you through these words? How do they connect to your life right now?</p>' +
+                  '<div class="reflection-box"><p><em>Reflect on what God might be speaking to you...</em></p></div>'
+        },
+        {
+            title: 'Oratio — Pray',
+            body: '<p>Respond to God in prayer. Share your heart — your joys, concerns, needs, and gratitude. Let this passage shape your prayer.</p>' +
+                  '<div class="reflection-box"><p><em>Pray in response to God\'s word...</em></p></div>'
+        },
+        {
+            title: 'Contemplatio — Rest',
+            body: '<p>Simply rest in God\'s presence. Let go of words and thoughts. Allow His love to surround you in silence.</p>' +
+                  '<div class="reflection-box"><p><em>Rest silently in God\'s presence for 2–3 minutes...</em></p></div>'
+        }
+    ];
+    initStepFlashcard('lectio', cards);
+}
+
+// ── Beatitudes flashcard ───────────────────────────────────────────────────────
+
+var beatitudesCards = [
+    {
+        title: 'Blessed are the poor in spirit, for theirs is the kingdom of heaven.',
+        body: '<div class="reflection-box"><p>Lord Jesus, please show me the distractions, worries, and anxiety in my spirit. Empty me of anything that is preventing me from hearing or receiving from you.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    },
+    {
+        title: 'Blessed are those who mourn, for they will be comforted.',
+        body: '<div class="reflection-box"><p>Lord, is there anything/anyone that I am not filled with your compassion toward? Teach me to feel the wound of love.</p><p>What do you want me to be sad about? What do you want me to be moved with compassion by?</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    },
+    {
+        title: 'Blessed are the meek, for they will inherit the earth.',
+        body: '<div class="reflection-box"><p>Lord show me my worldly passions that are not surrendered to you. What is it you want to replace my worldly passions with?</p><p>Are there any passions that are out of control in my life, that are uncorralled? Aim them, align them in the right direction.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    },
+    {
+        title: 'Blessed are those who hunger and thirst for righteousness, for they will be filled.',
+        body: '<div class="reflection-box"><p>Lord is there any part of me that is not longing to be satisfied by you? Transform me. Fill me with the resurrection life of Jesus.</p><p>What do you want me to be hungry and thirsty for?</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    },
+    {
+        title: 'Blessed are the merciful, for they will receive mercy.',
+        body: '<div class="reflection-box"><p>Lord is there any part of my life where I am not living in your mercy? Lord is there anyone in my life to whom I am not extending mercy? Please help me to move in the constant flow of your mercy for the world.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    },
+    {
+        title: 'Blessed are the pure in heart, for they will see God.',
+        body: '<div class="reflection-box"><p><em>Lord, are there any places where my heart is distracted or conflicted? Purify my heart and mind, so that I can see the world as you see it. Where am I not single-minded? Is there anyplace where I am outside my identity?</em></p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    },
+    {
+        title: 'Blessed are the peacemakers, for they will be called children of God.',
+        body: '<div class="reflection-box"><p><em>Lord, show me any place in my life where I am not at perfect peace. How can I be an agent of peace and reconciliation in the world?</em></p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    },
+    {
+        title: 'Blessed are those who are persecuted because of righteousness, for theirs is the kingdom of heaven.',
+        body: '<div class="reflection-box"><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    },
+    {
+        title: 'Blessed are you when people insult you, persecute you and falsely say all kinds of evil against you because of me.',
+        body: '<div class="reflection-box"><p>Rejoice and be glad, because great is your reward in heaven, for in the same way they persecuted the prophets who were before you.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    }
+];
+
+function initBeatitudesFlashcard() {
+    initStepFlashcard('beatitudes', beatitudesCards);
+}
+
+// ── Lord's Prayer flashcard ────────────────────────────────────────────────────
+
+function buildLordsPrayerCards() {
+    return [
+        {
+            title: 'Our Father Who Is In Heaven',
+            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Approach, Worship, Adoration &amp; Surrender</div>' +
+                  '<div class="scripture-text" id="prayerset-movement1-scripture">"Therefore, brothers and sisters, since we have confidence to enter the Most Holy Place by the blood of Jesus... let us draw near to God with a sincere heart and with the full assurance that faith brings." - Hebrews 10:19,22</div>' +
+                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement1-prompt">Come into God\'s presence as a beloved child. He is your Father — both intimately close and infinitely glorious. Worship Him for who He is. Surrender your heart, your day, and your will to Him.</span></p><p><em>Take time to worship and adore your Heavenly Father...</em></p></div>'
+        },
+        {
+            title: 'Hallowed Be Your Name',
+            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Worship, Gratitude &amp; Prayer for the World</div>' +
+                  '<div class="scripture-text" id="prayerset-movement2-scripture">"Ascribe to the Lord the glory due his name; worship the Lord in the splendor of his holiness." - Psalm 29:2</div>' +
+                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement2-prompt">Honor God\'s holy name. Thank Him for who He has revealed Himself to be. Pray that the world would know Him as He truly is — in all His beauty, holiness, and love.</span></p><p><em>Worship God\'s character and pray for His name to be honored throughout the earth...</em></p></div>'
+        },
+        {
+            title: 'Your Kingdom Come, Your Will Be Done',
+            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Submission &amp; Intercession</div>' +
+                  '<div class="scripture-text" id="prayerset-movement3-scripture">"Seek first his kingdom and his righteousness, and all these things will be given to you as well." - Matthew 6:33</div>' +
+                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement3-prompt">Submit to God\'s reign in your life. Pray for His kingdom to come in your family, your church, the persecuted church worldwide, and for revival and renewal in the nations.</span></p><p><em>Intercede for God\'s will to be done on earth as it is in heaven...</em></p></div>'
+        },
+        {
+            title: 'Give Us This Day Our Daily Bread',
+            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Provision — His Presence, Mercy &amp; Help</div>' +
+                  '<div class="scripture-text" id="prayerset-movement4-scripture">"And my God will meet all your needs according to the riches of his glory in Christ Jesus." - Philippians 4:19</div>' +
+                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement4-prompt">Ask for God\'s provision — His presence above all, His mercy for today, physical provision, and help in every area of need. Acknowledge your complete dependence on Him.</span></p><p><em>Bring your needs to God, trusting in His faithful provision...</em></p></div>'
+        },
+        {
+            title: 'Forgive Us As We Forgive Others',
+            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Reflection &amp; Release</div>' +
+                  '<div class="scripture-text" id="prayerset-movement5-scripture">"Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you." - Colossians 3:13</div>' +
+                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement5-prompt">Receive God\'s forgiveness for your sins. Then release everyone and everything to Him — forgiving those who have hurt you, letting go of offenses, surrendering control.</span></p><p><em>Confess your sins, receive forgiveness, and extend forgiveness to others...</em></p></div>'
+        },
+        {
+            title: 'Lead Us Not Into Trial, Deliver Us From Evil',
+            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Gethsemane Prayer &amp; Spiritual Warfare</div>' +
+                  '<div class="scripture-text" id="prayerset-movement6-scripture">"Submit yourselves, then, to God. Resist the devil, and he will flee from you." - James 4:7</div>' +
+                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement6-prompt">Like Jesus in Gethsemane, submit to God\'s will even in difficulty. Stand against spiritual forces of evil. Ask for protection from temptation and deliverance from the evil one.</span></p><p><em>Pray for strength in trials and victory over spiritual opposition...</em></p></div>'
+        },
+        {
+            title: 'Listening Prayer',
+            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Hearing God\'s Voice</div>' +
+                  '<div class="scripture-text" id="prayerset-movement7-scripture">"Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, \'This is the way; walk in it.\'" - Isaiah 30:21</div>' +
+                  '<div class="reflection-box"><p><strong>Ask God:</strong></p><p style="font-style:italic;margin:15px 0;">"What is important for me to know about today?"</p><p style="font-style:italic;margin:15px 0;">"What do You want me to do about it?"</p><p><em><span id="prayerset-movement7-prompt">Be still and listen for God\'s gentle voice...</span></em></p></div>'
+        }
+    ];
+}
+
+function initLordsPrayerFlashcard() {
+    initStepFlashcard('prayerset', buildLordsPrayerCards());
+    // Apply any pre-loaded daily content to the live DOM elements
+    if (window._dailyPrayersetContent) {
+        for (let i = 1; i <= 7; i++) {
+            const movement = window._dailyPrayersetContent[i];
+            if (!movement) continue;
+            const scriptureEl = document.getElementById(`prayerset-movement${i}-scripture`);
+            const promptEl = document.getElementById(`prayerset-movement${i}-prompt`);
+            if (scriptureEl) scriptureEl.innerHTML = `"${movement.scripture}" - ${movement.reference}`;
+            if (promptEl) promptEl.textContent = movement.prompt;
+        }
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 function showMainMenu() {
     document.getElementById('main-menu').style.display = 'block';
     document.querySelectorAll('.prayer-content').forEach(content => {
@@ -913,13 +1175,17 @@ function generateExamenContent() {
 
 function generateLectioContent() {
     const scripture = getRandomItem(lectioScriptures);
-    const lectioElement = document.getElementById('lectio-scripture');
-    const lectioButton = lectioElement.querySelector('.new-content-button');
-    lectioElement.innerHTML = `"${scripture.text}" - ${scripture.reference}`;
-    if (lectioButton) {
-        lectioElement.appendChild(lectioButton);
+    const focusHtml = `Focus Word: "${scripture.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>`;
+    const scriptureHtml = `"${scripture.text}" - ${scripture.reference}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
+
+    window._dailyLectio = { scripture: scripture, focus: focusHtml };
+
+    if (stepFlashcards['lectio']) {
+        stepFlashcards['lectio'].cards[0].body =
+            '<div class="scripture-text" id="lectio-scripture">' + scriptureHtml + '</div>' +
+            '<div class="meditation-focus" id="lectio-focus" style="margin-top:20px;">' + focusHtml + '</div>';
+        if (stepFlashcards['lectio'].index === 0) renderStepCard('lectio');
     }
-    document.getElementById('lectio-focus').innerHTML = `Focus Word: "${scripture.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>`;
 }
 
 function generateAdorationContent() {
@@ -941,10 +1207,14 @@ function generateAdorationContent() {
 // generateApostolicContent() removed - apostolic prayers now display all prayers statically
 
 function generatePrayerSetContent() {
+    window._dailyPrayersetContent = window._dailyPrayersetContent || {};
     for (let i = 1; i <= 7; i++) {
         const movement = getRandomItem(prayerSetContent[`movement${i}`]);
-        document.getElementById(`prayerset-movement${i}-scripture`).innerHTML = `"${movement.scripture}" - ${movement.reference}`;
-        document.getElementById(`prayerset-movement${i}-prompt`).textContent = movement.prompt;
+        window._dailyPrayersetContent[i] = movement;
+        const el = document.getElementById(`prayerset-movement${i}-scripture`);
+        if (el) el.innerHTML = `"${movement.scripture}" - ${movement.reference}`;
+        const promptEl = document.getElementById(`prayerset-movement${i}-prompt`);
+        if (promptEl) promptEl.textContent = movement.prompt;
     }
 }
 
