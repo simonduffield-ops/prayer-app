@@ -668,47 +668,47 @@ var inChristDeclarations = [
 
 var dailyDeclarations = [
     {
-        category: '1. My prayers are powerful and effective',
+        category: 'My prayers are powerful and effective',
         text: 'For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.\n\nThe prayer of a righteous person has great power as it is working.',
         reference: '2 Corinthians 5:21; James 5:16b'
     },
     {
-        category: '2. God richly supplies all my financial needs',
+        category: 'God richly supplies all my financial needs',
         text: 'And my God will supply every need of yours according to his riches in glory in Christ Jesus.',
         reference: 'Philippians 4:19'
     },
     {
-        category: '3. I am dead to sin and alive to obeying God',
+        category: 'I am dead to sin and alive to obeying God',
         text: 'So you also must consider yourselves dead to sin and alive to God in Christ Jesus.',
         reference: 'Romans 6:11'
     },
     {
-        category: '4. I walk in ever-increasing health',
+        category: 'I walk in ever-increasing health',
         text: 'Surely he has borne our griefs and carried our sorrows... he was wounded for our transgressions; he was crushed for our iniquities; upon him was the chastisement that brought us peace, and with his stripes we are healed.',
         reference: 'Isaiah 53:4–5'
     },
     {
-        category: '5. I live under a supernatural protection',
+        category: 'I live under a supernatural protection',
         text: 'He who dwells in the shelter of the Most High will abide in the shadow of the Almighty.',
         reference: 'Psalm 91:1'
     },
     {
-        category: '6. I prosper in all my relationships',
+        category: 'I prosper in all my relationships',
         text: 'And Jesus increased in wisdom and in stature and in favor with God and man.',
         reference: 'Luke 2:52'
     },
     {
-        category: '7. I consistently bring God encounters to other people',
+        category: 'I consistently bring God encounters to other people',
         text: 'And these signs will accompany those who believe: in my name they will cast out demons; they will speak in new tongues... they will lay their hands on the sick, and they will recover.',
         reference: 'Mark 16:17–18'
     },
     {
-        category: '8. Through Jesus I am 100% loved and worthy to receive all of God\'s blessings',
+        category: 'Through Jesus I am 100% loved and worthy to receive all of God\'s blessings',
         text: 'Did you receive the Spirit by works of the law or by hearing with faith?... Does he who supplies the Spirit to you and works miracles among you do so by works of the law, or by hearing with faith?',
         reference: 'Galatians 3:2, 5'
     },
     {
-        category: '9. Each of my family members is wonderfully blessed and radically loves Jesus',
+        category: 'Each of my family members is wonderfully blessed and radically loves Jesus',
         text: 'Believe in the Lord Jesus, and you will be saved, you and your household.',
         reference: 'Acts 16:31'
     }
@@ -773,7 +773,8 @@ function renderDeclarationCard(type) {
     var data = type === 'in-christ' ? inChristDeclarations : dailyDeclarations;
     var index = type === 'in-christ' ? currentInChristIndex : currentDailyIndex;
     var item = data[index];
-    document.getElementById(type + 'CardCategory').textContent = item.category;
+    var categoryEl = document.getElementById(type + 'CardCategory');
+    if (categoryEl) categoryEl.textContent = type === 'in-christ' ? '' : item.category;
     document.getElementById(type + 'CardText').innerHTML = item.text.replace(/\n\n/g, '<br><br>');
     document.getElementById(type + 'CardReference').textContent = item.reference;
     document.getElementById(type + 'Counter').textContent = (index + 1) + ' of ' + data.length;
