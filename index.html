@@ -183,65 +183,22 @@
                 </div>
             </div>
 
-
-            <div class="step">
-                <span class="step-number">1</span>
-                <div>
-                    <div class="step-title">Give Thanks - Gratitude is the Foundation</div>
-                    <p id="gratitude-prompt">Recall and thank God for the blessings of the day. Think through your day like watching a movie. What moments brought you joy? What gifts did God provide? Thank Him for both the obvious blessings and the small graces you might have missed.</p>
-                    <div class="reflection-box">
-                        <p><em>Write or reflect on 3-5 things you're grateful for from today...</em></p>
-                    </div>
+            <div class="memory-verse-flashcard" id="examenFlashcard" onclick="nextStepCard('examen')" role="button" aria-label="Next step">
+                <div class="flashcard-inner">
+                    <div class="flashcard-reference" id="examenCardTitle"></div>
+                    <div class="flashcard-text" id="examenCardBody"></div>
+                    <div class="flashcard-hint">Tap to continue &rsaquo;</div>
                 </div>
             </div>
 
-            <div class="step">
-                <span class="step-number">2</span>
-                <div>
-                    <div class="step-title">Ask for Light - Invite the Holy Spirit</div>
-                    <p>Pray for the Holy Spirit to help you see your day clearly, with honesty and openness. Ask God to illuminate the movements of consolation and desolation in your heart today.</p>
-                    <div class="reflection-box">
-                        <p><em>"Holy Spirit, give me light to see this day through Your eyes and discern Your movements in my soul..."</em></p>
-                    </div>
-                </div>
+            <div class="flashcard-progress">
+                <span id="examenCounter"></span>
+                <div class="flashcard-dots" id="examenDots"></div>
             </div>
 
-            <div class="step step-consolation-desolation">
-                <span class="step-number">3</span>
-                <div>
-                    <div class="step-title">Review the Day - Notice Consolation and Desolation</div>
-                    <p id="review-prompt">Walk through the events of the day, paying attention to your inner movements:</p>
-                    <div class="reflection-box">
-                        <p><strong>Consolation:</strong> <span id="consolation-prompt">When did you feel close to God? Notice moments of peace, joy, hope, faith, and charity. What experiences drew you toward love of God and neighbor? What inflamed your soul with spiritual warmth?</span></p>
-                        <p style="margin-top: 15px;"><em>Ask: "What brought me closer to God today?"</em></p>
-                    </div>
-                    <div class="reflection-box" style="margin-top: 15px;">
-                        <p><strong>Desolation:</strong> <span id="desolation-prompt">When did you feel distant from God or resistant to His presence? Notice spiritual dryness, darkness, agitation, or movement toward earthly things. What pulled you into self-absorption or away from love?</span></p>
-                        <p style="margin-top: 15px;"><em>Ask: "What distracted me or pulled me away from God today?"</em></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step">
-                <span class="step-number">4</span>
-                <div>
-                    <div class="step-title">Face Your Shortcomings - Ask Forgiveness</div>
-                    <p id="forgiveness-prompt">Recognize times you failed to love, made poor choices, or missed God's presence. Where did you fall short? Bring these honestly to Jesus with humility and receive His grace and forgiveness.</p>
-                    <div class="reflection-box">
-                        <p><em>Confess your shortcomings and receive God's mercy...</em></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step">
-                <span class="step-number">5</span>
-                <div>
-                    <div class="step-title">Look Ahead - Prepare for Tomorrow</div>
-                    <p id="tomorrow-prompt">Turn your thoughts toward tomorrow: what challenges or opportunities await? Based on your recognition of consolation and desolation today, ask for God's grace. What did you learn about what draws you closer to God? How can you approach tomorrow with His help?</p>
-                    <div class="reflection-box">
-                        <p><em>Ask God for grace to pursue what brings life and wisdom to navigate what challenges you...</em></p>
-                    </div>
-                </div>
+            <div class="flashcard-nav-buttons">
+                <button class="flashcard-nav-btn" onclick="prevStepCard('examen', event)" aria-label="Previous step">&#8592; Prev</button>
+                <button class="flashcard-nav-btn" onclick="nextStepCard('examen', event)" aria-label="Next step">Next &#8594;</button>
             </div>
 
             <div class="closing-prayer">

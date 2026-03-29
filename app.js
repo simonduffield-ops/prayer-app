@@ -161,12 +161,16 @@ function loadDailyContent() {
     const daily = getDailyContent();
     
     // Load daily Examen content
+    window._dailyExamen = {
+        verse: daily.examen.verse,
+        gratitude: daily.examen.gratitude,
+        consolation: daily.examen.consolation,
+        desolation: daily.examen.desolation,
+        forgiveness: daily.examen.forgiveness,
+        tomorrow: daily.examen.tomorrow,
+        closing: daily.examen.closing
+    };
     document.getElementById('examen-verse').textContent = daily.examen.verse;
-    document.getElementById('gratitude-prompt').textContent = daily.examen.gratitude;
-    document.getElementById('consolation-prompt').textContent = daily.examen.consolation;
-    document.getElementById('desolation-prompt').textContent = daily.examen.desolation;
-    document.getElementById('forgiveness-prompt').textContent = daily.examen.forgiveness;
-    document.getElementById('tomorrow-prompt').textContent = daily.examen.tomorrow;
     document.getElementById('examen-closing').textContent = daily.examen.closing;
     
     // Load daily Lectio content
@@ -248,6 +252,9 @@ function showTool(tool) {
     }
     if (tool === 'prayerset') {
         initLordsPrayerFlashcard();
+    }
+    if (tool === 'examen') {
+        initExamenFlashcard();
     }
     if (tool === 'persecuted') {
         loadPersecutedContent();
@@ -988,6 +995,43 @@ function prevStepCard(id, e) {
     animateStepCard(id, 'prev');
 }
 
+// ── Examen flashcard ───────────────────────────────────────────────────────────
+
+function buildExamenCards() {
+    var e = window._dailyExamen || {};
+    return [
+        {
+            title: 'Give Thanks — Gratitude is the Foundation',
+            body: '<p id="gratitude-prompt">' + (e.gratitude || 'Recall and thank God for the blessings of the day. Think through your day like watching a movie. What moments brought you joy? What gifts did God provide? Thank Him for both the obvious blessings and the small graces you might have missed.') + '</p>' +
+                  '<div class="reflection-box"><p><em>Write or reflect on 3–5 things you\'re grateful for from today...</em></p></div>'
+        },
+        {
+            title: 'Ask for Light — Invite the Holy Spirit',
+            body: '<p>Pray for the Holy Spirit to help you see your day clearly, with honesty and openness. Ask God to illuminate the movements of consolation and desolation in your heart today.</p>' +
+                  '<div class="reflection-box"><p><em>"Holy Spirit, give me light to see this day through Your eyes and discern Your movements in my soul..."</em></p></div>'
+        },
+        {
+            title: 'Review the Day — Consolation &amp; Desolation',
+            body: '<div class="reflection-box"><p><strong>Consolation:</strong> <span id="consolation-prompt">' + (e.consolation || 'When did you feel close to God? Notice moments of peace, joy, hope, faith, and charity. What experiences drew you toward love of God and neighbor?') + '</span></p><p style="margin-top:15px;"><em>Ask: "What brought me closer to God today?"</em></p></div>' +
+                  '<div class="reflection-box" style="margin-top:15px;"><p><strong>Desolation:</strong> <span id="desolation-prompt">' + (e.desolation || 'When did you feel distant from God or resistant to His presence? Notice spiritual dryness, darkness, agitation, or movement toward earthly things.') + '</span></p><p style="margin-top:15px;"><em>Ask: "What distracted me or pulled me away from God today?"</em></p></div>'
+        },
+        {
+            title: 'Face Your Shortcomings — Ask Forgiveness',
+            body: '<p id="forgiveness-prompt">' + (e.forgiveness || 'Recognize times you failed to love, made poor choices, or missed God\'s presence. Where did you fall short? Bring these honestly to Jesus with humility and receive His grace and forgiveness.') + '</p>' +
+                  '<div class="reflection-box"><p><em>Confess your shortcomings and receive God\'s mercy...</em></p></div>'
+        },
+        {
+            title: 'Look Ahead — Prepare for Tomorrow',
+            body: '<p id="tomorrow-prompt">' + (e.tomorrow || 'Turn your thoughts toward tomorrow: what challenges or opportunities await? Based on your recognition of consolation and desolation today, ask for God\'s grace. What did you learn about what draws you closer to God?') + '</p>' +
+                  '<div class="reflection-box"><p><em>Ask God for grace to pursue what brings life and wisdom to navigate what challenges you...</em></p></div>'
+        }
+    ];
+}
+
+function initExamenFlashcard() {
+    initStepFlashcard('examen', buildExamenCards());
+}
+
 // ── Lectio Divina flashcard ────────────────────────────────────────────────────
 
 function initLectioFlashcard() {
@@ -1156,13 +1200,18 @@ function getRandomItem(array) {
 
 // Manual content generation (still available via buttons)
 function generateExamenContent() {
-    document.getElementById('examen-verse').textContent = getRandomItem(examenPrompts.verses);
-    document.getElementById('gratitude-prompt').textContent = getRandomItem(examenPrompts.gratitude);
-    document.getElementById('consolation-prompt').textContent = getRandomItem(examenPrompts.consolation);
-    document.getElementById('desolation-prompt').textContent = getRandomItem(examenPrompts.desolation);
-    document.getElementById('forgiveness-prompt').textContent = getRandomItem(examenPrompts.forgiveness);
-    document.getElementById('tomorrow-prompt').textContent = getRandomItem(examenPrompts.tomorrow);
-    document.getElementById('examen-closing').textContent = getRandomItem(examenPrompts.closings);
+    window._dailyExamen = {
+        verse: getRandomItem(examenPrompts.verses),
+        gratitude: getRandomItem(examenPrompts.gratitude),
+        consolation: getRandomItem(examenPrompts.consolation),
+        desolation: getRandomItem(examenPrompts.desolation),
+        forgiveness: getRandomItem(examenPrompts.forgiveness),
+        tomorrow: getRandomItem(examenPrompts.tomorrow),
+        closing: getRandomItem(examenPrompts.closings)
+    };
+    document.getElementById('examen-verse').textContent = window._dailyExamen.verse;
+    document.getElementById('examen-closing').textContent = window._dailyExamen.closing;
+    initExamenFlashcard();
 }
 
 function generateLectioContent() {
