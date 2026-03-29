@@ -232,6 +232,9 @@ function showTool(tool) {
     if (tool === 'apostolic' && typeof initApostolicPrayers === 'function') {
         initApostolicPrayers();
     }
+    if (tool === 'declarations') {
+        initDeclarations('in-christ');
+    }
     if (tool === 'persecuted') {
         loadPersecutedContent();
     }
@@ -596,8 +599,9 @@ function buildDots() {
 }
 
 function updateDots() {
-    const dots = document.querySelectorAll('.flashcard-dot');
-    dots.forEach(function(dot, i) {
+    const dotsEl = document.getElementById('flashcardDots');
+    if (!dotsEl) return;
+    dotsEl.querySelectorAll('.flashcard-dot').forEach(function(dot, i) {
         dot.classList.toggle('active', i === currentVerseIndex);
     });
 }
@@ -629,6 +633,208 @@ function nextMemoryVerse(e) {
 function prevMemoryVerse(e) {
     if (e) e.stopPropagation();
     animateCard('prev');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+var inChristDeclarations = [
+    { category: 'I Am Accepted', text: 'I am God\'s child.', reference: 'John 1:12' },
+    { category: 'I Am Accepted', text: 'As a disciple, I am a friend of Jesus Christ.', reference: 'John 15:15' },
+    { category: 'I Am Accepted', text: 'I have been justified.', reference: 'Romans 5:1' },
+    { category: 'I Am Accepted', text: 'I am united with the Lord, and I am one with him in spirit.', reference: '1 Corinthians 6:17' },
+    { category: 'I Am Accepted', text: 'I have been bought with a price, and I belong to God.', reference: '1 Corinthians 6:19–20' },
+    { category: 'I Am Accepted', text: 'I am a member of Christ\'s body.', reference: '1 Corinthians 12:27' },
+    { category: 'I Am Accepted', text: 'I have been chosen by God and adopted as his child.', reference: 'Ephesians 1:5' },
+    { category: 'I Am Accepted', text: 'I have been redeemed and forgiven of all my sins.', reference: 'Colossians 1:14' },
+    { category: 'I Am Accepted', text: 'I am complete in Christ.', reference: 'Colossians 2:9–10' },
+    { category: 'I Am Accepted', text: 'I have direct access to the throne of grace through Jesus Christ.', reference: 'Hebrews 4:14–16' },
+    { category: 'I Am Secure', text: 'I am free from condemnation.', reference: 'Romans 8:1–2' },
+    { category: 'I Am Secure', text: 'I am assured that God works for my good in all circumstances.', reference: 'Romans 8:28' },
+    { category: 'I Am Secure', text: 'I am free from any condemnation brought against me, and I cannot be separated from the love of God.', reference: 'Romans 8:31–39' },
+    { category: 'I Am Secure', text: 'I have been established, anointed, and sealed by God.', reference: '2 Corinthians 1:21–22' },
+    { category: 'I Am Secure', text: 'I am hidden with Christ in God.', reference: 'Colossians 3:1–4' },
+    { category: 'I Am Secure', text: 'I am confident that God will complete the good work he started in me.', reference: 'Philippians 1:6' },
+    { category: 'I Am Secure', text: 'I am a citizen of heaven.', reference: 'Philippians 3:20' },
+    { category: 'I Am Secure', text: 'I have not been given the spirit of fear but of power, love, and a sound mind.', reference: '2 Timothy 1:7' },
+    { category: 'I Am Secure', text: 'I am born of God, and the Evil One cannot touch me.', reference: '1 John 5:18' },
+    { category: 'I Am Significant', text: 'I am a branch of Jesus Christ, the true vine, and a channel of his life.', reference: 'John 15:5' },
+    { category: 'I Am Significant', text: 'I have been chosen and appointed to bear fruit.', reference: 'John 15:16' },
+    { category: 'I Am Significant', text: 'I am God\'s temple.', reference: '1 Corinthians 3:16' },
+    { category: 'I Am Significant', text: 'I am a minister of reconciliation for God.', reference: '2 Corinthians 5:17–21' },
+    { category: 'I Am Significant', text: 'I am seated with Jesus Christ in the heavenly realm.', reference: 'Ephesians 2:6' },
+    { category: 'I Am Significant', text: 'I am God\'s workmanship.', reference: 'Ephesians 2:10' },
+    { category: 'I Am Significant', text: 'I may approach God with freedom and confidence.', reference: 'Ephesians 3:12' }
+];
+
+var dailyDeclarations = [
+    {
+        category: '1. My prayers are powerful and effective',
+        text: 'For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.\n\nThe prayer of a righteous person has great power as it is working.',
+        reference: '2 Corinthians 5:21; James 5:16b'
+    },
+    {
+        category: '2. God richly supplies all my financial needs',
+        text: 'And my God will supply every need of yours according to his riches in glory in Christ Jesus.',
+        reference: 'Philippians 4:19'
+    },
+    {
+        category: '3. I am dead to sin and alive to obeying God',
+        text: 'So you also must consider yourselves dead to sin and alive to God in Christ Jesus.',
+        reference: 'Romans 6:11'
+    },
+    {
+        category: '4. I walk in ever-increasing health',
+        text: 'Surely he has borne our griefs and carried our sorrows... he was wounded for our transgressions; he was crushed for our iniquities; upon him was the chastisement that brought us peace, and with his stripes we are healed.',
+        reference: 'Isaiah 53:4–5'
+    },
+    {
+        category: '5. I live under a supernatural protection',
+        text: 'He who dwells in the shelter of the Most High will abide in the shadow of the Almighty.',
+        reference: 'Psalm 91:1'
+    },
+    {
+        category: '6. I prosper in all my relationships',
+        text: 'And Jesus increased in wisdom and in stature and in favor with God and man.',
+        reference: 'Luke 2:52'
+    },
+    {
+        category: '7. I consistently bring God encounters to other people',
+        text: 'And these signs will accompany those who believe: in my name they will cast out demons; they will speak in new tongues... they will lay their hands on the sick, and they will recover.',
+        reference: 'Mark 16:17–18'
+    },
+    {
+        category: '8. Through Jesus I am 100% loved and worthy to receive all of God\'s blessings',
+        text: 'Did you receive the Spirit by works of the law or by hearing with faith?... Does he who supplies the Spirit to you and works miracles among you do so by works of the law, or by hearing with faith?',
+        reference: 'Galatians 3:2, 5'
+    },
+    {
+        category: '9. Each of my family members is wonderfully blessed and radically loves Jesus',
+        text: 'Believe in the Lord Jesus, and you will be saved, you and your household.',
+        reference: 'Acts 16:31'
+    }
+];
+
+var currentInChristIndex = 0;
+var currentDailyIndex = 0;
+var inChristTouchStartX = 0;
+var inChristTouchStartY = 0;
+var dailyTouchStartX = 0;
+var dailyTouchStartY = 0;
+var inChristListenersAdded = false;
+var dailyListenersAdded = false;
+
+function initDeclarations(type) {
+    if (type === 'in-christ') {
+        currentInChristIndex = 0;
+        renderDeclarationCard('in-christ');
+        buildDeclarationDots('in-christ');
+        if (!inChristListenersAdded) {
+            var card = document.getElementById('inChristFlashcard');
+            if (card) {
+                card.addEventListener('touchstart', function(e) {
+                    inChristTouchStartX = e.touches[0].clientX;
+                    inChristTouchStartY = e.touches[0].clientY;
+                }, { passive: true });
+                card.addEventListener('touchend', function(e) {
+                    var dx = e.changedTouches[0].clientX - inChristTouchStartX;
+                    var dy = e.changedTouches[0].clientY - inChristTouchStartY;
+                    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+                        animateDeclarationCard('in-christ', dx < 0 ? 'next' : 'prev');
+                    }
+                }, { passive: true });
+                inChristListenersAdded = true;
+            }
+        }
+    } else {
+        currentDailyIndex = 0;
+        renderDeclarationCard('daily');
+        buildDeclarationDots('daily');
+        if (!dailyListenersAdded) {
+            var card = document.getElementById('dailyFlashcard');
+            if (card) {
+                card.addEventListener('touchstart', function(e) {
+                    dailyTouchStartX = e.touches[0].clientX;
+                    dailyTouchStartY = e.touches[0].clientY;
+                }, { passive: true });
+                card.addEventListener('touchend', function(e) {
+                    var dx = e.changedTouches[0].clientX - dailyTouchStartX;
+                    var dy = e.changedTouches[0].clientY - dailyTouchStartY;
+                    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+                        animateDeclarationCard('daily', dx < 0 ? 'next' : 'prev');
+                    }
+                }, { passive: true });
+                dailyListenersAdded = true;
+            }
+        }
+    }
+}
+
+function renderDeclarationCard(type) {
+    var data = type === 'in-christ' ? inChristDeclarations : dailyDeclarations;
+    var index = type === 'in-christ' ? currentInChristIndex : currentDailyIndex;
+    var item = data[index];
+    document.getElementById(type + 'CardCategory').textContent = item.category;
+    document.getElementById(type + 'CardText').innerHTML = item.text.replace(/\n\n/g, '<br><br>');
+    document.getElementById(type + 'CardReference').textContent = item.reference;
+    document.getElementById(type + 'Counter').textContent = (index + 1) + ' of ' + data.length;
+    updateDeclarationDots(type);
+}
+
+function buildDeclarationDots(type) {
+    var data = type === 'in-christ' ? inChristDeclarations : dailyDeclarations;
+    var dotsEl = document.getElementById(type + 'Dots');
+    if (!dotsEl) return;
+    dotsEl.innerHTML = '';
+    var index = type === 'in-christ' ? currentInChristIndex : currentDailyIndex;
+    data.forEach(function(_, i) {
+        var dot = document.createElement('span');
+        dot.className = 'flashcard-dot' + (i === index ? ' active' : '');
+        dotsEl.appendChild(dot);
+    });
+}
+
+function updateDeclarationDots(type) {
+    var index = type === 'in-christ' ? currentInChristIndex : currentDailyIndex;
+    var dotsEl = document.getElementById(type + 'Dots');
+    if (!dotsEl) return;
+    dotsEl.querySelectorAll('.flashcard-dot').forEach(function(dot, i) {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+function animateDeclarationCard(type, direction) {
+    var cardId = type === 'in-christ' ? 'inChristFlashcard' : 'dailyFlashcard';
+    var data = type === 'in-christ' ? inChristDeclarations : dailyDeclarations;
+    var card = document.getElementById(cardId);
+    var outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
+    var inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
+
+    card.classList.add(outClass);
+    setTimeout(function() {
+        card.classList.remove(outClass);
+        if (type === 'in-christ') {
+            currentInChristIndex = direction === 'next'
+                ? (currentInChristIndex + 1) % data.length
+                : (currentInChristIndex - 1 + data.length) % data.length;
+        } else {
+            currentDailyIndex = direction === 'next'
+                ? (currentDailyIndex + 1) % data.length
+                : (currentDailyIndex - 1 + data.length) % data.length;
+        }
+        renderDeclarationCard(type);
+        card.classList.add(inClass);
+        setTimeout(function() { card.classList.remove(inClass); }, 320);
+    }, 280);
+}
+
+function nextDeclaration(type, e) {
+    if (e) e.stopPropagation();
+    animateDeclarationCard(type, 'next');
+}
+
+function prevDeclaration(type, e) {
+    if (e) e.stopPropagation();
+    animateDeclarationCard(type, 'prev');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -671,6 +877,9 @@ function showDeclaration(declaration) {
     
     // Add active class to clicked tab
     event.target.classList.add('active');
+
+    // Initialise flashcard for the shown declaration
+    initDeclarations(declaration);
 }
 
 function showMainMenu() {
