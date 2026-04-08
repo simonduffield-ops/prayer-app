@@ -530,6 +530,10 @@ var memoryVerses = [
     {
         reference: '1 Kings 17:14 (NIV)',
         text: 'For the jar of flour will not be used up and the jug of oil will not run dry until the day the Lord sends rain on the land.'
+    },
+    {
+        reference: '2 Corinthians 9:8 (NIV)',
+        text: 'And God is able to bless you abundantly, so that in all things at all times, having all that you need, you will abound in every good work.'
     }
 ];
 
