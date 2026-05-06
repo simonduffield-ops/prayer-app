@@ -222,7 +222,6 @@ function loadDailyContent() {
     document.getElementById('gentle-humble-author').textContent = `– ${daily.gentleHumble.author}`;
     
     // Load daily Affirmation content
-    document.getElementById('affirmation-adoration-verse').innerHTML = `"${daily.affirmation.adorationVerse.text}" - ${daily.affirmation.adorationVerse.reference}`;
     document.getElementById('affirmation-promise').innerHTML = `"${daily.affirmation.promise.text}" - ${daily.affirmation.promise.reference}`;
 }
 
