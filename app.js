@@ -533,6 +533,18 @@ var memoryVerses = [
     {
         reference: '2 Corinthians 9:8 (NIV)',
         text: 'And God is able to bless you abundantly, so that in all things at all times, having all that you need, you will abound in every good work.'
+    },
+    {
+        reference: 'Philippians 4:19 (NIV)',
+        text: 'And my God will meet all your needs according to the riches of his glory in Christ Jesus.'
+    },
+    {
+        reference: 'Ephesians 2:10 (NIV)',
+        text: 'For we are God\'s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.'
+    },
+    {
+        reference: 'John 15:16 (NIV)',
+        text: 'You did not choose me, but I chose you and appointed you so that you might go and bear fruit—fruit that will last—and so that whatever you ask in my name the Father will give you.'
     }
 ];
 
