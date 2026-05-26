@@ -1,11 +1,10 @@
-const CACHE_NAME = 'prayer-tools-v1.8.0';
+const CACHE_NAME = 'prayer-tools-v1.9.0';
 const urlsToCache = [
     './',
     './index.html',
     './styles.css',
     './app.js',
     './content.js',
-    './translations.js',
     './opendoors-calendar.js',
     './manifest.json',
     './apple-touch-icon.png',
@@ -18,11 +17,9 @@ const urlsToCache = [
 
 // Install event - cache resources and skip waiting
 self.addEventListener('install', event => {
-    console.log('Service Worker installing...');
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
-                console.log('Opened cache:', CACHE_NAME);
                 return cache.addAll(urlsToCache);
             })
             .then(() => {
@@ -32,49 +29,46 @@ self.addEventListener('install', event => {
     );
 });
 
-// Fetch event - network first with cache fallback
+// Fetch event - stale-while-revalidate for static assets, network-first for navigation
 self.addEventListener('fetch', event => {
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    if (response.status === 200) {
+                        const clone = response.clone();
+                        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+                    }
+                    return response;
+                })
+                .catch(() => caches.match('./index.html'))
+        );
+        return;
+    }
+
     event.respondWith(
-        fetch(event.request)
-            .then(response => {
-                // If we get a valid response, update the cache
+        caches.match(event.request).then(cached => {
+            const fetchPromise = fetch(event.request).then(response => {
                 if (response.status === 200) {
-                    const responseClone = response.clone();
-                    caches.open(CACHE_NAME)
-                        .then(cache => {
-                            cache.put(event.request, responseClone);
-                        });
+                    const clone = response.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
                 }
                 return response;
-            })
-            .catch(() => {
-                // Network failed, try cache
-                return caches.match(event.request)
-                    .then(response => {
-                        if (response) {
-                            return response;
-                        }
-                        // If not in cache, return a basic offline page for navigation requests
-                        if (event.request.mode === 'navigate') {
-                            return caches.match('./index.html');
-                        }
-                        throw new Error('No cached version available');
-                    });
-            })
+            }).catch(() => cached);
+
+            return cached || fetchPromise;
+        })
     );
 });
 
 // Activate event - clean up old caches and claim clients
 self.addEventListener('activate', event => {
-    console.log('Service Worker activating...');
     event.waitUntil(
         Promise.all([
-            // Clean up old caches
             caches.keys().then(cacheNames => {
                 return Promise.all(
                     cacheNames.map(cacheName => {
                         if (cacheName !== CACHE_NAME) {
-                            console.log('Deleting old cache:', cacheName);
                             return caches.delete(cacheName);
                         }
                     })

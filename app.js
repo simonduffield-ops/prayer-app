@@ -7,12 +7,33 @@ function getCurrentTranslation() {
     return (saved && VALID_TRANSLATIONS.indexOf(saved) !== -1) ? saved : 'NIV';
 }
 
+var translationsLoaded = typeof VERSE_TRANSLATIONS !== 'undefined';
+
+function loadTranslationsScript() {
+    return new Promise(function(resolve) {
+        if (translationsLoaded) return resolve();
+        var script = document.createElement('script');
+        script.src = 'translations.js';
+        script.onload = function() {
+            translationsLoaded = true;
+            resolve();
+        };
+        script.onerror = function() { resolve(); };
+        document.head.appendChild(script);
+    });
+}
+
 function setTranslation(translation) {
     if (VALID_TRANSLATIONS.indexOf(translation) === -1) return;
     localStorage.setItem('bibleTranslation', translation);
     const select = document.getElementById('translation-select');
     if (select) select.value = translation;
-    refreshTranslations();
+
+    if (translation === 'NIV') {
+        refreshTranslations();
+    } else {
+        loadTranslationsScript().then(refreshTranslations);
+    }
 }
 
 function normalizeRef(reference) {
@@ -59,8 +80,12 @@ function renderExamenVerse(rawVerse, elementId) {
 
 function initTranslationPicker() {
     const select = document.getElementById('translation-select');
+    var current = getCurrentTranslation();
     if (select) {
-        select.value = getCurrentTranslation();
+        select.value = current;
+    }
+    if (current !== 'NIV') {
+        loadTranslationsScript();
     }
 }
 
@@ -69,27 +94,29 @@ function refreshTranslations() {
     updateHeaderSubtitle();
     updateHtmlVerses();
 
-    const activeContent = document.querySelector('.prayer-content.active');
-    if (activeContent) {
-        const id = activeContent.id.replace('-content', '');
-        if (id === 'lectio') initLectioFlashcard();
-        if (id === 'beatitudes') initBeatitudesFlashcard();
-        if (id === 'prayerset') initLordsPrayerFlashcard();
-        if (id === 'examen') initExamenFlashcard();
-        if (id === 'memory-verses') {
-            buildMemoryVerseIndex();
-            const mvFlashcard = document.getElementById('memory-verses-flashcard-view');
-            if (mvFlashcard && mvFlashcard.style.display !== 'none') renderMemoryVerse();
-        }
-        if (id === 'apostolic') {
-            buildApostolicIndex();
-            const apFlashcard = document.getElementById('apostolic-flashcard-view');
-            if (apFlashcard && apFlashcard.style.display !== 'none') renderApostolicCard();
-        }
-        if (id === 'declarations') {
-            renderDeclarationCard('in-christ');
-            renderDeclarationCard('daily');
-        }
+    var activeContent = document.querySelector('.prayer-content.active');
+    if (!activeContent) return;
+
+    var id = activeContent.id.replace('-content', '');
+    renderToolContent(id);
+
+    if (id === 'lectio') initLectioFlashcard();
+    else if (id === 'beatitudes') initBeatitudesFlashcard();
+    else if (id === 'prayerset') initLordsPrayerFlashcard();
+    else if (id === 'examen') initExamenFlashcard();
+    else if (id === 'memory-verses') {
+        buildMemoryVerseIndex();
+        var mvFlashcard = document.getElementById('memory-verses-flashcard-view');
+        if (mvFlashcard && mvFlashcard.style.display !== 'none') renderMemoryVerse();
+    }
+    else if (id === 'apostolic') {
+        buildApostolicIndex();
+        var apFlashcard = document.getElementById('apostolic-flashcard-view');
+        if (apFlashcard && apFlashcard.style.display !== 'none') renderApostolicCard();
+    }
+    else if (id === 'declarations') {
+        renderDeclarationCard('in-christ');
+        renderDeclarationCard('daily');
     }
 }
 
@@ -137,7 +164,6 @@ function toggleDarkMode(event) {
     // Update theme color for mobile browsers
     updateThemeColor(isDarkMode);
     
-    console.log('Dark mode toggled:', isDarkMode ? 'enabled' : 'disabled');
 }
 
 function updateThemeColor(isDarkMode) {
@@ -164,9 +190,6 @@ function initializeDarkMode() {
     const toggleButton = document.getElementById('dark-mode-toggle');
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleDarkMode);
-        console.log('Dark mode toggle button initialized');
-    } else {
-        console.error('Dark mode toggle button not found');
     }
 }
 
@@ -276,10 +299,12 @@ function getDailyContent() {
     };
 }
 
+var _dailyCache = null;
+
 function loadDailyContent() {
-    const daily = getDailyContent();
-    
-    // Load daily Examen content
+    _dailyCache = getDailyContent();
+    var daily = _dailyCache;
+
     window._dailyExamen = {
         verse: daily.examen.verse,
         gratitude: daily.examen.gratitude,
@@ -289,65 +314,80 @@ function loadDailyContent() {
         tomorrow: daily.examen.tomorrow,
         closing: daily.examen.closing
     };
-    renderExamenVerse(daily.examen.verse, 'examen-verse');
-    document.getElementById('examen-closing').textContent = daily.examen.closing;
-    
-    // Load daily Lectio content
-    var lectioText = getVerseText(daily.lectio.reference, daily.lectio.text);
-    var lectioRef = formatRef(daily.lectio.reference);
-    window._dailyLectio = { scripture: daily.lectio, focus: `Focus Word: "${daily.lectio.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>` };
-    const lectioElement = document.getElementById('lectio-scripture');
-    if (lectioElement) {
-        const lectioButton = lectioElement.querySelector('.new-content-button');
-        lectioElement.innerHTML = `"${lectioText}" - ${lectioRef}`;
-        if (lectioButton) lectioElement.appendChild(lectioButton);
+    window._dailyLectio = { scripture: daily.lectio, focus: 'Focus Word: "' + daily.lectio.focus + '"<br><small>Carry this word with you today as a reminder of God\'s invitation.</small>' };
+    window._dailyPrayersetContent = {};
+    for (var i = 1; i <= 7; i++) {
+        window._dailyPrayersetContent[i] = daily.prayerset['movement' + i];
     }
-    const lectioFocusEl = document.getElementById('lectio-focus');
-    if (lectioFocusEl) lectioFocusEl.innerHTML = window._dailyLectio.focus;
-    
-    // Load daily Adoration content
-    var adorText = getVerseText(daily.adoration.reference, daily.adoration.text);
-    var adorRef = formatRef(daily.adoration.reference);
-    const adorationElement = document.getElementById('adoration-scripture');
-    const adorationButton = adorationElement.querySelector('.new-content-button');
-    adorationElement.innerHTML = `"${adorText}" - ${adorRef}`;
-    if (adorationButton) {
-        adorationElement.appendChild(adorationButton);
+}
+
+function renderToolContent(tool) {
+    var daily = _dailyCache;
+    if (!daily) return;
+
+    if (tool === 'examen') {
+        renderExamenVerse(daily.examen.verse, 'examen-verse');
+        var closingEl = document.getElementById('examen-closing');
+        if (closingEl) closingEl.textContent = daily.examen.closing;
+    } else if (tool === 'lectio') {
+        var lectioText = getVerseText(daily.lectio.reference, daily.lectio.text);
+        var lectioRef = formatRef(daily.lectio.reference);
+        var lectioElement = document.getElementById('lectio-scripture');
+        if (lectioElement) {
+            var lectioButton = lectioElement.querySelector('.new-content-button');
+            lectioElement.textContent = '\u201C' + lectioText + '\u201D - ' + lectioRef;
+            if (lectioButton) lectioElement.appendChild(lectioButton);
+        }
+        var lectioFocusEl = document.getElementById('lectio-focus');
+        if (lectioFocusEl) lectioFocusEl.innerHTML = window._dailyLectio.focus;
+    } else if (tool === 'adoration') {
+        var adorText = getVerseText(daily.adoration.reference, daily.adoration.text);
+        var adorRef = formatRef(daily.adoration.reference);
+        var adorationElement = document.getElementById('adoration-scripture');
+        if (adorationElement) {
+            var adorationButton = adorationElement.querySelector('.new-content-button');
+            adorationElement.textContent = '\u201C' + adorText + '\u201D - ' + adorRef;
+            if (adorationButton) adorationElement.appendChild(adorationButton);
+        }
+        var ackEl = document.getElementById('acknowledge-prompt');
+        if (ackEl) ackEl.textContent = daily.adoration.acknowledge;
+        var adoreEl = document.getElementById('adore-prompt');
+        if (adoreEl) adoreEl.textContent = daily.adoration.adore;
+        var surrEl = document.getElementById('surrender-prompt');
+        if (surrEl) surrEl.textContent = daily.adoration.surrender;
+        var transEl = document.getElementById('transformation-prompt');
+        if (transEl) transEl.textContent = daily.adoration.transformation;
+        var focusEl = document.getElementById('adoration-focus');
+        if (focusEl) focusEl.innerHTML = 'Today\'s Focus: ' + daily.adoration.focus + '<br><small>Meditate on this aspect of God\'s character throughout your day.</small>';
+        var adorCloseEl = document.getElementById('adoration-closing');
+        if (adorCloseEl) adorCloseEl.textContent = daily.adoration.closing;
+    } else if (tool === 'prayerset') {
+        for (var j = 1; j <= 7; j++) {
+            var movement = daily.prayerset['movement' + j];
+            var mvText = getVerseText(movement.reference, movement.scripture);
+            var mvRef = formatRef(movement.reference);
+            var scriptureEl = document.getElementById('prayerset-movement' + j + '-scripture');
+            var promptEl = document.getElementById('prayerset-movement' + j + '-prompt');
+            if (scriptureEl) scriptureEl.textContent = '\u201C' + mvText + '\u201D - ' + mvRef;
+            if (promptEl) promptEl.textContent = movement.prompt;
+        }
+    } else if (tool === 'persecuted') {
+        loadPersecutedContent();
+    } else if (tool === 'gentle-humble') {
+        var ghText = getVerseText(daily.gentleHumble.reference, daily.gentleHumble.scripture);
+        var ghRef = formatRef(daily.gentleHumble.reference);
+        var ghScriptEl = document.getElementById('gentle-humble-scripture');
+        if (ghScriptEl) ghScriptEl.textContent = ghText + ' - ' + ghRef;
+        var ghQuoteEl = document.getElementById('gentle-humble-quote');
+        if (ghQuoteEl) ghQuoteEl.textContent = daily.gentleHumble.quote;
+        var ghAuthorEl = document.getElementById('gentle-humble-author');
+        if (ghAuthorEl) ghAuthorEl.textContent = '\u2013 ' + daily.gentleHumble.author;
+    } else if (tool === 'affirmation') {
+        var affText = getVerseText(daily.affirmation.promise.reference, daily.affirmation.promise.text);
+        var affRef = formatRef(daily.affirmation.promise.reference);
+        var affEl = document.getElementById('affirmation-promise');
+        if (affEl) affEl.textContent = '\u201C' + affText + '\u201D - ' + affRef;
     }
-    document.getElementById('acknowledge-prompt').textContent = daily.adoration.acknowledge;
-    document.getElementById('adore-prompt').textContent = daily.adoration.adore;
-    document.getElementById('surrender-prompt').textContent = daily.adoration.surrender;
-    document.getElementById('transformation-prompt').textContent = daily.adoration.transformation;
-    document.getElementById('adoration-focus').innerHTML = `Today's Focus: ${daily.adoration.focus}<br><small>Meditate on this aspect of God's character throughout your day.</small>`;
-    document.getElementById('adoration-closing').textContent = daily.adoration.closing;
-    
-    // Load daily Prayer Set content
-    for (let i = 1; i <= 7; i++) {
-        const movement = daily.prayerset[`movement${i}`];
-        window._dailyPrayersetContent = window._dailyPrayersetContent || {};
-        window._dailyPrayersetContent[i] = movement;
-        var mvText = getVerseText(movement.reference, movement.scripture);
-        var mvRef = formatRef(movement.reference);
-        const scriptureEl = document.getElementById(`prayerset-movement${i}-scripture`);
-        const promptEl = document.getElementById(`prayerset-movement${i}-prompt`);
-        if (scriptureEl) scriptureEl.innerHTML = `"${mvText}" - ${mvRef}`;
-        if (promptEl) promptEl.textContent = movement.prompt;
-    }
-    
-    // Load Open Doors calendar entry for today
-    loadPersecutedContent();
-    
-    // Load daily Gentle and Humble in Heart content
-    var ghText = getVerseText(daily.gentleHumble.reference, daily.gentleHumble.scripture);
-    var ghRef = formatRef(daily.gentleHumble.reference);
-    document.getElementById('gentle-humble-scripture').innerHTML = `${ghText} - ${ghRef}`;
-    document.getElementById('gentle-humble-quote').textContent = daily.gentleHumble.quote;
-    document.getElementById('gentle-humble-author').textContent = `– ${daily.gentleHumble.author}`;
-    
-    // Load daily Affirmation content
-    var affText = getVerseText(daily.affirmation.promise.reference, daily.affirmation.promise.text);
-    var affRef = formatRef(daily.affirmation.promise.reference);
-    document.getElementById('affirmation-promise').innerHTML = `"${affText}" - ${affRef}`;
 }
 
 function showTool(tool) {
@@ -355,33 +395,26 @@ function showTool(tool) {
     document.querySelectorAll('.prayer-content').forEach(content => {
         content.classList.remove('active');
     });
+
+    renderToolContent(tool);
+
     document.getElementById(tool + '-content').classList.add('active');
-    // Scroll to top of the page
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (tool === 'memory-verses') {
         initMemoryVerses();
-    }
-    if (tool === 'apostolic' && typeof initApostolicPrayers === 'function') {
+    } else if (tool === 'apostolic' && typeof initApostolicPrayers === 'function') {
         initApostolicPrayers();
-    }
-    if (tool === 'declarations') {
+    } else if (tool === 'declarations') {
         initDeclarations('in-christ');
-    }
-    if (tool === 'lectio') {
+    } else if (tool === 'lectio') {
         initLectioFlashcard();
-    }
-    if (tool === 'beatitudes') {
+    } else if (tool === 'beatitudes') {
         initBeatitudesFlashcard();
-    }
-    if (tool === 'prayerset') {
+    } else if (tool === 'prayerset') {
         initLordsPrayerFlashcard();
-    }
-    if (tool === 'examen') {
+    } else if (tool === 'examen') {
         initExamenFlashcard();
-    }
-    if (tool === 'persecuted') {
-        loadPersecutedContent();
     }
 }
 
@@ -530,18 +563,26 @@ function initApostolicPrayers() {
 function buildApostolicIndex() {
     const list = document.getElementById('apostolic-prayers-list');
     if (!list) return;
-    list.innerHTML = '';
+    var fragment = document.createDocumentFragment();
     apostolicPrayers.forEach(function(prayer, i) {
-        const item = document.createElement('button');
+        var item = document.createElement('button');
         item.className = 'memory-verse-index-item';
         item.setAttribute('aria-label', 'Open ' + prayer.title);
-        item.innerHTML = '<span class="memory-verse-index-ref">' + formatRef(prayer.reference) + '</span>' +
-            '<span class="memory-verse-index-preview">' + prayer.title + '</span>';
+        var refSpan = document.createElement('span');
+        refSpan.className = 'memory-verse-index-ref';
+        refSpan.textContent = formatRef(prayer.reference);
+        var previewSpan = document.createElement('span');
+        previewSpan.className = 'memory-verse-index-preview';
+        previewSpan.textContent = prayer.title;
+        item.appendChild(refSpan);
+        item.appendChild(previewSpan);
         item.addEventListener('click', function() {
             openApostolicCard(i);
         });
-        list.appendChild(item);
+        fragment.appendChild(item);
     });
+    list.innerHTML = '';
+    list.appendChild(fragment);
 }
 
 function showApostolicIndex() {
@@ -564,7 +605,7 @@ function renderApostolicCard() {
     document.getElementById('apostolicCardTitle').textContent = prayer.title;
     var nivText = prayer.text.replace(/^[\u201C"\u201D]+|[\u201C"\u201D]+$/g, '');
     var translatedText = getVerseText(prayer.reference, nivText);
-    document.getElementById('apostolicCardText').innerHTML = '\u201C' + translatedText + '\u201D';
+    document.getElementById('apostolicCardText').textContent = '\u201C' + translatedText + '\u201D';
     document.getElementById('apostolicCardReference').textContent = '\u2014 ' + formatRef(prayer.reference);
     document.getElementById('apostolicCardCounter').textContent =
         (currentPrayerIndex + 1) + ' of ' + apostolicPrayers.length;
@@ -572,14 +613,16 @@ function renderApostolicCard() {
 }
 
 function buildApostolicDots() {
-    const dotsEl = document.getElementById('apostolicDots');
+    var dotsEl = document.getElementById('apostolicDots');
     if (!dotsEl) return;
-    dotsEl.innerHTML = '';
+    var fragment = document.createDocumentFragment();
     apostolicPrayers.forEach(function(_, i) {
-        const dot = document.createElement('span');
+        var dot = document.createElement('span');
         dot.className = 'flashcard-dot' + (i === currentPrayerIndex ? ' active' : '');
-        dotsEl.appendChild(dot);
+        fragment.appendChild(dot);
     });
+    dotsEl.innerHTML = '';
+    dotsEl.appendChild(fragment);
 }
 
 function updateApostolicDots() {
@@ -591,13 +634,18 @@ function updateApostolicDots() {
     });
 }
 
+var apostolicAnimating = false;
+
 function animateApostolicCard(direction) {
-    const card = document.getElementById('apostolicFlashcard');
-    const outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
-    const inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
+    if (apostolicAnimating) return;
+    apostolicAnimating = true;
+    var card = document.getElementById('apostolicFlashcard');
+    var outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
+    var inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
 
     card.classList.add(outClass);
-    setTimeout(function() {
+    card.addEventListener('animationend', function onOut() {
+        card.removeEventListener('animationend', onOut);
         card.classList.remove(outClass);
         if (direction === 'next') {
             currentPrayerIndex = (currentPrayerIndex + 1) % apostolicPrayers.length;
@@ -606,8 +654,12 @@ function animateApostolicCard(direction) {
         }
         renderApostolicCard();
         card.classList.add(inClass);
-        setTimeout(function() { card.classList.remove(inClass); }, 320);
-    }, 280);
+        card.addEventListener('animationend', function onIn() {
+            card.removeEventListener('animationend', onIn);
+            card.classList.remove(inClass);
+            apostolicAnimating = false;
+        });
+    });
 }
 
 function nextApostolicPrayer(e) {
@@ -707,19 +759,27 @@ function initMemoryVerses() {
 function buildMemoryVerseIndex() {
     const list = document.getElementById('memory-verses-list');
     if (!list) return;
-    list.innerHTML = '';
+    var fragment = document.createDocumentFragment();
     memoryVerses.forEach(function(verse, i) {
-        const item = document.createElement('button');
+        var item = document.createElement('button');
         item.className = 'memory-verse-index-item';
         item.setAttribute('aria-label', 'Open ' + verse.reference);
         var versePreview = getVerseText(verse.reference, verse.text).replace(/\n\n/g, ' ').substring(0, 80);
-        item.innerHTML = '<span class="memory-verse-index-ref">' + formatRef(verse.reference) + '</span>' +
-            '<span class="memory-verse-index-preview">' + versePreview + '\u2026</span>';
+        var refSpan = document.createElement('span');
+        refSpan.className = 'memory-verse-index-ref';
+        refSpan.textContent = formatRef(verse.reference);
+        var previewSpan = document.createElement('span');
+        previewSpan.className = 'memory-verse-index-preview';
+        previewSpan.textContent = versePreview + '\u2026';
+        item.appendChild(refSpan);
+        item.appendChild(previewSpan);
         item.addEventListener('click', function() {
             openMemoryVerseCard(i);
         });
-        list.appendChild(item);
+        fragment.appendChild(item);
     });
+    list.innerHTML = '';
+    list.appendChild(fragment);
 }
 
 function showMemoryVerseIndex() {
@@ -738,25 +798,31 @@ function openMemoryVerseCard(index) {
 }
 
 function renderMemoryVerse() {
-    const verse = memoryVerses[currentVerseIndex];
+    var verse = memoryVerses[currentVerseIndex];
     document.getElementById('flashcardReference').textContent = formatRef(verse.reference);
-    const textEl = document.getElementById('flashcardText');
+    var textEl = document.getElementById('flashcardText');
     var translatedText = getVerseText(verse.reference, verse.text);
-    textEl.innerHTML = translatedText.replace(/\n\n/g, '<br><br>');
+    if (translatedText.indexOf('\n\n') !== -1) {
+        textEl.innerHTML = translatedText.replace(/\n\n/g, '<br><br>');
+    } else {
+        textEl.textContent = translatedText;
+    }
     document.getElementById('flashcardCounter').textContent =
         (currentVerseIndex + 1) + ' of ' + memoryVerses.length;
     updateDots();
 }
 
 function buildDots() {
-    const dotsEl = document.getElementById('flashcardDots');
+    var dotsEl = document.getElementById('flashcardDots');
     if (!dotsEl) return;
-    dotsEl.innerHTML = '';
+    var fragment = document.createDocumentFragment();
     memoryVerses.forEach(function(_, i) {
-        const dot = document.createElement('span');
+        var dot = document.createElement('span');
         dot.className = 'flashcard-dot' + (i === currentVerseIndex ? ' active' : '');
-        dotsEl.appendChild(dot);
+        fragment.appendChild(dot);
     });
+    dotsEl.innerHTML = '';
+    dotsEl.appendChild(fragment);
 }
 
 function updateDots() {
@@ -767,13 +833,18 @@ function updateDots() {
     });
 }
 
+var memoryVerseAnimating = false;
+
 function animateCard(direction) {
-    const card = document.getElementById('memoryVerseFlashcard');
-    const outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
-    const inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
+    if (memoryVerseAnimating) return;
+    memoryVerseAnimating = true;
+    var card = document.getElementById('memoryVerseFlashcard');
+    var outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
+    var inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
 
     card.classList.add(outClass);
-    setTimeout(function() {
+    card.addEventListener('animationend', function onOut() {
+        card.removeEventListener('animationend', onOut);
         card.classList.remove(outClass);
         if (direction === 'next') {
             currentVerseIndex = (currentVerseIndex + 1) % memoryVerses.length;
@@ -782,8 +853,12 @@ function animateCard(direction) {
         }
         renderMemoryVerse();
         card.classList.add(inClass);
-        setTimeout(function() { card.classList.remove(inClass); }, 320);
-    }, 280);
+        card.addEventListener('animationend', function onIn() {
+            card.removeEventListener('animationend', onIn);
+            card.classList.remove(inClass);
+            memoryVerseAnimating = false;
+        });
+    });
 }
 
 function nextMemoryVerse(e) {
@@ -940,7 +1015,12 @@ function renderDeclarationCard(type) {
     if (type === 'daily') {
         displayText = getVerseText(item.reference, item.text);
     }
-    document.getElementById(type + 'CardText').innerHTML = displayText.replace(/\n\n/g, '<br><br>');
+    var textEl = document.getElementById(type + 'CardText');
+    if (displayText.indexOf('\n\n') !== -1) {
+        textEl.innerHTML = displayText.replace(/\n\n/g, '<br><br>');
+    } else {
+        textEl.textContent = displayText;
+    }
     document.getElementById(type + 'CardReference').textContent = type === 'daily' ? formatRef(item.reference) : item.reference;
     document.getElementById(type + 'Counter').textContent = (index + 1) + ' of ' + data.length;
     updateDeclarationDots(type);
@@ -950,13 +1030,15 @@ function buildDeclarationDots(type) {
     var data = type === 'in-christ' ? inChristDeclarations : dailyDeclarations;
     var dotsEl = document.getElementById(type + 'Dots');
     if (!dotsEl) return;
-    dotsEl.innerHTML = '';
     var index = type === 'in-christ' ? currentInChristIndex : currentDailyIndex;
+    var fragment = document.createDocumentFragment();
     data.forEach(function(_, i) {
         var dot = document.createElement('span');
         dot.className = 'flashcard-dot' + (i === index ? ' active' : '');
-        dotsEl.appendChild(dot);
+        fragment.appendChild(dot);
     });
+    dotsEl.innerHTML = '';
+    dotsEl.appendChild(fragment);
 }
 
 function updateDeclarationDots(type) {
@@ -968,7 +1050,11 @@ function updateDeclarationDots(type) {
     });
 }
 
+var declarationAnimating = {};
+
 function animateDeclarationCard(type, direction) {
+    if (declarationAnimating[type]) return;
+    declarationAnimating[type] = true;
     var cardId = type === 'in-christ' ? 'inChristFlashcard' : 'dailyFlashcard';
     var data = type === 'in-christ' ? inChristDeclarations : dailyDeclarations;
     var card = document.getElementById(cardId);
@@ -976,7 +1062,8 @@ function animateDeclarationCard(type, direction) {
     var inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
 
     card.classList.add(outClass);
-    setTimeout(function() {
+    card.addEventListener('animationend', function onOut() {
+        card.removeEventListener('animationend', onOut);
         card.classList.remove(outClass);
         if (type === 'in-christ') {
             currentInChristIndex = direction === 'next'
@@ -989,8 +1076,12 @@ function animateDeclarationCard(type, direction) {
         }
         renderDeclarationCard(type);
         card.classList.add(inClass);
-        setTimeout(function() { card.classList.remove(inClass); }, 320);
-    }, 280);
+        card.addEventListener('animationend', function onIn() {
+            card.removeEventListener('animationend', onIn);
+            card.classList.remove(inClass);
+            declarationAnimating[type] = false;
+        });
+    });
 }
 
 function nextDeclaration(type, e) {
@@ -1043,11 +1134,14 @@ function showDeclaration(declaration, e) {
 
 var stepFlashcards = {};
 
+var stepFlashcardListenersAdded = {};
+
 function initStepFlashcard(id, cards) {
-    stepFlashcards[id] = { cards: cards, index: 0, listenersAdded: false };
+    var hadListeners = stepFlashcardListenersAdded[id];
+    stepFlashcards[id] = { cards: cards, index: 0 };
     renderStepCard(id);
     buildStepDots(id);
-    if (!stepFlashcards[id].listenersAdded) {
+    if (!hadListeners) {
         var card = document.getElementById(id + 'Flashcard');
         if (card) {
             var touchStartX, touchStartY;
@@ -1062,7 +1156,7 @@ function initStepFlashcard(id, cards) {
                     animateStepCard(id, dx < 0 ? 'next' : 'prev');
                 }
             }, { passive: true });
-            stepFlashcards[id].listenersAdded = true;
+            stepFlashcardListenersAdded[id] = true;
         }
     }
 }
@@ -1084,12 +1178,14 @@ function buildStepDots(id) {
     var state = stepFlashcards[id];
     var dotsEl = document.getElementById(id + 'Dots');
     if (!dotsEl || !state) return;
-    dotsEl.innerHTML = '';
+    var fragment = document.createDocumentFragment();
     state.cards.forEach(function(_, i) {
         var dot = document.createElement('span');
         dot.className = 'flashcard-dot' + (i === state.index ? ' active' : '');
-        dotsEl.appendChild(dot);
+        fragment.appendChild(dot);
     });
+    dotsEl.innerHTML = '';
+    dotsEl.appendChild(fragment);
 }
 
 function updateStepDots(id) {
@@ -1101,14 +1197,18 @@ function updateStepDots(id) {
     });
 }
 
+var stepCardAnimating = {};
+
 function animateStepCard(id, direction) {
     var state = stepFlashcards[id];
-    if (!state) return;
+    if (!state || stepCardAnimating[id]) return;
+    stepCardAnimating[id] = true;
     var card = document.getElementById(id + 'Flashcard');
     var outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
     var inClass  = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
     card.classList.add(outClass);
-    setTimeout(function() {
+    card.addEventListener('animationend', function onOut() {
+        card.removeEventListener('animationend', onOut);
         card.classList.remove(outClass);
         var len = state.cards.length;
         state.index = direction === 'next'
@@ -1116,8 +1216,12 @@ function animateStepCard(id, direction) {
             : (state.index - 1 + len) % len;
         renderStepCard(id);
         card.classList.add(inClass);
-        setTimeout(function() { card.classList.remove(inClass); }, 320);
-    }, 280);
+        card.addEventListener('animationend', function onIn() {
+            card.removeEventListener('animationend', onIn);
+            card.classList.remove(inClass);
+            stepCardAnimating[id] = false;
+        });
+    });
 }
 
 function nextStepCard(id, e) {
@@ -1200,7 +1304,16 @@ function initLectioFlashcard() {
         if (scriptureEl) {
             var lText = getVerseText(window._dailyLectio.scripture.reference, window._dailyLectio.scripture.text);
             var lRef = formatRef(window._dailyLectio.scripture.reference);
-            scriptureEl.innerHTML = `"${lText}" - ${lRef}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
+            var btn = scriptureEl.querySelector('.new-content-button');
+            scriptureEl.textContent = '\u201C' + lText + '\u201D - ' + lRef;
+            if (btn) scriptureEl.appendChild(btn);
+            else {
+                btn = document.createElement('button');
+                btn.className = 'new-content-button';
+                btn.setAttribute('onclick', 'generateLectioContent()');
+                btn.setAttribute('aria-label', 'New Scripture');
+                scriptureEl.appendChild(btn);
+            }
         }
         if (focusEl) focusEl.innerHTML = window._dailyLectio.focus;
     }
@@ -1366,36 +1479,45 @@ function generateExamenContent() {
 }
 
 function generateLectioContent() {
-    const scripture = getRandomItem(lectioScriptures);
-    const focusHtml = `Focus Word: "${scripture.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>`;
+    var scripture = getRandomItem(lectioScriptures);
+    var focusHtml = 'Focus Word: "' + scripture.focus + '"<br><small>Carry this word with you today as a reminder of God\'s invitation.</small>';
 
     window._dailyLectio = { scripture: scripture, focus: focusHtml };
 
     var translatedText = getVerseText(scripture.reference, scripture.text);
     var translatedRef = formatRef(scripture.reference);
-    const scriptureEl = document.getElementById('lectio-scripture');
+    var scriptureEl = document.getElementById('lectio-scripture');
     if (scriptureEl) {
-        scriptureEl.innerHTML = `"${translatedText}" - ${translatedRef}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
+        var btn = scriptureEl.querySelector('.new-content-button');
+        scriptureEl.textContent = '\u201C' + translatedText + '\u201D - ' + translatedRef;
+        if (btn) scriptureEl.appendChild(btn);
+        else {
+            btn = document.createElement('button');
+            btn.className = 'new-content-button';
+            btn.setAttribute('onclick', 'generateLectioContent()');
+            btn.setAttribute('aria-label', 'New Scripture');
+            scriptureEl.appendChild(btn);
+        }
     }
-    const focusEl = document.getElementById('lectio-focus');
+    var focusEl = document.getElementById('lectio-focus');
     if (focusEl) focusEl.innerHTML = focusHtml;
 }
 
 function generateAdorationContent() {
-    const scripture = getRandomItem(adorationScriptures);
+    var scripture = getRandomItem(adorationScriptures);
     var translatedText = getVerseText(scripture.reference, scripture.text);
     var translatedRef = formatRef(scripture.reference);
-    const adorationElement = document.getElementById('adoration-scripture');
-    const adorationButton = adorationElement.querySelector('.new-content-button');
-    adorationElement.innerHTML = `"${translatedText}" - ${translatedRef}`;
-    if (adorationButton) {
-        adorationElement.appendChild(adorationButton);
+    var adorationElement = document.getElementById('adoration-scripture');
+    if (adorationElement) {
+        var adorationButton = adorationElement.querySelector('.new-content-button');
+        adorationElement.textContent = '\u201C' + translatedText + '\u201D - ' + translatedRef;
+        if (adorationButton) adorationElement.appendChild(adorationButton);
     }
     document.getElementById('acknowledge-prompt').textContent = scripture.acknowledge;
     document.getElementById('adore-prompt').textContent = scripture.adore;
     document.getElementById('surrender-prompt').textContent = scripture.surrender;
     document.getElementById('transformation-prompt').textContent = scripture.transformation;
-    document.getElementById('adoration-focus').innerHTML = `Today's Focus: ${scripture.focus}<br><small>Meditate on this aspect of God's character throughout your day.</small>`;
+    document.getElementById('adoration-focus').innerHTML = 'Today\'s Focus: ' + scripture.focus + '<br><small>Meditate on this aspect of God\'s character throughout your day.</small>';
     document.getElementById('adoration-closing').textContent = scripture.closing;
 }
 
@@ -1403,14 +1525,14 @@ function generateAdorationContent() {
 
 function generatePrayerSetContent() {
     window._dailyPrayersetContent = window._dailyPrayersetContent || {};
-    for (let i = 1; i <= 7; i++) {
-        const movement = getRandomItem(prayerSetContent[`movement${i}`]);
+    for (var i = 1; i <= 7; i++) {
+        var movement = getRandomItem(prayerSetContent['movement' + i]);
         window._dailyPrayersetContent[i] = movement;
         var mvText = getVerseText(movement.reference, movement.scripture);
         var mvRef = formatRef(movement.reference);
-        const el = document.getElementById(`prayerset-movement${i}-scripture`);
-        if (el) el.innerHTML = `"${mvText}" - ${mvRef}`;
-        const promptEl = document.getElementById(`prayerset-movement${i}-prompt`);
+        var el = document.getElementById('prayerset-movement' + i + '-scripture');
+        if (el) el.textContent = '\u201C' + mvText + '\u201D - ' + mvRef;
+        var promptEl = document.getElementById('prayerset-movement' + i + '-prompt');
         if (promptEl) promptEl.textContent = movement.prompt;
     }
 }
@@ -1470,12 +1592,12 @@ function loadPersecutedContent() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function generateGentleHumbleContent() {
-    const content = getRandomItem(gentleHumbleContent);
+    var content = getRandomItem(gentleHumbleContent);
     var translatedText = getVerseText(content.reference, content.scripture);
     var translatedRef = formatRef(content.reference);
-    document.getElementById('gentle-humble-scripture').innerHTML = `${translatedText} - ${translatedRef}`;
+    document.getElementById('gentle-humble-scripture').textContent = translatedText + ' - ' + translatedRef;
     document.getElementById('gentle-humble-quote').textContent = content.quote;
-    document.getElementById('gentle-humble-author').textContent = `– ${content.author}`;
+    document.getElementById('gentle-humble-author').textContent = '\u2013 ' + content.author;
 }
 
 // Function to show update notification
@@ -1540,8 +1662,7 @@ function showUpdateNotification() {
     // Add to page
     document.body.appendChild(notification);
     
-    // Auto-dismiss after 10 seconds if not interacted with
-    setTimeout(() => {
+    window._updateNotificationTimer = setTimeout(function() {
         if (document.getElementById('update-notification')) {
             dismissUpdateNotification();
         }
@@ -1559,7 +1680,11 @@ function refreshApp() {
 
 // Function to dismiss update notification
 function dismissUpdateNotification() {
-    const notification = document.getElementById('update-notification');
+    if (window._updateNotificationTimer) {
+        clearTimeout(window._updateNotificationTimer);
+        window._updateNotificationTimer = null;
+    }
+    var notification = document.getElementById('update-notification');
     if (notification) {
         notification.remove();
     }
@@ -1638,28 +1763,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js')
             .then(registration => {
-                console.log('Service Worker registered successfully');
-                
-                // Check for updates on page load
                 registration.update();
-                
-                // Listen for updates
+
                 registration.addEventListener('updatefound', () => {
-                    const newWorker = registration.installing;
-                    console.log('New service worker found, installing...');
-                    
+                    var newWorker = registration.installing;
                     newWorker.addEventListener('statechange', () => {
                         if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            // New content is available
-                            console.log('New content available, will update on next visit');
                             showUpdateNotification();
                         }
                     });
                 });
             })
-            .catch(error => {
-                console.log('Service Worker registration failed:', error);
-            });
+            .catch(function() {});
         
         // Listen for messages from the service worker
         navigator.serviceWorker.addEventListener('message', event => {
