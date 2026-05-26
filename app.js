@@ -75,7 +75,7 @@ function markCompleted(activity) {
 const activityElements = {};
 
 function initializeActivityElements() {
-    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted', 'listening', 'gentle-humble', 'affirmation'];
+    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted', 'gentle-humble', 'affirmation'];
     activities.forEach(activity => {
         const content = document.getElementById(`${activity}-content`);
         if (content) {
@@ -102,7 +102,6 @@ function completeAdoration() { completeActivity('adoration'); }
 function completeApostolic() { completeActivity('apostolic'); }
 function completePrayerSet() { completeActivity('prayerset'); }
 function completePersecuted() { completeActivity('persecuted'); }
-function completeListening() { completeActivity('listening'); }
 function completeGentleHumble() { completeActivity('gentle-humble'); }
 function completeAffirmation() { completeActivity('affirmation'); }
 
@@ -122,7 +121,6 @@ function getDailyContent() {
     const examenIndex = getDailyIndex(examenPrompts.verses.length, 0);
     const lectioIndex = getDailyIndex(lectioScriptures.length, 100); // Offset so they don't sync
     const adorationIndex = getDailyIndex(adorationScriptures.length, 200); // Different offset
-    const listeningIndex = getDailyIndex(jamieWinshipQuotes.length, 600); // Listening offset
     const gentleHumbleIndex = getDailyIndex(gentleHumbleContent.length, 700); // Gentle humble offset
     const affirmationPromiseIndex = getDailyIndex(biblePromises.length, 800); // Affirmation promise offset
     
@@ -139,7 +137,6 @@ function getDailyContent() {
         lectio: lectioScriptures[lectioIndex],
         adoration: adorationScriptures[adorationIndex],
         // apostolic prayers now display all prayers statically - no dynamic content needed
-        listening: jamieWinshipQuotes[listeningIndex],
         gentleHumble: gentleHumbleContent[gentleHumbleIndex],
         affirmation: {
             adorationVerse: adorationScriptures[adorationIndex],
@@ -213,8 +210,6 @@ function loadDailyContent() {
     // Load Open Doors calendar entry for today
     loadPersecutedContent();
     
-    // Load daily Listening content
-    document.getElementById('listening-quote').innerHTML = `"${daily.listening}" - Jamie Winship`;
     
     // Load daily Gentle and Humble in Heart content
     document.getElementById('gentle-humble-scripture').innerHTML = `${daily.gentleHumble.scripture} - ${daily.gentleHumble.reference}`;
@@ -1326,11 +1321,6 @@ function loadPersecutedContent() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-
-function generateListeningContent() {
-    const quote = getRandomItem(jamieWinshipQuotes);
-    document.getElementById('listening-quote').innerHTML = `"${quote}" - Jamie Winship`;
-}
 
 function generateGentleHumbleContent() {
     const content = getRandomItem(gentleHumbleContent);
