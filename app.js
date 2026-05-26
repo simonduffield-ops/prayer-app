@@ -105,7 +105,8 @@ const htmlVerses = [
     { id: 'creeds-header-verse', ref: 'Hebrews 12:1', niv: 'Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us' },
     { id: 'written-prayers-header-verse', ref: 'James 5:16', niv: 'The prayer of a righteous person is powerful and effective.' },
     { id: 'declarations-header-verse', ref: 'Proverbs 18:21', niv: 'Death and life are in the power of the tongue.' },
-    { id: 'prayerset-header-verse', ref: 'Matthew 6:9', niv: "This, then, is how you should pray: 'Our Father in heaven...'" }
+    { id: 'prayerset-header-verse', ref: 'Matthew 6:9', niv: "This, then, is how you should pray: 'Our Father in heaven...'" },
+    { id: 'gentle-humble-header-verse', ref: 'Matthew 11:28-30', niv: 'Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.' }
 ];
 
 function updateHtmlVerses() {
@@ -1229,14 +1230,19 @@ var beatitudesCardBodies = [
     '<div class="reflection-box"><p><em>Lord, are there any places where my heart is distracted or conflicted? Purify my heart and mind, so that I can see the world as you see it. Where am I not single-minded? Is there anyplace where I am outside my identity?</em></p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
     '<div class="reflection-box"><p><em>Lord, show me any place in my life where I am not at perfect peace. How can I be an agent of peace and reconciliation in the world?</em></p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
     '<div class="reflection-box"><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
-    '<div class="reflection-box"><p>Rejoice and be glad, because great is your reward in heaven, for in the same way they persecuted the prophets who were before you.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
+    '<div class="reflection-box"><p>{{matthew512}}</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
 ];
 
 function buildBeatitudesCards() {
     return beatitudesCardsNIV.map(function(nivTitle, i) {
+        var body = beatitudesCardBodies[i];
+        if (i === 8) {
+            var matt512Niv = 'Rejoice and be glad, because great is your reward in heaven, for in the same way they persecuted the prophets who were before you.';
+            body = body.replace('{{matthew512}}', getVerseText('Matthew 5:12', matt512Niv));
+        }
         return {
             title: getVerseText(beatitudesRefs[i], nivTitle),
-            body: beatitudesCardBodies[i]
+            body: body
         };
     });
 }
@@ -1250,67 +1256,80 @@ function initBeatitudesFlashcard() {
 
 // ── Lord's Prayer flashcard ────────────────────────────────────────────────────
 
+var prayerSetFallbacks = [
+    { ref: 'Hebrews 10:19,22', niv: 'Therefore, brothers and sisters, since we have confidence to enter the Most Holy Place by the blood of Jesus... let us draw near to God with a sincere heart and with the full assurance that faith brings.' },
+    { ref: 'Psalm 29:2', niv: 'Ascribe to the Lord the glory due his name; worship the Lord in the splendor of his holiness.' },
+    { ref: 'Matthew 6:33', niv: 'Seek first his kingdom and his righteousness, and all these things will be given to you as well.' },
+    { ref: 'Philippians 4:19', niv: 'And my God will meet all your needs according to the riches of his glory in Christ Jesus.' },
+    { ref: 'Colossians 3:13', niv: 'Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.' },
+    { ref: 'James 4:7', niv: 'Submit yourselves, then, to God. Resist the devil, and he will flee from you.' },
+    { ref: 'Isaiah 30:21', niv: 'Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, \'This is the way; walk in it.\'' }
+];
+
 function buildLordsPrayerCards() {
-    return [
-        {
-            title: 'Our Father Who Is In Heaven',
-            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Approach, Worship, Adoration &amp; Surrender</div>' +
-                  '<div class="scripture-text" id="prayerset-movement1-scripture">"Therefore, brothers and sisters, since we have confidence to enter the Most Holy Place by the blood of Jesus... let us draw near to God with a sincere heart and with the full assurance that faith brings." - Hebrews 10:19,22</div>' +
-                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement1-prompt">Come into God\'s presence as a beloved child. He is your Father — both intimately close and infinitely glorious. Worship Him for who He is. Surrender your heart, your day, and your will to Him.</span></p><p><em>Take time to worship and adore your Heavenly Father...</em></p></div>'
-        },
-        {
-            title: 'Hallowed Be Your Name',
-            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Worship, Gratitude &amp; Prayer for the World</div>' +
-                  '<div class="scripture-text" id="prayerset-movement2-scripture">"Ascribe to the Lord the glory due his name; worship the Lord in the splendor of his holiness." - Psalm 29:2</div>' +
-                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement2-prompt">Honor God\'s holy name. Thank Him for who He has revealed Himself to be. Pray that the world would know Him as He truly is — in all His beauty, holiness, and love.</span></p><p><em>Worship God\'s character and pray for His name to be honored throughout the earth...</em></p></div>'
-        },
-        {
-            title: 'Your Kingdom Come, Your Will Be Done',
-            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Submission &amp; Intercession</div>' +
-                  '<div class="scripture-text" id="prayerset-movement3-scripture">"Seek first his kingdom and his righteousness, and all these things will be given to you as well." - Matthew 6:33</div>' +
-                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement3-prompt">Submit to God\'s reign in your life. Pray for His kingdom to come in your family, your church, the persecuted church worldwide, and for revival and renewal in the nations.</span></p><p><em>Intercede for God\'s will to be done on earth as it is in heaven...</em></p></div>'
-        },
-        {
-            title: 'Give Us This Day Our Daily Bread',
-            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Provision — His Presence, Mercy &amp; Help</div>' +
-                  '<div class="scripture-text" id="prayerset-movement4-scripture">"And my God will meet all your needs according to the riches of his glory in Christ Jesus." - Philippians 4:19</div>' +
-                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement4-prompt">Ask for God\'s provision — His presence above all, His mercy for today, physical provision, and help in every area of need. Acknowledge your complete dependence on Him.</span></p><p><em>Bring your needs to God, trusting in His faithful provision...</em></p></div>'
-        },
-        {
-            title: 'Forgive Us As We Forgive Others',
-            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Reflection &amp; Release</div>' +
-                  '<div class="scripture-text" id="prayerset-movement5-scripture">"Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you." - Colossians 3:13</div>' +
-                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement5-prompt">Receive God\'s forgiveness for your sins. Then release everyone and everything to Him — forgiving those who have hurt you, letting go of offenses, surrendering control.</span></p><p><em>Confess your sins, receive forgiveness, and extend forgiveness to others...</em></p></div>'
-        },
-        {
-            title: 'Lead Us Not Into Trial, Deliver Us From Evil',
-            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Gethsemane Prayer &amp; Spiritual Warfare</div>' +
-                  '<div class="scripture-text" id="prayerset-movement6-scripture">"Submit yourselves, then, to God. Resist the devil, and he will flee from you." - James 4:7</div>' +
-                  '<div class="reflection-box"><p><strong>Reflect:</strong> <span id="prayerset-movement6-prompt">Like Jesus in Gethsemane, submit to God\'s will even in difficulty. Stand against spiritual forces of evil. Ask for protection from temptation and deliverance from the evil one.</span></p><p><em>Pray for strength in trials and victory over spiritual opposition...</em></p></div>'
-        },
-        {
-            title: 'Listening Prayer',
-            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">Hearing God\'s Voice</div>' +
-                  '<div class="scripture-text" id="prayerset-movement7-scripture">"Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, \'This is the way; walk in it.\'" - Isaiah 30:21</div>' +
-                  '<div class="reflection-box"><p><strong>Ask God:</strong></p><p style="font-style:italic;margin:15px 0;">"What is important for me to know about today?"</p><p style="font-style:italic;margin:15px 0;">"What do You want me to do about it?"</p><p><em><span id="prayerset-movement7-prompt">Be still and listen for God\'s gentle voice...</span></em></p></div>'
-        }
+    var titles = [
+        'Our Father Who Is In Heaven',
+        'Hallowed Be Your Name',
+        'Your Kingdom Come, Your Will Be Done',
+        'Give Us This Day Our Daily Bread',
+        'Forgive Us As We Forgive Others',
+        'Lead Us Not Into Trial, Deliver Us From Evil',
+        'Listening Prayer'
     ];
+    var subtitles = [
+        'Approach, Worship, Adoration &amp; Surrender',
+        'Worship, Gratitude &amp; Prayer for the World',
+        'Submission &amp; Intercession',
+        'Provision — His Presence, Mercy &amp; Help',
+        'Reflection &amp; Release',
+        'Gethsemane Prayer &amp; Spiritual Warfare',
+        'Hearing God\'s Voice'
+    ];
+    var defaultPrompts = [
+        'Come into God\'s presence as a beloved child. He is your Father — both intimately close and infinitely glorious. Worship Him for who He is. Surrender your heart, your day, and your will to Him.',
+        'Honor God\'s holy name. Thank Him for who He has revealed Himself to be. Pray that the world would know Him as He truly is — in all His beauty, holiness, and love.',
+        'Submit to God\'s reign in your life. Pray for His kingdom to come in your family, your church, the persecuted church worldwide, and for revival and renewal in the nations.',
+        'Ask for God\'s provision — His presence above all, His mercy for today, physical provision, and help in every area of need. Acknowledge your complete dependence on Him.',
+        'Receive God\'s forgiveness for your sins. Then release everyone and everything to Him — forgiving those who have hurt you, letting go of offenses, surrendering control.',
+        'Like Jesus in Gethsemane, submit to God\'s will even in difficulty. Stand against spiritual forces of evil. Ask for protection from temptation and deliverance from the evil one.',
+        'Be still and listen for God\'s gentle voice...'
+    ];
+    var defaultReflections = [
+        '<em>Take time to worship and adore your Heavenly Father...</em>',
+        '<em>Worship God\'s character and pray for His name to be honored throughout the earth...</em>',
+        '<em>Intercede for God\'s will to be done on earth as it is in heaven...</em>',
+        '<em>Bring your needs to God, trusting in His faithful provision...</em>',
+        '<em>Confess your sins, receive forgiveness, and extend forgiveness to others...</em>',
+        '<em>Pray for strength in trials and victory over spiritual opposition...</em>',
+        ''
+    ];
+
+    return titles.map(function(title, i) {
+        var daily = window._dailyPrayersetContent && window._dailyPrayersetContent[i + 1];
+        var fb = prayerSetFallbacks[i];
+        var ref = daily ? daily.reference : fb.ref;
+        var nivText = daily ? daily.scripture : fb.niv;
+        var text = getVerseText(ref, nivText);
+        var fRef = formatRef(ref);
+        var prompt = daily ? daily.prompt : defaultPrompts[i];
+
+        var reflectionPart = i === 6
+            ? '<p style="font-style:italic;margin:15px 0;">"What is important for me to know about today?"</p><p style="font-style:italic;margin:15px 0;">"What do You want me to do about it?"</p>'
+            : '';
+        var reflectLabel = i === 6 ? '<strong>Ask God:</strong>' : '<strong>Reflect:</strong>';
+        var reflectionClose = defaultReflections[i] ? '<p>' + defaultReflections[i] + '</p>' : '';
+
+        return {
+            title: title,
+            body: '<div style="font-size:0.85em;color:#667eea;margin-bottom:12px;">' + subtitles[i] + '</div>' +
+                  '<div class="scripture-text">\u201C' + text + '\u201D - ' + fRef + '</div>' +
+                  '<div class="reflection-box">' + reflectionPart + '<p>' + reflectLabel + ' <span>' + prompt + '</span></p>' + reflectionClose + '</div>'
+        };
+    });
 }
 
 function initLordsPrayerFlashcard() {
     initStepFlashcard('prayerset', buildLordsPrayerCards());
-    if (window._dailyPrayersetContent) {
-        for (let i = 1; i <= 7; i++) {
-            const movement = window._dailyPrayersetContent[i];
-            if (!movement) continue;
-            var mvText = getVerseText(movement.reference, movement.scripture);
-            var mvRef = formatRef(movement.reference);
-            const scriptureEl = document.getElementById(`prayerset-movement${i}-scripture`);
-            const promptEl = document.getElementById(`prayerset-movement${i}-prompt`);
-            if (scriptureEl) scriptureEl.innerHTML = `"${mvText}" - ${mvRef}`;
-            if (promptEl) promptEl.textContent = movement.prompt;
-        }
-    }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

@@ -990,5 +990,93 @@ const VERSE_TRANSLATIONS = {
     "1 Peter 5:5": {
         "AMP": "Likewise, you who are younger and of lesser rank, be subject to the elders—[and] all of you, clothe yourselves with humility toward one another [tie on the servant's apron], for God is opposed to the proud [the disdainful, the presumptuous, and He defeats them], but He gives grace to the humble.",
         "NLT": "In the same way, you who are younger must accept the authority of the elders. And all of you, dress yourselves in humility as you relate to one another, for 'God opposes the proud but gives grace to the humble.'"
+    },
+    "Acts 4:29-30": {
+        "AMP": "And now, Lord, observe their threats and grant that Your bond-servants may speak Your word with great confidence, while You extend Your hand to heal, and signs and wonders take place through the name of Your holy Servant and Son Jesus.",
+        "NLT": "And now, O Lord, hear their threats, and give us, your servants, great boldness in preaching your word. Stretch out your hand with healing power; may miraculous signs and wonders be done through the name of your holy servant Jesus."
+    },
+    "Colossians 4:3": {
+        "AMP": "and at the same time pray for us, too, that God may open a door for our message, so that we may speak forth the mystery of Christ, for which I am in chains,",
+        "NLT": "Pray for us, too, that God will give us many opportunities to speak about his mysterious plan concerning Christ. That is why I am here in chains."
+    },
+    "Colossians 4:12": {
+        "AMP": "Epaphras, who is one of you, a bond-servant of Christ Jesus, sends you greetings. He is always striving for you in his prayers, that you may stand mature and fully assured in all the will of God.",
+        "NLT": "Epaphras, a member of your own fellowship and a servant of Christ Jesus, sends you his greetings. He always prays earnestly for you, asking God to make you strong and perfect, fully confident that you are following the whole will of God."
+    },
+    "2 Thessalonians 3:5": {
+        "AMP": "May the Lord direct your hearts into the love of God and into the steadfastness and patience of Christ.",
+        "NLT": "May the Lord lead your hearts into a full understanding and expression of the love of God and the patient endurance that comes from Christ."
+    },
+    "2 Thessalonians 3:16": {
+        "AMP": "Now may the Lord of peace Himself grant you His peace at all times and in every way. The Lord be with you all.",
+        "NLT": "Now may the Lord of peace himself give you his peace at all times and in every situation. The Lord be with you all."
+    },
+    "3 John 1:2": {
+        "AMP": "Beloved, I pray that in every way you may succeed and prosper and be in good health [physically], just as [I know] your soul prospers [spiritually].",
+        "NLT": "Dear friend, I hope all is well with you and that you are as healthy in body as you are strong in spirit."
+    },
+    "Romans 15:5-6": {
+        "AMP": "Now may the God who gives endurance and who supplies encouragement grant that you be of the same mind with one another according to Christ Jesus, so that with one accord you may with one voice glorify and praise and honor the God and Father of our Lord Jesus Christ.",
+        "NLT": "May God, who gives this patience and encouragement, help you live in complete harmony with each other, as is fitting for followers of Christ Jesus. Then all of you can join together with one voice, giving praise and glory to God, the Father of our Lord Jesus Christ."
+    },
+    "Matthew 5:12": {
+        "AMP": "Rejoice and be glad [exceedingly joyful], for your reward in heaven is great [absolutely inexhaustible]; for in this same way they persecuted the prophets who were before you.",
+        "NLT": "Be happy about it! Be very glad! For a great reward awaits you in heaven. And remember, the ancient prophets were persecuted in the same way."
+    },
+    "2 Samuel 7:28": {
+        "AMP": "Now, O Lord GOD, You are God, and Your words are truth, and You have promised this good thing to Your servant.",
+        "NLT": "O Sovereign LORD, you are God, your covenant is trustworthy, and you have promised these good things to your servant."
+    },
+    "2 Thessalonians 1:7": {
+        "AMP": "and to give relief to you who are so distressed and to us as well when the Lord Jesus is revealed from heaven with His mighty angels in a flame of fire,",
+        "NLT": "And God will provide rest for you who are being persecuted and also for us when the Lord Jesus appears from heaven. He will come with his mighty angels,"
+    },
+    "Philippians 1:9-11": {
+        "AMP": "And this I pray, that your love may abound still more and more in real knowledge and all discernment, so that you may learn to recognize and treasure what is excellent, and that you may be pure and blameless until the day of Christ; filled with the fruit of righteousness which comes through Jesus Christ, to the glory and praise of God.",
+        "NLT": "I pray that your love will overflow more and more, and that you will keep on growing in knowledge and understanding. For I want you to understand what really matters, so that you may live pure and blameless lives until the day of Christ's return. May you always be filled with the fruit of your salvation - the righteous character produced in your life by Jesus Christ - for this will bring much glory and praise to God."
+    },
+    "1 Thessalonians 3:12-13": {
+        "AMP": "and may the Lord cause you to increase and overflow with love for one another, and for all people, just as we also do for you; so that He may establish your hearts without blame in holiness before our God and Father at the coming of our Lord Jesus with all His saints.",
+        "NLT": "And may the Lord make your love for one another and for all people grow and overflow, just as our love for you overflows. May he, as a result, make your hearts strong, blameless, and holy as you stand before God our Father when our Lord Jesus comes again with all his holy people. Amen."
+    },
+    "1 Thessalonians 5:23-24": {
+        "AMP": "Now may the God of peace Himself sanctify you through and through; and may your spirit and soul and body be kept complete and blameless at the coming of our Lord Jesus Christ. Faithful and absolutely trustworthy is He who is calling you, and He will do it.",
+        "NLT": "Now may the God of peace make you holy in every way, and may your whole spirit and soul and body be kept blameless until our Lord Jesus Christ comes again. God will make this happen, for he who calls you is faithful."
+    },
+    "2 Thessalonians 1:11-12": {
+        "AMP": "To this end we always pray for you, that our God will count you worthy of your calling, and fulfill every desire for goodness and every work of faith with power, so that the name of our Lord Jesus will be glorified in you, and you in Him, according to the grace of our God and the Lord Jesus Christ.",
+        "NLT": "So we keep on praying for you, asking our God to enable you to live a life worthy of his call. May he give you the power to accomplish all the good things your faith prompts you to do. Then the name of our Lord Jesus will be honored because of the way you live, and you will be honored along with him. This is all made possible because of the grace of our God and Lord, Jesus Christ."
+    },
+    "2 Thessalonians 3:1-3": {
+        "AMP": "Finally, believers, pray for us, that the word of the Lord will spread rapidly and be honored, just as it was with you; and that we will be rescued from perverse and evil men; for not everyone has the faith. But the Lord is faithful, and He will strengthen you and protect you from the evil one.",
+        "NLT": "Finally, dear brothers and sisters, we ask you to pray for us. Pray that the Lord's message will spread rapidly and be honored wherever it goes, just as when it came to you. Pray, too, that we will be rescued from wicked and evil people, for not everyone is a believer. But the Lord is faithful; he will strengthen you and guard you from the evil one."
+    },
+    "Jude 1:24-25": {
+        "AMP": "Now to Him who is able to keep you from stumbling or falling into sin, and to present you unblemished before the presence of His glory with triumphant joy, to the only God our Savior, through Jesus Christ our Lord, be glory, majesty, dominion, and authority, before all time and now and forever. Amen.",
+        "NLT": "Now all glory to God, who is able to keep you from falling away and will bring you with great joy into his glorious presence without a single fault. All glory to him who alone is God, our Savior through Jesus Christ our Lord. All glory, majesty, power, and authority are his before all time, and in the present, and beyond all time! Amen."
+    },
+    "Mark 16:17-18": {
+        "AMP": "These signs will accompany those who have believed: in My name they will cast out demons, they will speak in new tongues; they will pick up serpents, and if they drink anything deadly, it will not hurt them; they will lay hands on the sick, and they will get well.",
+        "NLT": "These miraculous signs will accompany those who believe: They will cast out demons in my name, and they will speak in new languages. They will be able to handle snakes with safety, and if they drink anything poisonous, it won't hurt them. They will be able to place their hands on the sick, and they will be healed."
+    },
+    "Galatians 3:2, 5": {
+        "AMP": "This is the only thing I want to find out from you: did you receive the Spirit by works of the Law, or by hearing with faith?... So then, does He who provides you with the Spirit and works miracles among you, do it by works of the Law, or by hearing with faith?",
+        "NLT": "Let me ask you this one question: Did you receive the Holy Spirit by obeying the law of Moses? Of course not! You received the Spirit because you believed the message you heard about Christ.... I ask you again, does God give you the Holy Spirit and work miracles among you because you obey the law? Of course not! It is because you believe the message you heard about Christ."
+    },
+    "2 Corinthians 5:21; James 5:16b": {
+        "AMP": "He made Him who knew no sin to be sin on our behalf, so that in Him we might become the righteousness of God.\n\nThe heartfelt and persistent prayer of a righteous man can accomplish much [when put into action and made effective by God - it is dynamic and can have tremendous power].",
+        "NLT": "For God made Christ, who never sinned, to be the offering for our sin, so that we could be made right with God through Christ.\n\nThe earnest prayer of a righteous person has great power and produces wonderful results."
+    },
+    "Ephesians 6:18-20": {
+        "AMP": "With all prayer and petition pray at all times in the Spirit, and with this in view, stay alert with all perseverance and petition for all the saints. And pray for me, that words may be given to me when I open my mouth, to make known with boldness the mystery of the gospel, for which I am an ambassador in chains. And pray that in proclaiming it I may speak boldly and courageously, as I should.",
+        "NLT": "Pray in the Spirit at all times and on every occasion. Stay alert and be persistent in your prayers for all believers everywhere. And pray for me, too. Ask God to give me the right words so I can boldly explain God's mysterious plan that the Good News is for Jews and Gentiles alike. I am in chains now, still preaching this message as God's ambassador. So pray that I will keep on speaking boldly for him, as I should."
+    },
+    "Colossians 1:9-12": {
+        "AMP": "For this reason, since the day we heard about it, we have not stopped praying for you, asking that you may be filled with the knowledge of His will in all spiritual wisdom and understanding, so that you will walk in a manner worthy of the Lord, to please Him in all respects, bearing fruit in every good work and growing in the knowledge of God; strengthened with all power, according to His glorious might, for the attaining of all steadfastness and patience; joyously giving thanks to the Father, who has qualified us to share in the inheritance of the saints in light.",
+        "NLT": "So we have not stopped praying for you since we first heard about you. We ask God to give you complete knowledge of his will and to give you spiritual wisdom and understanding. Then the way you live will always honor and please the Lord, and your lives will produce every kind of good fruit. All the while, you will grow as you learn to know God better and better. We also pray that you will be strengthened with all his glorious power so you will have all the endurance and patience you need. May you be filled with joy, always thanking the Father. He has enabled you to share in the inheritance that belongs to his people, who live in the light."
+    },
+    "Ephesians 3:14-21": {
+        "AMP": "For this reason I bow my knees before the Father, from whom every family in heaven and on earth derives its name, that He would grant you, according to the riches of His glory, to be strengthened with power through His Spirit in the inner self, so that Christ may dwell in your hearts through faith; and that you, being rooted and grounded in love, may be able to comprehend with all the saints what is the width and length and height and depth, and to know the love of Christ which surpasses knowledge, that you may be filled to all the fullness of God. Now to Him who is able to do far more abundantly beyond all that we ask or think, according to the power that works within us, to Him be the glory in the church and in Christ Jesus to all generations forever and ever. Amen.",
+        "NLT": "When I think of all this, I fall to my knees and pray to the Father, the Creator of everything in heaven and on earth. I pray that from his glorious, unlimited resources he will empower you with inner strength through his Spirit. Then Christ will make his home in your hearts as you trust in him. Your roots will grow down into God’s love and keep you strong. And may you have the power to understand, as all God’s people should, how wide, how long, how high, and how deep his love is. May you experience the love of Christ, though it is too great to understand fully. Then you will be made complete with all the fullness of life and power that comes from God. Now all glory to God, who is able, through his mighty power at work within us, to accomplish infinitely more than we might ask or think. Glory to him in the church and in Christ Jesus through all generations forever and ever! Amen."
     }
 };
