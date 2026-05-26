@@ -1251,7 +1251,6 @@ body.dark-mode .apostolic-reference {
     font-weight: 700;
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.05em;
-    text-transform: uppercase;
     margin-bottom: 16px;
     font-family: var(--font-ui);
 }
