@@ -81,8 +81,7 @@ function initializeActivityElements() {
         if (content) {
             activityElements[activity] = {
                 content,
-                finishButton: content.querySelector('.finish-button'),
-                completed: document.getElementById(`${activity}-completed`)
+                finishButton: content.querySelector('.finish-button')
             };
         }
     });
@@ -108,10 +107,9 @@ function completeAffirmation() { completeActivity('affirmation'); }
 function updateCompletionStates() {
     Object.keys(activityElements).forEach(activity => {
         const elements = activityElements[activity];
-        if (elements) {
+        if (elements && elements.finishButton) {
             const isCompleted = isCompletedToday(activity);
             elements.finishButton.style.display = isCompleted ? 'none' : 'inline-block';
-            elements.completed.style.display = isCompleted ? 'block' : 'none';
         }
     });
 }
@@ -255,22 +253,18 @@ function showTool(tool) {
     }
 }
 
-function showCreed(creed) {
-    // Hide all creed sections
+function showCreed(creed, e) {
     document.querySelectorAll('.creed-section').forEach(section => {
         section.classList.remove('active');
     });
     
-    // Remove active class from all tabs
     document.querySelectorAll('.creed-tab').forEach(tab => {
         tab.classList.remove('active');
     });
     
-    // Show selected creed
     document.getElementById(creed + '-creed').classList.add('active');
     
-    // Add active class to clicked tab
-    event.target.classList.add('active');
+    if (e && e.target) e.target.classList.add('active');
 }
 
 // ── Prayers of the Apostles Flashcard ───────────────────────────────────────
@@ -872,31 +866,25 @@ function prevDeclaration(type, e) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 
-function showPrayer(prayer) {
-    // Hide all prayer sections
+function showPrayer(prayer, e) {
     document.querySelectorAll('.prayer-section').forEach(section => {
         section.classList.remove('active');
     });
     
-    // Remove active class from all tabs
     document.querySelectorAll('.prayer-tab').forEach(tab => {
         tab.classList.remove('active');
     });
     
-    // Show selected prayer
     document.getElementById(prayer + '-prayer').classList.add('active');
     
-    // Add active class to clicked tab
-    event.target.classList.add('active');
+    if (e && e.target) e.target.classList.add('active');
 }
 
-function showDeclaration(declaration) {
-    // Hide all declaration sections
+function showDeclaration(declaration, e) {
     document.querySelectorAll('.prayer-section').forEach(section => {
         section.classList.remove('active');
     });
     
-    // Remove active class from all tabs in the declarations area
     const declarationsContent = document.getElementById('declarations-content');
     if (declarationsContent) {
         declarationsContent.querySelectorAll('.prayer-tab').forEach(tab => {
@@ -904,13 +892,10 @@ function showDeclaration(declaration) {
         });
     }
     
-    // Show selected declaration
     document.getElementById(declaration + '-declaration').classList.add('active');
     
-    // Add active class to clicked tab
-    event.target.classList.add('active');
+    if (e && e.target) e.target.classList.add('active');
 
-    // Initialise flashcard for the shown declaration
     initDeclarations(declaration);
 }
 
@@ -1197,10 +1182,6 @@ function showMainMenu() {
         content.classList.remove('active');
     });
     
-    // Load daily content (same content all day, changes each new day)
-    loadDailyContent();
-    
-    // Scroll to top of the page
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1432,7 +1413,7 @@ function toggleCategory(categoryId) {
 
 function initializeCategories() {
     // Load saved category states from localStorage
-    const categories = ['daily', 'scripture', 'historic', 'intercession'];
+    const categories = ['daily', 'scripture', 'historic'];
     
     categories.forEach(categoryId => {
         const state = localStorage.getItem(`category_${categoryId}`);
