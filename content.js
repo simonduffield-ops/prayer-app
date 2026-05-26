@@ -1424,7 +1424,7 @@ const gentleHumbleContent = [
     }
 ];
 
-// Bible Promises for Affirmation Prayer
+// Bible Promises for Daily Prayer
 const biblePromises = [
     { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", reference: "John 3:16" },
     { text: "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls. For my yoke is easy and my burden is light.", reference: "Matthew 11:28-30" },
