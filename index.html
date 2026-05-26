@@ -34,7 +34,14 @@
     <div class="container">
         <header onclick="showMainMenu()">
             <h1>Come to the Table</h1>
-            <p class="subtitle">"Be still, and know that I am God" - Psalm 46:10 (NIV)</p>
+            <p class="subtitle" id="header-subtitle">"Be still, and know that I am God" - Psalm 46:10 (NIV)</p>
+            <div class="translation-picker" onclick="event.stopPropagation()">
+                <select id="translation-select" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
         </header>
         
         <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
@@ -447,7 +454,7 @@
             <div class="prayer-header">
                 <h2 class="prayer-title">The Lord's Prayer</h2>
                 <div class="bible-verse">
-                    <p>"This, then, is how you should pray: 'Our Father in heaven...'" - Matthew 6:9 (NIV)</p>
+                    <p id="prayerset-header-verse">"This, then, is how you should pray: 'Our Father in heaven...'" - Matthew 6:9 (NIV)</p>
                     <button class="new-content-button" onclick="generatePrayerSetContent()" aria-label="New Content"></button>
                 </div>
             </div>
@@ -520,7 +527,7 @@
             <div class="prayer-header">
                 <h2 class="prayer-title">Creeds</h2>
                 <div class="bible-verse">
-                    <p>"Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us" - Hebrews 12:1 (NIV)</p>
+                    <p id="creeds-header-verse">"Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us" - Hebrews 12:1 (NIV)</p>
                 </div>
             </div>
 
@@ -696,7 +703,7 @@
             <div class="prayer-header">
                 <h2 class="prayer-title">Written Prayers</h2>
                 <div class="bible-verse">
-                    <p>"The prayer of a righteous person is powerful and effective." - James 5:16 (NIV)</p>
+                    <p id="written-prayers-header-verse">"The prayer of a righteous person is powerful and effective." - James 5:16 (NIV)</p>
                 </div>
             </div>
 
@@ -1146,7 +1153,7 @@
             <div class="prayer-header">
                 <h2 class="prayer-title">Declarations</h2>
                 <div class="bible-verse">
-                    <p>"Death and life are in the power of the tongue." - Proverbs 18:21 (ESV)</p>
+                    <p id="declarations-header-verse">"Death and life are in the power of the tongue." - Proverbs 18:21 (ESV)</p>
                 </div>
             </div>
 
@@ -1249,7 +1256,7 @@
             <div class="prayer-header">
                 <h2 class="prayer-title">The Beatitudes</h2>
                 <div class="bible-verse">
-                    <p>"Now when Jesus saw the crowds, he went up on a mountainside and sat down. His disciples came to him, and he began to teach them." - Matthew 5:1-2 (NIV)</p>
+                    <p id="beatitudes-header-verse">"Now when Jesus saw the crowds, he went up on a mountainside and sat down. His disciples came to him, and he began to teach them." - Matthew 5:1-2 (NIV)</p>
                 </div>
             </div>
 
@@ -1357,6 +1364,7 @@
 
     <script src="opendoors-calendar.js"></script>
     <script src="content.js"></script>
+    <script src="translations.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,3 +1,124 @@
+// ── Bible Translation System ─────────────────────────────────────────────────
+
+const VALID_TRANSLATIONS = ['NIV', 'AMP', 'NLT'];
+
+function getCurrentTranslation() {
+    const saved = localStorage.getItem('bibleTranslation');
+    return (saved && VALID_TRANSLATIONS.indexOf(saved) !== -1) ? saved : 'NIV';
+}
+
+function setTranslation(translation) {
+    if (VALID_TRANSLATIONS.indexOf(translation) === -1) return;
+    localStorage.setItem('bibleTranslation', translation);
+    const select = document.getElementById('translation-select');
+    if (select) select.value = translation;
+    refreshTranslations();
+}
+
+function normalizeRef(reference) {
+    return reference
+        .replace(/\s*\((?:NIV|AMP|NLT|ESV)\)/i, '')
+        .replace(/,\s*(Paul|The Early Church|John|Jude|Peter)$/i, '')
+        .replace(/\u2013/g, '-')
+        .trim();
+}
+
+function getVerseText(reference, nivText) {
+    const translation = getCurrentTranslation();
+    if (translation === 'NIV') return nivText;
+
+    if (typeof VERSE_TRANSLATIONS === 'undefined') return nivText;
+    const normRef = normalizeRef(reference);
+    const entry = VERSE_TRANSLATIONS[normRef];
+    if (entry && entry[translation]) return entry[translation];
+
+    return nivText;
+}
+
+function formatRef(reference) {
+    const translation = getCurrentTranslation();
+    const base = normalizeRef(reference);
+    const authorMatch = reference.match(/,\s*(Paul|The Early Church|John|Jude|Peter)$/i);
+    const suffix = authorMatch ? ', ' + authorMatch[1] : '';
+    return base + ' (' + translation + ')' + suffix;
+}
+
+function renderExamenVerse(rawVerse, elementId) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    const match = rawVerse.match(/^"(.+)"\s*-\s*(.+)$/);
+    if (match) {
+        const text = getVerseText(match[2], match[1]);
+        el.textContent = '\u201C' + text + '\u201D - ' + formatRef(match[2]);
+    } else {
+        el.textContent = rawVerse;
+    }
+}
+
+function initTranslationPicker() {
+    const select = document.getElementById('translation-select');
+    if (select) {
+        select.value = getCurrentTranslation();
+    }
+}
+
+function refreshTranslations() {
+    loadDailyContent();
+    updateHeaderSubtitle();
+    updateHtmlVerses();
+
+    const activeContent = document.querySelector('.prayer-content.active');
+    if (activeContent) {
+        const id = activeContent.id.replace('-content', '');
+        if (id === 'lectio') initLectioFlashcard();
+        if (id === 'beatitudes') initBeatitudesFlashcard();
+        if (id === 'prayerset') initLordsPrayerFlashcard();
+        if (id === 'examen') initExamenFlashcard();
+        if (id === 'memory-verses') {
+            buildMemoryVerseIndex();
+            const mvFlashcard = document.getElementById('memory-verses-flashcard-view');
+            if (mvFlashcard && mvFlashcard.style.display !== 'none') renderMemoryVerse();
+        }
+        if (id === 'apostolic') {
+            buildApostolicIndex();
+            const apFlashcard = document.getElementById('apostolic-flashcard-view');
+            if (apFlashcard && apFlashcard.style.display !== 'none') renderApostolicCard();
+        }
+        if (id === 'declarations') {
+            renderDeclarationCard('in-christ');
+            renderDeclarationCard('daily');
+        }
+    }
+}
+
+function updateHeaderSubtitle() {
+    const el = document.getElementById('header-subtitle');
+    if (!el) return;
+    const nivText = 'Be still, and know that I am God';
+    const ref = 'Psalm 46:10';
+    const translated = getVerseText(ref, nivText);
+    el.textContent = '\u201C' + translated + '\u201D - ' + formatRef(ref);
+}
+
+const htmlVerses = [
+    { id: 'beatitudes-header-verse', ref: 'Matthew 5:1-2', niv: 'Now when Jesus saw the crowds, he went up on a mountainside and sat down. His disciples came to him, and he began to teach them.' },
+    { id: 'creeds-header-verse', ref: 'Hebrews 12:1', niv: 'Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us' },
+    { id: 'written-prayers-header-verse', ref: 'James 5:16', niv: 'The prayer of a righteous person is powerful and effective.' },
+    { id: 'declarations-header-verse', ref: 'Proverbs 18:21', niv: 'Death and life are in the power of the tongue.' },
+    { id: 'prayerset-header-verse', ref: 'Matthew 6:9', niv: "This, then, is how you should pray: 'Our Father in heaven...'" }
+];
+
+function updateHtmlVerses() {
+    htmlVerses.forEach(function(v) {
+        const el = document.getElementById(v.id);
+        if (!el) return;
+        const translated = getVerseText(v.ref, v.niv);
+        el.textContent = '\u201C' + translated + '\u201D - ' + formatRef(v.ref);
+    });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Dark Mode Toggle
 
 function toggleDarkMode(event) {
@@ -165,23 +286,28 @@ function loadDailyContent() {
         tomorrow: daily.examen.tomorrow,
         closing: daily.examen.closing
     };
-    document.getElementById('examen-verse').textContent = daily.examen.verse;
+    renderExamenVerse(daily.examen.verse, 'examen-verse');
     document.getElementById('examen-closing').textContent = daily.examen.closing;
     
     // Load daily Lectio content
+    var lectioText = getVerseText(daily.lectio.reference, daily.lectio.text);
+    var lectioRef = formatRef(daily.lectio.reference);
     window._dailyLectio = { scripture: daily.lectio, focus: `Focus Word: "${daily.lectio.focus}"<br><small>Carry this word with you today as a reminder of God's invitation.</small>` };
     const lectioElement = document.getElementById('lectio-scripture');
     if (lectioElement) {
         const lectioButton = lectioElement.querySelector('.new-content-button');
-        lectioElement.innerHTML = `"${daily.lectio.text}" - ${daily.lectio.reference}`;
+        lectioElement.innerHTML = `"${lectioText}" - ${lectioRef}`;
         if (lectioButton) lectioElement.appendChild(lectioButton);
     }
     const lectioFocusEl = document.getElementById('lectio-focus');
-    if (lectioFocusEl) lectioFocusEl.innerHTML = window._dailyLectio.focus;    
+    if (lectioFocusEl) lectioFocusEl.innerHTML = window._dailyLectio.focus;
+    
     // Load daily Adoration content
+    var adorText = getVerseText(daily.adoration.reference, daily.adoration.text);
+    var adorRef = formatRef(daily.adoration.reference);
     const adorationElement = document.getElementById('adoration-scripture');
     const adorationButton = adorationElement.querySelector('.new-content-button');
-    adorationElement.innerHTML = `"${daily.adoration.text}" - ${daily.adoration.reference}`;
+    adorationElement.innerHTML = `"${adorText}" - ${adorRef}`;
     if (adorationButton) {
         adorationElement.appendChild(adorationButton);
     }
@@ -192,30 +318,33 @@ function loadDailyContent() {
     document.getElementById('adoration-focus').innerHTML = `Today's Focus: ${daily.adoration.focus}<br><small>Meditate on this aspect of God's character throughout your day.</small>`;
     document.getElementById('adoration-closing').textContent = daily.adoration.closing;
     
-    // Apostolic Prayers now display all prayers statically - no dynamic content loading needed
-    
     // Load daily Prayer Set content
     for (let i = 1; i <= 7; i++) {
         const movement = daily.prayerset[`movement${i}`];
         window._dailyPrayersetContent = window._dailyPrayersetContent || {};
         window._dailyPrayersetContent[i] = movement;
+        var mvText = getVerseText(movement.reference, movement.scripture);
+        var mvRef = formatRef(movement.reference);
         const scriptureEl = document.getElementById(`prayerset-movement${i}-scripture`);
         const promptEl = document.getElementById(`prayerset-movement${i}-prompt`);
-        if (scriptureEl) scriptureEl.innerHTML = `"${movement.scripture}" - ${movement.reference}`;
+        if (scriptureEl) scriptureEl.innerHTML = `"${mvText}" - ${mvRef}`;
         if (promptEl) promptEl.textContent = movement.prompt;
     }
     
     // Load Open Doors calendar entry for today
     loadPersecutedContent();
     
-    
     // Load daily Gentle and Humble in Heart content
-    document.getElementById('gentle-humble-scripture').innerHTML = `${daily.gentleHumble.scripture} - ${daily.gentleHumble.reference}`;
+    var ghText = getVerseText(daily.gentleHumble.reference, daily.gentleHumble.scripture);
+    var ghRef = formatRef(daily.gentleHumble.reference);
+    document.getElementById('gentle-humble-scripture').innerHTML = `${ghText} - ${ghRef}`;
     document.getElementById('gentle-humble-quote').textContent = daily.gentleHumble.quote;
     document.getElementById('gentle-humble-author').textContent = `– ${daily.gentleHumble.author}`;
     
     // Load daily Affirmation content
-    document.getElementById('affirmation-promise').innerHTML = `"${daily.affirmation.promise.text}" - ${daily.affirmation.promise.reference}`;
+    var affText = getVerseText(daily.affirmation.promise.reference, daily.affirmation.promise.text);
+    var affRef = formatRef(daily.affirmation.promise.reference);
+    document.getElementById('affirmation-promise').innerHTML = `"${affText}" - ${affRef}`;
 }
 
 function showTool(tool) {
@@ -403,7 +532,7 @@ function buildApostolicIndex() {
         const item = document.createElement('button');
         item.className = 'memory-verse-index-item';
         item.setAttribute('aria-label', 'Open ' + prayer.title);
-        item.innerHTML = '<span class="memory-verse-index-ref">' + prayer.reference + '</span>' +
+        item.innerHTML = '<span class="memory-verse-index-ref">' + formatRef(prayer.reference) + '</span>' +
             '<span class="memory-verse-index-preview">' + prayer.title + '</span>';
         item.addEventListener('click', function() {
             openApostolicCard(i);
@@ -430,8 +559,10 @@ function openApostolicCard(index) {
 function renderApostolicCard() {
     const prayer = apostolicPrayers[currentPrayerIndex];
     document.getElementById('apostolicCardTitle').textContent = prayer.title;
-    document.getElementById('apostolicCardText').innerHTML = prayer.text;
-    document.getElementById('apostolicCardReference').textContent = '— ' + prayer.reference;
+    var nivText = prayer.text.replace(/^[\u201C"\u201D]+|[\u201C"\u201D]+$/g, '');
+    var translatedText = getVerseText(prayer.reference, nivText);
+    document.getElementById('apostolicCardText').innerHTML = '\u201C' + translatedText + '\u201D';
+    document.getElementById('apostolicCardReference').textContent = '\u2014 ' + formatRef(prayer.reference);
     document.getElementById('apostolicCardCounter').textContent =
         (currentPrayerIndex + 1) + ' of ' + apostolicPrayers.length;
     updateApostolicDots();
@@ -578,8 +709,9 @@ function buildMemoryVerseIndex() {
         const item = document.createElement('button');
         item.className = 'memory-verse-index-item';
         item.setAttribute('aria-label', 'Open ' + verse.reference);
-        item.innerHTML = '<span class="memory-verse-index-ref">' + verse.reference + '</span>' +
-            '<span class="memory-verse-index-preview">' + verse.text.replace(/\n\n/g, ' ').substring(0, 80) + '…</span>';
+        var versePreview = getVerseText(verse.reference, verse.text).replace(/\n\n/g, ' ').substring(0, 80);
+        item.innerHTML = '<span class="memory-verse-index-ref">' + formatRef(verse.reference) + '</span>' +
+            '<span class="memory-verse-index-preview">' + versePreview + '\u2026</span>';
         item.addEventListener('click', function() {
             openMemoryVerseCard(i);
         });
@@ -604,9 +736,10 @@ function openMemoryVerseCard(index) {
 
 function renderMemoryVerse() {
     const verse = memoryVerses[currentVerseIndex];
-    document.getElementById('flashcardReference').textContent = verse.reference;
+    document.getElementById('flashcardReference').textContent = formatRef(verse.reference);
     const textEl = document.getElementById('flashcardText');
-    textEl.innerHTML = verse.text.replace(/\n\n/g, '<br><br>');
+    var translatedText = getVerseText(verse.reference, verse.text);
+    textEl.innerHTML = translatedText.replace(/\n\n/g, '<br><br>');
     document.getElementById('flashcardCounter').textContent =
         (currentVerseIndex + 1) + ' of ' + memoryVerses.length;
     updateDots();
@@ -800,8 +933,12 @@ function renderDeclarationCard(type) {
     var item = data[index];
     var categoryEl = document.getElementById(type + 'CardCategory');
     if (categoryEl) categoryEl.textContent = type === 'in-christ' ? '' : item.category;
-    document.getElementById(type + 'CardText').innerHTML = item.text.replace(/\n\n/g, '<br><br>');
-    document.getElementById(type + 'CardReference').textContent = item.reference;
+    var displayText = item.text;
+    if (type === 'daily') {
+        displayText = getVerseText(item.reference, item.text);
+    }
+    document.getElementById(type + 'CardText').innerHTML = displayText.replace(/\n\n/g, '<br><br>');
+    document.getElementById(type + 'CardReference').textContent = type === 'daily' ? formatRef(item.reference) : item.reference;
     document.getElementById(type + 'Counter').textContent = (index + 1) + ' of ' + data.length;
     updateDeclarationDots(type);
 }
@@ -1054,12 +1191,13 @@ function initLectioFlashcard() {
     ];
     initStepFlashcard('lectio', cards);
 
-    // Apply any pre-loaded daily content to the visible DOM elements
     if (window._dailyLectio) {
         var scriptureEl = document.getElementById('lectio-scripture');
         var focusEl = document.getElementById('lectio-focus');
         if (scriptureEl) {
-            scriptureEl.innerHTML = `"${window._dailyLectio.scripture.text}" - ${window._dailyLectio.scripture.reference}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
+            var lText = getVerseText(window._dailyLectio.scripture.reference, window._dailyLectio.scripture.text);
+            var lRef = formatRef(window._dailyLectio.scripture.reference);
+            scriptureEl.innerHTML = `"${lText}" - ${lRef}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
         }
         if (focusEl) focusEl.innerHTML = window._dailyLectio.focus;
     }
@@ -1067,46 +1205,46 @@ function initLectioFlashcard() {
 
 // ── Beatitudes flashcard ───────────────────────────────────────────────────────
 
-var beatitudesCards = [
-    {
-        title: 'Blessed are the poor in spirit, for theirs is the kingdom of heaven.',
-        body: '<div class="reflection-box"><p>Lord Jesus, please show me the distractions, worries, and anxiety in my spirit. Empty me of anything that is preventing me from hearing or receiving from you.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
-    },
-    {
-        title: 'Blessed are those who mourn, for they will be comforted.',
-        body: '<div class="reflection-box"><p>Lord, is there anything/anyone that I am not filled with your compassion toward? Teach me to feel the wound of love.</p><p>What do you want me to be sad about? What do you want me to be moved with compassion by?</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
-    },
-    {
-        title: 'Blessed are the meek, for they will inherit the earth.',
-        body: '<div class="reflection-box"><p>Lord show me my worldly passions that are not surrendered to you. What is it you want to replace my worldly passions with?</p><p>Are there any passions that are out of control in my life, that are uncorralled? Aim them, align them in the right direction.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
-    },
-    {
-        title: 'Blessed are those who hunger and thirst for righteousness, for they will be filled.',
-        body: '<div class="reflection-box"><p>Lord is there any part of me that is not longing to be satisfied by you? Transform me. Fill me with the resurrection life of Jesus.</p><p>What do you want me to be hungry and thirsty for?</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
-    },
-    {
-        title: 'Blessed are the merciful, for they will receive mercy.',
-        body: '<div class="reflection-box"><p>Lord is there any part of my life where I am not living in your mercy? Lord is there anyone in my life to whom I am not extending mercy? Please help me to move in the constant flow of your mercy for the world.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
-    },
-    {
-        title: 'Blessed are the pure in heart, for they will see God.',
-        body: '<div class="reflection-box"><p><em>Lord, are there any places where my heart is distracted or conflicted? Purify my heart and mind, so that I can see the world as you see it. Where am I not single-minded? Is there anyplace where I am outside my identity?</em></p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
-    },
-    {
-        title: 'Blessed are the peacemakers, for they will be called children of God.',
-        body: '<div class="reflection-box"><p><em>Lord, show me any place in my life where I am not at perfect peace. How can I be an agent of peace and reconciliation in the world?</em></p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
-    },
-    {
-        title: 'Blessed are those who are persecuted because of righteousness, for theirs is the kingdom of heaven.',
-        body: '<div class="reflection-box"><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
-    },
-    {
-        title: 'Blessed are you when people insult you, persecute you and falsely say all kinds of evil against you because of me.',
-        body: '<div class="reflection-box"><p>Rejoice and be glad, because great is your reward in heaven, for in the same way they persecuted the prophets who were before you.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
-    }
+var beatitudesCardsNIV = [
+    'Blessed are the poor in spirit, for theirs is the kingdom of heaven.',
+    'Blessed are those who mourn, for they will be comforted.',
+    'Blessed are the meek, for they will inherit the earth.',
+    'Blessed are those who hunger and thirst for righteousness, for they will be filled.',
+    'Blessed are the merciful, for they will receive mercy.',
+    'Blessed are the pure in heart, for they will see God.',
+    'Blessed are the peacemakers, for they will be called children of God.',
+    'Blessed are those who are persecuted because of righteousness, for theirs is the kingdom of heaven.',
+    'Blessed are you when people insult you, persecute you and falsely say all kinds of evil against you because of me.'
+];
+var beatitudesRefs = [
+    'Matthew 5:3', 'Matthew 5:4', 'Matthew 5:5', 'Matthew 5:6',
+    'Matthew 5:7', 'Matthew 5:8', 'Matthew 5:9', 'Matthew 5:10', 'Matthew 5:11'
+];
+var beatitudesCardBodies = [
+    '<div class="reflection-box"><p>Lord Jesus, please show me the distractions, worries, and anxiety in my spirit. Empty me of anything that is preventing me from hearing or receiving from you.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
+    '<div class="reflection-box"><p>Lord, is there anything/anyone that I am not filled with your compassion toward? Teach me to feel the wound of love.</p><p>What do you want me to be sad about? What do you want me to be moved with compassion by?</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
+    '<div class="reflection-box"><p>Lord show me my worldly passions that are not surrendered to you. What is it you want to replace my worldly passions with?</p><p>Are there any passions that are out of control in my life, that are uncorralled? Aim them, align them in the right direction.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
+    '<div class="reflection-box"><p>Lord is there any part of me that is not longing to be satisfied by you? Transform me. Fill me with the resurrection life of Jesus.</p><p>What do you want me to be hungry and thirsty for?</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
+    '<div class="reflection-box"><p>Lord is there any part of my life where I am not living in your mercy? Lord is there anyone in my life to whom I am not extending mercy? Please help me to move in the constant flow of your mercy for the world.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
+    '<div class="reflection-box"><p><em>Lord, are there any places where my heart is distracted or conflicted? Purify my heart and mind, so that I can see the world as you see it. Where am I not single-minded? Is there anyplace where I am outside my identity?</em></p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
+    '<div class="reflection-box"><p><em>Lord, show me any place in my life where I am not at perfect peace. How can I be an agent of peace and reconciliation in the world?</em></p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
+    '<div class="reflection-box"><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>',
+    '<div class="reflection-box"><p>Rejoice and be glad, because great is your reward in heaven, for in the same way they persecuted the prophets who were before you.</p><p style="margin-top:15px;"><em>Take time to listen and reflect on what God reveals...</em></p></div>'
 ];
 
+function buildBeatitudesCards() {
+    return beatitudesCardsNIV.map(function(nivTitle, i) {
+        return {
+            title: getVerseText(beatitudesRefs[i], nivTitle),
+            body: beatitudesCardBodies[i]
+        };
+    });
+}
+
+var beatitudesCards = buildBeatitudesCards();
+
 function initBeatitudesFlashcard() {
+    beatitudesCards = buildBeatitudesCards();
     initStepFlashcard('beatitudes', beatitudesCards);
 }
 
@@ -1161,14 +1299,15 @@ function buildLordsPrayerCards() {
 
 function initLordsPrayerFlashcard() {
     initStepFlashcard('prayerset', buildLordsPrayerCards());
-    // Apply any pre-loaded daily content to the live DOM elements
     if (window._dailyPrayersetContent) {
         for (let i = 1; i <= 7; i++) {
             const movement = window._dailyPrayersetContent[i];
             if (!movement) continue;
+            var mvText = getVerseText(movement.reference, movement.scripture);
+            var mvRef = formatRef(movement.reference);
             const scriptureEl = document.getElementById(`prayerset-movement${i}-scripture`);
             const promptEl = document.getElementById(`prayerset-movement${i}-prompt`);
-            if (scriptureEl) scriptureEl.innerHTML = `"${movement.scripture}" - ${movement.reference}`;
+            if (scriptureEl) scriptureEl.innerHTML = `"${mvText}" - ${mvRef}`;
             if (promptEl) promptEl.textContent = movement.prompt;
         }
     }
@@ -1200,7 +1339,7 @@ function generateExamenContent() {
         tomorrow: getRandomItem(examenPrompts.tomorrow),
         closing: getRandomItem(examenPrompts.closings)
     };
-    document.getElementById('examen-verse').textContent = window._dailyExamen.verse;
+    renderExamenVerse(window._dailyExamen.verse, 'examen-verse');
     document.getElementById('examen-closing').textContent = window._dailyExamen.closing;
     initExamenFlashcard();
 }
@@ -1211,9 +1350,11 @@ function generateLectioContent() {
 
     window._dailyLectio = { scripture: scripture, focus: focusHtml };
 
+    var translatedText = getVerseText(scripture.reference, scripture.text);
+    var translatedRef = formatRef(scripture.reference);
     const scriptureEl = document.getElementById('lectio-scripture');
     if (scriptureEl) {
-        scriptureEl.innerHTML = `"${scripture.text}" - ${scripture.reference}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
+        scriptureEl.innerHTML = `"${translatedText}" - ${translatedRef}<button class="new-content-button" onclick="generateLectioContent()" aria-label="New Scripture"></button>`;
     }
     const focusEl = document.getElementById('lectio-focus');
     if (focusEl) focusEl.innerHTML = focusHtml;
@@ -1221,9 +1362,11 @@ function generateLectioContent() {
 
 function generateAdorationContent() {
     const scripture = getRandomItem(adorationScriptures);
+    var translatedText = getVerseText(scripture.reference, scripture.text);
+    var translatedRef = formatRef(scripture.reference);
     const adorationElement = document.getElementById('adoration-scripture');
     const adorationButton = adorationElement.querySelector('.new-content-button');
-    adorationElement.innerHTML = `"${scripture.text}" - ${scripture.reference}`;
+    adorationElement.innerHTML = `"${translatedText}" - ${translatedRef}`;
     if (adorationButton) {
         adorationElement.appendChild(adorationButton);
     }
@@ -1242,8 +1385,10 @@ function generatePrayerSetContent() {
     for (let i = 1; i <= 7; i++) {
         const movement = getRandomItem(prayerSetContent[`movement${i}`]);
         window._dailyPrayersetContent[i] = movement;
+        var mvText = getVerseText(movement.reference, movement.scripture);
+        var mvRef = formatRef(movement.reference);
         const el = document.getElementById(`prayerset-movement${i}-scripture`);
-        if (el) el.innerHTML = `"${movement.scripture}" - ${movement.reference}`;
+        if (el) el.innerHTML = `"${mvText}" - ${mvRef}`;
         const promptEl = document.getElementById(`prayerset-movement${i}-prompt`);
         if (promptEl) promptEl.textContent = movement.prompt;
     }
@@ -1305,7 +1450,9 @@ function loadPersecutedContent() {
 
 function generateGentleHumbleContent() {
     const content = getRandomItem(gentleHumbleContent);
-    document.getElementById('gentle-humble-scripture').innerHTML = `${content.scripture} - ${content.reference}`;
+    var translatedText = getVerseText(content.reference, content.scripture);
+    var translatedRef = formatRef(content.reference);
+    document.getElementById('gentle-humble-scripture').innerHTML = `${translatedText} - ${translatedRef}`;
     document.getElementById('gentle-humble-quote').textContent = content.quote;
     document.getElementById('gentle-humble-author').textContent = `– ${content.author}`;
 }
@@ -1433,6 +1580,9 @@ function initializeCategories() {
 // Initialize with fresh content on every page load
 document.addEventListener('DOMContentLoaded', function() {
     try {
+        // Initialize translation picker
+        initTranslationPicker();
+        
         // Initialize dark mode
         initializeDarkMode();
         
@@ -1444,6 +1594,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Load daily content based on day of year (guarantees cycling through all content)
         loadDailyContent();
+        
+        // Update header subtitle with current translation
+        updateHeaderSubtitle();
+        updateHtmlVerses();
         
         updateCompletionStates(); // Check what's been completed today
         
