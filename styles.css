@@ -1,3 +1,65 @@
+/* ============================================================
+   Option B: Structured Colour — Prayer App Redesign
+   ============================================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+    --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+
+    --bg-body: #fafafa;
+    --bg-card: #ffffff;
+    --bg-section: #f9f9fb;
+    --bg-scripture: #f8f7ff;
+    --bg-purple-light: #f3f1ff;
+    --border-card: rgba(0, 0, 0, 0.08);
+    --border-subtle: rgba(0, 0, 0, 0.06);
+
+    --text-primary: #1a1a2e;
+    --text-secondary: #555;
+    --text-muted: #7f8c8d;
+
+    --accent: #534AB7;
+    --accent-dark: #3C3489;
+    --accent-light: #AFA9EC;
+    --accent-bg: rgba(83, 74, 183, 0.08);
+    --accent-teal: #0F6E56;
+    --accent-coral: #993C1D;
+    --accent-blue: #8fa3ff;
+
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --radius-card: 10px;
+    --radius-sm: 8px;
+    --radius-pill: 20px;
+
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+body.dark-mode {
+    --bg-body: #1a1a2e;
+    --bg-card: #1e2a4a;
+    --bg-section: rgba(255, 255, 255, 0.04);
+    --bg-scripture: rgba(83, 74, 183, 0.15);
+    --bg-purple-light: rgba(83, 74, 183, 0.12);
+    --border-card: rgba(255, 255, 255, 0.08);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+
+    --text-primary: #e8e8e8;
+    --text-secondary: #c0c0c0;
+    --text-muted: #999;
+
+    --accent: #8fa3ff;
+    --accent-dark: #7b90e8;
+    --accent-light: #5a6dcc;
+    --accent-bg: rgba(143, 163, 255, 0.1);
+    --accent-teal: #4ecaa0;
+    --accent-coral: #e8886a;
+
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Reset & Base --- */
 * {
     margin: 0;
     padding: 0;
@@ -5,231 +67,93 @@
 }
 
 body {
-    font-family: 'Georgia', serif;
+    font-family: var(--font-ui);
     line-height: 1.6;
-    color: #2c3e50;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: var(--text-primary);
+    background: var(--bg-body);
     min-height: 100vh;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background var(--transition-normal), color var(--transition-normal);
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    color: #f0f0f0;
-}
-
-body.dark-mode header,
-body.dark-mode .tool-card,
-body.dark-mode .prayer-content {
-    background: #0f3460;
-    color: #f0f0f0;
-}
-
-body.dark-mode h1 {
-    color: #667eea;
-}
-
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode .prayer-title,
-body.dark-mode .step-title,
-body.dark-mode .movement-title,
-body.dark-mode .creed-title-section h3 {
-    color: #ffffff;
-}
-
-body.dark-mode .country-name {
-    color: #8fa3ff;
-}
-
-body.dark-mode .subtitle,
-body.dark-mode .tool-description {
-    color: #d0d0d0;
-}
-
-body.dark-mode .bible-verse p,
-body.dark-mode p,
-body.dark-mode .reflection-box p,
-body.dark-mode .step p {
-    color: #e8e8e8;
-}
-
-body.dark-mode .step,
-body.dark-mode .reflection-box,
-body.dark-mode .examen-intro,
-body.dark-mode .listening-intro,
-body.dark-mode .prayerset-intro,
-body.dark-mode .persecuted-intro,
-body.dark-mode .creeds-intro,
-body.dark-mode .apostolic-intro,
-body.dark-mode .country-context {
-    background: rgba(255, 255, 255, 0.08);
-    color: #f0f0f0;
-    border-color: rgba(102, 126, 234, 0.4);
-}
-
-body.dark-mode .scripture-text,
-body.dark-mode .bible-verse,
-body.dark-mode .creed-text,
-body.dark-mode .prayer-text {
-    background: rgba(102, 126, 234, 0.15);
-    color: #ffffff;
-}
-
-body.dark-mode .closing-prayer,
-body.dark-mode .meditation-focus {
-    background: rgba(102, 126, 234, 0.2);
-    color: #ffffff;
-}
-
-body.dark-mode .country-spotlight {
-    background: rgba(15, 52, 96, 0.9);
-    border-color: rgba(102, 126, 234, 0.6);
-}
-
-body.dark-mode .persecuted-nav-date {
-    color: #c8c8c8;
-}
-
-body.dark-mode .creed-tab,
-body.dark-mode .prayer-tab {
-    background: rgba(15, 52, 96, 0.9);
-    color: #8fa3ff;
-    border-color: #8fa3ff;
-}
-
-body.dark-mode .creed-tab.active,
-body.dark-mode .prayer-tab.active {
-    color: #ffffff;
-}
-
-body.dark-mode .creed-tab:hover,
-body.dark-mode .prayer-tab:hover {
-    background: rgba(102, 126, 234, 0.3);
-}
-
-body.dark-mode .movement-subtitle,
-body.dark-mode .prayer-title-section p {
-    color: #a8b8ff;
-}
-
-body.dark-mode .region-label,
-body.dark-mode .rank-badge {
-    color: #ffffff;
-}
-
-body.dark-mode em {
-    color: #d0d0d0;
-}
-
-body.dark-mode strong {
-    color: #ffffff;
-}
-
-body.dark-mode .prayer-movement {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(102, 126, 234, 0.4);
-}
-
-body.dark-mode .prayer-movement .scripture-text {
-    background: rgba(102, 126, 234, 0.15);
-    color: #ffffff;
-}
-
-body.dark-mode .prayer-movement .reflection-box {
-    background: rgba(255, 255, 255, 0.08);
-    color: #f0f0f0;
-}
-
-body.dark-mode .back-button {
-    background: rgba(149, 165, 166, 0.15);
-    color: #b0bec5;
-    border-color: rgba(149, 165, 166, 0.4);
-}
-
-body.dark-mode .back-button:hover {
-    background: rgba(149, 165, 166, 0.25);
-    border-color: rgba(149, 165, 166, 0.6);
-}
-
-body.dark-mode .finish-button {
-    color: #ffffff;
-}
-
-body.dark-mode .new-content-button {
-    background: rgba(102, 126, 234, 0.15);
-    color: #a8b8ff;
-    border-color: rgba(102, 126, 234, 0.4);
-}
-
-body.dark-mode .new-content-button:hover {
-    background: rgba(102, 126, 234, 0.25);
-    border-color: rgba(102, 126, 234, 0.6);
-}
-
-body.dark-mode .tool-button {
-    color: #ffffff;
-}
-
-body.dark-mode .step-consolation-desolation {
-    background: linear-gradient(135deg, rgba(255, 248, 225, 0.1) 0%, rgba(240, 248, 255, 0.1) 100%);
-    border-left: 4px solid rgba(155, 89, 182, 0.6);
-}
-
-body.dark-mode .step-consolation-desolation .step-number {
-    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
-}
-
-body.dark-mode .step-consolation-desolation .reflection-box:first-of-type {
-    border-left: 3px solid rgba(243, 156, 18, 0.5);
-    background: rgba(255, 251, 245, 0.08);
-}
-
-body.dark-mode .step-consolation-desolation .reflection-box:last-of-type {
-    border-left: 3px solid rgba(52, 152, 219, 0.5);
-    background: rgba(245, 251, 255, 0.08);
-}
-
-body.dark-mode header::before {
-    opacity: 0.12;
-    filter: brightness(1.5);
-}
-
+/* --- Layout --- */
 .container {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0;
 }
 
+/* --- App Header (replaces old header) --- */
+.app-header {
+    padding: 20px 16px 14px;
+}
+
+.app-header-date {
+    font-size: 0.8em;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.app-header-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.app-header-logo {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+body.dark-mode .app-header-logo path {
+    fill: var(--accent);
+}
+
+.app-header-verse {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-family: var(--font-serif);
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+.header-translation-picker {
+    margin-left: auto;
+    font-family: var(--font-ui);
+    font-size: 0.8em;
+    font-weight: 600;
+    padding: 3px 8px;
+    border: 0.5px solid var(--border-card);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    letter-spacing: 0.03em;
+}
+
+body.dark-mode .header-translation-picker {
+    border-color: rgba(143, 163, 255, 0.3);
+    color: var(--accent);
+}
+
+/* Legacy header — flatten it */
 header {
     text-align: center;
-    margin-bottom: 40px;
-    padding: 30px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 24px 20px 16px;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
     cursor: pointer;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: none;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 header::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 220px;
-    height: 220px;
-    background-image: url("data:image/svg+xml,%3Csvg width='512px' height='512px' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23667eea' d='M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.06;
-    z-index: 0;
-    pointer-events: none;
+    display: none;
 }
 
 header > * {
@@ -238,139 +162,148 @@ header > * {
 }
 
 header:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+    box-shadow: none;
+    transform: none;
 }
 
 header:hover h1 {
-    color: #667eea;
+    color: var(--accent);
 }
 
 h1 {
-    color: #667eea;
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    font-weight: 300;
-    transition: color 0.3s ease;
+    color: var(--accent);
+    font-family: var(--font-ui);
+    font-size: 1.8em;
+    margin-bottom: 4px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    transition: color var(--transition-normal);
+}
+
+body.dark-mode h1 {
+    color: var(--accent);
 }
 
 .subtitle {
-    color: #7f8c8d;
+    color: var(--text-muted);
     font-style: italic;
-    font-size: 1.1em;
+    font-size: 0.95em;
+    font-family: var(--font-serif);
 }
 
+/* --- Translation Picker --- */
 .translation-picker {
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
 .translation-picker select {
-    font-family: 'Georgia', serif;
-    font-size: 0.85em;
+    font-family: var(--font-ui);
+    font-size: 0.8em;
     padding: 5px 24px 5px 10px;
-    border: 1.5px solid #667eea;
-    border-radius: 6px;
-    background: rgba(102, 126, 234, 0.08);
-    color: #667eea;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-pill);
+    background: var(--accent-bg);
+    color: var(--accent);
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23534AB7' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 8px center;
     font-weight: 600;
     letter-spacing: 0.5px;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color var(--transition-fast);
 }
 
 .translation-picker select:hover {
-    background-color: rgba(102, 126, 234, 0.15);
+    background-color: rgba(83, 74, 183, 0.12);
 }
 
 .translation-picker select:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 0 0 2px rgba(83, 74, 183, 0.25);
 }
 
 body.dark-mode .translation-picker select {
-    background-color: rgba(102, 126, 234, 0.2);
-    border-color: #8fa3ff;
-    color: #8fa3ff;
+    background-color: rgba(143, 163, 255, 0.12);
+    border-color: var(--accent);
+    color: var(--accent);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238fa3ff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
 }
 
-body.dark-mode .translation-picker select:hover {
-    background-color: rgba(102, 126, 234, 0.3);
-}
-
-/* Category Sections */
+/* --- Category Sections --- */
 .category-section {
-    margin-bottom: 25px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
+    margin: 0 12px 12px;
+    background: var(--bg-card);
+    border: 0.5px solid var(--border-card);
+    border-radius: var(--radius-card);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease, background 0.3s ease;
-}
-
-body.dark-mode .category-section {
-    background: rgba(15, 52, 96, 0.4);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-card);
+    transition: background var(--transition-normal);
 }
 
 .category-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 25px;
+    padding: 14px 16px;
     cursor: pointer;
     user-select: none;
-    transition: background 0.3s ease;
+    transition: background var(--transition-fast);
 }
 
 .category-header:hover {
-    background: rgba(102, 126, 234, 0.1);
-}
-
-body.dark-mode .category-header:hover {
-    background: rgba(102, 126, 234, 0.15);
+    background: var(--accent-bg);
 }
 
 .category-title {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 1.4em;
-    color: #667eea;
-    font-weight: 600;
+    gap: 10px;
+    font-size: 1.05em;
+    color: var(--accent);
+    font-weight: 700;
     margin: 0;
 }
 
-body.dark-mode .category-title {
-    color: #8fa3ff;
+/* Color by category type — applied via data attribute or extra class */
+.category-section[data-category="daily"] .category-title,
+.category-section:nth-child(1) .category-title {
+    color: #534AB7;
+}
+.category-section[data-category="scripture"] .category-title,
+.category-section:nth-child(2) .category-title {
+    color: #0F6E56;
+}
+.category-section[data-category="guided"] .category-title,
+.category-section:nth-child(3) .category-title {
+    color: #993C1D;
+}
+
+body.dark-mode .category-section[data-category="daily"] .category-title,
+body.dark-mode .category-section:nth-child(1) .category-title {
+    color: #AFA9EC;
+}
+body.dark-mode .category-section[data-category="scripture"] .category-title,
+body.dark-mode .category-section:nth-child(2) .category-title {
+    color: #4ecaa0;
+}
+body.dark-mode .category-section[data-category="guided"] .category-title,
+body.dark-mode .category-section:nth-child(3) .category-title {
+    color: #e8886a;
 }
 
 .category-icon {
-    font-size: 1.2em;
+    font-size: 1.1em;
     display: inline-block;
-    color: #667eea;
     line-height: 1;
 }
 
-body.dark-mode .category-icon {
-    color: #8fa3ff;
-}
-
 .category-toggle {
-    font-size: 1.2em;
-    color: #667eea;
-    transition: transform 0.3s ease;
+    font-size: 1em;
+    color: var(--text-muted);
+    transition: transform var(--transition-normal);
     font-weight: bold;
-}
-
-body.dark-mode .category-toggle {
-    color: #8fa3ff;
 }
 
 .category-section.collapsed .category-toggle {
@@ -381,166 +314,301 @@ body.dark-mode .category-toggle {
     max-height: 800px;
     opacity: 1;
     transition: max-height 0.35s ease-out, opacity 0.25s ease, padding 0.25s ease;
-    padding: 0 25px 25px 25px;
+    padding: 0;
 }
 
 .category-section.collapsed .category-content {
     max-height: 0;
     opacity: 0;
-    padding: 0 25px;
+    padding: 0;
     overflow: hidden;
 }
 
+/* --- Tool Rows (new list layout) --- */
+.tool-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    border-top: 0.5px solid var(--border-subtle);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    gap: 10px;
+}
+
+.tool-row:hover {
+    background: var(--accent-bg);
+}
+
+.tool-row-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+.tool-row-dot.purple { background: #AFA9EC; }
+.tool-row-dot.teal { background: #5DCAA5; }
+.tool-row-dot.coral { background: #F0997B; }
+
+.tool-row-name {
+    flex: 1;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.tool-row-check {
+    color: #0F6E56;
+    font-size: 0.85em;
+    margin-right: 4px;
+}
+
+body.dark-mode .tool-row-check {
+    color: #4ecaa0;
+}
+
+.tool-row-chevron {
+    color: var(--text-muted);
+    font-size: 0.8em;
+    flex-shrink: 0;
+}
+
+/* --- Legacy Tool Cards (hidden once HTML updated) --- */
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding-top: 20px;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
 }
 
 .tool-card {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--bg-card);
+    border-radius: 0;
+    padding: 12px 14px;
+    box-shadow: none;
+    border-top: 0.5px solid var(--border-subtle);
+    transition: background var(--transition-fast);
     cursor: pointer;
 }
 
 .tool-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: none;
+    box-shadow: none;
+    background: var(--accent-bg);
 }
 
 .tool-card:active {
-    transform: scale(0.97);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    transform: none;
+    box-shadow: none;
 }
 
 .tool-card h3 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 1.3em;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    font-size: 0.95em;
+    font-weight: 500;
 }
 
 .tool-description {
-    color: #7f8c8d;
-    font-size: 0.9em;
-    margin-bottom: 15px;
+    color: var(--text-muted);
+    font-size: 0.82em;
+    margin-bottom: 8px;
 }
 
 .tool-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #534AB7;
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
-    font-size: 0.9em;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    font-size: 0.85em;
+    font-family: var(--font-ui);
+    transition: opacity var(--transition-fast);
     width: 100%;
 }
 
 .tool-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+    transform: none;
+    box-shadow: none;
 }
 
+/* --- Prayer Banner --- */
+.prayer-banner {
+    background: linear-gradient(135deg, #534AB7, #3C3489);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.prayer-banner-watermark {
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.prayer-banner-back {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.2em;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.prayer-banner-title {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    flex: 1;
+    font-family: var(--font-ui);
+}
+
+.prayer-banner-trans {
+    font-size: 0.75em;
+    font-weight: 600;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-pill);
+    padding: 3px 10px;
+    background: transparent;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    font-family: var(--font-ui);
+}
+
+.prayer-banner-trans:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sub-back-link {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.9em;
+    margin: 12px 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- Prayer Content --- */
 .prayer-content {
     display: none;
-    background: white;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    background: var(--bg-card);
+    border-radius: 0 0 var(--radius-card) var(--radius-card);
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+    border: 0.5px solid var(--border-card);
+    border-top: none;
     position: relative;
 }
 
 .prayer-content.active {
     display: block;
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.4s ease;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* --- Prayer Header --- */
 .prayer-header {
     text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #ecf0f1;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid var(--border-subtle);
     position: relative;
 }
 
 .prayer-title {
-    color: #2c3e50;
-    font-size: 2em;
-    margin-bottom: 10px;
+    color: var(--text-primary);
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-family: var(--font-ui);
 }
 
-.bible-verse {
-    background: linear-gradient(135deg, #fdfeff 0%, #f8f9ff 100%);
-    padding: 25px 30px;
-    padding-bottom: 50px;
-    border-radius: 12px;
+/* --- Scripture & Verse Text --- */
+.scripture-text {
+    font-family: var(--font-serif);
+    font-size: 1.1em;
+    line-height: 1.85;
+    color: var(--text-primary);
+    text-align: left;
     margin: 20px 0;
+    padding: 20px 24px;
+    background: var(--bg-scripture);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid #534AB7;
     font-style: italic;
-    border-left: 4px solid #667eea;
-    border-right: 1px solid rgba(102, 126, 234, 0.2);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.08);
     position: relative;
 }
 
-.bible-verse::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23667eea' d='M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.5;
+/* Remove all decorative pseudo-elements from scripture */
+.scripture-text::before,
+.scripture-text::after {
+    display: none;
+}
+
+body.dark-mode .scripture-text {
+    border-left-color: var(--accent);
+}
+
+.bible-verse {
+    font-family: var(--font-serif);
+    background: var(--bg-scripture);
+    padding: 20px 24px;
+    border-radius: var(--radius-sm);
+    margin: 16px 0;
+    font-style: italic;
+    border-left: 3px solid #534AB7;
+    position: relative;
+}
+
+/* Remove decorative pseudo-elements from bible-verse */
+.bible-verse::before,
+.bible-verse::after {
+    display: none;
 }
 
 .bible-verse p {
     margin: 0;
-    padding-left: 20px;
-    color: #34495e;
-    line-height: 1.7;
+    color: var(--text-primary);
+    line-height: 1.75;
+    font-family: var(--font-serif);
 }
 
+body.dark-mode .bible-verse {
+    border-left-color: var(--accent);
+}
+
+/* --- Steps --- */
 .step {
-    margin: 25px 0;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    border-left: 4px solid #667eea;
+    margin: 20px 0;
+    padding: 18px;
+    background: var(--bg-section);
+    border-radius: 0;
+    border-left: 3px solid #534AB7;
 }
 
-/* Consolation and Desolation combined step - blended colors */
-.step-consolation-desolation {
-    background: linear-gradient(135deg, #fff8e1 0%, #f0f8ff 100%);
-    border-left: 4px solid #9b59b6;
-}
-
-.step-consolation-desolation .step-number {
-    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
-}
-
-.step-consolation-desolation .reflection-box:first-of-type {
-    border-left: 3px solid #f39c12;
-    background: linear-gradient(135deg, #fffbf5 0%, #fff 100%);
-}
-
-.step-consolation-desolation .reflection-box:last-of-type {
-    border-left: 3px solid #3498db;
-    background: linear-gradient(135deg, #f5fbff 0%, #fff 100%);
+body.dark-mode .step {
+    border-left-color: var(--accent);
 }
 
 .step-number {
@@ -548,123 +616,230 @@ body.dark-mode .category-toggle {
 }
 
 .step-title {
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 10px;
+    font-weight: 700;
+    color: #534AB7;
+    margin-bottom: 8px;
+    font-family: var(--font-ui);
+}
+
+body.dark-mode .step-title {
+    color: var(--accent);
 }
 
 .step > div > p {
-    margin: 15px 0;
+    margin: 12px 0;
     line-height: 1.8;
 }
 
+/* Consolation and Desolation step */
+.step-consolation-desolation {
+    background: var(--bg-section);
+    border-left: 3px solid #9b59b6;
+}
+
+.step-consolation-desolation .step-number {
+    display: none;
+}
+
+.step-consolation-desolation .reflection-box:first-of-type {
+    border-left: 3px solid #f39c12;
+    background: rgba(243, 156, 18, 0.05);
+}
+
+.step-consolation-desolation .reflection-box:last-of-type {
+    border-left: 3px solid #3498db;
+    background: rgba(52, 152, 219, 0.05);
+}
+
+body.dark-mode .step-consolation-desolation {
+    border-left-color: rgba(155, 89, 182, 0.6);
+}
+
+body.dark-mode .step-consolation-desolation .reflection-box:first-of-type {
+    border-left-color: rgba(243, 156, 18, 0.5);
+    background: rgba(255, 251, 245, 0.04);
+}
+
+body.dark-mode .step-consolation-desolation .reflection-box:last-of-type {
+    border-left-color: rgba(52, 152, 219, 0.5);
+    background: rgba(245, 251, 255, 0.04);
+}
+
+/* --- Reflection Box --- */
 .reflection-box {
-    background: white;
-    border: 2px dashed #bdc3c7;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 15px 0;
-    min-height: 100px;
+    background: var(--bg-card);
+    border: 0.5px solid rgba(83, 74, 183, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    margin: 14px 0;
+    min-height: 80px;
 }
 
-.scripture-text {
-    font-size: 1.2em;
-    line-height: 1.8;
-    color: #2c3e50;
+body.dark-mode .reflection-box {
+    border-color: rgba(143, 163, 255, 0.2);
+}
+
+/* --- Meditation & Closing --- */
+.meditation-focus {
+    background: #f3f1ff;
+    padding: 18px;
+    border-radius: var(--radius-sm);
+    margin: 18px 0;
     text-align: center;
-    margin: 30px 0;
-    padding: 55px 40px;
-    padding-bottom: 50px;
-    background: linear-gradient(135deg, #fdfeff 0%, #f8f9ff 100%);
-    border-radius: 15px;
-    border-top: 3px solid #667eea;
-    border-bottom: 3px solid #764ba2;
-    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.12), 0 2px 8px rgba(118, 75, 162, 0.08);
-    font-weight: 500;
-    position: relative;
+    font-weight: 600;
+    color: #534AB7;
+}
+
+body.dark-mode .meditation-focus {
+    background: rgba(83, 74, 183, 0.15);
+    color: var(--accent);
+}
+
+.closing-prayer {
+    background: #f3f1ff;
+    padding: 18px;
+    border-radius: var(--radius-sm);
+    margin: 18px 0;
     font-style: italic;
+    text-align: center;
+    color: #534AB7;
+    font-family: var(--font-serif);
 }
 
-.scripture-text::before {
-    content: '';
-    position: absolute;
-    top: 18px;
-    left: 50%;
-    transform: translateX(-50%);
+body.dark-mode .closing-prayer {
+    background: rgba(83, 74, 183, 0.15);
+    color: var(--accent);
+}
+
+/* --- Prayer Block Paragraphs (affirmation prayers) --- */
+.prayer-block p {
+    font-family: var(--font-serif);
+    line-height: 1.85;
+    margin: 14px 0;
+}
+
+/* --- Purple Divider --- */
+.prayer-divider {
     width: 24px;
-    height: 24px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23667eea' d='M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.6;
+    height: 0.5px;
+    background: #AFA9EC;
+    margin: 16px auto;
+    border: none;
 }
 
-.scripture-text::after {
-    content: '';
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 24px;
-    height: 24px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23764ba2' d='M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.6;
+/* --- Intro Sections (Examen, Listening, Prayer Set, etc.) --- */
+.examen-intro,
+.listening-intro,
+.prayerset-intro,
+.persecuted-intro,
+.creeds-intro,
+.apostolic-intro {
+    background: var(--bg-section);
+    padding: 18px;
+    border-radius: var(--radius-sm);
+    margin: 18px 0;
+    color: var(--text-primary);
+    border-left: 3px solid #534AB7;
+    line-height: 1.7;
 }
 
+body.dark-mode .examen-intro,
+body.dark-mode .listening-intro,
+body.dark-mode .prayerset-intro,
+body.dark-mode .persecuted-intro,
+body.dark-mode .creeds-intro,
+body.dark-mode .apostolic-intro {
+    border-left-color: var(--accent);
+}
+
+.examen-intro p {
+    margin: 8px 0;
+}
+
+.examen-intro strong {
+    color: #534AB7;
+}
+
+body.dark-mode .examen-intro strong {
+    color: var(--accent);
+}
+
+/* --- Prayer Movements --- */
+.prayer-movement {
+    margin: 24px 0;
+    padding: 20px;
+    background: var(--bg-card);
+    border-radius: var(--radius-card);
+    border-left: 3px solid #534AB7;
+    border: 0.5px solid var(--border-card);
+    border-left: 3px solid #534AB7;
+    box-shadow: var(--shadow-card);
+}
+
+body.dark-mode .prayer-movement {
+    border-left-color: var(--accent);
+}
+
+.movement-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.movement-number {
+    display: none;
+}
+
+.movement-title {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    text-align: left;
+    font-family: var(--font-ui);
+}
+
+.movement-subtitle {
+    color: #534AB7;
+    font-style: italic;
+    margin: 8px 0 16px 0;
+    font-size: 0.95em;
+    text-align: left;
+    font-family: var(--font-serif);
+}
+
+body.dark-mode .movement-subtitle {
+    color: var(--accent);
+}
+
+.prayer-movement .scripture-text {
+    margin: 16px 0;
+}
+
+.prayer-movement .reflection-box {
+    margin-top: 16px;
+}
+
+/* --- Back Button (hidden — navigation now via banner) --- */
 .back-button {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(149, 165, 166, 0.1);
-    color: #95a5a6;
-    border: 2px solid rgba(149, 165, 166, 0.3);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.5em;
-    line-height: 1;
-    transition: transform 0.3s ease, background 0.3s ease, opacity 0.3s ease;
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
+    display: none;
 }
 
-.back-button::before {
-    content: '←';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-}
-
-.back-button:hover {
-    background: rgba(149, 165, 166, 0.2);
-    border-color: rgba(149, 165, 166, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(149, 165, 166, 0.2);
-}
-
+/* --- New Content Button --- */
 .new-content-button {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    background: rgba(102, 126, 234, 0.1);
-    color: #667eea;
-    border: 2px solid rgba(102, 126, 234, 0.3);
-    width: 36px;
-    height: 36px;
+    background: var(--accent-bg);
+    color: #534AB7;
+    border: 1px solid rgba(83, 74, 183, 0.25);
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.3em;
+    font-size: 1.1em;
     line-height: 1;
-    transition: transform 0.3s ease, background 0.3s ease, opacity 0.3s ease;
-    backdrop-filter: blur(10px);
+    transition: background var(--transition-fast), opacity var(--transition-fast);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -673,7 +848,7 @@ body.dark-mode .category-toggle {
 }
 
 .new-content-button::before {
-    content: '↻';
+    content: '\21BB';
     display: flex;
     align-items: center;
     justify-content: center;
@@ -681,14 +856,16 @@ body.dark-mode .category-toggle {
 }
 
 .new-content-button:hover {
-    background: rgba(102, 126, 234, 0.2);
-    border-color: rgba(102, 126, 234, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    background: rgba(83, 74, 183, 0.15);
 }
 
 .new-content-button:hover::before {
     animation: rotate 0.6s ease-in-out;
+}
+
+body.dark-mode .new-content-button {
+    color: var(--accent);
+    border-color: rgba(143, 163, 255, 0.25);
 }
 
 @keyframes rotate {
@@ -696,153 +873,194 @@ body.dark-mode .category-toggle {
     to { transform: rotate(360deg); }
 }
 
-/* Position button at bottom right when in prayer-header but not in bible-verse */
 .prayer-header > .new-content-button {
-    bottom: 20px;
-    right: 20px;
+    bottom: 16px;
+    right: 16px;
 }
 
+/* --- Finish Button --- */
 .finish-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #534AB7;
     color: white;
     border: none;
-    padding: 15px 30px;
-    border-radius: 25px;
+    padding: 14px 24px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 1em;
-    font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 10px;
-}
-
-.finish-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-    background: linear-gradient(135deg, #5568d3 0%, #6a3d91 100%);
-}
-
-.meditation-focus {
-    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    text-align: center;
-    font-weight: bold;
-    color: #2d3436;
-}
-
-.closing-prayer {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    font-style: italic;
-    text-align: center;
-    color: #2d3436;
-}
-
-/* Examen specific styles */
-.examen-intro {
-    background: linear-gradient(135deg, #f8f4ff 0%, #fff8f0 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    color: #2c3e50;
-    border-left: 4px solid #667eea;
-    line-height: 1.7;
-}
-
-/* Listening specific styles */
-.listening-intro {
-    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    text-align: center;
-    color: #2c3e50;
-    border-left: 4px solid #667eea;
-    line-height: 1.7;
-}
-
-.examen-intro p {
+    font-weight: 600;
+    font-family: var(--font-ui);
+    transition: opacity var(--transition-fast);
+    width: 100%;
     margin: 10px 0;
 }
 
-.examen-intro strong {
-    color: #667eea;
+.finish-button:hover {
+    opacity: 0.9;
 }
 
-/* Prayer Set specific styles */
-.prayerset-intro {
-    background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    text-align: center;
+body.dark-mode .finish-button {
+    background: #534AB7;
+    color: #ffffff;
+}
+
+/* --- Listen Section (Affirmation Prayer) --- */
+.listen-section-label {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #534AB7;
+    font-family: var(--font-ui);
+}
+
+body.dark-mode .listen-section-label {
+    color: var(--accent);
+}
+
+.listen-question {
+    color: #534AB7;
     font-style: italic;
-    color: #2c3e50;
-    border-left: 4px solid #667eea;
+    font-family: var(--font-serif);
 }
 
-.prayer-movement {
-    margin: 30px 0;
-    padding: 25px;
-    background: #fff;
-    border-radius: 15px;
-    border-left: 5px solid #667eea;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+body.dark-mode .listen-question {
+    color: var(--accent);
 }
 
-.movement-header {
+/* --- Tabs (Creeds, Written Prayers, Declarations) --- */
+.creed-selector,
+.prayer-selector {
+    margin: 20px 0;
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.movement-number {
+.creed-tab,
+.prayer-tab {
+    background: transparent;
+    color: #534AB7;
+    border: 1.5px solid #534AB7;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: var(--font-ui);
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.creed-tab:hover,
+.prayer-tab:hover {
+    background: rgba(83, 74, 183, 0.08);
+}
+
+.creed-tab.active,
+.prayer-tab.active {
+    background: #534AB7;
+    color: white;
+    border-color: #534AB7;
+}
+
+body.dark-mode .creed-tab,
+body.dark-mode .prayer-tab {
+    background: transparent;
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+body.dark-mode .creed-tab:hover,
+body.dark-mode .prayer-tab:hover {
+    background: rgba(143, 163, 255, 0.12);
+}
+
+body.dark-mode .creed-tab.active,
+body.dark-mode .prayer-tab.active {
+    background: var(--accent);
+    color: #1a1a2e;
+    border-color: var(--accent);
+}
+
+.creed-section,
+.prayer-section {
     display: none;
 }
 
-.movement-title {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #2c3e50;
-    line-height: 1.3;
-    text-align: left;
+.creed-section.active,
+.prayer-section.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
 }
 
-.movement-subtitle {
-    color: #667eea;
-    font-style: italic;
-    margin: 10px 0 20px 0;
-    font-size: 1.05em;
-    text-align: left;
-}
-
-.prayer-movement .scripture-text {
+/* --- Creed & Prayer Text --- */
+.creed-text {
+    font-family: var(--font-serif);
+    background: var(--bg-scripture);
+    padding: 24px;
+    border-radius: var(--radius-card);
     margin: 20px 0;
-}
-
-.prayer-movement .reflection-box {
-    margin-top: 20px;
-}
-
-/* Persecuted Church specific styles */
-.persecuted-intro {
-    background: linear-gradient(135deg, #f0f3ff 0%, #e8ecff 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
+    border-left: 3px solid #534AB7;
     text-align: center;
-    color: #2c3e50;
-    border-left: 4px solid #667eea;
 }
 
+body.dark-mode .creed-text {
+    border-left-color: var(--accent);
+}
+
+.creed-text p {
+    font-size: 1.05em;
+    line-height: 1.85;
+    color: var(--text-primary);
+    margin: 16px 0;
+    font-family: var(--font-serif);
+}
+
+.creed-title-section h3 {
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+}
+
+.prayer-title-section {
+    margin-bottom: 16px;
+}
+
+.prayer-title-section p {
+    color: var(--text-muted);
+    font-family: var(--font-serif);
+}
+
+body.dark-mode .prayer-title-section p {
+    color: var(--accent);
+}
+
+.prayer-text {
+    font-family: var(--font-serif);
+    background: var(--bg-scripture);
+    padding: 24px;
+    border-radius: var(--radius-card);
+    margin: 20px 0;
+    border-left: 3px solid #534AB7;
+    text-align: center;
+}
+
+body.dark-mode .prayer-text {
+    border-left-color: var(--accent);
+}
+
+.prayer-text p {
+    font-size: 1.05em;
+    line-height: 1.85;
+    color: var(--text-primary);
+    margin: 16px 0;
+    font-family: var(--font-serif);
+}
+
+/* --- Persecuted Church --- */
 .persecuted-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 15px 0;
+    margin: 12px 0;
     gap: 10px;
 }
 
@@ -850,21 +1068,22 @@ body.dark-mode .category-toggle {
     flex: 1;
     text-align: center;
     font-weight: 600;
-    font-size: 0.95em;
-    color: #555;
+    font-size: 0.9em;
+    color: var(--text-secondary);
 }
 
 .persecuted-nav-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #534AB7;
     color: white;
     border: none;
     border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    font-size: 1.1em;
+    width: 36px;
+    height: 36px;
+    font-size: 1em;
     cursor: pointer;
     flex-shrink: 0;
-    transition: opacity 0.2s;
+    transition: opacity var(--transition-fast);
+    font-family: var(--font-ui);
 }
 
 .persecuted-nav-btn:disabled {
@@ -873,247 +1092,128 @@ body.dark-mode .category-toggle {
 }
 
 .country-spotlight {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    padding: 25px;
-    border-radius: 15px;
-    margin: 25px 0;
-    border: 2px solid #667eea;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: var(--radius-card);
+    margin: 20px 0;
+    border: 0.5px solid var(--border-card);
+    box-shadow: var(--shadow-card);
+}
+
+body.dark-mode .country-spotlight {
+    border-color: rgba(143, 163, 255, 0.2);
 }
 
 .country-badge {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 12px;
     flex-wrap: wrap;
 }
 
 .region-label {
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    background: #0F6E56;
     color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85em;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 0.8em;
     font-weight: 600;
-    display: inline-block;
+    font-family: var(--font-ui);
 }
 
 .rank-badge {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    background: #993C1D;
     color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85em;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 0.8em;
     font-weight: 700;
-    display: inline-block;
+    font-family: var(--font-ui);
 }
 
 .country-name {
-    color: #667eea;
-    font-size: 1.8em;
-    font-weight: bold;
-    margin: 10px 0;
+    color: #534AB7;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 8px 0;
     line-height: 1.3;
+    font-family: var(--font-ui);
+}
+
+body.dark-mode .country-name {
+    color: var(--accent);
 }
 
 .country-context {
-    color: #555;
-    font-size: 1.05em;
+    color: var(--text-secondary);
+    font-size: 0.95em;
     line-height: 1.6;
-    margin-top: 15px;
+    margin-top: 12px;
     font-style: italic;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 3px solid #e74c3c;
+    padding: 14px;
+    background: var(--bg-section);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid #993C1D;
+    font-family: var(--font-serif);
+}
+
+body.dark-mode .country-context {
+    border-left-color: var(--accent-coral);
 }
 
 .prayer-focus-section {
-    margin-top: 30px;
+    margin-top: 24px;
 }
 
 .prayer-request {
-    font-size: 1.15em;
+    font-size: 1.05em;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--text-primary);
     line-height: 1.6;
-    margin: 15px 0;
+    margin: 12px 0;
 }
 
-/* Apostolic Prayers specific styles */
-.apostolic-intro {
-    background: linear-gradient(135deg, #f8f4ff 0%, #fff8f0 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    text-align: center;
-    color: #2c3e50;
-    border-left: 4px solid #667eea;
-    line-height: 1.7;
-}
-
+/* --- Apostolic Prayers --- */
 .apostolic-prayer-section {
-    margin: 30px 0;
+    margin: 24px 0;
     padding: 0;
 }
 
 .apostolic-prayer-title {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #667eea;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #534AB7;
     line-height: 1.3;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+    font-family: var(--font-ui);
 }
 
 body.dark-mode .apostolic-prayer-title {
-    color: #8fa3ff;
+    color: var(--accent);
 }
 
 .apostolic-reference {
     text-align: right;
     font-style: italic;
-    color: #7f8c8d;
-    margin: 10px 0 0 0;
-    font-size: 0.95em;
+    color: var(--text-muted);
+    margin: 8px 0 0 0;
+    font-size: 0.9em;
+    font-family: var(--font-serif);
 }
 
 body.dark-mode .apostolic-reference {
-    color: #a8b8ff;
+    color: var(--accent);
 }
 
-/* Historic Creeds specific styles */
-.creeds-intro {
-    background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    text-align: center;
-    color: #2c3e50;
-    border-left: 4px solid #667eea;
-}
-
-.creed-selector {
-    margin: 25px 0;
-}
-
-.creed-tab {
-    background: white;
-    color: #667eea;
-    border: 2px solid #667eea;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 0.95em;
-    font-weight: 600;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-}
-
-.creed-tab:hover {
-    background: #f0f4ff;
-    transform: translateY(-2px);
-}
-
-.creed-tab.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: transparent;
-}
-
-.creed-section {
-    display: none;
-}
-
-.creed-section.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-}
-
-.creed-text {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    padding: 30px;
-    border-radius: 15px;
-    margin: 25px 0;
-    border-left: 5px solid #667eea;
-    border-right: 5px solid #764ba2;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    text-align: center;
-}
-
-.creed-text p {
-    font-size: 1.15em;
-    line-height: 1.9;
-    color: #2c3e50;
-    margin: 20px 0;
-}
-
-/* Written Prayers specific styles */
-.prayer-selector {
-    margin: 25px 0;
-}
-
-.prayer-tab {
-    background: white;
-    color: #667eea;
-    border: 2px solid #667eea;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 0.95em;
-    font-weight: 600;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-}
-
-.prayer-tab:hover {
-    background: #f0f4ff;
-    transform: translateY(-2px);
-}
-
-.prayer-tab.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: transparent;
-}
-
-.prayer-section {
-    display: none;
-}
-
-.prayer-section.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-}
-
-.prayer-title-section {
-    margin-bottom: 20px;
-}
-
-.prayer-text {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    padding: 30px;
-    border-radius: 15px;
-    margin: 25px 0;
-    border-left: 5px solid #667eea;
-    border-right: 5px solid #764ba2;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    text-align: center;
-}
-
-.prayer-text p {
-    font-size: 1.15em;
-    line-height: 1.9;
-    color: #2c3e50;
-    margin: 20px 0;
-}
-
-/* Memory Verse Flashcard */
+/* --- Memory Verse Flashcard --- */
 .memory-verse-flashcard {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 20px;
-    padding: 40px 30px;
-    margin: 20px 0;
+    background: linear-gradient(135deg, #534AB7 0%, #3C3489 100%);
+    border-radius: var(--radius-card);
+    padding: 36px 24px;
+    margin: 16px 0;
     cursor: pointer;
-    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.35);
-    min-height: 280px;
+    box-shadow: 0 6px 24px rgba(83, 74, 183, 0.3);
+    min-height: 260px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1125,21 +1225,19 @@ body.dark-mode .apostolic-reference {
 
 .memory-verse-flashcard:active {
     transform: scale(0.98);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 3px 12px rgba(83, 74, 183, 0.25);
 }
 
+/* Flashcard slide animations */
 .memory-verse-flashcard.slide-out-left {
     animation: slideOutLeft 0.3s ease forwards;
 }
-
 .memory-verse-flashcard.slide-out-right {
     animation: slideOutRight 0.3s ease forwards;
 }
-
 .memory-verse-flashcard.slide-in-right {
     animation: slideInRight 0.3s ease forwards;
 }
-
 .memory-verse-flashcard.slide-in-left {
     animation: slideInLeft 0.3s ease forwards;
 }
@@ -1148,17 +1246,14 @@ body.dark-mode .apostolic-reference {
     from { opacity: 1; transform: translateX(0); }
     to   { opacity: 0; transform: translateX(-60px); }
 }
-
 @keyframes slideOutRight {
     from { opacity: 1; transform: translateX(0); }
     to   { opacity: 0; transform: translateX(60px); }
 }
-
 @keyframes slideInRight {
     from { opacity: 0; transform: translateX(60px); }
     to   { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes slideInLeft {
     from { opacity: 0; transform: translateX(-60px); }
     to   { opacity: 1; transform: translateX(0); }
@@ -1170,91 +1265,112 @@ body.dark-mode .apostolic-reference {
 }
 
 .flashcard-reference {
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
+    font-family: var(--font-ui);
 }
 
 .flashcard-text {
-    font-size: 1.15em;
+    font-size: 1.1em;
     line-height: 1.8;
     color: #ffffff;
+    font-family: var(--font-serif);
 }
 
 .flashcard-hint {
-    margin-top: 24px;
-    font-size: 0.8em;
-    color: rgba(255, 255, 255, 0.6);
+    margin-top: 20px;
+    font-size: 0.78em;
+    color: rgba(255, 255, 255, 0.55);
     letter-spacing: 0.04em;
+    font-family: var(--font-ui);
 }
 
 .flashcard-progress {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    margin: 16px 0 8px;
+    gap: 10px;
+    margin: 14px 0 6px;
 }
 
 #flashcardCounter,
 [id$="Counter"] {
-    font-size: 0.85em;
-    color: #888;
+    font-size: 0.82em;
+    color: var(--text-muted);
     font-weight: 600;
+    font-family: var(--font-ui);
 }
 
 .flashcard-dots {
     display: flex;
-    gap: 8px;
+    gap: 7px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .flashcard-dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: #c0c0c0;
-    transition: background 0.3s ease, transform 0.3s ease;
+    background: #d0d0d0;
+    transition: background var(--transition-normal), transform var(--transition-normal);
 }
 
 .flashcard-dot.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    transform: scale(1.3);
+    background: #534AB7;
+    transform: scale(1.25);
+}
+
+body.dark-mode .flashcard-dot {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .flashcard-dot.active {
+    background: var(--accent);
 }
 
 .flashcard-nav-buttons {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 14px;
 }
 
 .flashcard-nav-btn {
-    background: white;
-    color: #667eea;
-    border: 2px solid #667eea;
-    padding: 10px 24px;
-    border-radius: 25px;
+    background: transparent;
+    color: #534AB7;
+    border: 1.5px solid #534AB7;
+    padding: 9px 22px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
-    font-size: 0.95em;
+    font-size: 0.9em;
     font-weight: 600;
-    transition: background 0.3s ease, transform 0.3s ease;
+    font-family: var(--font-ui);
+    transition: background var(--transition-fast);
 }
 
 .flashcard-nav-btn:hover {
-    background: #f0f4ff;
-    transform: translateY(-2px);
+    background: rgba(83, 74, 183, 0.08);
 }
 
-/* ── Content inside flashcards ───────────────────────────────────────────────── */
+body.dark-mode .flashcard-nav-btn {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: transparent;
+}
 
+body.dark-mode .flashcard-nav-btn:hover {
+    background: rgba(143, 163, 255, 0.12);
+}
+
+/* Content inside flashcards */
 .memory-verse-flashcard .reflection-box {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     text-align: left;
 }
 
@@ -1266,126 +1382,95 @@ body.dark-mode .apostolic-reference {
 }
 
 .memory-verse-flashcard .scripture-text {
-    background: rgba(255, 255, 255, 0.15);
-    border-top-color: rgba(255, 255, 255, 0.4);
-    border-bottom-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+    border-left-color: rgba(255, 255, 255, 0.4);
     box-shadow: none;
     color: rgba(255, 255, 255, 0.95);
     text-align: left;
 }
 
 body.dark-mode .memory-verse-flashcard {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
 
-body.dark-mode .flashcard-hint {
-    color: rgba(255, 255, 255, 0.55);
-}
-
-body.dark-mode #flashcardCounter,
-body.dark-mode [id$="Counter"] {
-    color: #b0b0b0;
-}
-
-body.dark-mode .flashcard-dot {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-body.dark-mode .flashcard-nav-btn {
-    background: rgba(15, 52, 96, 0.9);
-    color: #a0b4ff;
-    border-color: #a0b4ff;
-}
-
-body.dark-mode .flashcard-nav-btn:hover {
-    background: rgba(102, 126, 234, 0.3);
-}
-
-/* Memory Verse Index */
+/* --- Memory Verse Index --- */
 .memory-verses-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin: 20px 0;
+    gap: 8px;
+    margin: 16px 0;
 }
 
 .memory-verse-index-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
-    background: #ffffff;
-    border: 1.5px solid #e0e4f5;
-    border-radius: 14px;
-    padding: 16px 20px;
+    gap: 4px;
+    background: var(--bg-card);
+    border: 0.5px solid var(--border-card);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
     cursor: pointer;
     text-align: left;
     width: 100%;
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.08);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    box-shadow: var(--shadow-card);
+    transition: border-color var(--transition-fast);
 }
 
 .memory-verse-index-item:hover,
 .memory-verse-index-item:focus {
-    border-color: #667eea;
-    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.18);
-    transform: translateY(-2px);
+    border-color: #534AB7;
     outline: none;
 }
 
 .memory-verse-index-item:active {
-    transform: translateY(0);
+    transform: none;
 }
 
 .memory-verse-index-ref {
-    font-size: 0.9em;
+    font-size: 0.85em;
     font-weight: 700;
-    color: #667eea;
+    color: #534AB7;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+    font-family: var(--font-ui);
+}
+
+body.dark-mode .memory-verse-index-ref {
+    color: var(--accent);
 }
 
 .memory-verse-index-preview {
-    font-size: 0.92em;
-    color: #555;
+    font-size: 0.88em;
+    color: var(--text-secondary);
     line-height: 1.5;
+    font-family: var(--font-serif);
 }
 
 body.dark-mode .memory-verse-index-item {
-    background: rgba(15, 52, 96, 0.7);
-    border-color: rgba(143, 163, 255, 0.2);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-color: rgba(143, 163, 255, 0.15);
 }
 
 body.dark-mode .memory-verse-index-item:hover,
 body.dark-mode .memory-verse-index-item:focus {
-    border-color: #8fa3ff;
-    box-shadow: 0 4px 16px rgba(143, 163, 255, 0.2);
+    border-color: var(--accent);
 }
 
-body.dark-mode .memory-verse-index-ref {
-    color: #8fa3ff;
-}
-
-body.dark-mode .memory-verse-index-preview {
-    color: #b0b8cc;
-}
-
-/* Dark Mode Toggle Button */
+/* --- Dark Mode Toggle --- */
 .dark-mode-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-size: 1.3em;
+    background: rgba(83, 74, 183, 0.1);
+    color: #534AB7;
+    font-size: 1em;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: none;
+    transition: background var(--transition-fast);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -1393,14 +1478,24 @@ body.dark-mode .memory-verse-index-preview {
 }
 
 .dark-mode-toggle:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(83, 74, 183, 0.18);
+    transform: none;
+    box-shadow: none;
+}
+
+body.dark-mode .dark-mode-toggle {
+    background: rgba(143, 163, 255, 0.12);
+    color: var(--accent);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background: rgba(143, 163, 255, 0.22);
 }
 
 .dark-mode-toggle .sun-icon,
 .dark-mode-toggle .moon-icon {
     position: absolute;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity var(--transition-normal), transform var(--transition-normal);
 }
 
 .dark-mode-toggle .moon-icon {
@@ -1418,140 +1513,89 @@ body.dark-mode .dark-mode-toggle .moon-icon {
     transform: rotate(0deg);
 }
 
-/* Mobile responsiveness */
+/* --- Dark Mode — Grouped Overrides --- */
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #ffffff;
+}
+
+body.dark-mode em {
+    color: #d0d0d0;
+}
+
+body.dark-mode strong {
+    color: #ffffff;
+}
+
+/* --- Mobile Responsive --- */
 @media (max-width: 768px) {
     .container {
-        padding: 15px;
+        padding: 0;
     }
-    
+
     h1 {
-        font-size: 2em;
+        font-size: 1.6em;
     }
-    
-    /* Category sections for mobile */
+
     .category-section {
-        margin-bottom: 15px;
-        border-radius: 15px;
+        margin: 0 8px 10px;
     }
-    
+
     .category-header {
-        padding: 15px 18px;
+        padding: 12px 14px;
     }
-    
+
     .category-title {
-        font-size: 1.15em;
-        gap: 8px;
-    }
-    
-    .category-icon {
         font-size: 1em;
     }
-    
-    .category-toggle {
-        font-size: 1em;
-    }
-    
-    .category-content {
-        padding: 0 18px 18px 18px;
-    }
-    
-    .tools-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding-top: 15px;
-    }
-    
-    /* Compact dashboard cards for mobile */
-    .tool-card {
-        padding: 16px;
-        border-radius: 12px;
-    }
-    
-    .tool-card h3 {
-        font-size: 1.15em;
-        margin-bottom: 6px;
-    }
-    
-    .tool-description {
-        font-size: 0.85em;
-        margin-bottom: 12px;
-        line-height: 1.4;
-    }
-    
-    .tool-button {
-        padding: 10px 20px;
-        font-size: 0.85em;
-        border-radius: 20px;
-    }
-    
+
     .prayer-content {
-        padding: 20px;
+        padding: 16px;
     }
-    
+
     .step {
-        padding: 15px;
+        padding: 14px;
     }
-    
+
     .prayer-movement {
-        padding: 20px;
+        padding: 16px;
     }
-    
+
     .movement-title {
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
-    
-    .movement-subtitle {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-    
+
     .country-name {
-        font-size: 1.4em;
+        font-size: 1.3em;
     }
-    
+
     .country-spotlight {
-        padding: 20px;
+        padding: 16px;
     }
-    
+
     .creed-text {
-        padding: 20px;
+        padding: 18px;
     }
-    
-    .creed-text p {
-        font-size: 1.05em;
-    }
-    
-    .creed-tab {
-        font-size: 0.9em;
-        padding: 8px 16px;
-    }
-    
+
+    .creed-tab,
     .prayer-tab {
-        font-size: 0.85em;
-        padding: 8px 14px;
+        font-size: 0.82em;
+        padding: 7px 14px;
     }
-    
+
     .dark-mode-toggle {
         top: 10px;
         right: 10px;
-        width: 45px;
-        height: 45px;
-        font-size: 1.1em;
-    }
-    
-    /* Apostolic prayers mobile styles */
-    .apostolic-prayer-section {
-        margin: 20px 0;
-    }
-    
-    .apostolic-prayer-title {
-        font-size: 1.2em;
-        margin-bottom: 12px;
-        line-height: 1.4;
-    }
-    
-    .apostolic-reference {
+        width: 34px;
+        height: 34px;
         font-size: 0.9em;
-        margin-top: 8px;
+    }
+
+    .apostolic-prayer-section {
+        margin: 18px 0;
+    }
+
+    .apostolic-prayer-title {
+        font-size: 1.1em;
     }
 }

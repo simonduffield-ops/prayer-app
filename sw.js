@@ -1,4 +1,4 @@
-const CACHE_NAME = 'prayer-tools-v1.9.0';
+const CACHE_NAME = 'prayer-tools-v2.0.1';
 const urlsToCache = [
     './',
     './index.html',
@@ -12,7 +12,8 @@ const urlsToCache = [
     './Icons/web/icon-192.png',
     './Icons/web/icon-192-maskable.png',
     './Icons/web/icon-512.png',
-    './Icons/web/icon-512-maskable.png'
+    './Icons/web/icon-512-maskable.png',
+    './translations.js'
 ];
 
 // Install event - cache resources and skip waiting

@@ -28,6 +28,10 @@ function setTranslation(translation) {
     localStorage.setItem('bibleTranslation', translation);
     const select = document.getElementById('translation-select');
     if (select) select.value = translation;
+    // Sync all translation pickers (header + prayer banners)
+    document.querySelectorAll('select[aria-label="Bible translation"]').forEach(function(sel) {
+        sel.value = translation;
+    });
 
     if (translation === 'NIV') {
         refreshTranslations();
@@ -84,6 +88,10 @@ function initTranslationPicker() {
     if (select) {
         select.value = current;
     }
+    // Sync all translation pickers (header + prayer banners)
+    document.querySelectorAll('select[aria-label="Bible translation"]').forEach(function(sel) {
+        sel.value = current;
+    });
     if (current !== 'NIV') {
         loadTranslationsScript();
     }
@@ -252,11 +260,36 @@ function completeGentleHumble() { completeActivity('gentle-humble'); }
 function completeAffirmation() { completeActivity('affirmation'); }
 
 function updateCompletionStates() {
-    Object.keys(activityElements).forEach(activity => {
-        const elements = activityElements[activity];
+    // Update finish buttons (existing behavior)
+    Object.keys(activityElements).forEach(function(activity) {
+        var elements = activityElements[activity];
         if (elements && elements.finishButton) {
-            const isCompleted = isCompletedToday(activity);
+            var isCompleted = isCompletedToday(activity);
             elements.finishButton.style.display = isCompleted ? 'none' : 'inline-block';
+        }
+    });
+
+    // Update home screen checkmarks
+    var checkMap = {
+        'affirmation': 'check-affirmation',
+        'memory-verses': 'check-memory-verses',
+        'apostolic': 'check-apostolic',
+        'persecuted': 'check-persecuted',
+        'lectio': 'check-lectio',
+        'beatitudes': 'check-beatitudes',
+        'gentle-humble': 'check-gentle-humble',
+        'declarations': 'check-declarations',
+        'adoration': 'check-adoration',
+        'prayerset': 'check-prayerset',
+        'examen': 'check-examen',
+        'written-prayers': 'check-written-prayers',
+        'creeds': 'check-creeds'
+    };
+
+    Object.keys(checkMap).forEach(function(activity) {
+        var el = document.getElementById(checkMap[activity]);
+        if (el) {
+            el.textContent = isCompletedToday(activity) ? '✓' : '';
         }
     });
 }
@@ -1450,11 +1483,11 @@ function initLordsPrayerFlashcard() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function showMainMenu() {
-    document.getElementById('main-menu').style.display = 'block';
-    document.querySelectorAll('.prayer-content').forEach(content => {
+    document.getElementById('main-menu').style.display = '';
+    document.querySelectorAll('.prayer-content').forEach(function(content) {
         content.classList.remove('active');
     });
-    
+    updateCompletionStates();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1723,28 +1756,64 @@ function initializeCategories() {
     });
 }
 
+function updateHeaderDate() {
+    var el = document.getElementById('header-date');
+    if (!el) return;
+    var d = new Date();
+    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    el.textContent = days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()];
+}
+
+function cleanupOldCompletionKeys() {
+    var now = new Date();
+    var cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 30);
+    var keysToRemove = [];
+
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var match = key.match(/^(.+)_completed_(\d+)-(\d+)-(\d+)$/);
+        if (match) {
+            var keyDate = new Date(parseInt(match[2]), parseInt(match[3]) - 1, parseInt(match[4]));
+            if (keyDate < cutoff) {
+                keysToRemove.push(key);
+            }
+        }
+    }
+
+    keysToRemove.forEach(function(key) {
+        localStorage.removeItem(key);
+    });
+}
+
 // Initialize with fresh content on every page load
 document.addEventListener('DOMContentLoaded', function() {
     try {
         // Initialize translation picker
         initTranslationPicker();
-        
+
         // Initialize dark mode
         initializeDarkMode();
-        
+
         // Initialize category states
         initializeCategories();
-        
+
         // Initialize DOM element cache for better performance
         initializeActivityElements();
-        
+
         // Load daily content based on day of year (guarantees cycling through all content)
         loadDailyContent();
-        
+
         // Update header subtitle with current translation
         updateHeaderSubtitle();
         updateHtmlVerses();
-        
+
+        // Update header date display
+        updateHeaderDate();
+
+        // Clean up old completion keys (older than 30 days)
+        cleanupOldCompletionKeys();
+
         updateCompletionStates(); // Check what's been completed today
         
     } catch (error) {

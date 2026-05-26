@@ -32,22 +32,23 @@
 </head>
 <body>
     <div class="container">
-        <header onclick="showMainMenu()">
-            <h1>Come to the Table</h1>
-            <p class="subtitle" id="header-subtitle">"Be still, and know that I am God" - Psalm 46:10 (NIV)</p>
-            <div class="translation-picker" onclick="event.stopPropagation()">
-                <select id="translation-select" onchange="setTranslation(this.value)" aria-label="Bible translation">
+        <div class="app-header" id="app-header">
+            <div class="app-header-date" id="header-date"></div>
+            <div class="app-header-title-row">
+                <svg class="app-header-logo" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#534AB7" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <h1>Come to the table</h1>
+                <select id="translation-select" class="header-translation-picker" onchange="setTranslation(this.value)" aria-label="Bible translation">
                     <option value="NIV">NIV</option>
                     <option value="AMP">AMP</option>
                     <option value="NLT">NLT</option>
                 </select>
             </div>
-        </header>
-        
-        <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
-            <span class="sun-icon">☀️</span>
-            <span class="moon-icon">🌙</span>
-        </button>
+            <p class="app-header-verse" id="header-subtitle">"Be still, and know that I am God" — Psalm 46:10 (NIV)</p>
+            <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
+        </div>
 
         <div id="main-menu">
             <!-- Daily Practices Category -->
@@ -59,29 +60,30 @@
                     </h2>
                     <span class="category-toggle">▼</span>
                 </div>
-                <div class="tools-grid category-content" id="daily-category">
-                    <div class="tool-card" onclick="showTool('affirmation')">
-                        <h3>Affirmation Prayer</h3>
-                        <p class="tool-description">A daily prayer.</p>
-                        <button class="tool-button">Begin Prayer</button>
+                <div class="category-content" id="daily-category">
+                    <div class="tool-row" onclick="showTool('affirmation')">
+                        <span class="tool-row-dot purple"></span>
+                        <span class="tool-row-name">Affirmation prayer</span>
+                        <span class="tool-row-check" id="check-affirmation"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-
-                    <div class="tool-card" onclick="showTool('memory-verses')">
-                        <h3>Memory Verses</h3>
-                        <p class="tool-description">Practise memorising scripture.</p>
-                        <button class="tool-button">Begin Memory Verses</button>
+                    <div class="tool-row" onclick="showTool('memory-verses')">
+                        <span class="tool-row-dot purple"></span>
+                        <span class="tool-row-name">Memory verses</span>
+                        <span class="tool-row-check" id="check-memory-verses"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-
-                    <div class="tool-card" onclick="showTool('apostolic')">
-                        <h3>Prayers of the Apostles</h3>
-                        <p class="tool-description">Prayers written by the apostles.</p>
-                        <button class="tool-button">Begin Apostolic Prayer</button>
+                    <div class="tool-row" onclick="showTool('apostolic')">
+                        <span class="tool-row-dot purple"></span>
+                        <span class="tool-row-name">Prayers of the apostles</span>
+                        <span class="tool-row-check" id="check-apostolic"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-
-                    <div class="tool-card" onclick="showTool('persecuted')">
-                        <h3>Pray for the Persecuted</h3>
-                        <p class="tool-description">Pray for our persecuted brothers and sisters.</p>
-                        <button class="tool-button">Begin Prayer</button>
+                    <div class="tool-row" onclick="showTool('persecuted')">
+                        <span class="tool-row-dot purple"></span>
+                        <span class="tool-row-name">Pray for the persecuted</span>
+                        <span class="tool-row-check" id="check-persecuted"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
                 </div>
             </div>
@@ -95,26 +97,30 @@
                     </h2>
                     <span class="category-toggle">▼</span>
                 </div>
-                <div class="tools-grid category-content" id="scripture-category">
-                    <div class="tool-card" onclick="showTool('lectio')">
-                        <h3>Lectio Divina</h3>
-                        <p class="tool-description">Sacred reading.</p>
-                        <button class="tool-button">Begin Lectio Divina</button>
+                <div class="category-content" id="scripture-category">
+                    <div class="tool-row" onclick="showTool('lectio')">
+                        <span class="tool-row-dot teal"></span>
+                        <span class="tool-row-name">Lectio Divina</span>
+                        <span class="tool-row-check" id="check-lectio"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-                    <div class="tool-card" onclick="showTool('beatitudes')">
-                        <h3>The Beatitudes</h3>
-                        <p class="tool-description">Meditate on Jesus' teachings.</p>
-                        <button class="tool-button">Begin Prayer</button>
+                    <div class="tool-row" onclick="showTool('beatitudes')">
+                        <span class="tool-row-dot teal"></span>
+                        <span class="tool-row-name">The Beatitudes</span>
+                        <span class="tool-row-check" id="check-beatitudes"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-                    <div class="tool-card" onclick="showTool('gentle-humble')">
-                        <h3>Gentle and Humble</h3>
-                        <p class="tool-description">Meditate on Christ's gentleness and humility.</p>
-                        <button class="tool-button">Begin Meditation</button>
+                    <div class="tool-row" onclick="showTool('gentle-humble')">
+                        <span class="tool-row-dot teal"></span>
+                        <span class="tool-row-name">Gentle and humble</span>
+                        <span class="tool-row-check" id="check-gentle-humble"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-                    <div class="tool-card" onclick="showTool('declarations')">
-                        <h3>Declarations</h3>
-                        <p class="tool-description">Declare biblical truths.</p>
-                        <button class="tool-button">Begin Declarations</button>
+                    <div class="tool-row" onclick="showTool('declarations')">
+                        <span class="tool-row-dot teal"></span>
+                        <span class="tool-row-name">Declarations</span>
+                        <span class="tool-row-check" id="check-declarations"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
                 </div>
             </div>
@@ -128,35 +134,36 @@
                     </h2>
                     <span class="category-toggle">▼</span>
                 </div>
-                <div class="tools-grid category-content" id="historic-category">
-                    <div class="tool-card" onclick="showTool('adoration')">
-                        <h3>Adoration</h3>
-                        <p class="tool-description">Worshipful meditation on God's character.</p>
-                        <button class="tool-button">Begin Adoration</button>
+                <div class="category-content" id="historic-category">
+                    <div class="tool-row" onclick="showTool('adoration')">
+                        <span class="tool-row-dot coral"></span>
+                        <span class="tool-row-name">Adoration</span>
+                        <span class="tool-row-check" id="check-adoration"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-
-                    <div class="tool-card" onclick="showTool('prayerset')">
-                        <h3>The Lord's Prayer</h3>
-                        <p class="tool-description">Journey through the Lord's Prayer.</p>
-                        <button class="tool-button">Begin Prayer</button>
+                    <div class="tool-row" onclick="showTool('prayerset')">
+                        <span class="tool-row-dot coral"></span>
+                        <span class="tool-row-name">The Lord's Prayer</span>
+                        <span class="tool-row-check" id="check-prayerset"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-
-                    <div class="tool-card" onclick="showTool('examen')">
-                        <h3>The Examen</h3>
-                        <p class="tool-description">Discern consolation and desolation.</p>
-                        <button class="tool-button">Begin Examen</button>
+                    <div class="tool-row" onclick="showTool('examen')">
+                        <span class="tool-row-dot coral"></span>
+                        <span class="tool-row-name">The Examen</span>
+                        <span class="tool-row-check" id="check-examen"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-
-                    <div class="tool-card" onclick="showTool('written-prayers')">
-                        <h3>Written Prayers</h3>
-                        <p class="tool-description">Beloved Christian prayers.</p>
-                        <button class="tool-button">Begin Prayer</button>
+                    <div class="tool-row" onclick="showTool('written-prayers')">
+                        <span class="tool-row-dot coral"></span>
+                        <span class="tool-row-name">Written prayers</span>
+                        <span class="tool-row-check" id="check-written-prayers"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
-
-                    <div class="tool-card" onclick="showTool('creeds')">
-                        <h3>Creeds</h3>
-                        <p class="tool-description">Profess faith with the historical creeds.</p>
-                        <button class="tool-button">Begin Creed</button>
+                    <div class="tool-row" onclick="showTool('creeds')">
+                        <span class="tool-row-dot coral"></span>
+                        <span class="tool-row-name">Creeds</span>
+                        <span class="tool-row-check" id="check-creeds"></span>
+                        <span class="tool-row-chevron">&#8250;</span>
                     </div>
                 </div>
             </div>
@@ -164,6 +171,16 @@
 
         <!-- Examen Content -->
         <div id="examen-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">The Examen</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">The Examen</h2>
                 <div class="bible-verse">
@@ -197,11 +214,20 @@
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeExamen()">Finish</button>
             </div>
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Affirmation Prayer Content -->
         <div id="affirmation-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Affirmation prayer</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">Affirmation Prayer</h2>
             </div>
@@ -266,7 +292,7 @@
             <div class="step">
                 <span class="step-number">3</span>
                 <div>
-                    <p style="font-size: 1.2em; font-weight: 600; color: #667eea; font-style: italic; margin: 20px 0;">"Abba, Father, what do you want me to know today?"</p>
+                    <p style="font-size: 1.2em; font-weight: 600; color: #534AB7; font-style: italic; margin: 20px 0;">"Abba, Father, what do you want me to know today?"</p>
                     <div class="reflection-box">
                         <p><em>...</em></p>
                     </div>
@@ -276,7 +302,7 @@
             <div class="step">
                 <span class="step-number">4</span>
                 <div>
-                    <p style="font-size: 1.2em; font-weight: 600; color: #667eea; font-style: italic; margin: 20px 0;">"Abba, Father, what do you want me to do?"</p>
+                    <p style="font-size: 1.2em; font-weight: 600; color: #534AB7; font-style: italic; margin: 20px 0;">"Abba, Father, what do you want me to do?"</p>
                     <div class="reflection-box">
                         <p><em>...</em></p>
                     </div>
@@ -286,7 +312,7 @@
             <div class="step">
                 <span class="step-number">5</span>
                 <div>
-                    <p style="font-size: 1.2em; font-weight: 600; color: #667eea; font-style: italic; margin: 20px 0;">"Abba, Father, what is my assignment today?"</p>
+                    <p style="font-size: 1.2em; font-weight: 600; color: #534AB7; font-style: italic; margin: 20px 0;">"Abba, Father, what is my assignment today?"</p>
                     <div class="reflection-box">
                         <p><em>...</em></p>
                     </div>
@@ -306,11 +332,20 @@
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeAffirmation()">Finish</button>
             </div>
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Lectio Divina Content -->
         <div id="lectio-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Lectio Divina</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">Lectio Divina</h2>
             </div>
@@ -339,11 +374,20 @@
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeLectio()">Finish</button>
             </div>
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Adoration Content -->
         <div id="adoration-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Adoration</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">Adoration</h2>
             </div>
@@ -406,24 +450,29 @@
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeAdoration()">Finish</button>
             </div>
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Prayers of the Apostles Content -->
         <div id="apostolic-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Prayers of the apostles</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
 
             <!-- Index View -->
             <div id="apostolic-index">
-                <div class="prayer-header">
-                    <h2 class="prayer-title">Prayers of the Apostles</h2>
-                    
-                </div>
                 <div id="apostolic-prayers-list" class="memory-verses-list"></div>
-                <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
             </div>
 
             <!-- Flashcard View -->
             <div id="apostolic-flashcard-view" style="display:none;">
+                <a class="sub-back-link" onclick="showApostolicIndex()" role="button">&larr; All prayers</a>
 
                 <div class="memory-verse-flashcard" id="apostolicFlashcard" onclick="nextApostolicPrayer()" role="button" aria-label="Next prayer">
                     <div class="flashcard-inner" id="apostolicFlashcardInner">
@@ -443,14 +492,22 @@
                     <button class="flashcard-nav-btn" onclick="prevApostolicPrayer(event)" aria-label="Previous prayer">&#8592; Prev</button>
                     <button class="flashcard-nav-btn" onclick="nextApostolicPrayer(event)" aria-label="Next prayer">Next &#8594;</button>
                 </div>
-
-                <button class="back-button" onclick="showApostolicIndex()" aria-label="Back to prayer list"></button>
             </div>
 
         </div>
 
         <!-- Prayer Set Content -->
         <div id="prayerset-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">The Lord's Prayer</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">The Lord's Prayer</h2>
                 <div class="bible-verse">
@@ -484,11 +541,20 @@
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completePrayerSet()">Finish</button>
             </div>
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Persecuted Church Content -->
         <div id="persecuted-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Pray for the persecuted</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">Prayer for the Persecuted Church</h2>
                 
@@ -519,11 +585,20 @@
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completePersecuted()">Finish</button>
             </div>
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Creeds Content -->
         <div id="creeds-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Creeds</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">Creeds</h2>
                 <div class="bible-verse">
@@ -532,7 +607,7 @@
             </div>
 
             <div class="creed-selector">
-                <h3 style="text-align: center; color: #2c3e50; margin-bottom: 15px;">Choose a Creed</h3>
+                <h3 style="text-align: center; margin-bottom: 15px;">Choose a Creed</h3>
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
                     <button class="creed-tab active" onclick="showCreed('apostles', event)">Apostles' Creed</button>
                     <button class="creed-tab" onclick="showCreed('nicene', event)">Nicene Creed</button>
@@ -542,8 +617,8 @@
             <!-- Apostles' Creed -->
             <div id="apostles-creed" class="creed-section active">
                 <div class="creed-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 15px;">The Apostles' Creed</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 25px;">The earliest statement of Christian belief, dating to the 2nd century</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 15px;">The Apostles' Creed</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 25px;">The earliest statement of Christian belief, dating to the 2nd century</p>
                 </div>
 
                 <div class="creed-text">
@@ -612,8 +687,8 @@
             <!-- Nicene Creed -->
             <div id="nicene-creed" class="creed-section">
                 <div class="creed-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 15px;">The Nicene Creed</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 25px;">Formulated at the Council of Nicaea (325 AD) and Constantinople (381 AD)</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 15px;">The Nicene Creed</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 25px;">Formulated at the Council of Nicaea (325 AD) and Constantinople (381 AD)</p>
                 </div>
 
                 <div class="creed-text">
@@ -695,11 +770,20 @@
                 </div>
             </div>
 
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Written Prayers Content -->
         <div id="written-prayers-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Written prayers</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">Written Prayers</h2>
                 <div class="bible-verse">
@@ -708,7 +792,7 @@
             </div>
 
             <div class="prayer-selector">
-                <h3 style="text-align: center; color: #2c3e50; margin-bottom: 15px;">Choose a Prayer</h3>
+                <h3 style="text-align: center; margin-bottom: 15px;">Choose a Prayer</h3>
                 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
                     <button class="prayer-tab active" onclick="showPrayer('francis', event)">St. Francis</button>
                     <button class="prayer-tab" onclick="showPrayer('serenity', event)">Serenity</button>
@@ -730,8 +814,8 @@
             <!-- Prayer of St. Francis -->
             <div id="francis-prayer" class="prayer-section active">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer of St. Francis</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">1912</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer of St. Francis</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">1912</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">Despite popular attribution to St. Francis of Assisi, this prayer was first published anonymously in 1912 in a French spiritual magazine. It became widely beloved during both World Wars and was used by Mother Teresa, Desmond Tutu, Margaret Thatcher, and many others as an anthem of peace and service.</p>
                 </div>
 
@@ -759,8 +843,8 @@
             <!-- The Serenity Prayer -->
             <div id="serenity-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Serenity Prayer</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">Reinhold Niebuhr, 1932</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Serenity Prayer</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">Reinhold Niebuhr, 1932</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">Written by Protestant theologian Reinhold Niebuhr around 1932, this prayer became famous through Alcoholics Anonymous starting in 1941 and has since become one of the most widely known prayers worldwide.</p>
                 </div>
 
@@ -797,8 +881,8 @@
             <!-- Prayer of St. Ignatius of Loyola -->
             <div id="ignatius-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer of St. Ignatius of Loyola</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">St. Ignatius of Loyola, 16th Century (1491-1556)</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer of St. Ignatius of Loyola</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">St. Ignatius of Loyola, 16th Century (1491-1556)</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">St. Ignatius, founder of the Jesuits, used this prayer to encourage total commitment to God and service.</p>
                 </div>
 
@@ -817,8 +901,8 @@
             <!-- The Suscipe -->
             <div id="suscipe-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Suscipe (Take, Lord, Receive)</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">St. Ignatius of Loyola, 16th Century</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Suscipe (Take, Lord, Receive)</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">St. Ignatius of Loyola, 16th Century</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">Another profound prayer from St. Ignatius, expressing complete surrender to God. This prayer appears in his Spiritual Exercises and is often prayed during retreats and at times of major life decisions.</p>
                 </div>
 
@@ -841,8 +925,8 @@
             <!-- Prayer of St. Richard of Chichester -->
             <div id="richard-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer of St. Richard of Chichester</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">St. Richard of Chichester, 13th Century (1197-1253)</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer of St. Richard of Chichester</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">St. Richard of Chichester, 13th Century (1197-1253)</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">A simple yet profound prayer asking to know, love, and follow Christ more deeply. Made famous in the modern era through the musical "Godspell."</p>
                 </div>
 
@@ -863,8 +947,8 @@
             <!-- Anima Christi -->
             <div id="anima-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Anima Christi (Soul of Christ)</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">14th Century</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Anima Christi (Soul of Christ)</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">14th Century</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">A deeply devotional prayer traditionally associated with St. Ignatius of Loyola, though it predates him. Often prayed after receiving Communion.</p>
                 </div>
 
@@ -890,8 +974,8 @@
             <!-- St. Patrick's Breastplate -->
             <div id="patrick-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">St. Patrick's Breastplate</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">Attributed to St. Patrick of Ireland, 5th Century (c. 385-461)</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">St. Patrick's Breastplate</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">Attributed to St. Patrick of Ireland, 5th Century (c. 385-461)</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">An ancient Celtic prayer of protection, traditionally attributed to St. Patrick as he traveled through Ireland evangelizing. Also known as "The Lorica" (Latin for breastplate or armor).</p>
                 </div>
 
@@ -928,8 +1012,8 @@
             <!-- St. Augustine's Evening Prayer -->
             <div id="augustine-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">St. Augustine's Evening Prayer</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">St. Augustine of Hippo, 4th-5th Century (354-430)</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">St. Augustine's Evening Prayer</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">St. Augustine of Hippo, 4th-5th Century (354-430)</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">A beautiful prayer asking God's presence during the night hours, especially for those awake, keeping vigil, or in distress.</p>
                 </div>
 
@@ -952,8 +1036,8 @@
             <!-- Te Deum Laudamus -->
             <div id="tedeum-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Te Deum Laudamus</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">Nicetas of Remesiana, c. 4th-5th Century</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Te Deum Laudamus</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">Nicetas of Remesiana, c. 4th-5th Century</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">One of Christianity's oldest hymns of praise, composed during the Arian controversy to affirm orthodox theology. For over 1,500 years, it has united heaven and earth in worship across traditions, inspiring musical settings by Handel, Mozart, Verdi, and Britten.</p>
                 </div>
 
@@ -996,8 +1080,8 @@
             <!-- Nada Te Turbe (St. Teresa of Ávila) -->
             <div id="teresa-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Nada Te Turbe (Let Nothing Disturb You)</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">St. Teresa of Ávila, 1582</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Nada Te Turbe (Let Nothing Disturb You)</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">St. Teresa of Ávila, 1582</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">Written by the great Carmelite reformer and first female Doctor of the Church, these words were discovered on a bookmark in her breviary after her death. This radical simplicity addresses fear, anxiety, and the search for stability, achieving remarkable ecumenical reach through musical settings by Taizé and others.</p>
                 </div>
 
@@ -1015,8 +1099,8 @@
             <!-- Lead, Kindly Light (Newman) -->
             <div id="newman-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Lead, Kindly Light</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">John Henry Newman, 1833</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Lead, Kindly Light</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">John Henry Newman, 1833</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">Born from spiritual crisis when Newman was stranded and recovering from near-fatal fever in 1833. This prayer for divine guidance in darkness has resonated universally—sung on the Titanic, by trapped miners, in concentration camps, and requested by Queen Victoria on her deathbed.</p>
                 </div>
 
@@ -1047,8 +1131,8 @@
             <!-- The Doxology (Thomas Ken) -->
             <div id="doxology-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Doxology</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">Thomas Ken, c. 1674</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">The Doxology</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">Thomas Ken, c. 1674</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">Possibly the single most widely-sung verse in Christian history. Written by Bishop Thomas Ken as a concluding verse for his morning, evening, and midnight hymns. Its theological completeness, simplicity, and the strong tune OLD HUNDREDTH made it Christianity's most universal prayer across virtually all traditions.</p>
                 </div>
 
@@ -1063,8 +1147,8 @@
             <!-- Radiating Christ (Mother Teresa) -->
             <div id="radiating-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Radiating Christ</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">Mother Teresa (adapted from Cardinal Newman)</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Radiating Christ</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">Mother Teresa (adapted from Cardinal Newman)</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">A beautiful intergenerational connection: Cardinal Newman originally wrote this as a meditation, which Mother Teresa adapted and changed to plural pronouns for her sisters to pray communally. Recited daily after Mass by the Missionaries of Charity since 1950, it embodies transparent witness and the catching force of love.</p>
                 </div>
 
@@ -1099,8 +1183,8 @@
             <!-- Ryan Skoog Prayer -->
             <div id="skoog-prayer" class="prayer-section">
                 <div class="prayer-title-section">
-                    <h3 style="color: #667eea; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer from Lead with Prayer</h3>
-                    <p style="text-align: center; font-style: italic; color: #7f8c8d; margin-bottom: 10px;">Ryan Skoog</p>
+                    <h3 style="color: #534AB7; text-align: center; font-size: 1.5em; margin-bottom: 10px;">Prayer from Lead with Prayer</h3>
+                    <p style="text-align: center; font-style: italic; color: #888; margin-bottom: 10px;">Ryan Skoog</p>
                     <p style="text-align: center; color: #555; margin-bottom: 25px;">A prayer to overcome the world and its temptations through Christ's conquering power.</p>
                 </div>
 
@@ -1145,11 +1229,20 @@
                 </div>
             </div>
 
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Declarations Content -->
         <div id="declarations-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Declarations</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">Declarations</h2>
                 <div class="bible-verse">
@@ -1158,7 +1251,7 @@
             </div>
 
             <div class="prayer-selector">
-                <h3 style="text-align: center; color: #2c3e50; margin-bottom: 15px;">Choose a Declaration Set</h3>
+                <h3 style="text-align: center; margin-bottom: 15px;">Choose a Declaration Set</h3>
                 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
                     <button class="prayer-tab active" onclick="showDeclaration('in-christ', event)">In Christ</button>
                     <button class="prayer-tab" onclick="showDeclaration('daily', event)">Daily</button>
@@ -1211,23 +1304,29 @@
                 </div>
             </div>
 
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Memory Verses Content -->
         <div id="memory-verses-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Memory verses</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
+
             <!-- Index View -->
             <div id="memory-verses-index">
-                <div class="prayer-header">
-                    <h2 class="prayer-title">Memory Verses</h2>
-
-                </div>
                 <div id="memory-verses-list" class="memory-verses-list"></div>
-                <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
             </div>
 
             <!-- Flashcard View -->
             <div id="memory-verses-flashcard-view" style="display:none;">
+                <a class="sub-back-link" onclick="showMemoryVerseIndex()" role="button">&larr; All verses</a>
 
                 <div class="memory-verse-flashcard" id="memoryVerseFlashcard" onclick="nextMemoryVerse()" role="button" aria-label="Next verse">
                     <div class="flashcard-inner" id="flashcardInner">
@@ -1246,13 +1345,21 @@
                     <button class="flashcard-nav-btn" onclick="prevMemoryVerse(event)" aria-label="Previous verse">&#8592; Prev</button>
                     <button class="flashcard-nav-btn" onclick="nextMemoryVerse(event)" aria-label="Next verse">Next &#8594;</button>
                 </div>
-
-                <button class="back-button memory-verse-back-btn" onclick="showMemoryVerseIndex()" aria-label="Back to verse list"></button>
             </div>
         </div>
 
         <!-- The Beatitudes Content -->
         <div id="beatitudes-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">The Beatitudes</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">The Beatitudes</h2>
                 <div class="bible-verse">
@@ -1285,11 +1392,20 @@
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeBeatitudes()">Finish</button>
             </div>
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
 
         <!-- Gentle and Humble in Heart Content -->
         <div id="gentle-humble-content" class="prayer-content">
+            <div class="prayer-banner">
+                <svg class="prayer-banner-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
+                <button class="prayer-banner-back" onclick="showMainMenu()" aria-label="Back">&#8592;</button>
+                <span class="prayer-banner-title">Gentle and humble</span>
+                <select class="prayer-banner-trans" onchange="setTranslation(this.value)" aria-label="Bible translation">
+                    <option value="NIV">NIV</option>
+                    <option value="AMP">AMP</option>
+                    <option value="NLT">NLT</option>
+                </select>
+            </div>
             <div class="prayer-header">
                 <h2 class="prayer-title">Gentle and Humble in Heart</h2>
                 <div class="bible-verse">
@@ -1316,7 +1432,7 @@
                     <p id="gentle-humble-quote">
                         Humility is the foundation of all the other virtues hence, in the soul in which this virtue does not exist there cannot be any other virtue except in mere appearance.
                     </p>
-                    <p style="text-align: right; font-style: italic; color: #7f8c8d; margin-top: 10px;" id="gentle-humble-author">– St. Augustine</p>
+                    <p style="text-align: right; font-style: italic; color: #888; margin-top: 10px;" id="gentle-humble-author">– St. Augustine</p>
                     <div class="reflection-box">
                         <p><em>How does this wisdom from church history illuminate your understanding of gentleness and humility?</em></p>
                     </div>
@@ -1358,7 +1474,6 @@
             <div style="text-align: center; margin-top: 30px;">
                 <button class="finish-button" onclick="completeGentleHumble()">Finish</button>
             </div>
-            <button class="back-button" onclick="showMainMenu()" aria-label="Back to Tools"></button>
         </div>
     </div>
 
