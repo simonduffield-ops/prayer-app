@@ -30,7 +30,9 @@ function getVerseText(reference, nivText) {
     if (typeof VERSE_TRANSLATIONS === 'undefined') return nivText;
     const normRef = normalizeRef(reference);
     const entry = VERSE_TRANSLATIONS[normRef];
-    if (entry && entry[translation]) return entry[translation];
+    if (entry && entry[translation]) {
+        return entry[translation].replace(/^[\u201C\u201D"]+|[\u201C\u201D"]+$/g, '').trim();
+    }
 
     return nivText;
 }
