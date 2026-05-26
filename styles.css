@@ -477,24 +477,6 @@ body.dark-mode .tool-row-check {
     font-family: var(--font-ui);
 }
 
-.prayer-banner-trans {
-    font-size: 0.75em;
-    font-weight: 600;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: var(--radius-pill);
-    padding: 3px 10px;
-    background: transparent;
-    cursor: pointer;
-    letter-spacing: 0.5px;
-    flex-shrink: 0;
-    font-family: var(--font-ui);
-}
-
-.prayer-banner-trans:hover {
-    border-color: rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.1);
-}
 
 .sub-back-link {
     display: inline-block;
