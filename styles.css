@@ -1397,61 +1397,63 @@ body.dark-mode .memory-verse-index-item:focus {
     border-color: var(--accent);
 }
 
-/* --- Dark Mode Toggle --- */
-.dark-mode-toggle {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(83, 74, 183, 0.1);
-    color: #534AB7;
-    font-size: 1em;
-    cursor: pointer;
-    box-shadow: none;
-    transition: background var(--transition-fast);
-    z-index: 1000;
+/* --- Appearance Toggle Row --- */
+.appearance-row {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+    margin-top: 8px;
 }
 
-.dark-mode-toggle:hover {
-    background: rgba(83, 74, 183, 0.18);
-    transform: none;
-    box-shadow: none;
+.appearance-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
 }
 
-body.dark-mode .dark-mode-toggle {
-    background: rgba(143, 163, 255, 0.12);
-    color: var(--accent);
+.appearance-label {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    margin-right: auto;
 }
 
-body.dark-mode .dark-mode-toggle:hover {
-    background: rgba(143, 163, 255, 0.22);
+.toggle-track {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    border: none;
+    background: var(--border-card);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
 }
 
-.dark-mode-toggle .sun-icon,
-.dark-mode-toggle .moon-icon {
+.toggle-thumb {
     position: absolute;
-    transition: opacity var(--transition-normal), transform var(--transition-normal);
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
 }
 
-.dark-mode-toggle .moon-icon {
-    opacity: 0;
-    transform: rotate(-90deg);
+body.dark-mode .toggle-track {
+    background: var(--accent);
 }
 
-body.dark-mode .dark-mode-toggle .sun-icon {
-    opacity: 0;
-    transform: rotate(90deg);
+body.dark-mode .toggle-thumb {
+    transform: translateX(20px);
 }
 
-body.dark-mode .dark-mode-toggle .moon-icon {
-    opacity: 1;
-    transform: rotate(0deg);
+body.dark-mode .appearance-icon {
+    color: var(--accent);
 }
 
 /* --- Dark Mode — Grouped Overrides --- */
@@ -1522,14 +1524,6 @@ body.dark-mode strong {
     .prayer-tab {
         font-size: 0.82em;
         padding: 7px 14px;
-    }
-
-    .dark-mode-toggle {
-        top: 10px;
-        right: 10px;
-        width: 34px;
-        height: 34px;
-        font-size: 0.9em;
     }
 
     .apostolic-prayer-section {
