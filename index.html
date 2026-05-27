@@ -33,7 +33,6 @@
 <body>
     <div class="container">
         <div class="app-header" id="app-header">
-            <div class="app-header-date" id="header-date"></div>
             <div class="app-header-title-row">
                 <svg class="app-header-logo" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#534AB7" d="M256 74.06c32.76 39.37 52.457 90.004 52.457 145.29 0 21.33-2.937 41.966-8.42 61.534-28.84-5.284-58.69-5.445-88.098-.09-5.467-19.54-8.397-40.147-8.397-61.445 0-55.286 19.698-105.92 52.457-145.29zm-.582 220.687c13.13-.026 26.197 1.1 39.057 3.313-9.017 24.453-22.117 46.918-38.475 66.578-16.365-19.668-29.47-42.144-38.486-66.61 12.6-2.17 25.28-3.256 37.904-3.28zM199.8 301.82c10.063 28.133 25.12 53.896 44.108 76.224-41.252 42.28-98.866 68.52-162.68 68.52-13.104 0-25.943-1.12-38.437-3.243 17.722-48.045 51.722-90.41 99.595-118.05 18.446-10.65 37.758-18.414 57.416-23.45zm112.39.025c57.208 14.6 108.705 51.362 140.595 106.593 6.548 11.342 11.993 23.013 16.4 34.887-12.488 2.122-25.318 3.24-38.414 3.24-63.812 0-121.426-26.242-162.678-68.52 18.98-22.322 34.037-48.076 44.1-76.2zm180.22 154.888l-5.44-17.162c-4.898-13.677-11.078-27.108-18.597-40.132-34.176-59.19-89.39-98.733-150.77-114.67 5.76-20.833 8.854-42.767 8.854-65.42 0-60.5-21.98-115.908-58.365-158.695L256 47.435l-12.092 13.218c-36.386 42.787-58.365 98.195-58.365 158.696 0 22.616 3.085 44.517 8.83 65.32-20.89 5.424-41.4 13.704-60.988 25.013-52.404 30.254-89.403 77-108.264 129.91l-5.425 17.17 17.498 3.843c14.29 2.596 29.004 3.96 44.036 3.96 68.387 0 130.27-28.075 174.77-73.303 44.5 45.228 106.383 73.302 174.77 73.302 15.04 0 29.76-1.364 44.056-3.963"/></svg>
                 <h1>Come to the table</h1>
@@ -64,25 +63,21 @@
                     <div class="tool-row" onclick="showTool('affirmation')">
                         <span class="tool-row-dot purple"></span>
                         <span class="tool-row-name">Daily prayer</span>
-                        <span class="tool-row-check" id="check-affirmation"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('memory-verses')">
                         <span class="tool-row-dot purple"></span>
                         <span class="tool-row-name">Memory verses</span>
-                        <span class="tool-row-check" id="check-memory-verses"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('apostolic')">
                         <span class="tool-row-dot purple"></span>
                         <span class="tool-row-name">Prayers of the apostles</span>
-                        <span class="tool-row-check" id="check-apostolic"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('persecuted')">
                         <span class="tool-row-dot purple"></span>
                         <span class="tool-row-name">Pray for the persecuted</span>
-                        <span class="tool-row-check" id="check-persecuted"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                 </div>
@@ -101,25 +96,21 @@
                     <div class="tool-row" onclick="showTool('lectio')">
                         <span class="tool-row-dot teal"></span>
                         <span class="tool-row-name">Lectio Divina</span>
-                        <span class="tool-row-check" id="check-lectio"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('beatitudes')">
                         <span class="tool-row-dot teal"></span>
                         <span class="tool-row-name">The Beatitudes</span>
-                        <span class="tool-row-check" id="check-beatitudes"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('gentle-humble')">
                         <span class="tool-row-dot teal"></span>
                         <span class="tool-row-name">Gentle and humble</span>
-                        <span class="tool-row-check" id="check-gentle-humble"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('declarations')">
                         <span class="tool-row-dot teal"></span>
                         <span class="tool-row-name">Declarations</span>
-                        <span class="tool-row-check" id="check-declarations"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                 </div>
@@ -138,31 +129,26 @@
                     <div class="tool-row" onclick="showTool('adoration')">
                         <span class="tool-row-dot coral"></span>
                         <span class="tool-row-name">Adoration</span>
-                        <span class="tool-row-check" id="check-adoration"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('prayerset')">
                         <span class="tool-row-dot coral"></span>
                         <span class="tool-row-name">The Lord's Prayer</span>
-                        <span class="tool-row-check" id="check-prayerset"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('examen')">
                         <span class="tool-row-dot coral"></span>
                         <span class="tool-row-name">The Examen</span>
-                        <span class="tool-row-check" id="check-examen"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('written-prayers')">
                         <span class="tool-row-dot coral"></span>
                         <span class="tool-row-name">Written prayers</span>
-                        <span class="tool-row-check" id="check-written-prayers"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                     <div class="tool-row" onclick="showTool('creeds')">
                         <span class="tool-row-dot coral"></span>
                         <span class="tool-row-name">Creeds</span>
-                        <span class="tool-row-check" id="check-creeds"></span>
                         <span class="tool-row-chevron">&#8250;</span>
                     </div>
                 </div>
@@ -206,7 +192,6 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <button class="finish-button" onclick="completeExamen()">Finish</button>
             </div>
         </div>
 
@@ -312,7 +297,6 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <button class="finish-button" onclick="completeAffirmation()">Finish</button>
             </div>
         </div>
 
@@ -345,7 +329,6 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <button class="finish-button" onclick="completeLectio()">Finish</button>
             </div>
         </div>
 
@@ -412,7 +395,6 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <button class="finish-button" onclick="completeAdoration()">Finish</button>
             </div>
         </div>
 
@@ -492,7 +474,6 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <button class="finish-button" onclick="completePrayerSet()">Finish</button>
             </div>
         </div>
 
@@ -526,7 +507,6 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <button class="finish-button" onclick="completePersecuted()">Finish</button>
             </div>
         </div>
 
@@ -1304,7 +1284,6 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <button class="finish-button" onclick="completeBeatitudes()">Finish</button>
             </div>
         </div>
 
@@ -1380,7 +1359,6 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <button class="finish-button" onclick="completeGentleHumble()">Finish</button>
             </div>
         </div>
     </div>

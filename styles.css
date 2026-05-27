@@ -84,13 +84,7 @@ body {
 
 /* --- App Header (replaces old header) --- */
 .app-header {
-    padding: 20px 16px 14px;
-}
-
-.app-header-date {
-    font-size: 0.8em;
-    color: var(--text-muted);
-    margin-bottom: 2px;
+    padding: 24px 16px 14px;
 }
 
 .app-header-title-row {
@@ -356,16 +350,6 @@ body.dark-mode .category-section:nth-child(3) .category-title {
     font-size: 0.95em;
     font-weight: 500;
     color: var(--text-primary);
-}
-
-.tool-row-check {
-    color: #0F6E56;
-    font-size: 0.85em;
-    margin-right: 4px;
-}
-
-body.dark-mode .tool-row-check {
-    color: #4ecaa0;
 }
 
 .tool-row-chevron {
@@ -860,30 +844,6 @@ body.dark-mode .new-content-button {
     right: 16px;
 }
 
-/* --- Finish Button --- */
-.finish-button {
-    background: #534AB7;
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-    font-family: var(--font-ui);
-    transition: opacity var(--transition-fast);
-    width: 100%;
-    margin: 10px 0;
-}
-
-.finish-button:hover {
-    opacity: 0.9;
-}
-
-body.dark-mode .finish-button {
-    background: #534AB7;
-    color: #ffffff;
-}
 
 /* --- Listen Section (Affirmation Prayer) --- */
 .listen-section-label {

@@ -226,73 +226,6 @@ function markCompleted(activity) {
     localStorage.setItem(completedKey, 'true');
 }
 
-// Cache DOM elements for better performance
-const activityElements = {};
-
-function initializeActivityElements() {
-    const activities = ['examen', 'lectio', 'adoration', 'apostolic', 'prayerset', 'persecuted', 'gentle-humble', 'affirmation'];
-    activities.forEach(activity => {
-        const content = document.getElementById(`${activity}-content`);
-        if (content) {
-            activityElements[activity] = {
-                content,
-                finishButton: content.querySelector('.finish-button')
-            };
-        }
-    });
-}
-
-// Single reusable completion function
-function completeActivity(activityName) {
-    markCompleted(activityName);
-    // Redirect to home page
-    showMainMenu();
-}
-
-// Individual completion functions for backwards compatibility
-function completeExamen() { completeActivity('examen'); }
-function completeLectio() { completeActivity('lectio'); }
-function completeAdoration() { completeActivity('adoration'); }
-function completeApostolic() { completeActivity('apostolic'); }
-function completePrayerSet() { completeActivity('prayerset'); }
-function completePersecuted() { completeActivity('persecuted'); }
-function completeGentleHumble() { completeActivity('gentle-humble'); }
-function completeAffirmation() { completeActivity('affirmation'); }
-
-function updateCompletionStates() {
-    // Update finish buttons (existing behavior)
-    Object.keys(activityElements).forEach(function(activity) {
-        var elements = activityElements[activity];
-        if (elements && elements.finishButton) {
-            var isCompleted = isCompletedToday(activity);
-            elements.finishButton.style.display = isCompleted ? 'none' : 'inline-block';
-        }
-    });
-
-    // Update home screen checkmarks
-    var checkMap = {
-        'affirmation': 'check-affirmation',
-        'memory-verses': 'check-memory-verses',
-        'apostolic': 'check-apostolic',
-        'persecuted': 'check-persecuted',
-        'lectio': 'check-lectio',
-        'beatitudes': 'check-beatitudes',
-        'gentle-humble': 'check-gentle-humble',
-        'declarations': 'check-declarations',
-        'adoration': 'check-adoration',
-        'prayerset': 'check-prayerset',
-        'examen': 'check-examen',
-        'written-prayers': 'check-written-prayers',
-        'creeds': 'check-creeds'
-    };
-
-    Object.keys(checkMap).forEach(function(activity) {
-        var el = document.getElementById(checkMap[activity]);
-        if (el) {
-            el.textContent = isCompletedToday(activity) ? '✓' : '';
-        }
-    });
-}
 
 function getDailyContent() {
     // Each tool gets different content each day
@@ -1487,7 +1420,6 @@ function showMainMenu() {
     document.querySelectorAll('.prayer-content').forEach(function(content) {
         content.classList.remove('active');
     });
-    updateCompletionStates();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1756,14 +1688,6 @@ function initializeCategories() {
     });
 }
 
-function updateHeaderDate() {
-    var el = document.getElementById('header-date');
-    if (!el) return;
-    var d = new Date();
-    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    el.textContent = days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()];
-}
 
 function cleanupOldCompletionKeys() {
     var now = new Date();
@@ -1798,9 +1722,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize category states
         initializeCategories();
 
-        // Initialize DOM element cache for better performance
-        initializeActivityElements();
-
         // Load daily content based on day of year (guarantees cycling through all content)
         loadDailyContent();
 
@@ -1808,13 +1729,8 @@ document.addEventListener('DOMContentLoaded', function() {
         updateHeaderSubtitle();
         updateHtmlVerses();
 
-        // Update header date display
-        updateHeaderDate();
-
         // Clean up old completion keys (older than 30 days)
         cleanupOldCompletionKeys();
-
-        updateCompletionStates(); // Check what's been completed today
         
     } catch (error) {
         console.error('App initialization failed:', error);
@@ -1823,11 +1739,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (mainMenu) mainMenu.style.display = 'block';
     }
     
-    // Beatitudes completion function
-    window.completeBeatitudes = function() {
-        showMainMenu();
-    };
-
     // Register service worker for PWA functionality
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js')
