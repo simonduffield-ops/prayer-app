@@ -1,14 +1,14 @@
 // Prayer content for daily rotation
 const examenPrompts = {
     verses: [
-        '"And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him." - Colossians 3:17 (NIV)',
-        '"Rejoice always, pray continually, give thanks in all circumstances; for this is God\'s will for you in Christ Jesus." - 1 Thessalonians 5:16-18 (NIV)',
-        '"Every good and perfect gift is from above, coming down from the Father of the heavenly lights, who does not change like shifting shadows." - James 1:17 (NIV)',
-        '"The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing." - Zephaniah 3:17 (NIV)',
-        '"Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful." - Colossians 3:15 (NIV)',
-        '"In your hearts revere Christ as Lord. Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have." - 1 Peter 3:15 (NIV)',
-        '"Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth." - Psalm 46:10 (NIV)',
-        '"For the jar of flour will not be used up and the jug of oil will not run dry until the day the Lord sends rain on the land." - 1 Kings 17:14 (NIV)'
+        '"And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him." - Colossians 3:17',
+        '"Rejoice always, pray continually, give thanks in all circumstances; for this is God\'s will for you in Christ Jesus." - 1 Thessalonians 5:16-18',
+        '"Every good and perfect gift is from above, coming down from the Father of the heavenly lights, who does not change like shifting shadows." - James 1:17',
+        '"The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing." - Zephaniah 3:17',
+        '"Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful." - Colossians 3:15',
+        '"In your hearts revere Christ as Lord. Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have." - 1 Peter 3:15',
+        '"Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth." - Psalm 46:10',
+        '"For the jar of flour will not be used up and the jug of oil will not run dry until the day the Lord sends rain on the land." - 1 Kings 17:14'
     ],
     gratitude: [
         'Think through your day like watching a movie. What moments brought you joy? What gifts did God provide? Thank Him for both the obvious blessings and the small graces you might have missed.',
@@ -69,352 +69,352 @@ const examenPrompts = {
 const lectioScriptures = [
     {
         text: 'Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.',
-        reference: 'Matthew 11:28-29 (NIV)',
+        reference: 'Matthew 11:28-29',
         focus: 'Rest'
     },
     {
         text: 'The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing.',
-        reference: 'Zephaniah 3:17 (NIV)',
+        reference: 'Zephaniah 3:17',
         focus: 'Delight'
     },
     {
         text: 'Cast all your anxiety on him because he cares for you.',
-        reference: '1 Peter 5:7 (NIV)',
+        reference: '1 Peter 5:7',
         focus: 'Care'
     },
     {
         text: 'Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth.',
-        reference: 'Psalm 46:10 (NIV)',
+        reference: 'Psalm 46:10',
         focus: 'Stillness'
     },
     {
         text: 'The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.',
-        reference: 'Psalm 23:1-3 (NIV)',
+        reference: 'Psalm 23:1-3',
         focus: 'Shepherd'
     },
     {
         text: '"For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, to give you hope and a future."',
-        reference: 'Jeremiah 29:11 (NIV)',
+        reference: 'Jeremiah 29:11',
         focus: 'Hope'
     },
     {
         text: 'The Lord will fight for you; you need only to be still.',
-        reference: 'Exodus 14:14 (NIV)',
+        reference: 'Exodus 14:14',
         focus: 'Peace'
     },
     {
         text: 'In all your ways submit to him, and he will make your paths straight.',
-        reference: 'Proverbs 3:6 (NIV)',
+        reference: 'Proverbs 3:6',
         focus: 'Guidance'
     },
     {
         text: 'He heals the brokenhearted and binds up their wounds.',
-        reference: 'Psalm 147:3 (NIV)',
+        reference: 'Psalm 147:3',
         focus: 'Healing'
     },
     {
         text: 'Do not grieve, for the joy of the Lord is your strength.',
-        reference: 'Nehemiah 8:10 (NIV)',
+        reference: 'Nehemiah 8:10',
         focus: 'Joy'
     },
     {
         text: 'And we know that in all things God works for the good of those who love him, who have been called according to his purpose.',
-        reference: 'Romans 8:28 (NIV)',
+        reference: 'Romans 8:28',
         focus: 'Purpose'
     },
     {
         text: 'I can do all this through him who gives me strength.',
-        reference: 'Philippians 4:13 (NIV)',
+        reference: 'Philippians 4:13',
         focus: 'Strength'
     },
     {
         text: 'The Lord is close to the brokenhearted and saves those who are crushed in spirit.',
-        reference: 'Psalm 34:18 (NIV)',
+        reference: 'Psalm 34:18',
         focus: 'Comfort'
     },
     {
         text: 'Trust in the Lord with all your heart and lean not on your own understanding.',
-        reference: 'Proverbs 3:5 (NIV)',
+        reference: 'Proverbs 3:5',
         focus: 'Trust'
     },
     {
         text: 'God is our refuge and strength, an ever-present help in trouble.',
-        reference: 'Psalm 46:1 (NIV)',
+        reference: 'Psalm 46:1',
         focus: 'Refuge'
     },
     {
         text: 'Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.',
-        reference: 'Joshua 1:9 (NIV)',
+        reference: 'Joshua 1:9',
         focus: 'Presence'
     },
     {
         text: 'Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.',
-        reference: 'Matthew 6:34 (NIV)',
+        reference: 'Matthew 6:34',
         focus: 'Today'
     },
     {
         text: 'Because of the Lord\'s great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness.',
-        reference: 'Lamentations 3:22-23 (NIV)',
+        reference: 'Lamentations 3:22-23',
         focus: 'Mercy'
     },
     {
         text: 'I have told you these things, so that in me you may have peace. In this world you will have trouble. But take heart! I have overcome the world.',
-        reference: 'John 16:33 (NIV)',
+        reference: 'John 16:33',
         focus: 'Victory'
     },
     {
         text: 'The Lord gives strength to his people; the Lord blesses his people with peace.',
-        reference: 'Psalm 29:11 (NIV)',
+        reference: 'Psalm 29:11',
         focus: 'Blessing'
     },
     {
         text: 'Even though I walk through the darkest valley, I will fear no evil, for you are with me; your rod and your staff, they comfort me.',
-        reference: 'Psalm 23:4 (NIV)',
+        reference: 'Psalm 23:4',
         focus: 'Courage'
     },
     {
         text: 'But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.',
-        reference: 'Isaiah 40:31 (NIV)',
+        reference: 'Isaiah 40:31',
         focus: 'Renewal'
     },
     {
         text: 'Love is patient, love is kind. It does not envy, it does not boast, it is not proud.',
-        reference: '1 Corinthians 13:4 (NIV)',
+        reference: '1 Corinthians 13:4',
         focus: 'Love'
     },
     {
         text: 'The Lord is my light and my salvation—whom shall I fear? The Lord is the stronghold of my life—of whom shall I be afraid?',
-        reference: 'Psalm 27:1 (NIV)',
+        reference: 'Psalm 27:1',
         focus: 'Light'
     },
     {
         text: 'And my God will meet all your needs according to the riches of his glory in Christ Jesus.',
-        reference: 'Philippians 4:19 (NIV)',
+        reference: 'Philippians 4:19',
         focus: 'Provision'
     },
     {
         text: 'If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.',
-        reference: '1 John 1:9 (NIV)',
+        reference: '1 John 1:9',
         focus: 'Forgiveness'
     },
     {
         text: 'The Lord is gracious and righteous; our God is full of compassion.',
-        reference: 'Psalm 116:5 (NIV)',
+        reference: 'Psalm 116:5',
         focus: 'Grace'
     },
     {
         text: 'But seek first his kingdom and his righteousness, and all these things will be given to you as well.',
-        reference: 'Matthew 6:33 (NIV)',
+        reference: 'Matthew 6:33',
         focus: 'Priorities'
     },
     {
         text: 'The Lord is good, a refuge in times of trouble. He cares for those who trust in him.',
-        reference: 'Nahum 1:7 (NIV)',
+        reference: 'Nahum 1:7',
         focus: 'Goodness'
     },
     {
         text: 'He says, Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth.',
-        reference: 'Psalm 46:10 (NIV)',
+        reference: 'Psalm 46:10',
         focus: 'Knowing'
     },
     {
         text: 'May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.',
-        reference: 'Romans 15:13 (NIV)',
+        reference: 'Romans 15:13',
         focus: 'Overflow'
     },
     {
         text: 'For where your treasure is, there your heart will be also.',
-        reference: 'Matthew 6:21 (NIV)',
+        reference: 'Matthew 6:21',
         focus: 'Heart'
     },
     {
         text: 'The Lord himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged.',
-        reference: 'Deuteronomy 31:8 (NIV)',
+        reference: 'Deuteronomy 31:8',
         focus: 'Faithfulness'
     },
     {
         text: 'Create in me a pure heart, O God, and renew a steadfast spirit within me.',
-        reference: 'Psalm 51:10 (NIV)',
+        reference: 'Psalm 51:10',
         focus: 'Purity'
     },
     {
         text: 'The Lord is my rock, my fortress and my deliverer; my God is my rock, in whom I take refuge.',
-        reference: 'Psalm 18:2 (NIV)',
+        reference: 'Psalm 18:2',
         focus: 'Security'
     },
     {
         text: 'Wait for the Lord; be strong and take heart and wait for the Lord.',
-        reference: 'Psalm 27:14 (NIV)',
+        reference: 'Psalm 27:14',
         focus: 'Waiting'
     },
     {
         text: 'He has shown you, O mortal, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.',
-        reference: 'Micah 6:8 (NIV)',
+        reference: 'Micah 6:8',
         focus: 'Humility'
     },
     {
         text: 'The Lord your God in your midst, The Mighty One, will save; He will rejoice over you with gladness, He will quiet you with His love.',
-        reference: 'Zephaniah 3:17 (NIV)',
+        reference: 'Zephaniah 3:17',
         focus: 'Quietness'
     },
     {
         text: 'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!',
-        reference: '2 Corinthians 5:17 (NIV)',
+        reference: '2 Corinthians 5:17',
         focus: 'Newness'
     },
     {
         text: 'But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control.',
-        reference: 'Galatians 5:22-23 (NIV)',
+        reference: 'Galatians 5:22-23',
         focus: 'Fruit'
     },
     {
         text: 'Let us then approach God\'s throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.',
-        reference: 'Hebrews 4:16 (NIV)',
+        reference: 'Hebrews 4:16',
         focus: 'Confidence'
     },
     {
         text: 'Delight yourself in the Lord, and he will give you the desires of your heart.',
-        reference: 'Psalm 37:4 (NIV)',
+        reference: 'Psalm 37:4',
         focus: 'Desires'
     },
     {
         text: 'But he said to me, My grace is sufficient for you, for my power is made perfect in weakness.',
-        reference: '2 Corinthians 12:9 (NIV)',
+        reference: '2 Corinthians 12:9',
         focus: 'Sufficiency'
     },
     {
         text: 'The Lord is my strength and my shield; my heart trusts in him, and he helps me.',
-        reference: 'Psalm 28:7 (NIV)',
+        reference: 'Psalm 28:7',
         focus: 'Shield'
     },
     {
         text: 'Call to me and I will answer you and tell you great and unsearchable things you do not know.',
-        reference: 'Jeremiah 33:3 (NIV)',
+        reference: 'Jeremiah 33:3',
         focus: 'Calling'
     },
     {
         text: 'Give thanks to the Lord, for he is good; his love endures forever.',
-        reference: 'Psalm 107:1 (NIV)',
+        reference: 'Psalm 107:1',
         focus: 'Thanksgiving'
     },
     {
         text: 'In their hearts humans plan their course, but the Lord establishes their steps.',
-        reference: 'Proverbs 16:9 (NIV)',
+        reference: 'Proverbs 16:9',
         focus: 'Steps'
     },
     {
         text: 'The name of the Lord is a fortified tower; the righteous run to it and are safe.',
-        reference: 'Proverbs 18:10 (NIV)',
+        reference: 'Proverbs 18:10',
         focus: 'Safety'
     },
     {
         text: 'But you are a chosen people, a royal priesthood, a holy nation, God\'s special possession.',
-        reference: '1 Peter 2:9 (NIV)',
+        reference: '1 Peter 2:9',
         focus: 'Identity'
     },
     {
         text: 'Taste and see that the Lord is good; blessed is the one who takes refuge in him.',
-        reference: 'Psalm 34:8 (NIV)',
+        reference: 'Psalm 34:8',
         focus: 'Taste'
     },
     {
         text: 'I am the vine; you are the branches. If you remain in me and I in you, you will bear much fruit; apart from me you can do nothing.',
-        reference: 'John 15:5 (NIV)',
+        reference: 'John 15:5',
         focus: 'Abide'
     },
     {
         text: 'The water I give them will become in them a spring of water welling up to eternal life.',
-        reference: 'John 4:14 (NIV)',
+        reference: 'John 4:14',
         focus: 'Living Water'
     },
     {
         text: 'Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them. Are you not much more valuable than they?',
-        reference: 'Matthew 6:26 (NIV)',
+        reference: 'Matthew 6:26',
         focus: 'Valued'
     },
     {
         text: 'See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!',
-        reference: '1 John 3:1 (NIV)',
+        reference: '1 John 3:1',
         focus: 'Beloved'
     },
     {
         text: 'The Spirit you received brought about your adoption to sonship. And by him we cry, "Abba, Father."',
-        reference: 'Romans 8:15 (NIV)',
+        reference: 'Romans 8:15',
         focus: 'Abba'
     },
     {
         text: 'My sheep listen to my voice; I know them, and they follow me.',
-        reference: 'John 10:27 (NIV)',
+        reference: 'John 10:27',
         focus: 'Voice'
     },
     {
         text: 'Whoever drinks the water I give them will never thirst. Indeed, the water I give them will become in them a spring of water welling up to eternal life.',
-        reference: 'John 4:14 (NIV)',
+        reference: 'John 4:14',
         focus: 'Thirst'
     },
     {
         text: 'Come to me, all you who are weary and burdened, and I will give you rest.',
-        reference: 'Matthew 11:28 (NIV)',
+        reference: 'Matthew 11:28',
         focus: 'Come'
     },
     {
         text: 'I am the light of the world. Whoever follows me will never walk in darkness, but will have the light of life.',
-        reference: 'John 8:12 (NIV)',
+        reference: 'John 8:12',
         focus: 'Light'
     },
     {
         text: 'As the Father has loved me, so have I loved you. Now remain in my love.',
-        reference: 'John 15:9 (NIV)',
+        reference: 'John 15:9',
         focus: 'Remain'
     },
     {
         text: 'Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.',
-        reference: 'John 14:27 (NIV)',
+        reference: 'John 14:27',
         focus: 'Peace'
     },
     {
         text: 'Remain in me, as I also remain in you. No branch can bear fruit by itself; it must remain in the vine. Neither can you bear fruit unless you remain in me.',
-        reference: 'John 15:4 (NIV)',
+        reference: 'John 15:4',
         focus: 'Connected'
     },
     {
         text: 'He tends his flock like a shepherd: He gathers the lambs in his arms and carries them close to his heart.',
-        reference: 'Isaiah 40:11 (NIV)',
+        reference: 'Isaiah 40:11',
         focus: 'Carried'
     },
     {
         text: 'Are not two sparrows sold for a penny? Yet not one of them will fall to the ground outside your Father\'s care. So don\'t be afraid; you are worth more than many sparrows.',
-        reference: 'Matthew 10:29,31 (NIV)',
+        reference: 'Matthew 10:29,31',
         focus: 'Worth'
     },
     {
         text: 'I have called you friends, for everything that I learned from my Father I have made known to you.',
-        reference: 'John 15:15 (NIV)',
+        reference: 'John 15:15',
         focus: 'Friends'
     },
     {
         text: 'Let the beloved of the Lord rest secure in him, for he shields him all day long, and the one the Lord loves rests between his shoulders.',
-        reference: 'Deuteronomy 33:12 (NIV)',
+        reference: 'Deuteronomy 33:12',
         focus: 'Secure'
     },
     {
         text: 'The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing.',
-        reference: 'Zephaniah 3:17 (NIV)',
+        reference: 'Zephaniah 3:17',
         focus: 'Delight'
     },
     {
         text: 'This is love: not that we loved God, but that he loved us and sent his Son as an atoning sacrifice for our sins.',
-        reference: '1 John 4:10 (NIV)',
+        reference: '1 John 4:10',
         focus: 'First Love'
     },
     {
         text: 'Neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord.',
-        reference: 'Romans 8:39 (NIV)',
+        reference: 'Romans 8:39',
         focus: 'Inseparable'
     },
     {
         text: 'Before I formed you in the womb I knew you, before you were born I set you apart.',
-        reference: 'Jeremiah 1:5 (NIV)',
+        reference: 'Jeremiah 1:5',
         focus: 'Known'
     }
 ];
@@ -422,7 +422,7 @@ const lectioScriptures = [
 const adorationScriptures = [
     {
         text: '"Holy, holy, holy is the Lord God Almighty, who was, and is, and is to come." "You are worthy, our Lord and God, to receive glory and honor and power, for you created all things, and by your will they were created and have their being."',
-        reference: 'Revelation 4:8,11 (NIV)',
+        reference: 'Revelation 4:8,11',
         focus: 'God\'s Holiness',
         acknowledge: 'Read the passage slowly. What does this reveal about God\'s character? How does this truth about who He is affect your heart?',
         adore: 'Speak words of praise and worship based on what you\'ve discovered about God. Use your own words to honor who He is.',
@@ -432,7 +432,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is compassionate and gracious, slow to anger, abounding in love. He will not always accuse, nor will he harbor his anger forever; he does not treat us as our sins deserve or repay us according to our iniquities.',
-        reference: 'Psalm 103:8-10 (NIV)',
+        reference: 'Psalm 103:8-10',
         focus: 'God\'s Mercy',
         acknowledge: 'What do you learn about God\'s heart toward you from this passage? How does His mercy and compassion touch your soul?',
         adore: 'Praise God for His incredible mercy and patience. Thank Him for not treating you as your sins deserve.',
@@ -442,7 +442,7 @@ const adorationScriptures = [
     },
     {
         text: 'Great is our Lord and mighty in power; his understanding has no limit. The Lord sustains the humble but casts the wicked to the ground.',
-        reference: 'Psalm 147:5-6 (NIV)',
+        reference: 'Psalm 147:5-6',
         focus: 'God\'s Power',
         acknowledge: 'What does this passage teach you about God\'s unlimited power and understanding? How does this comfort or challenge you?',
         adore: 'Worship God for His mighty power and perfect understanding. Praise Him for being greater than any challenge you face.',
@@ -452,7 +452,7 @@ const adorationScriptures = [
     },
     {
         text: 'How great is the love the Father has lavished on us, that we should be called children of God! And that is what we are!',
-        reference: '1 John 3:1 (NIV)',
+        reference: '1 John 3:1',
         focus: 'God\'s Love',
         acknowledge: 'What does it mean that God has "lavished" His love on you? How does being called God\'s child affect your identity?',
         adore: 'Thank God for His extravagant love toward you. Praise Him for adopting you as His beloved child.',
@@ -462,7 +462,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord your God is in your midst, a mighty one who will save; he will rejoice over you with gladness; he will quiet you by his love; he will exult over you with loud singing.',
-        reference: 'Zephaniah 3:17 (NIV)',
+        reference: 'Zephaniah 3:17',
         focus: 'God\'s Joy',
         acknowledge: 'How does it feel to know that God rejoices over you and sings about you? What does this reveal about His heart toward you?',
         adore: 'Worship God for His joyful love toward you. Thank Him for finding delight in who you are.',
@@ -472,7 +472,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is faithful to all his promises and loving toward all he has made.',
-        reference: 'Psalm 145:13 (NIV)',
+        reference: 'Psalm 145:13',
         focus: 'God\'s Faithfulness',
         acknowledge: 'What promises of God do you need to remember today? How has He shown His faithfulness in your life?',
         adore: 'Praise God for His absolute faithfulness. Thank Him for never breaking His promises.',
@@ -482,7 +482,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord reigns, let the earth be glad; let the distant shores rejoice. Clouds and thick darkness surround him; righteousness and justice are the foundation of his throne.',
-        reference: 'Psalm 97:1-2 (NIV)',
+        reference: 'Psalm 97:1-2',
         focus: 'God\'s Sovereignty',
         acknowledge: 'What does it mean that God reigns over all creation? How does His righteous rule affect your perspective today?',
         adore: 'Worship the Lord who reigns in righteousness and justice. Praise Him for His sovereign authority over all things.',
@@ -492,7 +492,7 @@ const adorationScriptures = [
     },
     {
         text: 'Your throne, O God, will last for ever and ever; a scepter of justice will be the scepter of your kingdom. You love righteousness and hate wickedness.',
-        reference: 'Psalm 45:6-7 (NIV)',
+        reference: 'Psalm 45:6-7',
         focus: 'God\'s Eternal Throne',
         acknowledge: 'How does God\'s eternal, unchanging throne give you security? What does His love for righteousness reveal about His character?',
         adore: 'Praise God for His eternal throne that will never fade. Worship Him for His perfect love of righteousness.',
@@ -502,7 +502,7 @@ const adorationScriptures = [
     },
     {
         text: 'God is light; in him there is no darkness at all.',
-        reference: '1 John 1:5 (NIV)',
+        reference: '1 John 1:5',
         focus: 'God\'s Purity',
         acknowledge: 'What does it mean that God is pure light with no darkness? How does His perfect purity affect how you view Him?',
         adore: 'Worship God for His absolute purity and holiness. Praise Him that there is no shadow or darkness in His nature.',
@@ -512,7 +512,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord your God is God of gods and Lord of lords, the great God, mighty and awesome, who shows no partiality and accepts no bribes.',
-        reference: 'Deuteronomy 10:17 (NIV)',
+        reference: 'Deuteronomy 10:17',
         focus: 'God\'s Majesty',
         acknowledge: 'What does this passage reveal about God\'s supreme authority and impartiality? How does His awesome nature inspire worship?',
         adore: 'Worship the Lord who is above all gods and lords. Praise Him for His mighty and awesome character.',
@@ -522,7 +522,7 @@ const adorationScriptures = [
     },
     {
         text: 'He is the Rock, his works are perfect, and all his ways are just. A faithful God who does no wrong, upright and just is he.',
-        reference: 'Deuteronomy 32:4 (NIV)',
+        reference: 'Deuteronomy 32:4',
         focus: 'God\'s Perfection',
         acknowledge: 'How does knowing God\'s works are perfect and He does no wrong affect your trust in Him?',
         adore: 'Praise God for His perfect works and just ways. Worship Him for His absolute uprightness and faithfulness.',
@@ -532,7 +532,7 @@ const adorationScriptures = [
     },
     {
         text: 'But you, Lord, are a compassionate and gracious God, slow to anger, abounding in love and faithfulness.',
-        reference: 'Psalm 86:15 (NIV)',
+        reference: 'Psalm 86:15',
         focus: 'God\'s Compassion',
         acknowledge: 'What does God\'s abundant compassion and patience mean for you today? How does this reveal His heart?',
         adore: 'Thank God for His overflowing compassion and grace. Praise Him for being slow to anger and rich in faithful love.',
@@ -542,7 +542,7 @@ const adorationScriptures = [
     },
     {
         text: 'For the Lord is good and his love endures forever; his faithfulness continues through all generations.',
-        reference: 'Psalm 100:5 (NIV)',
+        reference: 'Psalm 100:5',
         focus: 'God\'s Goodness',
         acknowledge: 'What does it mean that God is good and His love endures forever? How has His faithfulness been evident in your life?',
         adore: 'Praise the Lord for His unchanging goodness. Worship Him for His eternal love that never fails.',
@@ -552,7 +552,7 @@ const adorationScriptures = [
     },
     {
         text: 'Oh, the depth of the riches of the wisdom and knowledge of God! How unsearchable his judgments, and his paths beyond tracing out!',
-        reference: 'Romans 11:33 (NIV)',
+        reference: 'Romans 11:33',
         focus: 'God\'s Wisdom',
         acknowledge: 'What does God\'s infinite wisdom mean when you face confusing situations? How does His knowledge comfort you?',
         adore: 'Stand in awe of God\'s immeasurable wisdom and knowledge. Praise Him for understanding beyond human comprehension.',
@@ -562,7 +562,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is righteous in all his ways and faithful in all he does.',
-        reference: 'Psalm 145:17 (NIV)',
+        reference: 'Psalm 145:17',
         focus: 'God\'s Righteousness',
         acknowledge: 'What does God\'s perfect righteousness in all His ways reveal about His character? How does this truth affect your faith?',
         adore: 'Worship God for His complete righteousness. Praise Him for being faithful in absolutely everything He does.',
@@ -572,7 +572,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is gracious and compassionate, slow to anger and rich in love. The Lord is good to all; he has compassion on all he has made.',
-        reference: 'Psalm 145:8-9 (NIV)',
+        reference: 'Psalm 145:8-9',
         focus: 'God\'s Grace',
         acknowledge: 'How does God\'s grace and compassion toward all creation reveal His heart? What does His richness in love mean to you?',
         adore: 'Thank God for His abundant grace and compassion. Worship Him for His patient, loving nature toward all He has made.',
@@ -582,7 +582,7 @@ const adorationScriptures = [
     },
     {
         text: 'Great is the Lord and most worthy of praise; his greatness no one can fathom.',
-        reference: 'Psalm 145:3 (NIV)',
+        reference: 'Psalm 145:3',
         focus: 'God\'s Greatness',
         acknowledge: 'What does it mean that God\'s greatness is beyond our understanding? How does this inspire your worship?',
         adore: 'Praise the Lord for His unfathomable greatness. Worship Him for being worthy of all praise and honor.',
@@ -592,7 +592,7 @@ const adorationScriptures = [
     },
     {
         text: 'But the Lord sits enthroned forever; he has established his throne for judgment. He rules the world in righteousness and judges the peoples with equity.',
-        reference: 'Psalm 9:7-8 (NIV)',
+        reference: 'Psalm 9:7-8',
         focus: 'God\'s Justice',
         acknowledge: 'How does God\'s eternal throne and righteous judgment give you confidence? What does His equity mean for the world?',
         adore: 'Worship the Lord who reigns in perfect justice. Praise Him for ruling with righteousness and equity.',
@@ -602,7 +602,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is my rock, my fortress and my deliverer; my God is my rock, in whom I take refuge, my shield and the horn of my salvation, my stronghold.',
-        reference: 'Psalm 18:2 (NIV)',
+        reference: 'Psalm 18:2',
         focus: 'God\'s Protection',
         acknowledge: 'What do these images of God as rock, fortress, and shield reveal about His protective nature? How does this comfort you?',
         adore: 'Praise God for being your rock and fortress. Worship Him as your deliverer and stronghold in every storm.',
@@ -612,7 +612,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is near to all who call on him, to all who call on him in truth. He fulfills the desires of those who fear him; he hears their cry and saves them.',
-        reference: 'Psalm 145:18-19 (NIV)',
+        reference: 'Psalm 145:18-19',
         focus: 'God\'s Nearness',
         acknowledge: 'How does knowing God is near to those who call on Him affect your prayer life? What does His attentiveness mean to you?',
         adore: 'Thank God for His nearness and attentiveness. Praise Him for hearing your cries and fulfilling righteous desires.',
@@ -622,7 +622,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord watches over all who love him, but all the wicked he will destroy.',
-        reference: 'Psalm 145:20 (NIV)',
+        reference: 'Psalm 145:20',
         focus: 'God\'s Watchfulness',
         acknowledge: 'What does it mean that God watches over those who love Him? How does His protective care encourage you?',
         adore: 'Praise God for His vigilant care over His people. Worship Him for His justice and protective love.',
@@ -632,7 +632,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is my strength and my defense; he has become my salvation. He is my God, and I will praise him, my father\'s God, and I will exalt him.',
-        reference: 'Exodus 15:2 (NIV)',
+        reference: 'Exodus 15:2',
         focus: 'God\'s Strength',
         acknowledge: 'How has God been your strength and defense? What does it mean that He is your salvation?',
         adore: 'Praise the Lord for His mighty strength and sure defense. Worship Him as your complete salvation.',
@@ -642,7 +642,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is exalted over all the nations, his glory above the heavens. Who is like the Lord our God, the One who sits enthroned on high, who stoops down to look on the heavens and the earth?',
-        reference: 'Psalm 113:4-6 (NIV)',
+        reference: 'Psalm 113:4-6',
         focus: 'God\'s Exaltation',
         acknowledge: 'How does God\'s exaltation above all nations and heavens inspire your worship? What amazes you about His condescension?',
         adore: 'Worship the Lord who is exalted above all creation yet stoops to care for us. Praise Him for His transcendent glory.',
@@ -652,7 +652,7 @@ const adorationScriptures = [
     },
     {
         text: 'God is not human, that he should lie, not a human being, that he should change his mind. Does he speak and then not act? Does he promise and not fulfill?',
-        reference: 'Numbers 23:19 (NIV)',
+        reference: 'Numbers 23:19',
         focus: 'God\'s Truthfulness',
         acknowledge: 'What does God\'s unchanging truthfulness mean for His promises to you? How does His reliability differ from human nature?',
         adore: 'Praise God for His absolute truthfulness and reliability. Worship Him for always fulfilling what He promises.',
@@ -662,7 +662,7 @@ const adorationScriptures = [
     },
     {
         text: 'Your love, Lord, reaches to the heavens, your faithfulness to the skies. Your righteousness is like the highest mountains, your justice like the great deep.',
-        reference: 'Psalm 36:5-6 (NIV)',
+        reference: 'Psalm 36:5-6',
         focus: 'God\'s Immeasurable Love',
         acknowledge: 'What do these vast images reveal about the extent of God\'s love and faithfulness? How immeasurable are His attributes?',
         adore: 'Worship God for His boundless love that reaches to the heavens. Praise Him for faithfulness as high as the skies.',
@@ -672,7 +672,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is a refuge for the oppressed, a stronghold in times of trouble. Those who know your name trust in you, for you, Lord, have never forsaken those who seek you.',
-        reference: 'Psalm 9:9-10 (NIV)',
+        reference: 'Psalm 9:9-10',
         focus: 'God\'s Refuge',
         acknowledge: 'How has God been a refuge and stronghold in your troubles? What does His promise to never forsake mean to you?',
         adore: 'Thank God for being a refuge for the oppressed. Praise Him for His faithfulness to all who seek Him.',
@@ -682,7 +682,7 @@ const adorationScriptures = [
     },
     {
         text: 'But you, O Lord, are a shield around me, my glory, the One who lifts my head high.',
-        reference: 'Psalm 3:3 (NIV)',
+        reference: 'Psalm 3:3',
         focus: 'God\'s Glory',
         acknowledge: 'What does it mean that God is your glory and the one who lifts your head? How does He shield you?',
         adore: 'Worship the Lord who is your shield and glory. Praise Him for lifting your head when you are downcast.',
@@ -692,7 +692,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is slow to anger but great in power; the Lord will not leave the guilty unpunished. His way is in the whirlwind and the storm, and clouds are the dust of his feet.',
-        reference: 'Nahum 1:3 (NIV)',
+        reference: 'Nahum 1:3',
         focus: 'God\'s Awesome Power',
         acknowledge: 'How does this description of God\'s awesome power inspire reverence? What does His patience combined with power reveal?',
         adore: 'Stand in awe of God\'s great power displayed in creation. Worship Him who commands the whirlwind and storm.',
@@ -702,7 +702,7 @@ const adorationScriptures = [
     },
     {
         text: 'For this is what the high and exalted One says—he who lives forever, whose name is holy: "I live in a high and holy place, but also with the one who is contrite and lowly in spirit, to revive the spirit of the lowly and to revive the heart of the contrite."',
-        reference: 'Isaiah 57:15 (NIV)',
+        reference: 'Isaiah 57:15',
         focus: 'God\'s Holiness & Humility',
         acknowledge: 'How amazing is it that the high and holy God dwells with the humble? What does this reveal about His heart?',
         adore: 'Worship the exalted, eternal, holy God who lives in the high and holy place. Praise Him for dwelling with the lowly.',
@@ -712,7 +712,7 @@ const adorationScriptures = [
     },
     {
         text: 'Before the mountains were born or you brought forth the whole world, from everlasting to everlasting you are God.',
-        reference: 'Psalm 90:2 (NIV)',
+        reference: 'Psalm 90:2',
         focus: 'God\'s Eternality',
         acknowledge: 'What does God\'s eternal nature—existing before creation and continuing forever—mean for your temporary troubles?',
         adore: 'Worship the eternal God who has no beginning or end. Praise Him for existing from everlasting to everlasting.',
@@ -722,7 +722,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is a warrior; the Lord is his name.',
-        reference: 'Exodus 15:3 (NIV)',
+        reference: 'Exodus 15:3',
         focus: 'God\'s Warrior Nature',
         acknowledge: 'What does it mean that God is a warrior who fights for His people? How does this change your view of spiritual battles?',
         adore: 'Praise the Lord who is a mighty warrior. Worship Him for His strength in battle and His protection of His people.',
@@ -732,7 +732,7 @@ const adorationScriptures = [
     },
     {
         text: 'Who among the gods is like you, Lord? Who is like you—majestic in holiness, awesome in glory, working wonders?',
-        reference: 'Exodus 15:11 (NIV)',
+        reference: 'Exodus 15:11',
         focus: 'God\'s Uniqueness',
         acknowledge: 'What makes God utterly unique and incomparable? How does His majestic holiness and awesome glory set Him apart?',
         adore: 'Worship the Lord who is like no other. Praise Him for His majestic holiness, awesome glory, and wonder-working power.',
@@ -742,7 +742,7 @@ const adorationScriptures = [
     },
     {
         text: 'You alone are the Lord. You made the heavens, even the highest heavens, and all their starry host, the earth and all that is on it, the seas and all that is in them. You give life to everything, and the multitudes of heaven worship you.',
-        reference: 'Nehemiah 9:6 (NIV)',
+        reference: 'Nehemiah 9:6',
         focus: 'God\'s Creatorship',
         acknowledge: 'What does God\'s creation of everything reveal about His power and wisdom? How does this inspire your worship?',
         adore: 'Worship the Lord who created all things. Praise Him for giving life to everything and being worthy of heaven\'s worship.',
@@ -752,7 +752,7 @@ const adorationScriptures = [
     },
     {
         text: 'You are awesome, O God, in your sanctuary; the God of Israel gives power and strength to his people. Praise be to God!',
-        reference: 'Psalm 68:35 (NIV)',
+        reference: 'Psalm 68:35',
         focus: 'God\'s Awesome Nature',
         acknowledge: 'In what ways is God awesome and inspiring? How does He give power and strength to His people?',
         adore: 'Praise God for His awesome nature displayed in His sanctuary. Worship Him for empowering His people with strength.',
@@ -762,7 +762,7 @@ const adorationScriptures = [
     },
     {
         text: 'For great is the Lord and most worthy of praise; he is to be feared above all gods. For all the gods of the nations are idols, but the Lord made the heavens.',
-        reference: 'Psalm 96:4-5 (NIV)',
+        reference: 'Psalm 96:4-5',
         focus: 'God\'s Worthiness',
         acknowledge: 'Why is God worthy of all praise? How does His creative power set Him apart from false gods?',
         adore: 'Worship the Lord who is most worthy of all praise. Honor Him for His greatness and creative power.',
@@ -772,7 +772,7 @@ const adorationScriptures = [
     },
     {
         text: 'The heavens declare the glory of God; the skies proclaim the work of his hands. Day after day they pour forth speech; night after night they reveal knowledge.',
-        reference: 'Psalm 19:1-2 (NIV)',
+        reference: 'Psalm 19:1-2',
         focus: 'God\'s Glory in Creation',
         acknowledge: 'What does creation declare about God\'s glory? How do the heavens proclaim His handiwork and character?',
         adore: 'Praise God whose glory is displayed in the heavens. Worship Him for the beauty and wonder of His creative work.',
@@ -782,7 +782,7 @@ const adorationScriptures = [
     },
     {
         text: 'Splendor and majesty are before him; strength and glory are in his sanctuary.',
-        reference: 'Psalm 96:6 (NIV)',
+        reference: 'Psalm 96:6',
         focus: 'God\'s Splendor',
         acknowledge: 'What does God\'s splendor and majesty mean to you? How do strength and glory characterize His presence?',
         adore: 'Worship God for His magnificent splendor and majesty. Praise Him for the strength and glory that surround His presence.',
@@ -792,7 +792,7 @@ const adorationScriptures = [
     },
     {
         text: 'Ascribe to the Lord, all you families of nations, ascribe to the Lord glory and strength. Ascribe to the Lord the glory due his name; bring an offering and come into his courts.',
-        reference: 'Psalm 96:7-8 (NIV)',
+        reference: 'Psalm 96:7-8',
         focus: 'God\'s Due Glory',
         acknowledge: 'Why does God deserve glory from all nations? What does it mean to give Him the glory due His name?',
         adore: 'Give the Lord the glory and strength that belong to Him alone. Worship Him with the honor His name deserves.',
@@ -802,7 +802,7 @@ const adorationScriptures = [
     },
     {
         text: 'Worship the Lord in the splendor of his holiness; tremble before him, all the earth.',
-        reference: 'Psalm 96:9 (NIV)',
+        reference: 'Psalm 96:9',
         focus: 'God\'s Holy Splendor',
         acknowledge: 'What does worshiping in the splendor of God\'s holiness mean? Why should we tremble before Him?',
         adore: 'Worship the Lord in reverent awe of His holy splendor. Praise Him with both joy and holy fear.',
@@ -812,7 +812,7 @@ const adorationScriptures = [
     },
     {
         text: 'Let the heavens rejoice, let the earth be glad; let them say among the nations, "The Lord reigns."',
-        reference: '1 Chronicles 16:31 (NIV)',
+        reference: '1 Chronicles 16:31',
         focus: 'God\'s Reign',
         acknowledge: 'What does it mean that the Lord reigns over all creation? How should this truth affect your daily life?',
         adore: 'Rejoice that the Lord reigns! Praise Him for His sovereign rule over heaven and earth.',
@@ -822,7 +822,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord is King for ever and ever; the nations will perish from his land.',
-        reference: 'Psalm 10:16 (NIV)',
+        reference: 'Psalm 10:16',
         focus: 'God\'s Eternal Kingship',
         acknowledge: 'What does God\'s eternal kingship mean when earthly kingdoms rise and fall? How does this give you security?',
         adore: 'Worship the Lord who is King forever and ever. Praise Him for His unending, unshakeable reign.',
@@ -832,7 +832,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord has established his throne in heaven, and his kingdom rules over all.',
-        reference: 'Psalm 103:19 (NIV)',
+        reference: 'Psalm 103:19',
         focus: 'God\'s Universal Rule',
         acknowledge: 'What does it mean that God\'s kingdom rules over all? How does His heavenly throne give you confidence?',
         adore: 'Praise the Lord whose throne is established in heaven. Worship Him for His rule over absolutely everything.',
@@ -842,7 +842,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord reigns, he is robed in majesty; the Lord is robed in majesty and armed with strength; indeed, the world is established, firm and secure.',
-        reference: 'Psalm 93:1 (NIV)',
+        reference: 'Psalm 93:1',
         focus: 'God\'s Majestic Strength',
         acknowledge: 'How is God robed in majesty and armed with strength? What does His secure establishment of the world mean for you?',
         adore: 'Worship the Lord who reigns in majestic strength. Praise Him for establishing the world firm and secure.',
@@ -852,7 +852,7 @@ const adorationScriptures = [
     },
     {
         text: 'Your throne was established long ago; you are from all eternity.',
-        reference: 'Psalm 93:2 (NIV)',
+        reference: 'Psalm 93:2',
         focus: 'God\'s Ancient Throne',
         acknowledge: 'What does God\'s eternal throne mean for His reliability? How does His existence from all eternity comfort you?',
         adore: 'Praise God whose throne was established from eternity past. Worship Him who has always been and always will be.',
@@ -862,7 +862,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord reigns forever, your God, O Zion, for all generations. Praise the Lord.',
-        reference: 'Psalm 146:10 (NIV)',
+        reference: 'Psalm 146:10',
         focus: 'God\'s Everlasting Reign',
         acknowledge: 'What does God\'s reign through all generations mean for your family and legacy? How does this inspire hope?',
         adore: 'Praise the Lord who reigns forever through all generations. Worship Him for His unchanging, everlasting rule.',
@@ -872,7 +872,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord, the Lord, the compassionate and gracious God, slow to anger, abounding in love and faithfulness, maintaining love to thousands, and forgiving wickedness, rebellion and sin.',
-        reference: 'Exodus 34:6-7 (NIV)',
+        reference: 'Exodus 34:6-7',
         focus: 'God\'s Full Character',
         acknowledge: 'What does this full description of God\'s character reveal? How do all these attributes work together in His nature?',
         adore: 'Worship the Lord for His complete character—compassionate, gracious, patient, loving, faithful, and forgiving. Praise Him for who He fully is.',
@@ -882,7 +882,7 @@ const adorationScriptures = [
     },
     {
         text: 'But you are a forgiving God, gracious and compassionate, slow to anger and abounding in love.',
-        reference: 'Nehemiah 9:17 (NIV)',
+        reference: 'Nehemiah 9:17',
         focus: 'God\'s Forgiving Nature',
         acknowledge: 'How does God\'s forgiving nature combined with His grace and compassion affect how you approach Him?',
         adore: 'Thank God for His forgiving heart. Praise Him for being gracious, compassionate, patient, and abounding in love.',
@@ -892,7 +892,7 @@ const adorationScriptures = [
     },
     {
         text: 'Yet you, Lord, are our Father. We are the clay, you are the potter; we are all the work of your hand.',
-        reference: 'Isaiah 64:8 (NIV)',
+        reference: 'Isaiah 64:8',
         focus: 'God\'s Creative Sovereignty',
         acknowledge: 'What does it mean that God is the potter and you are the clay? How does this shape your understanding of His work in you?',
         adore: 'Worship God as the divine potter who shapes and forms you. Praise Him for His creative work in your life.',
@@ -902,7 +902,7 @@ const adorationScriptures = [
     },
     {
         text: 'Ah, Sovereign Lord, you have made the heavens and the earth by your great power and outstretched arm. Nothing is too hard for you.',
-        reference: 'Jeremiah 32:17 (NIV)',
+        reference: 'Jeremiah 32:17',
         focus: 'God\'s Limitless Power',
         acknowledge: 'If nothing is too hard for God, what does that mean for your impossible situations? How does His creative power encourage you?',
         adore: 'Praise the Sovereign Lord who made all things by His great power. Worship Him for whom nothing is impossible.',
@@ -912,7 +912,7 @@ const adorationScriptures = [
     },
     {
         text: 'For the Lord Most High is awesome, the great King over all the earth.',
-        reference: 'Psalm 47:2 (NIV)',
+        reference: 'Psalm 47:2',
         focus: 'God\'s Awesome Kingship',
         acknowledge: 'How is God awesome as the great King? What does His rule over all the earth mean for your life?',
         adore: 'Worship the Lord Most High who is awesome in power. Praise Him as the great King over all the earth.',
@@ -922,7 +922,7 @@ const adorationScriptures = [
     },
     {
         text: 'Clap your hands, all you nations; shout to God with cries of joy. For the Lord Most High is awesome, the great King over all the earth.',
-        reference: 'Psalm 47:1-2 (NIV)',
+        reference: 'Psalm 47:1-2',
         focus: 'God\'s Universal Worship',
         acknowledge: 'Why should all nations worship God? What makes Him worthy of joyful celebration from every people?',
         adore: 'Join all nations in praising the awesome Lord Most High. Shout to God with cries of joy for His great kingship.',
@@ -932,7 +932,7 @@ const adorationScriptures = [
     },
     {
         text: 'For the Lord is the great God, the great King above all gods. In his hand are the depths of the earth, and the mountain peaks belong to him. The sea is his, for he made it, and his hands formed the dry land.',
-        reference: 'Psalm 95:3-5 (NIV)',
+        reference: 'Psalm 95:3-5',
         focus: 'God\'s Ownership',
         acknowledge: 'What does it mean that everything belongs to God? How does His ownership of all creation affect your stewardship?',
         adore: 'Worship the great God and King above all gods. Praise Him for creating and owning everything in existence.',
@@ -942,7 +942,7 @@ const adorationScriptures = [
     },
     {
         text: 'Come, let us bow down in worship, let us kneel before the Lord our Maker; for he is our God and we are the people of his pasture, the flock under his care.',
-        reference: 'Psalm 95:6-7 (NIV)',
+        reference: 'Psalm 95:6-7',
         focus: 'God\'s Caring Lordship',
         acknowledge: 'How does God care for you as His flock? What does it mean to be under the care of the Lord your Maker?',
         adore: 'Bow down and worship the Lord your Maker. Praise Him for His tender care over you as His sheep.',
@@ -952,7 +952,7 @@ const adorationScriptures = [
     },
     {
         text: 'For the Lord your God is God of gods and Lord of lords, the great God, mighty and awesome.',
-        reference: 'Deuteronomy 10:17 (NIV)',
+        reference: 'Deuteronomy 10:17',
         focus: 'God\'s Supremacy',
         acknowledge: 'What does it mean that God is supreme over all other powers? How does His mighty and awesome nature inspire worship?',
         adore: 'Praise the Lord who is above all gods and all lords. Worship Him for His supreme authority and awesome might.',
@@ -962,7 +962,7 @@ const adorationScriptures = [
     },
     {
         text: 'I am the Alpha and the Omega, says the Lord God, who is, and who was, and who is to come, the Almighty.',
-        reference: 'Revelation 1:8 (NIV)',
+        reference: 'Revelation 1:8',
         focus: 'God\'s Completeness',
         acknowledge: 'What does it mean that God is the Alpha and Omega—the beginning and the end? How does His almighty nature comfort you?',
         adore: 'Worship the Lord who is the beginning and the end. Praise Him for His complete and almighty nature.',
@@ -972,7 +972,7 @@ const adorationScriptures = [
     },
     {
         text: 'One God and Father of all, who is over all and through all and in all.',
-        reference: 'Ephesians 4:6 (NIV)',
+        reference: 'Ephesians 4:6',
         focus: 'God\'s Omnipresence',
         acknowledge: 'What does it mean that God is over all, through all, and in all? How does His presence everywhere affect your daily life?',
         adore: 'Praise the Father who is over all, through all, and in all. Worship Him for His presence that fills everything.',
@@ -982,7 +982,7 @@ const adorationScriptures = [
     },
     {
         text: 'Where can I go from your Spirit? Where can I flee from your presence? If I go up to the heavens, you are there; if I make my bed in the depths, you are there.',
-        reference: 'Psalm 139:7-8 (NIV)',
+        reference: 'Psalm 139:7-8',
         focus: 'God\'s Inescapable Presence',
         acknowledge: 'What does God\'s inescapable presence mean for your sense of security? How does knowing He is everywhere comfort you?',
         adore: 'Praise God whose presence fills every place. Worship Him for being inescapable in His loving attention.',
@@ -992,7 +992,7 @@ const adorationScriptures = [
     },
     {
         text: 'His dominion is an eternal dominion; his kingdom endures from generation to generation.',
-        reference: 'Daniel 4:34 (NIV)',
+        reference: 'Daniel 4:34',
         focus: 'God\'s Enduring Kingdom',
         acknowledge: 'What does God\'s eternal dominion mean for your temporary circumstances? How does His enduring kingdom give you hope?',
         adore: 'Worship the King whose dominion lasts forever. Praise Him for a kingdom that endures through all generations.',
@@ -1002,7 +1002,7 @@ const adorationScriptures = [
     },
     {
         text: 'Now to the King eternal, immortal, invisible, the only God, be honor and glory for ever and ever. Amen.',
-        reference: '1 Timothy 1:17 (NIV)',
+        reference: '1 Timothy 1:17',
         focus: 'God\'s Eternal Glory',
         acknowledge: 'What do God\'s attributes—eternal, immortal, invisible—reveal about His nature? How should this inspire your worship?',
         adore: 'Give honor and glory to the King eternal, immortal, and invisible. Worship the only God who deserves all praise forever.',
@@ -1012,7 +1012,7 @@ const adorationScriptures = [
     },
     {
         text: 'Dominion and awe belong to God; he establishes order in the heights of heaven.',
-        reference: 'Job 25:2 (NIV)',
+        reference: 'Job 25:2',
         focus: 'God\'s Awesome Dominion',
         acknowledge: 'What does it mean that dominion and awe belong to God? How does His ordering of heaven inspire reverence?',
         adore: 'Worship God whose dominion and awe are beyond measure. Praise Him for establishing order in all creation.',
@@ -1022,7 +1022,7 @@ const adorationScriptures = [
     },
     {
         text: 'How awesome is the Lord Most High, the great King over all the earth! He subdued nations under us, peoples under our feet.',
-        reference: 'Psalm 47:2-3 (NIV)',
+        reference: 'Psalm 47:2-3',
         focus: 'God\'s Victorious Kingship',
         acknowledge: 'How is God awesome as the victorious King? What does His power to subdue nations mean for your battles?',
         adore: 'Worship the Lord Most High, the awesome and victorious King. Praise Him for His power over all nations.',
@@ -1032,7 +1032,7 @@ const adorationScriptures = [
     },
     {
         text: 'God is clothed with splendor and majesty.',
-        reference: 'Psalm 104:1 (NIV)',
+        reference: 'Psalm 104:1',
         focus: 'God\'s Splendorous Majesty',
         acknowledge: 'What does it mean that God is clothed with splendor and majesty? How does His magnificent appearance inspire worship?',
         adore: 'Worship God who is robed in splendor and majesty. Praise Him for His magnificent, glorious appearance.',
@@ -1042,7 +1042,7 @@ const adorationScriptures = [
     },
     {
         text: 'The Lord wraps himself in light as with a garment; he stretches out the heavens like a tent.',
-        reference: 'Psalm 104:2 (NIV)',
+        reference: 'Psalm 104:2',
         focus: 'God\'s Radiant Glory',
         acknowledge: 'What does the image of God wrapped in light reveal about His glory? How does His cosmic power inspire awe?',
         adore: 'Praise God who wraps Himself in light as with a garment. Worship Him who stretches out the heavens with ease.',
@@ -1052,7 +1052,7 @@ const adorationScriptures = [
     },
     {
         text: 'O Lord, our Lord, how majestic is your name in all the earth! You have set your glory in the heavens.',
-        reference: 'Psalm 8:1 (NIV)',
+        reference: 'Psalm 8:1',
         focus: 'God\'s Majestic Name',
         acknowledge: 'What makes God\'s name majestic throughout the earth? How does His glory set in the heavens declare His greatness?',
         adore: 'Worship the Lord whose name is majestic in all the earth. Praise Him for setting His glory in the heavens.',
@@ -1062,7 +1062,7 @@ const adorationScriptures = [
     },
     {
         text: 'Yours, Lord, is the greatness and the power and the glory and the majesty and the splendor, for everything in heaven and earth is yours. Yours, Lord, is the kingdom; you are exalted as head over all.',
-        reference: '1 Chronicles 29:11 (NIV)',
+        reference: '1 Chronicles 29:11',
         focus: 'God\'s Total Supremacy',
         acknowledge: 'What does this comprehensive declaration of God\'s attributes reveal? How does everything belonging to Him affect your stewardship?',
         adore: 'Ascribe to the Lord all greatness, power, glory, majesty, and splendor. Worship Him as the exalted head over all.',
@@ -1077,189 +1077,189 @@ const prayerSetContent = {
     movement1: [
         {
             scripture: "Therefore, brothers and sisters, since we have confidence to enter the Most Holy Place by the blood of Jesus... let us draw near to God with a sincere heart and with the full assurance that faith brings.",
-            reference: "Hebrews 10:19,22 (NIV)",
+            reference: "Hebrews 10:19,22",
             prompt: "Come into God's presence as a beloved child. He is your Father - both intimately close and infinitely glorious. Worship Him for who He is. Surrender your heart, your day, and your will to Him."
         },
         {
             scripture: "See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!",
-            reference: "1 John 3:1 (NIV)",
+            reference: "1 John 3:1",
             prompt: "Marvel at the Father's lavish love for you. You are His child - fully loved, fully accepted, fully known. Worship Him as your perfect Father and surrender yourself to His care."
         },
         {
             scripture: "Yet to all who did receive him, to those who believed in his name, he gave the right to become children of God.",
-            reference: "John 1:12 (NIV)",
+            reference: "John 1:12",
             prompt: "Rejoice that you have the right to be called God's child through Christ. Approach your heavenly Father with confidence, worship, and complete surrender of all you are."
         },
         {
             scripture: "How great is the love the Father has lavished on us, that we should be called children of God!",
-            reference: "1 John 3:1 (NIV)",
+            reference: "1 John 3:1",
             prompt: "Rest in your identity as God's beloved child. Worship the Father who chose you, loves you, and calls you His own. Surrender every part of your life to His loving care."
         },
         {
             scripture: "The Spirit you received does not make you slaves, so that you live in fear again; rather, the Spirit you received brought about your adoption to sonship. And by him we cry, 'Abba, Father.'",
-            reference: "Romans 8:15 (NIV)",
+            reference: "Romans 8:15",
             prompt: "You are not a slave but a beloved child. Cry out 'Abba, Father' to the One who adopted you. Worship Him with intimate affection and surrender yourself completely to His fatherly love."
         }
     ],
     movement2: [
         {
             scripture: "Ascribe to the Lord the glory due his name; worship the Lord in the splendor of his holiness.",
-            reference: "Psalm 29:2 (NIV)",
+            reference: "Psalm 29:2",
             prompt: "Honor God's holy name. Thank Him for who He has revealed Himself to be. Pray that the world would know Him as He truly is - in all His beauty, holiness, and love."
         },
         {
             scripture: "Exalt the Lord our God and worship at his footstool; he is holy.",
-            reference: "Psalm 99:5 (NIV)",
+            reference: "Psalm 99:5",
             prompt: "Exalt God's name above every other name. Worship His holiness and perfect character. Intercede for the nations to recognize and revere His holy name."
         },
         {
             scripture: "Holy, holy, holy is the Lord Almighty; the whole earth is full of his glory.",
-            reference: "Isaiah 6:3 (NIV)",
+            reference: "Isaiah 6:3",
             prompt: "Join with the angels in declaring God's holiness. Worship Him for His glory that fills the earth. Pray for eyes to be opened worldwide to see His glory and honor His name."
         },
         {
             scripture: "O Lord, our Lord, how majestic is your name in all the earth!",
-            reference: "Psalm 8:9 (NIV)",
+            reference: "Psalm 8:9",
             prompt: "Declare the majesty of God's name. Give thanks for all He has shown you of Himself. Pray that His majestic name would be honored in every corner of creation."
         },
         {
             scripture: "Therefore God exalted him to the highest place and gave him the name that is above every name, that at the name of Jesus every knee should bow.",
-            reference: "Philippians 2:9-10 (NIV)",
+            reference: "Philippians 2:9-10",
             prompt: "Worship Jesus, whose name is above every name. Give thanks for His character revealed through Scripture. Pray for the day when every knee will bow and honor His glorious name."
         }
     ],
     movement3: [
         {
             scripture: "Seek first his kingdom and his righteousness, and all these things will be given to you as well.",
-            reference: "Matthew 6:33 (NIV)",
+            reference: "Matthew 6:33",
             prompt: "Submit to God's reign in your life. Pray for His kingdom to come in your family, your church, the persecuted church worldwide, and for revival and renewal in the nations."
         },
         {
             scripture: "Your kingdom is an everlasting kingdom, and your dominion endures through all generations.",
-            reference: "Psalm 145:13 (NIV)",
+            reference: "Psalm 145:13",
             prompt: "Surrender to God's eternal kingdom and authority. Intercede for His rule to be established in hearts, homes, and nations. Pray especially for the persecuted church and spiritual awakening."
         },
         {
             scripture: "The kingdom of God is not a matter of talk but of power.",
-            reference: "1 Corinthians 4:20 (NIV)",
+            reference: "1 Corinthians 4:20",
             prompt: "Pray for God's powerful kingdom to break through in demonstration, not just words. Intercede for your family, church leaders, persecuted believers, and revival in your nation."
         },
         {
             scripture: "For the kingdom of God is... righteousness, peace and joy in the Holy Spirit.",
-            reference: "Romans 14:17 (NIV)",
+            reference: "Romans 14:17",
             prompt: "Submit to God's kingdom of righteousness, peace, and joy. Pray for these kingdom realities to manifest in your sphere of influence and throughout the church worldwide."
         },
         {
             scripture: "But you will receive power when the Holy Spirit comes on you; and you will be my witnesses... to the ends of the earth.",
-            reference: "Acts 1:8 (NIV)",
+            reference: "Acts 1:8",
             prompt: "Yield to God's mission for His kingdom to advance to the ends of the earth. Intercede for missionaries, church planters, the persecuted church, and global revival."
         }
     ],
     movement4: [
         {
             scripture: "And my God will meet all your needs according to the riches of his glory in Christ Jesus.",
-            reference: "Philippians 4:19 (NIV)",
+            reference: "Philippians 4:19",
             prompt: "Ask for God's provision - His presence above all, His mercy for today, physical provision, and help in every area of need. Acknowledge your complete dependence on Him."
         },
         {
             scripture: "The Lord is my shepherd, I lack nothing.",
-            reference: "Psalm 23:1 (NIV)",
+            reference: "Psalm 23:1",
             prompt: "Trust the Lord as your shepherd who provides everything you need. Pray for His presence to be your greatest treasure, and ask for His provision in all practical needs."
         },
         {
             scripture: "Give us today our daily bread.",
-            reference: "Matthew 6:11 (NIV)",
+            reference: "Matthew 6:11",
             prompt: "Ask simply and humbly for today's needs - spiritual and physical. Pray for the bread of His presence, His mercy, wisdom, strength, and material provision."
         },
         {
             scripture: "Man shall not live on bread alone, but on every word that comes from the mouth of God.",
-            reference: "Matthew 4:4 (NIV)",
+            reference: "Matthew 4:4",
             prompt: "Seek first the bread of God's Word and presence. Then bring your physical needs - health, finances, relationships, work. Trust Him as your complete provider."
         },
         {
             scripture: "I am the bread of life. Whoever comes to me will never go hungry, and whoever believes in me will never be thirsty.",
-            reference: "John 6:35 (NIV)",
+            reference: "John 6:35",
             prompt: "Come to Jesus, the bread of life. Ask Him to satisfy your deepest hunger and thirst. Then present your daily needs, trusting His faithful provision."
         }
     ],
     movement5: [
         {
             scripture: "Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.",
-            reference: "Colossians 3:13 (NIV)",
+            reference: "Colossians 3:13",
             prompt: "Receive God's forgiveness for your sins. Then release everyone and everything to Him - forgiving those who have hurt you, letting go of offenses, surrendering control."
         },
         {
             scripture: "If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.",
-            reference: "1 John 1:9 (NIV)",
+            reference: "1 John 1:9",
             prompt: "Confess your sins specifically and receive His complete forgiveness. Now extend that same grace - release everyone who has wronged you into God's hands."
         },
         {
             scripture: "For if you forgive other people when they sin against you, your heavenly Father will also forgive you.",
-            reference: "Matthew 6:14 (NIV)",
+            reference: "Matthew 6:14",
             prompt: "Receive the Father's merciful forgiveness. As you have been forgiven, forgive others freely. Release bitterness, resentment, and the need for revenge."
         },
         {
             scripture: "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
-            reference: "Ephesians 4:32 (NIV)",
+            reference: "Ephesians 4:32",
             prompt: "Remember how Christ forgave you - completely, sacrificially, lovingly. Receive His forgiveness afresh, then extend that same forgiveness to everyone who has hurt you."
         },
         {
             scripture: "Get rid of all bitterness, rage and anger, brawling and slander, along with every form of malice.",
-            reference: "Ephesians 4:31 (NIV)",
+            reference: "Ephesians 4:31",
             prompt: "Ask God to search your heart for unforgiveness, bitterness, or anger. Confess and receive cleansing. Then release everyone to God's care with true forgiveness."
         }
     ],
     movement6: [
         {
             scripture: "Submit yourselves, then, to God. Resist the devil, and he will flee from you.",
-            reference: "James 4:7 (NIV)",
+            reference: "James 4:7",
             prompt: "Like Jesus in Gethsemane, submit to God's will even in difficulty. Stand against spiritual forces of evil. Ask for protection from temptation and deliverance from the evil one."
         },
         {
             scripture: "Put on the full armor of God, so that you can take your stand against the devil's schemes.",
-            reference: "Ephesians 6:11 (NIV)",
+            reference: "Ephesians 6:11",
             prompt: "Clothe yourself in God's armor. Submit to His will like Jesus prayed 'not my will, but yours.' Stand firm against spiritual opposition and ask for deliverance from evil."
         },
         {
             scripture: "The Lord is faithful, and he will strengthen you and protect you from the evil one.",
-            reference: "2 Thessalonians 3:3 (NIV)",
+            reference: "2 Thessalonians 3:3",
             prompt: "Trust God's faithfulness to strengthen and protect you. Surrender to His will in your trials. Pray for victory over temptation and spiritual warfare."
         },
         {
             scripture: "Watch and pray so that you will not fall into temptation. The spirit is willing, but the flesh is weak.",
-            reference: "Matthew 26:41 (NIV)",
+            reference: "Matthew 26:41",
             prompt: "Echo Jesus' words in Gethsemane - remain alert in prayer. Submit to God's will even when it's hard. Ask for strength to resist temptation and overcome evil."
         },
         {
             scripture: "No temptation has overtaken you except what is common to mankind. And God is faithful; he will not let you be tempted beyond what you can bear.",
-            reference: "1 Corinthians 10:13 (NIV)",
+            reference: "1 Corinthians 10:13",
             prompt: "Trust God's faithfulness in your trials. Submit to His purposes. Stand against the enemy's schemes and ask for divine protection and deliverance."
         }
     ],
     movement7: [
         {
             scripture: "Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, 'This is the way; walk in it.'",
-            reference: "Isaiah 30:21 (NIV)",
+            reference: "Isaiah 30:21",
             prompt: "Be still and listen for God's gentle voice..."
         },
         {
             scripture: "My sheep listen to my voice; I know them, and they follow me.",
-            reference: "John 10:27 (NIV)",
+            reference: "John 10:27",
             prompt: "Quiet your heart to hear the Shepherd's voice..."
         },
         {
             scripture: "Call to me and I will answer you and tell you great and unsearchable things you do not know.",
-            reference: "Jeremiah 33:3 (NIV)",
+            reference: "Jeremiah 33:3",
             prompt: "Call out to God and wait expectantly for His answer..."
         },
         {
             scripture: "Be still, and know that I am God.",
-            reference: "Psalm 46:10 (NIV)",
+            reference: "Psalm 46:10",
             prompt: "Rest in stillness and listen for what God wants to reveal..."
         },
         {
             scripture: "The Lord came and stood there, calling as at the other times, 'Samuel! Samuel!' Then Samuel said, 'Speak, for your servant is listening.'",
-            reference: "1 Samuel 3:10 (NIV)",
+            reference: "1 Samuel 3:10",
             prompt: "Say to the Lord, 'Speak, for your servant is listening...'"
         }
     ]

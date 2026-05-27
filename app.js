@@ -206,24 +206,6 @@ function getDailyIndex(arrayLength, offset = 0) {
     return (dayOfYear + offset) % arrayLength;
 }
 
-// Completion tracking
-function getTodayKey() {
-    const today = new Date();
-    return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-}
-
-function isCompletedToday(activity) {
-    const todayKey = getTodayKey();
-    const completedKey = `${activity}_completed_${todayKey}`;
-    return localStorage.getItem(completedKey) === 'true';
-}
-
-function markCompleted(activity) {
-    const todayKey = getTodayKey();
-    const completedKey = `${activity}_completed_${todayKey}`;
-    localStorage.setItem(completedKey, 'true');
-}
-
 
 function getDailyContent() {
     // Each tool gets different content each day
@@ -402,92 +384,92 @@ var apostolicPrayers = [
     {
         title: 'Boldness in Speaking God\'s Word',
         text: '"Now, Lord, consider their threats and enable your servants to speak your word with great boldness. Stretch out your hand to heal and perform signs and wonders through the name of your holy servant Jesus."',
-        reference: 'Acts 4:29-30 (NIV), The Early Church'
+        reference: 'Acts 4:29-30, The Early Church'
     },
     {
         title: 'Spiritual Wisdom and Revelation',
         text: '"I keep asking that the God of our Lord Jesus Christ, the glorious Father, may give you the Spirit of wisdom and revelation, so that you may know him better. I pray that the eyes of your heart may be enlightened in order that you may know the hope to which he has called you, the riches of his glorious inheritance in his holy people, and his incomparably great power for us who believe."',
-        reference: 'Ephesians 1:17-19 (NIV), Paul'
+        reference: 'Ephesians 1:17-19, Paul'
     },
     {
         title: 'Rooted in God\'s Love',
         text: '"I pray that out of his glorious riches he may strengthen you with power through his Spirit in your inner being, so that Christ may dwell in your hearts through faith. And I pray that you, being rooted and established in love, may have power, together with all the Lord\'s holy people, to grasp how wide and long and high and deep is the love of Christ, and to know this love that surpasses knowledge—that you may be filled to the measure of all the fullness of God."',
-        reference: 'Ephesians 3:14-21 (NIV), Paul'
+        reference: 'Ephesians 3:14-21, Paul'
     },
     {
         title: 'Prayer for All Occasions',
         text: '"And pray in the Spirit on all occasions with all kinds of prayers and requests. With this in mind, be alert and always keep on praying for all the Lord\'s people. Pray also for me, that whenever I speak, words may be given me so that I will fearlessly make known the mystery of the gospel, for which I am an ambassador in chains. Pray that I may declare it fearlessly, as I should."',
-        reference: 'Ephesians 6:18-20 (NIV), Paul'
+        reference: 'Ephesians 6:18-20, Paul'
     },
     {
         title: 'Abounding Love and Discernment',
         text: '"And this is my prayer: that your love may abound more and more in knowledge and depth of insight, so that you may be able to discern what is best and may be pure and blameless for the day of Christ, filled with the fruit of righteousness that comes through Jesus Christ—to the glory and praise of God."',
-        reference: 'Philippians 1:9-11 (NIV), Paul'
+        reference: 'Philippians 1:9-11, Paul'
     },
     {
         title: 'Filled with the Knowledge of God\'s Will',
         text: '"We continually ask God to fill you with the knowledge of his will through all the wisdom and understanding that the Spirit gives, so that you may live a life worthy of the Lord and please him in every way: bearing fruit in every good work, growing in the knowledge of God, being strengthened with all power according to his glorious might so that you may have great endurance and patience, and giving joyful thanks to the Father, who has qualified you to share in the inheritance of his holy people in the kingdom of light."',
-        reference: 'Colossians 1:9-12 (NIV), Paul'
+        reference: 'Colossians 1:9-12, Paul'
     },
     {
         title: 'Open Doors for the Gospel',
         text: '"And pray for us, too, that God may open a door for our message, so that we may proclaim the mystery of Christ, for which I am in chains."',
-        reference: 'Colossians 4:3 (NIV), Paul'
+        reference: 'Colossians 4:3, Paul'
     },
     {
         title: 'Stand Firm in God\'s Will',
         text: '"He is always wrestling in prayer for you, that you may stand firm in all the will of God, mature and fully assured."',
-        reference: 'Colossians 4:12 (NIV), Paul'
+        reference: 'Colossians 4:12, Paul'
     },
     {
         title: 'Overflowing Love and Blameless Hearts',
         text: '"May the Lord make your love increase and overflow for each other and for everyone else, just as ours does for you. May he strengthen your hearts so that you will be blameless and holy in the presence of our God and Father when our Lord Jesus comes with all his holy ones."',
-        reference: '1 Thessalonians 3:12-13 (NIV), Paul'
+        reference: '1 Thessalonians 3:12-13, Paul'
     },
     {
         title: 'Complete Sanctification',
         text: '"May God himself, the God of peace, sanctify you through and through. May your whole spirit, soul and body be kept blameless at the coming of our Lord Jesus Christ. The one who calls you is faithful, and he will do it."',
-        reference: '1 Thessalonians 5:23-24 (NIV), Paul'
+        reference: '1 Thessalonians 5:23-24, Paul'
     },
     {
         title: 'Worthy of His Calling',
         text: '"With this in mind, we constantly pray for you, that our God may make you worthy of his calling, and that by his power he may bring to fruition your every desire for goodness and your every deed prompted by faith. We pray this so that the name of our Lord Jesus may be glorified in you, and you in him, according to the grace of our God and the Lord Jesus Christ."',
-        reference: '2 Thessalonians 1:11-12 (NIV), Paul'
+        reference: '2 Thessalonians 1:11-12, Paul'
     },
     {
         title: 'The Message Spreads and Deliverance',
         text: '"As for other matters, brothers and sisters, pray for us that the message of the Lord may spread rapidly and be honoured, just as it was with you. And pray that we may be delivered from wicked and evil people, for not everyone has faith. But the Lord is faithful, and he will strengthen you and protect you from the evil one."',
-        reference: '2 Thessalonians 3:1-3 (NIV), Paul'
+        reference: '2 Thessalonians 3:1-3, Paul'
     },
     {
         title: 'God\'s Love and Christ\'s Perseverance',
         text: '"May the Lord direct your hearts into God\'s love and Christ\'s perseverance."',
-        reference: '2 Thessalonians 3:5 (NIV), Paul'
+        reference: '2 Thessalonians 3:5, Paul'
     },
     {
         title: 'The Lord of Peace',
         text: '"Now may the Lord of peace himself give you peace at all times and in every way. The Lord be with all of you."',
-        reference: '2 Thessalonians 3:16 (NIV), Paul'
+        reference: '2 Thessalonians 3:16, Paul'
     },
     {
         title: 'Holistic Blessing',
         text: '"Dear friend, I pray that you may enjoy good health and that all may go well with you, even as your soul is getting along well."',
-        reference: '3 John 1:2 (NIV), John'
+        reference: '3 John 1:2, John'
     },
     {
         title: 'Kept from Stumbling',
         text: '"To him who is able to keep you from stumbling and to present you before his glorious presence without fault and with great joy—to the only God our Saviour be glory, majesty, power and authority, through Jesus Christ our Lord, before all ages, now and forevermore! Amen."',
-        reference: 'Jude 1:24-25 (NIV), Jude'
+        reference: 'Jude 1:24-25, Jude'
     },
     {
         title: 'Unity of Mind and Voice',
         text: '"May the God who gives endurance and encouragement give you the same attitude of mind toward each other that Christ Jesus had, so that with one mind and one voice you may glorify the God and Father of our Lord Jesus Christ."',
-        reference: 'Romans 15:5-6 (NIV), Paul'
+        reference: 'Romans 15:5-6, Paul'
     },
     {
         title: 'Overflowing Hope',
         text: '"May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit."',
-        reference: 'Romans 15:13 (NIV), Paul'
+        reference: 'Romans 15:13, Paul'
     }
 ];
 
@@ -642,47 +624,47 @@ function prevApostolicPrayer(e) {
 
 var memoryVerses = [
     {
-        reference: 'Psalm 37:3-4 (NIV)',
+        reference: 'Psalm 37:3-4',
         text: 'Trust in the Lord and do good; dwell in the land and enjoy safe pasture. Take delight in the Lord, and he will give you the desires of your heart.'
     },
     {
-        reference: 'Philippians 4:6-7 (NIV)',
+        reference: 'Philippians 4:6-7',
         text: 'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.'
     },
     {
-        reference: 'Psalm 57:1 (NIV)',
+        reference: 'Psalm 57:1',
         text: 'Have mercy on me, my God, have mercy on me, for in you I take refuge. I will take refuge in the shadow of your wings until the disaster has passed.'
     },
     {
-        reference: 'Romans 8:31-39 (NIV)',
+        reference: 'Romans 8:31-39',
         text: 'What, then, shall we say in response to these things? If God is for us, who can be against us? He who did not spare his own Son, but gave him up for us all—how will he not also, along with him, graciously give us all things? Who will bring any charge against those whom God has chosen? It is God who justifies. Who then is the one who condemns? No one. Christ Jesus who died—more than that, who was raised to life—is at the right hand of God and is also interceding for us. Who shall separate us from the love of Christ? Shall trouble or hardship or persecution or famine or nakedness or danger or sword?\n\nNo, in all these things we are more than conquerors through him who loved us. For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord.'
     },
     {
-        reference: 'Hebrews 12:1–3 (NIV)',
+        reference: 'Hebrews 12:1–3',
         text: 'Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us, fixing our eyes on Jesus, the pioneer and perfecter of faith. For the joy set before him he endured the cross, scorning its shame, and sat down at the right hand of the throne of God. Consider him who endured such opposition from sinners, so that you will not grow weary and lose heart.'
     },
     {
-        reference: 'Colossians 1:28–29 (NIV)',
+        reference: 'Colossians 1:28–29',
         text: 'He is the one we proclaim, admonishing and teaching everyone with all wisdom, so that we may present everyone fully mature in Christ. To this end I strenuously contend with all the energy Christ so powerfully works in me.'
     },
     {
-        reference: '1 Kings 17:14 (NIV)',
+        reference: '1 Kings 17:14',
         text: 'For the jar of flour will not be used up and the jug of oil will not run dry until the day the Lord sends rain on the land.'
     },
     {
-        reference: '2 Corinthians 9:8 (NIV)',
+        reference: '2 Corinthians 9:8',
         text: 'And God is able to bless you abundantly, so that in all things at all times, having all that you need, you will abound in every good work.'
     },
     {
-        reference: 'Philippians 4:19 (NIV)',
+        reference: 'Philippians 4:19',
         text: 'And my God will meet all your needs according to the riches of his glory in Christ Jesus.'
     },
     {
-        reference: 'Ephesians 2:10 (NIV)',
+        reference: 'Ephesians 2:10',
         text: 'For we are God\'s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.'
     },
     {
-        reference: 'John 15:16 (NIV)',
+        reference: 'John 15:16',
         text: 'You did not choose me, but I chose you and appointed you so that you might go and bear fruit—fruit that will last—and so that whatever you ask in my name the Father will give you.'
     }
 ];
@@ -1687,26 +1669,6 @@ function initializeCategories() {
 }
 
 
-function cleanupOldCompletionKeys() {
-    var now = new Date();
-    var cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 30);
-    var keysToRemove = [];
-
-    for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        var match = key.match(/^(.+)_completed_(\d+)-(\d+)-(\d+)$/);
-        if (match) {
-            var keyDate = new Date(parseInt(match[2]), parseInt(match[3]) - 1, parseInt(match[4]));
-            if (keyDate < cutoff) {
-                keysToRemove.push(key);
-            }
-        }
-    }
-
-    keysToRemove.forEach(function(key) {
-        localStorage.removeItem(key);
-    });
-}
 
 // Initialize with fresh content on every page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -1727,8 +1689,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateHeaderSubtitle();
         updateHtmlVerses();
 
-        // Clean up old completion keys (older than 30 days)
-        cleanupOldCompletionKeys();
         
     } catch (error) {
         console.error('App initialization failed:', error);
