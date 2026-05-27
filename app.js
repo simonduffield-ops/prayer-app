@@ -67,7 +67,7 @@ function formatRef(reference) {
     const base = normalizeRef(reference);
     const authorMatch = reference.match(/,\s*(Paul|The Early Church|John|Jude|Peter)$/i);
     const suffix = authorMatch ? ', ' + authorMatch[1] : '';
-    return base + ' (' + translation + ')' + suffix;
+    return base + suffix;
 }
 
 function renderExamenVerse(rawVerse, elementId) {
