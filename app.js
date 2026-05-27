@@ -161,43 +161,41 @@ function updateHtmlVerses() {
 
 function toggleDarkMode(event) {
     if (event) {
-        event.stopPropagation(); // Prevent header click
+        event.stopPropagation();
     }
     document.body.classList.toggle('dark-mode');
-    
-    // Save preference
+
     const isDarkMode = document.body.classList.contains('dark-mode');
     localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
-    
-    // Update theme color for mobile browsers
     updateThemeColor(isDarkMode);
-    
+
+    const toggle = document.getElementById('dark-mode-toggle');
+    if (toggle) {
+        toggle.setAttribute('aria-checked', isDarkMode ? 'true' : 'false');
+    }
 }
 
 function updateThemeColor(isDarkMode) {
     const themeColorMeta = document.getElementById('theme-color-meta');
     if (themeColorMeta) {
-        // Light mode: #667eea (purple-blue), Dark mode: #1a1a2e (dark blue-black)
-        themeColorMeta.setAttribute('content', isDarkMode ? '#1a1a2e' : '#667eea');
+        themeColorMeta.setAttribute('content', isDarkMode ? '#1a1a2e' : '#534AB7');
     }
 }
 
 function initializeDarkMode() {
-    // Check saved preference
     const darkMode = localStorage.getItem('darkMode');
     const isDarkMode = darkMode === 'enabled';
-    
+
     if (isDarkMode) {
         document.body.classList.add('dark-mode');
     }
-    
-    // Update theme color on initial load
+
     updateThemeColor(isDarkMode);
-    
-    // Attach event listener to toggle button
+
     const toggleButton = document.getElementById('dark-mode-toggle');
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleDarkMode);
+        toggleButton.setAttribute('aria-checked', isDarkMode ? 'true' : 'false');
     }
 }
 
