@@ -5,7 +5,6 @@ const urlsToCache = [
     './styles.css',
     './app.js',
     './content.js',
-    './opendoors-calendar.js',
     './manifest.json',
     './apple-touch-icon.png',
     './favicon.ico',

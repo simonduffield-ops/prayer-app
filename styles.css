@@ -654,6 +654,24 @@ body.dark-mode .reflection-box {
     border-color: rgba(143, 163, 255, 0.2);
 }
 
+.external-link-btn {
+    display: block;
+    text-align: center;
+    background: #534AB7;
+    color: white;
+    padding: 14px 20px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    font-family: var(--font-ui);
+    transition: opacity var(--transition-fast);
+}
+
+.external-link-btn:hover {
+    opacity: 0.85;
+}
+
 /* --- Meditation & Closing --- */
 .meditation-focus {
     background: #f3f1ff;
@@ -706,7 +724,6 @@ body.dark-mode .closing-prayer {
 .examen-intro,
 .listening-intro,
 .prayerset-intro,
-.persecuted-intro,
 .creeds-intro,
 .apostolic-intro {
     background: var(--bg-section);
@@ -721,7 +738,6 @@ body.dark-mode .closing-prayer {
 body.dark-mode .examen-intro,
 body.dark-mode .listening-intro,
 body.dark-mode .prayerset-intro,
-body.dark-mode .persecuted-intro,
 body.dark-mode .creeds-intro,
 body.dark-mode .apostolic-intro {
     border-left-color: var(--accent);
@@ -1006,123 +1022,6 @@ body.dark-mode .prayer-text {
     font-family: var(--font-serif);
 }
 
-/* --- Persecuted Church --- */
-.persecuted-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 12px 0;
-    gap: 10px;
-}
-
-.persecuted-nav-date {
-    flex: 1;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.9em;
-    color: var(--text-secondary);
-}
-
-.persecuted-nav-btn {
-    background: #534AB7;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 1em;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: opacity var(--transition-fast);
-    font-family: var(--font-ui);
-}
-
-.persecuted-nav-btn:disabled {
-    opacity: 0.3;
-    cursor: default;
-}
-
-.country-spotlight {
-    background: var(--bg-card);
-    padding: 20px;
-    border-radius: var(--radius-card);
-    margin: 20px 0;
-    border: 0.5px solid var(--border-card);
-    box-shadow: var(--shadow-card);
-}
-
-body.dark-mode .country-spotlight {
-    border-color: rgba(143, 163, 255, 0.2);
-}
-
-.country-badge {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-}
-
-.region-label {
-    background: #0F6E56;
-    color: white;
-    padding: 4px 12px;
-    border-radius: var(--radius-pill);
-    font-size: 0.8em;
-    font-weight: 600;
-    font-family: var(--font-ui);
-}
-
-.rank-badge {
-    background: #993C1D;
-    color: white;
-    padding: 4px 12px;
-    border-radius: var(--radius-pill);
-    font-size: 0.8em;
-    font-weight: 700;
-    font-family: var(--font-ui);
-}
-
-.country-name {
-    color: #534AB7;
-    font-size: 1.5em;
-    font-weight: 700;
-    margin: 8px 0;
-    line-height: 1.3;
-    font-family: var(--font-ui);
-}
-
-body.dark-mode .country-name {
-    color: var(--accent);
-}
-
-.country-context {
-    color: var(--text-secondary);
-    font-size: 0.95em;
-    line-height: 1.6;
-    margin-top: 12px;
-    font-style: italic;
-    padding: 14px;
-    background: var(--bg-section);
-    border-radius: var(--radius-sm);
-    border-left: 3px solid #993C1D;
-    font-family: var(--font-serif);
-}
-
-body.dark-mode .country-context {
-    border-left-color: var(--accent-coral);
-}
-
-.prayer-focus-section {
-    margin-top: 24px;
-}
-
-.prayer-request {
-    font-size: 1.05em;
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.6;
-    margin: 12px 0;
-}
 
 /* --- Apostolic Prayers --- */
 .apostolic-prayer-section {

@@ -317,8 +317,6 @@ function renderToolContent(tool) {
             if (scriptureEl) scriptureEl.textContent = '\u201C' + mvText + '\u201D - ' + mvRef;
             if (promptEl) promptEl.textContent = movement.prompt;
         }
-    } else if (tool === 'persecuted') {
-        loadPersecutedContent();
     } else if (tool === 'gentle-humble') {
         var ghText = getVerseText(daily.gentleHumble.reference, daily.gentleHumble.scripture);
         var ghRef = formatRef(daily.gentleHumble.reference);
@@ -1480,58 +1478,6 @@ function generatePrayerSetContent() {
         var promptEl = document.getElementById('prayerset-movement' + i + '-prompt');
         if (promptEl) promptEl.textContent = movement.prompt;
     }
-}
-
-// ── Persecuted Church day navigation ─────────────────────────────────────────
-
-let persecutedDayOffset = 0; // 0 = today, -1 = yesterday, +1 = tomorrow
-
-function renderPersecutedContent() {
-    const entry = getOpenDoorsByOffset(persecutedDayOffset);
-
-    const countryEl  = document.getElementById('persecuted-country');
-    const prayerEl   = document.getElementById('persecuted-prayer');
-    const noEntryEl  = document.getElementById('persecuted-no-entry');
-    const dateEl     = document.getElementById('persecuted-date');
-    const prevBtn    = document.getElementById('persecuted-prev');
-    const nextBtn    = document.getElementById('persecuted-next');
-
-    if (entry) {
-        const d = new Date(entry.dateKey + 'T00:00:00');
-        const label = d.toLocaleDateString('en-NZ', { weekday: 'long', day: 'numeric', month: 'long' });
-        if (dateEl) dateEl.textContent = label;
-        if (countryEl) countryEl.textContent = entry.country;
-        if (prayerEl) prayerEl.textContent = entry.prayer;
-        if (noEntryEl) noEntryEl.style.display = 'none';
-        if (countryEl) countryEl.closest('.country-spotlight').style.display = '';
-        if (prayerEl) prayerEl.closest('.prayer-focus-section').style.display = '';
-    } else {
-        if (dateEl) dateEl.textContent = '';
-        if (countryEl) countryEl.textContent = '';
-        if (prayerEl) prayerEl.textContent = '';
-        if (noEntryEl) noEntryEl.style.display = 'block';
-        if (countryEl) countryEl.closest('.country-spotlight').style.display = 'none';
-        if (prayerEl) prayerEl.closest('.prayer-focus-section').style.display = 'none';
-    }
-
-    // Disable prev/next when there's no adjacent entry
-    if (prevBtn) prevBtn.disabled = !getOpenDoorsByOffset(persecutedDayOffset - 1);
-    if (nextBtn) nextBtn.disabled = !getOpenDoorsByOffset(persecutedDayOffset + 1);
-}
-
-function persecutedPrevDay() {
-    persecutedDayOffset--;
-    renderPersecutedContent();
-}
-
-function persecutedNextDay() {
-    persecutedDayOffset++;
-    renderPersecutedContent();
-}
-
-function loadPersecutedContent() {
-    persecutedDayOffset = 0;
-    renderPersecutedContent();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
