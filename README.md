@@ -45,7 +45,7 @@ A comprehensive Progressive Web App for Christian prayer and spiritual formation
 7. **Gentle and Humble in Heart** - 26 meditations on Christ's gentleness and humility with Scripture and Church history
 
 #### ⁜ Historic Prayers
-8. **Written Prayers** - 14 beloved Christian prayers through the ages
+8. **Written Prayers** - 15 beloved Christian prayers through the ages
 9. **Creeds** - Profess your faith with the ancient creeds of the church
 
 #### ⁜ Intercession
@@ -54,7 +54,7 @@ A comprehensive Progressive Web App for Christian prayer and spiritual formation
 
 ### Content Libraries:
 
-#### Written Prayers (14 Total):
+#### Written Prayers (15 Total):
 - Prayer of St. Francis (1912)
 - The Serenity Prayer (Reinhold Niebuhr, 1932)
 - Prayer of St. Ignatius (16th Century)
@@ -68,7 +68,8 @@ A comprehensive Progressive Web App for Christian prayer and spiritual formation
 - Lead, Kindly Light (John Henry Newman, 1833)
 - The Doxology (Thomas Ken, c. 1674)
 - Radiating Christ (Mother Teresa, adapted from Newman)
-- Morning Prayer (Jamie Winship)
+- Prayer from Lead with Prayer (Ryan Skoog)
+- Daily Prayer of Affirmation (Jamie Winship)
 
 #### Historic Creeds:
 - The Apostles' Creed (2nd century)
@@ -239,7 +240,7 @@ Pray through biblical prayers written by apostles like Paul, with four-step stru
 Daily rotating countries with specific persecution details, Scripture encouragement, and focused prayer prompts for believers facing persecution worldwide. Remember those in prison as if you were together with them.
 
 ### Written Prayers
-14 historic Christian prayers spanning nearly 2,000 years, from 4th-century prayers to contemporary classics, with historical context and complete texts. Each prayer includes its author and date.
+15 Christian prayers spanning nearly 2,000 years, from 4th-century prayers to contemporary classics, with historical context and complete texts. Each prayer includes its author and date.
 
 ### Creeds
 Historic statements of Christian faith used across denominations:
