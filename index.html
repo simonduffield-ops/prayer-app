@@ -46,108 +46,114 @@
         </div>
 
         <div id="main-menu">
-            <!-- Daily Practices Category -->
-            <div class="category-section">
-                <div class="category-header" onclick="toggleCategory('daily')">
-                    <h2 class="category-title">
-                        <span class="category-icon">⁜</span>
-                        Daily Practices
-                    </h2>
-                    <span class="category-toggle">▼</span>
-                </div>
-                <div class="category-content" id="daily-category">
-                    <div class="tool-row" onclick="showTool('affirmation')">
-                        <span class="tool-row-dot purple"></span>
-                        <span class="tool-row-name">Daily prayer</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('memory-verses')">
-                        <span class="tool-row-dot purple"></span>
-                        <span class="tool-row-name">Memory verses</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('apostolic')">
-                        <span class="tool-row-dot purple"></span>
-                        <span class="tool-row-name">Prayers of the apostles</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('persecuted')">
-                        <span class="tool-row-dot purple"></span>
-                        <span class="tool-row-name">Pray for the persecuted</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                </div>
-            </div>
+            <div class="tile-grid">
+                <button type="button" class="tile tile-primary" data-tool="affirmation" onclick="showTool('affirmation')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M12 4v3"/><path d="M5.6 9.6 7 11"/><path d="M18.4 9.6 17 11"/><path d="M7 18a5 5 0 0 1 10 0"/></svg>
+                    <span class="tile-primary-text">
+                        <span class="tile-primary-name">Daily prayer</span>
+                        <span class="tile-primary-sub">Begin the day here</span>
+                    </span>
+                    <span class="tile-chevron">&#8250;</span>
+                </button>
 
-            <!-- Scripture Meditation Category -->
-            <div class="category-section">
-                <div class="category-header" onclick="toggleCategory('scripture')">
-                    <h2 class="category-title">
-                        <span class="category-icon">⁜</span>
-                        Scripture Meditation
-                    </h2>
-                    <span class="category-toggle">▼</span>
-                </div>
-                <div class="category-content" id="scripture-category">
-                    <div class="tool-row" onclick="showTool('lectio')">
-                        <span class="tool-row-dot teal"></span>
-                        <span class="tool-row-name">Lectio Divina</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('beatitudes')">
-                        <span class="tool-row-dot teal"></span>
-                        <span class="tool-row-name">The Beatitudes</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('gentle-humble')">
-                        <span class="tool-row-dot teal"></span>
-                        <span class="tool-row-name">Gentle and humble</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('declarations')">
-                        <span class="tool-row-dot teal"></span>
-                        <span class="tool-row-name">Declarations</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                </div>
-            </div>
+                <button type="button" class="tile tone-purple" data-tool="memory-verses" onclick="showTool('memory-verses')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v16l-5-4-5 4z"/></svg>
+                    <span class="tile-name">Memory verses</span>
+                </button>
 
-            <!-- Guided Prayers Category -->
-            <div class="category-section">
-                <div class="category-header" onclick="toggleCategory('historic')">
-                    <h2 class="category-title">
-                        <span class="category-icon">⁜</span>
-                        Guided Prayers
-                    </h2>
-                    <span class="category-toggle">▼</span>
-                </div>
-                <div class="category-content" id="historic-category">
-                    <div class="tool-row" onclick="showTool('adoration')">
-                        <span class="tool-row-dot coral"></span>
-                        <span class="tool-row-name">Adoration</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('prayerset')">
-                        <span class="tool-row-dot coral"></span>
-                        <span class="tool-row-name">The Lord's Prayer</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('examen')">
-                        <span class="tool-row-dot coral"></span>
-                        <span class="tool-row-name">The Examen</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('written-prayers')">
-                        <span class="tool-row-dot coral"></span>
-                        <span class="tool-row-name">Written prayers</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                    <div class="tool-row" onclick="showTool('creeds')">
-                        <span class="tool-row-dot coral"></span>
-                        <span class="tool-row-name">Creeds</span>
-                        <span class="tool-row-chevron">&#8250;</span>
-                    </div>
-                </div>
+                <button type="button" class="tile tone-purple" data-tool="apostolic" onclick="showTool('apostolic')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h9a3 3 0 0 1 3 3v11H9a3 3 0 0 1-3-3z"/><path d="M18 19a3 3 0 0 0 3-3h-3"/><path d="M9 9h6"/><path d="M9 12h4"/></svg>
+                    <span class="tile-name">Prayers of the apostles</span>
+                </button>
+
+                <button type="button" class="tile tone-purple" data-tool="persecuted" onclick="showTool('persecuted')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9z"/></svg>
+                    <span class="tile-name">Pray for the persecuted</span>
+                </button>
+
+                <button type="button" class="tile tone-teal" data-tool="lectio" onclick="showTool('lectio')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-1.6-1.6-4-2-6-2H4v13h2c2 0 4.4.4 6 2"/><path d="M12 7c1.6-1.6 4-2 6-2h2v13h-2c-2 0-4.4.4-6 2"/><path d="M12 7v13"/></svg>
+                    <span class="tile-name">Lectio Divina</span>
+                </button>
+
+                <button type="button" class="tile tone-teal" data-tool="beatitudes" onclick="showTool('beatitudes')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l6-11 4 7 2.5-4L21 19z"/></svg>
+                    <span class="tile-name">The Beatitudes</span>
+                </button>
+
+                <button type="button" class="tile tone-teal" data-tool="gentle-humble" onclick="showTool('gentle-humble')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c5-1 8-4.6 8-9.5C20 6 16.5 4 12 4S4 6 4 10.5C4 15.4 7 19 12 20z"/><path d="M12 20V9"/></svg>
+                    <span class="tile-name">Gentle and humble</span>
+                </button>
+
+                <button type="button" class="tile tone-teal" data-tool="declarations" onclick="showTool('declarations')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 10h8"/></svg>
+                    <span class="tile-name">Declarations</span>
+                </button>
+
+                <button type="button" class="tile tone-coral" data-tool="adoration" onclick="showTool('adoration')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 3.5 4.5 6.2 4.5 8.6A4.5 4.5 0 0 1 12 16a4.5 4.5 0 0 1-4.5-4.4C7.5 9.2 9 6.5 12 3z"/><path d="M7 20h10"/></svg>
+                    <span class="tile-name">Adoration</span>
+                </button>
+
+                <button type="button" class="tile tone-coral" data-tool="prayerset" onclick="showTool('prayerset')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M6 9h12"/></svg>
+                    <span class="tile-name">The Lord's Prayer</span>
+                </button>
+
+                <button type="button" class="tile tone-coral" data-tool="examen" onclick="showTool('examen')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13.4A8 8 0 1 1 10.6 4a6.3 6.3 0 0 0 9.4 9.4z"/></svg>
+                    <span class="tile-name">The Examen</span>
+                </button>
+
+                <button type="button" class="tile tone-coral" data-tool="written-prayers" onclick="showTool('written-prayers')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg>
+                    <span class="tile-name">Written prayers</span>
+                </button>
+
+                <button type="button" class="tile tone-coral" data-tool="creeds" onclick="showTool('creeds')">
+                    <span class="tile-handle" aria-label="Drag to reorder" title="Drag to reorder">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.25"/><circle cx="11" cy="3.5" r="1.25"/><circle cx="5" cy="8" r="1.25"/><circle cx="11" cy="8" r="1.25"/><circle cx="5" cy="12.5" r="1.25"/><circle cx="11" cy="12.5" r="1.25"/></svg>
+                    </span>
+                    <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M6 8v9"/><path d="M12 8v9"/><path d="M18 8v9"/><path d="M4 20h16"/><path d="M12 3l7 5H5z"/></svg>
+                    <span class="tile-name">Creeds</span>
+                </button>
             </div>
 
             <div class="appearance-row" id="appearance-toggle">

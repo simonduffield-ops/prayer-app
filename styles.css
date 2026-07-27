@@ -234,198 +234,132 @@ body.dark-mode .translation-picker select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238fa3ff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
 }
 
-/* --- Category Sections --- */
-.category-section {
-    margin: 0 12px 12px;
+/* --- Tile Grid --- */
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 2px 12px 0;
+}
+
+.tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 96px;
+    padding: 12px;
     background: var(--bg-card);
     border: 0.5px solid var(--border-card);
     border-radius: var(--radius-card);
-    overflow: hidden;
     box-shadow: var(--shadow-card);
-    transition: background var(--transition-normal);
-}
-
-.category-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 16px;
-    cursor: pointer;
-    user-select: none;
-    transition: background var(--transition-fast);
-}
-
-.category-header:hover {
-    background: var(--accent-bg);
-}
-
-.category-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.05em;
-    color: var(--accent);
-    font-weight: 700;
-    margin: 0;
-}
-
-/* Color by category type — applied via data attribute or extra class */
-.category-section[data-category="daily"] .category-title,
-.category-section:nth-child(1) .category-title {
-    color: #534AB7;
-}
-.category-section[data-category="scripture"] .category-title,
-.category-section:nth-child(2) .category-title {
-    color: #0F6E56;
-}
-.category-section[data-category="guided"] .category-title,
-.category-section:nth-child(3) .category-title {
-    color: #993C1D;
-}
-
-body.dark-mode .category-section[data-category="daily"] .category-title,
-body.dark-mode .category-section:nth-child(1) .category-title {
-    color: #AFA9EC;
-}
-body.dark-mode .category-section[data-category="scripture"] .category-title,
-body.dark-mode .category-section:nth-child(2) .category-title {
-    color: #4ecaa0;
-}
-body.dark-mode .category-section[data-category="guided"] .category-title,
-body.dark-mode .category-section:nth-child(3) .category-title {
-    color: #e8886a;
-}
-
-.category-icon {
-    font-size: 1.1em;
-    display: inline-block;
-    line-height: 1;
-}
-
-.category-toggle {
-    font-size: 1em;
-    color: var(--text-muted);
-    transition: transform var(--transition-normal);
-    font-weight: bold;
-}
-
-.category-section.collapsed .category-toggle {
-    transform: rotate(-90deg);
-}
-
-.category-content {
-    max-height: 800px;
-    opacity: 1;
-    transition: max-height 0.35s ease-out, opacity 0.25s ease, padding 0.25s ease;
-    padding: 0;
-}
-
-.category-section.collapsed .category-content {
-    max-height: 0;
-    opacity: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-/* --- Tool Rows (new list layout) --- */
-.tool-row {
-    display: flex;
-    align-items: center;
-    padding: 12px 14px;
-    border-top: 0.5px solid var(--border-subtle);
-    cursor: pointer;
-    transition: background var(--transition-fast);
-    gap: 10px;
-}
-
-.tool-row:hover {
-    background: var(--accent-bg);
-}
-
-.tool-row-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-}
-
-.tool-row-dot.purple { background: #AFA9EC; }
-.tool-row-dot.teal { background: #5DCAA5; }
-.tool-row-dot.coral { background: #F0997B; }
-
-.tool-row-name {
-    flex: 1;
-    font-size: 0.95em;
-    font-weight: 500;
     color: var(--text-primary);
-}
-
-.tool-row-chevron {
-    color: var(--text-muted);
-    font-size: 0.8em;
-    flex-shrink: 0;
-}
-
-/* --- Legacy Tool Cards (hidden once HTML updated) --- */
-.tools-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding: 0;
-}
-
-.tool-card {
-    background: var(--bg-card);
-    border-radius: 0;
-    padding: 12px 14px;
-    box-shadow: none;
-    border-top: 0.5px solid var(--border-subtle);
-    transition: background var(--transition-fast);
-    cursor: pointer;
-}
-
-.tool-card:hover {
-    transform: none;
-    box-shadow: none;
-    background: var(--accent-bg);
-}
-
-.tool-card:active {
-    transform: none;
-    box-shadow: none;
-}
-
-.tool-card h3 {
-    color: var(--text-primary);
-    margin-bottom: 4px;
-    font-size: 0.95em;
-    font-weight: 500;
-}
-
-.tool-description {
-    color: var(--text-muted);
-    font-size: 0.82em;
-    margin-bottom: 8px;
-}
-
-.tool-button {
-    background: #534AB7;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: var(--radius-pill);
-    cursor: pointer;
-    font-size: 0.85em;
     font-family: var(--font-ui);
-    transition: opacity var(--transition-fast);
-    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform var(--transition-fast), background var(--transition-normal), opacity var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.tool-button:hover {
-    opacity: 0.9;
-    transform: none;
+.tile:active { transform: scale(0.97); }
+
+.tile-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+.tile-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+}
+
+/* icon tint carries the old categories — no headings needed */
+.tone-purple .tile-icon { color: var(--accent); }
+.tone-teal   .tile-icon { color: var(--accent-teal); }
+.tone-coral  .tile-icon { color: var(--accent-coral); }
+
+/* primary, full-width */
+.tile-primary {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+    padding: 14px 16px;
+    background: var(--bg-purple-light);
+    border: 0.5px solid rgba(83, 74, 183, 0.18);
+    border-radius: 12px;
     box-shadow: none;
+}
+.tile-primary:active { transform: scale(0.985); }
+.tile-primary .tile-icon { width: 22px; height: 22px; color: var(--accent); }
+
+body.dark-mode .tile-primary { border-color: rgba(143, 163, 255, 0.28); }
+
+.tile-primary-text { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.tile-primary-name { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+.tile-primary-sub  { font-size: 12px; font-weight: 500; color: var(--text-muted); }
+.tile-chevron      { font-size: 20px; line-height: 1; color: var(--accent); }
+
+/* drag handle */
+.tile-handle {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: grab;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    opacity: 0.55;
+    z-index: 1;
+}
+
+.tile-handle svg {
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+}
+
+.tile-handle:hover,
+.tile-handle:focus-visible {
+    opacity: 1;
+    background: var(--accent-bg);
+    outline: none;
+}
+
+.tile-handle:active { cursor: grabbing; }
+
+.tile-primary .tile-handle {
+    position: static;
+    flex-shrink: 0;
+    margin-right: -4px;
+    order: -1;
+}
+
+.tile.tile-dragging {
+    opacity: 0.55;
+    transform: scale(1.02);
+    box-shadow: var(--shadow-card);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tile.tile-dragging:active { transform: scale(1.02); }
+
+.tile-grid.tile-reordering {
+    cursor: grabbing;
+    user-select: none;
 }
 
 /* --- Prayer Banner --- */
@@ -1386,18 +1320,6 @@ body.dark-mode strong {
 
     h1 {
         font-size: 1.6em;
-    }
-
-    .category-section {
-        margin: 0 8px 10px;
-    }
-
-    .category-header {
-        padding: 12px 14px;
-    }
-
-    .category-title {
-        font-size: 1em;
     }
 
     .prayer-content {

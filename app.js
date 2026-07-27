@@ -1581,37 +1581,187 @@ function dismissUpdateNotification() {
     }
 }
 
-// Category toggle functionality
-function toggleCategory(categoryId) {
-    const categorySection = document.querySelector(`#${categoryId}-category`).parentElement;
-    const isCollapsed = categorySection.classList.contains('collapsed');
-    
-    if (isCollapsed) {
-        categorySection.classList.remove('collapsed');
-        localStorage.setItem(`category_${categoryId}`, 'expanded');
-    } else {
-        categorySection.classList.add('collapsed');
-        localStorage.setItem(`category_${categoryId}`, 'collapsed');
+// Tile grid order (persisted between sessions)
+const TILE_ORDER_KEY = 'tileOrder';
+const DEFAULT_TILE_ORDER = [
+    'affirmation',
+    'memory-verses',
+    'apostolic',
+    'persecuted',
+    'lectio',
+    'beatitudes',
+    'gentle-humble',
+    'declarations',
+    'adoration',
+    'prayerset',
+    'examen',
+    'written-prayers',
+    'creeds'
+];
+
+function getSavedTileOrder() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(TILE_ORDER_KEY));
+        if (!Array.isArray(saved) || saved.length === 0) {
+            return DEFAULT_TILE_ORDER.slice();
+        }
+        const known = new Set(DEFAULT_TILE_ORDER);
+        const order = saved.filter(id => known.has(id));
+        DEFAULT_TILE_ORDER.forEach(id => {
+            if (!order.includes(id)) order.push(id);
+        });
+        return order;
+    } catch (e) {
+        return DEFAULT_TILE_ORDER.slice();
     }
 }
 
-function initializeCategories() {
-    // Load saved category states from localStorage
-    const categories = ['daily', 'scripture', 'historic'];
-    
-    categories.forEach(categoryId => {
-        const state = localStorage.getItem(`category_${categoryId}`);
-        const categorySection = document.querySelector(`#${categoryId}-category`).parentElement;
-        
-        if (categorySection) {
-            // Default: all expanded on first visit, then remember user preference
-            if (state === 'collapsed') {
-                categorySection.classList.add('collapsed');
-            } else {
-                categorySection.classList.remove('collapsed');
-            }
+function saveTileOrder() {
+    const grid = document.querySelector('.tile-grid');
+    if (!grid) return;
+    const order = Array.from(grid.querySelectorAll('.tile'))
+        .map(tile => tile.dataset.tool)
+        .filter(Boolean);
+    localStorage.setItem(TILE_ORDER_KEY, JSON.stringify(order));
+}
+
+function applyTileOrder() {
+    const grid = document.querySelector('.tile-grid');
+    if (!grid) return;
+    getSavedTileOrder().forEach(id => {
+        const tile = grid.querySelector(`[data-tool="${id}"]`);
+        if (tile) grid.appendChild(tile);
+    });
+}
+
+function initializeTileGrid() {
+    const grid = document.querySelector('.tile-grid');
+    if (!grid) return;
+
+    applyTileOrder();
+
+    let dragTile = null;
+    let pointerId = null;
+    let startX = 0;
+    let startY = 0;
+    let dragging = false;
+    let suppressClick = false;
+    let suppressClickTimer = null;
+
+    function clearSuppressClick() {
+        suppressClick = false;
+        if (suppressClickTimer) {
+            clearTimeout(suppressClickTimer);
+            suppressClickTimer = null;
+        }
+    }
+
+    function armSuppressClick() {
+        suppressClick = true;
+        if (suppressClickTimer) clearTimeout(suppressClickTimer);
+        // Fallback: pointerdown preventDefault often means no click fires, so
+        // clear the flag shortly even if the capture-phase click never arrives.
+        suppressClickTimer = setTimeout(clearSuppressClick, 150);
+    }
+
+    function removeDocListeners() {
+        document.removeEventListener('pointermove', onPointerMove);
+        document.removeEventListener('pointerup', onPointerUp);
+        document.removeEventListener('pointercancel', onPointerUp);
+    }
+
+    function cleanupDragState() {
+        removeDocListeners();
+        grid.classList.remove('tile-reordering');
+        grid.querySelectorAll('.tile.tile-dragging').forEach(function(tile) {
+            tile.classList.remove('tile-dragging');
+        });
+        dragTile = null;
+        pointerId = null;
+        dragging = false;
+    }
+
+    function endDrag() {
+        if (!dragTile && !dragging) {
+            cleanupDragState();
+            return;
+        }
+        if (dragging) {
+            armSuppressClick();
+            saveTileOrder();
+        }
+        cleanupDragState();
+    }
+
+    function onPointerMove(e) {
+        if (!dragTile || e.pointerId !== pointerId) return;
+
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (!dragging && Math.hypot(dx, dy) > 6) {
+            dragging = true;
+            dragTile.classList.add('tile-dragging');
+            grid.classList.add('tile-reordering');
+        }
+        if (!dragging) return;
+
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const over = el && el.closest('.tile');
+        if (!over || over === dragTile || over.parentElement !== grid) return;
+
+        const tiles = Array.from(grid.querySelectorAll('.tile'));
+        const dragIdx = tiles.indexOf(dragTile);
+        const overIdx = tiles.indexOf(over);
+        if (dragIdx < 0 || overIdx < 0) return;
+
+        if (dragIdx < overIdx) {
+            over.after(dragTile);
+        } else {
+            over.before(dragTile);
+        }
+    }
+
+    function onPointerUp(e) {
+        if (e.pointerId !== pointerId) return;
+        endDrag();
+    }
+
+    grid.addEventListener('pointerdown', function(e) {
+        const handle = e.target.closest('.tile-handle');
+        if (!handle || !grid.contains(handle)) return;
+        const tile = handle.closest('.tile');
+        if (!tile) return;
+
+        // Tear down any in-progress drag before starting another.
+        if (dragTile || dragging) {
+            endDrag();
+        }
+
+        e.preventDefault();
+        dragTile = tile;
+        pointerId = e.pointerId;
+        startX = e.clientX;
+        startY = e.clientY;
+        dragging = false;
+
+        document.addEventListener('pointermove', onPointerMove);
+        document.addEventListener('pointerup', onPointerUp);
+        document.addEventListener('pointercancel', onPointerUp);
+    });
+
+    // Safety: if the tab is hidden mid-drag, never leave a tile inert.
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden && (dragTile || dragging)) {
+            endDrag();
         }
     });
+
+    grid.addEventListener('click', function(e) {
+        if (!suppressClick) return;
+        e.preventDefault();
+        e.stopPropagation();
+        clearSuppressClick();
+    }, true);
 }
 
 
@@ -1625,8 +1775,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize dark mode
         initializeDarkMode();
 
-        // Initialize category states
-        initializeCategories();
+        // Restore tile order and enable drag-to-reorder
+        initializeTileGrid();
 
         // Load daily content based on day of year (guarantees cycling through all content)
         loadDailyContent();
