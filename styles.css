@@ -279,29 +279,6 @@ body.dark-mode .translation-picker select {
 .tone-teal   .tile-icon { color: var(--accent-teal); }
 .tone-coral  .tile-icon { color: var(--accent-coral); }
 
-/* primary, full-width */
-.tile-primary {
-    grid-column: 1 / -1;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    min-height: 64px;
-    padding: 14px 16px;
-    background: var(--bg-purple-light);
-    border: 0.5px solid rgba(83, 74, 183, 0.18);
-    border-radius: 12px;
-    box-shadow: none;
-}
-.tile-primary:active { transform: scale(0.985); }
-.tile-primary .tile-icon { width: 22px; height: 22px; color: var(--accent); }
-
-body.dark-mode .tile-primary { border-color: rgba(143, 163, 255, 0.28); }
-
-.tile-primary-text { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
-.tile-primary-name { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
-.tile-primary-sub  { font-size: 12px; font-weight: 500; color: var(--text-muted); }
-.tile-chevron      { font-size: 20px; line-height: 1; color: var(--accent); }
-
 /* drag handle */
 .tile-handle {
     position: absolute;
@@ -339,13 +316,6 @@ body.dark-mode .tile-primary { border-color: rgba(143, 163, 255, 0.28); }
 }
 
 .tile-handle:active { cursor: grabbing; }
-
-.tile-primary .tile-handle {
-    position: static;
-    flex-shrink: 0;
-    margin-right: -4px;
-    order: -1;
-}
 
 .tile.tile-dragging {
     opacity: 0.55;
